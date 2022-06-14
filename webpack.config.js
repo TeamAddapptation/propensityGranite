@@ -6,6 +6,7 @@ module.exports = {
     main: path.resolve(__dirname, "./src/app.js"),
     form: path.resolve(__dirname, "./src/pages/form/form.js"),
     table: path.resolve(__dirname, "./src/pages/table/table.js"),
+    tabs: path.resolve(__dirname, "./src/pages/tabs/tabs.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -32,6 +33,12 @@ module.exports = {
       inject: "body",
       template: "./src/pages/table/table.html",
       chunks: ["main", "table"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "tabs.html",
+      inject: "body",
+      template: "./src/pages/tabs/tabs.html",
+      chunks: ["main", "tabs"],
     }),
   ],
   module: {
