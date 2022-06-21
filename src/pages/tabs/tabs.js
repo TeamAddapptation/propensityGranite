@@ -7,7 +7,7 @@ const theme = {
 const tabs = {
   id: "tabs__demo",
   options: {
-    g_style: "line", // step, line, block
+    g_style: "block", // step, line, block
     g_align_tabs: "left",
     g_font_size: "14",
     g_font_color: "#5d5d5d",

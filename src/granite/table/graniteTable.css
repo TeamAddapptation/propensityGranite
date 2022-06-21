@@ -15,17 +15,9 @@ table {
 .dataTables_scroll {
   position: relative;
 }
-/* .dataTables_scroll:after {
-  content: "";
-  width: 75px;
-  height: 100%;
-  background-image: linear-gradient(to right, transparent, white);
-  position: absolute;
-  right: 0;
-  top: 0;
-} */
 thead {
   background: var(--neutral-5);
+  border-bottom: 1px solid var(--neutral-50);
 }
 table td,
 th {
@@ -53,6 +45,7 @@ table tbody tr td a {
 }
 table tbody tr td {
   position: relative;
+  font-weight: 500;
 }
 table tbody tr td a:hover {
   color: var(--neutral-600);
@@ -61,6 +54,51 @@ table tbody tr td a:hover {
   max-width: 80px;
   height: auto;
   border-radius: 5px;
+}
+/* ----------
+  Select
+  ---------- */
+table select.g__table-select {
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+/* ----------
+  Row Dropdown
+  ---------- */
+.g__full-row {
+  visibility: collapse;
+  line-height: 0;
+  padding: 0;
+  border: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.g__full-row.g__open {
+  visibility: visible;
+  line-height: inherit;
+  opacity: 1;
+}
+.g__toggle-row-details {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.g__toggle-row-details.active {
+  transform: rotate(-90deg);
+}
+.g__connection-container {
+  display: flex;
+  align-items: center;
+}
+.g__connection-container i {
+  margin-right: 10px;
+}
+.g__connection-logo {
+  max-height: 30px;
+  width: auto;
+  margin-right: 15px;
 }
 /* ----------
   datatables.js
