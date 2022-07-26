@@ -1,4 +1,4 @@
-function granitePicklist(jsonBlock) {
+export default function granitePicklist(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -9,52 +9,16 @@ function granitePicklist(jsonBlock) {
   const granite_div = document.getElementById(id);
 
   /*---------------------------------------------
-    CSS Block
-    ---------------------------------------------*/
-  var imgCss = document.createElement("style");
-  imgCss.id = "g__css_" + id;
-  imgCss.innerHTML = `
-  ${cssId} .g__filter-label{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    font-size: .8rem;
-    color: #5d5d5d;
-    cursor: pointer;
-  }
-  ${cssId} select{
-    background: white;
-    font-family: "Montserrat", sans-serif;
-    font-style: normal;
-    min-width: 150px;
-    font-size: 0.8rem;
-    border: 0;
-    border-bottom: 2px solid #eaeaea;
-    color: #5d5d5d;
-    cursor: pointer;
-    background: transparent;
-    padding: 7px 5px;
-    line-height: 1.1;
-  }
-    `;
-  let granite_css = document.getElementById("g__css_" + id);
-  if (granite_css) {
-    granite_css.remove();
-  }
-  document.head.appendChild(imgCss);
-
-  /*---------------------------------------------
     Wrapper
   ---------------------------------------------*/
-  const filterContainer = document.createElement("div");
-  filterContainer.classList.add("g__filter_container");
+  const picklistContainer = document.createElement("div");
+  picklistContainer.classList.add("g__granite-picklist");
 
   if (o.label) {
     const filterLabel = document.createElement("label");
     filterLabel.classList.add("g__filter-label");
     filterLabel.innerHTML = o.label;
-    filterContainer.appendChild(filterLabel);
+    picklistContainer.appendChild(filterLabel);
   }
 
   let filter = document.createElement("select");
@@ -65,7 +29,7 @@ function granitePicklist(jsonBlock) {
   !!o.select_id ? (filter.id = o.select_id) : "";
   !!o.select_id ? (filter.name = o.select_id) : "";
   !!o.classes ? filter.classList.add(o.classes) : "";
-  filterContainer.appendChild(filter);
+  picklistContainer.appendChild(filter);
   if (o.placeholder) {
     const placeholder = document.createElement("option");
     placeholder.selected = true;
@@ -86,5 +50,5 @@ function granitePicklist(jsonBlock) {
   /*---------------------------------------------
     Append micro to the DOM
   ---------------------------------------------*/
-  granite_div.appendChild(filterContainer);
+  granite_div.appendChild(picklistContainer);
 }

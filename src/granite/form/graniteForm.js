@@ -4,9 +4,9 @@ export default function graniteForm(formsBlock) {
   const o = formsBlock.options;
   const r = formsBlock.records;
   const rLength = r.length;
+  const cssId = "#" + id;
   const action = o.addapptation_action || "/";
-  const formId =
-    o.formId || "g__" + Math.random().toString(36).substring(2, 15);
+  const formId = o.formId || "g__" + Math.random().toString(36).substring(2, 15);
   const method = o.method || "POST";
   const enctype = o.enctype || "application/x-www-form-urlencoded";
   const aceFields = [];
@@ -15,6 +15,19 @@ export default function graniteForm(formsBlock) {
   if (granite_div === null) {
     console.error("Object ID and Granite Div ID Do Not Match");
   }
+  /* -------------------- CSS ----------------------*/
+  var formCss = document.createElement("style");
+  formCss.id = "g__css_" + id;
+  formCss.innerHTML = `
+    ${cssId}{
+      width: ${o.width || "100%"};
+      max-width:${o.max_width || "100%"};
+    }`;
+  let granite_css = document.getElementById("g__css_" + id);
+  if (granite_css) {
+    granite_css.remove();
+  }
+  document.head.appendChild(formCss);
   /* -------------------- Form Container ----------------------*/
   let formContainer = document.createElement("form");
   // conditional attributes
@@ -116,22 +129,13 @@ export default function graniteForm(formsBlock) {
     !!r.type ? input.setAttribute("type", r.type) : "";
     !!formId ? input.setAttribute("form_id", formId) : "";
     !!r.name ? input.setAttribute("name", r.name) : "";
-    !!r.value
-      ? input.setAttribute("value", r.value)
-      : input.setAttribute("value", "");
+    !!r.value ? input.setAttribute("value", r.value) : input.setAttribute("value", "");
     !!r.title ? input.setAttribute("title", r.title) : "";
     !!r.placeholder ? input.setAttribute("placeholder", r.placeholder) : "";
     parseInt(r.length) > 0 ? input.setAttribute("maxlength", r.length) : "";
-    !!r.invalid_message
-      ? input.setAttribute(
-          "oninvalid",
-          `this.setCustomValidity("${r.invalid_message}")`
-        )
-      : "";
+    !!r.invalid_message ? input.setAttribute("oninvalid", `this.setCustomValidity("${r.invalid_message}")`) : "";
     input.required = r.required;
-    String(r.disabled) === "true"
-      ? (input.disabled = true)
-      : (input.disabled = false);
+    String(r.disabled) === "true" ? (input.disabled = true) : (input.disabled = false);
     return input;
   }
   /* -------------------- Hidden Fields ----------------------*/
@@ -152,25 +156,14 @@ export default function graniteForm(formsBlock) {
 
     let field_info_container;
     let form_field;
-    if (
-      r.type != "subheader" &&
-      r.type != "description" &&
-      r.type != "hidden" &&
-      r.type != "divider"
-    ) {
+    if (r.type != "subheader" && r.type != "description" && r.type != "hidden" && r.type != "divider") {
       form_field = document.createElement("div");
       form_field.setAttribute("class", "g__form_field");
-      !!r.field_max_width
-        ? (form_field.style.maxWidth = r.field_max_width)
-        : "";
+      !!r.field_max_width ? (form_field.style.maxWidth = r.field_max_width) : "";
       form_field.setAttribute("data-micro-id", id);
-      !!r.addapptation_id
-        ? form_field.setAttribute("data-record-id", r.addapptation_id)
-        : "";
+      !!r.addapptation_id ? form_field.setAttribute("data-record-id", r.addapptation_id) : "";
       !!r.classes ? form_field.classList.add(r.classes) : "";
-      String(r.disabled) === "true"
-        ? form_field.classList.add("g__disabled")
-        : "";
+      String(r.disabled) === "true" ? form_field.classList.add("g__disabled") : "";
 
       field_info_container = document.createElement("div");
       field_info_container.setAttribute("class", "g__field_info");
@@ -258,9 +251,7 @@ export default function graniteForm(formsBlock) {
         String(r.required) === "true" ? (label.innerHTML += "*") : "";
         check_container.appendChild(label);
 
-        String(r.switch) === "true"
-          ? check_container.setAttribute("class", "g__check-container-switch")
-          : check_container.setAttribute("class", "g__check-container");
+        String(r.switch) === "true" ? check_container.setAttribute("class", "g__check-container-switch") : check_container.setAttribute("class", "g__check-container");
         input = document.createElement("input");
         r.g_type === "boolean" ? (r.g_type = "checkbox") : "";
         input.setAttribute("class", class_name);
@@ -270,15 +261,9 @@ export default function graniteForm(formsBlock) {
         input.setAttribute("name", r.name);
         input.setAttribute("title", r.title);
         !!r.name ? input.setAttribute("data-attr", r.name) : "";
-        String(r.value) === "true"
-          ? input.setAttribute("value", r.value)
-          : input.setAttribute("value", "false");
-        String(r.value) === "true"
-          ? (input.checked = true)
-          : (input.checked = false);
-        String(r.value) === "true"
-          ? input.classList.add("g__checked")
-          : input.classList.add("g__unchecked");
+        String(r.value) === "true" ? input.setAttribute("value", r.value) : input.setAttribute("value", "false");
+        String(r.value) === "true" ? (input.checked = true) : (input.checked = false);
+        String(r.value) === "true" ? input.classList.add("g__checked") : input.classList.add("g__unchecked");
         input.required = String(r.required) === "true";
         String(r.required) === "true" ? input.classList.add("g__required") : "";
         label.appendChild(input);
@@ -314,10 +299,7 @@ export default function graniteForm(formsBlock) {
         hex_display.setAttribute("value", color_value);
         !!r.name ? hex_display.setAttribute("data-attr", r.name) : "";
         String(r.disabled) === "true" ? (hex_display.disabled = true) : "";
-        hex_display.setAttribute(
-          "pattern",
-          "^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$"
-        );
+        hex_display.setAttribute("pattern", "^#+([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$");
         color_container.appendChild(input);
         color_container.appendChild(hex_display);
         form_field.appendChild(color_container);
@@ -327,9 +309,7 @@ export default function graniteForm(formsBlock) {
         form_field.appendChild(addLabels(field_info_container, r));
         let curr_container = document.createElement("div");
         curr_container.setAttribute("class", "g__currency-container");
-        r.show_stepper_arrow
-          ? curr_container.classList.add("g__show-counter")
-          : curr_container.classList.add("g__hide-counter");
+        r.show_stepper_arrow ? curr_container.classList.add("g__show-counter") : curr_container.classList.add("g__hide-counter");
         let curr_format = document.createElement("div");
         curr_format.setAttribute("class", "g__currency-unit");
         curr_format.innerHTML = r.curr_format || "$";
@@ -403,9 +383,7 @@ export default function graniteForm(formsBlock) {
       case "description":
         form_field = document.createElement("p");
         form_field.setAttribute("data-micro-id", id);
-        !!r.addapptation_id
-          ? form_field.setAttribute("data-record-id", r.addapptation_id)
-          : "";
+        !!r.addapptation_id ? form_field.setAttribute("data-record-id", r.addapptation_id) : "";
         form_field.setAttribute("class", "g__form-description");
         r.classes ? form_field.classList.add(r.classes) : "";
         form_field.innerHTML = r.value || "Description";
@@ -428,9 +406,7 @@ export default function graniteForm(formsBlock) {
         input = document.createElement("input");
         input.setAttribute("id", r.id);
         !!r.name ? input.setAttribute("data-attr", r.name) : "";
-        !!r.accepted_file_types
-          ? input.setAttribute("accept", r.accepted_file_types)
-          : "";
+        !!r.accepted_file_types ? input.setAttribute("accept", r.accepted_file_types) : "";
         r.multiple ? input.setAttribute("multiple", "true") : "";
         input.setAttribute("hidden", "hidden");
         basicAttributes(r, input, class_name);
@@ -461,14 +437,11 @@ export default function graniteForm(formsBlock) {
         let multi_container = document.createElement("div");
         multi_container.setAttribute("class", "g__multi_container");
         let multi_options = r.options;
-        let multi_double_arr =
-          Array.isArray(multi_options) && Array.isArray(multi_options[0]);
+        let multi_double_arr = Array.isArray(multi_options) && Array.isArray(multi_options[0]);
         let multi_select = document.createElement("select");
         !!r.name ? multi_select.setAttribute("data-attr", r.name) : "";
         multi_select.setAttribute("multiple", "multiple");
-        String(r.required) === "true"
-          ? multi_select.classList.add("g__required")
-          : "";
+        String(r.required) === "true" ? multi_select.classList.add("g__required") : "";
         if (multi_double_arr) {
           for (let i = 0; i < multi_options.length; i++) {
             let option = document.createElement("option");
@@ -491,9 +464,7 @@ export default function graniteForm(formsBlock) {
         form_field.appendChild(addLabels(field_info_container, r));
         let num_container = document.createElement("div");
         num_container.setAttribute("class", "g__number_container");
-        String(r.show_stepper_arrow === "true")
-          ? num_container.classList.add("g__show_counter")
-          : num_container.classList.add("g__hide_counter");
+        String(r.show_stepper_arrow === "true") ? num_container.classList.add("g__show_counter") : num_container.classList.add("g__hide_counter");
         input = document.createElement("input");
         input.setAttribute("id", r.id);
         !!r.name ? input.setAttribute("data-attr", r.name) : "";
@@ -540,9 +511,7 @@ export default function graniteForm(formsBlock) {
         !!r.pattern ? input.setAttribute("pattern", r.pattern) : "";
         let pass_show = document.createElement("div");
         pass_show.setAttribute("class", "g__password-show");
-        r.showPassword_option
-          ? ""
-          : pass_show.classList.add("g__hide-password-btn");
+        r.showPassword_option ? "" : pass_show.classList.add("g__hide-password-btn");
         pass_show.innerHTML = '<i class="far fa-eye"></i>';
         pass_container.appendChild(input);
         pass_container.appendChild(pass_show);
@@ -551,23 +520,16 @@ export default function graniteForm(formsBlock) {
         break;
       case "picklist":
         form_field.appendChild(addLabels(field_info_container, r));
-        let picklist_options = !!r.options
-          ? r.options
-          : ["option 1", "option 2"];
-        let picklist_double_arr =
-          Array.isArray(picklist_options) && Array.isArray(picklist_options[0]);
+        let picklist_options = !!r.options ? r.options : ["option 1", "option 2"];
+        let picklist_double_arr = Array.isArray(picklist_options) && Array.isArray(picklist_options[0]);
         input = document.createElement("div");
         if (String(r.multiple) === "true") {
           input.setAttribute("multiple", "true");
           input.classList.add("g__picklist_multiple");
         }
         input.classList.add("g__picklist");
-        String(o.default_picklists) === "true"
-          ? input.classList.add("g__default_picklist")
-          : input.classList.add("g__custom_picklist");
-        String(r.picklist_search) === "true"
-          ? input.classList.add("g__search")
-          : "";
+        String(o.default_picklists) === "true" ? input.classList.add("g__default_picklist") : input.classList.add("g__custom_picklist");
+        String(r.picklist_search) === "true" ? input.classList.add("g__search") : "";
         let select = document.createElement("select");
         !!r.name ? select.setAttribute("data-attr", r.name) : "";
         select.setAttribute("class", class_name);
@@ -581,16 +543,10 @@ export default function graniteForm(formsBlock) {
           select.setAttribute("placeholder", r.placeholder);
         }
         select.required = r.required;
-        String(r.disabled) === "true"
-          ? (select.disabled = true)
-          : (select.disabled = false);
-        String(r.required) === "true"
-          ? select.classList.add("g__required")
-          : "";
+        String(r.disabled) === "true" ? (select.disabled = true) : (select.disabled = false);
+        String(r.required) === "true" ? select.classList.add("g__required") : "";
         select.setAttribute("id", r.id);
-        String(r.multiple) === "true"
-          ? select.classList.add("g__select_multiple")
-          : select.classList.add("g__select_default");
+        String(r.multiple) === "true" ? select.classList.add("g__select_multiple") : select.classList.add("g__select_default");
 
         if (String(r.multiple) === "true") {
           select.setAttribute("multiple", "multiple");
@@ -637,13 +593,10 @@ export default function graniteForm(formsBlock) {
           let arr_options = radio_options.split(",");
           radio_options = arr_options;
         }
-        let is_double_array =
-          Array.isArray(radio_options) && Array.isArray(radio_options[0]);
+        let is_double_array = Array.isArray(radio_options) && Array.isArray(radio_options[0]);
         let radio_container = document.createElement("div");
         radio_container.setAttribute("class", "g__radio-container");
-        r.radio_style === "button"
-          ? radio_container.classList.add("g__radio-btn")
-          : "";
+        r.radio_style === "button" ? radio_container.classList.add("g__radio-btn") : "";
         radio_container.id = r.id;
         for (let i = 0; i < radio_options.length; i++) {
           let input_container = document.createElement("div");
@@ -667,9 +620,7 @@ export default function graniteForm(formsBlock) {
           if (is_double_array) {
             input.id = radio_options[i][0];
             input.value = radio_options[i][0];
-            r.value === radio_options[i][0]
-              ? input.setAttribute("checked", "true")
-              : "";
+            r.value === radio_options[i][0] ? input.setAttribute("checked", "true") : "";
             radio_label.id = radio_options[i][0];
             radio_label.setAttribute("for", radio_options[i][0]);
             radio_label.innerHTML = radio_options[i][1];
@@ -677,9 +628,7 @@ export default function graniteForm(formsBlock) {
             let cleanId = radio_options[i].replace(/ /g, "");
             input.id = cleanId;
             input.value = radio_options[i];
-            r.value === radio_options[i]
-              ? input.setAttribute("checked", "true")
-              : "";
+            r.value === radio_options[i] ? input.setAttribute("checked", "true") : "";
             radio_label.id = cleanId;
             radio_label.setAttribute("for", cleanId);
             radio_label.innerHTML = radio_options[i];
@@ -767,9 +716,7 @@ export default function graniteForm(formsBlock) {
         spacing_arr.forEach((val, num) => {
           if (val === "link") {
             let field_container = document.createElement("div");
-            num === 1
-              ? field_container.setAttribute("class", `g__link g__link_tb`)
-              : field_container.setAttribute("class", `g__link g__link_lr`);
+            num === 1 ? field_container.setAttribute("class", `g__link g__link_tb`) : field_container.setAttribute("class", `g__link g__link_lr`);
             spacing_container.appendChild(field_container);
             let link = document.createElement("div");
             link.setAttribute("class", "g__space_link");
@@ -801,9 +748,7 @@ export default function graniteForm(formsBlock) {
         form_field.setAttribute("type", "header");
         r.name ? form_field.setAttribute("data-attr", r.name) : "";
         r.classes ? form_field.classList.add(r.classes) : "";
-        !!r.addapptation_id
-          ? form_field.setAttribute("data-record-id", r.addapptation_id)
-          : "";
+        !!r.addapptation_id ? form_field.setAttribute("data-record-id", r.addapptation_id) : "";
         form_field.innerHTML = r.value || "Heading";
         break;
       case "tags":
@@ -1020,13 +965,8 @@ export default function graniteForm(formsBlock) {
         prev.style.display = "none";
         next.innerText = "Save";
       } else {
-        stepNum == 0
-          ? (prev.style.display = "none")
-          : (prev.style.display = "inline-block");
-        currentStep == stepsArr.length - 1
-          ? (next.innerHTML =
-              "See My Score <i class='far far-solid fa-arrow-right'></i>")
-          : (next.innerText = "Continue");
+        stepNum == 0 ? (prev.style.display = "none") : (prev.style.display = "inline-block");
+        currentStep == stepsArr.length - 1 ? (next.innerHTML = "See My Score <i class='far far-solid fa-arrow-right'></i>") : (next.innerText = "Continue");
       }
       activeStep(currentStep);
     }
@@ -1134,8 +1074,7 @@ export default function graniteForm(formsBlock) {
       if (!!select) {
         let select_type;
         if (!select.checkValidity()) {
-          select_type =
-            select.parentElement.classList.contains("g__custom_picklist");
+          select_type = select.parentElement.classList.contains("g__custom_picklist");
           if (select_type) {
             select.parentElement.classList.add("invalid");
           } else {
@@ -1165,9 +1104,7 @@ export default function graniteForm(formsBlock) {
     }
   }
   /* -------------------- checkbox ----------------------*/
-  let all_checkboxes = granite_div.querySelectorAll(
-    ".g__field_checkbox, .g__field_boolean"
-  );
+  let all_checkboxes = granite_div.querySelectorAll(".g__field_checkbox, .g__field_boolean");
   if (all_checkboxes.length) {
     all_checkboxes.forEach((field) => {
       field.addEventListener("change", (e) => {
@@ -1264,9 +1201,7 @@ export default function graniteForm(formsBlock) {
             real_file_field.value = "";
           }
         });
-        file_selected.innerHTML = real_file_field.value.match(
-          /[\/\\]([\w\d\s\.\-\(\)]+)$/
-        )[1];
+        file_selected.innerHTML = real_file_field.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
         file_container.appendChild(file_selected);
         file_container.appendChild(file_delete);
         g_file_text.appendChild(file_container);

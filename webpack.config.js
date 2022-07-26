@@ -7,6 +7,12 @@ module.exports = {
     form: path.resolve(__dirname, "./src/pages/form/form.js"),
     table: path.resolve(__dirname, "./src/pages/table/table.js"),
     tabs: path.resolve(__dirname, "./src/pages/tabs/tabs.js"),
+    // PLATFORM
+    dataConnections: path.resolve(__dirname, "./src/platform/dataConnections/dataConnections.js"),
+    profile: path.resolve(__dirname, "./src/platform/profile/profile.js"),
+    passwordReset: path.resolve(__dirname, "./src/platform/passwordReset/passwordReset.js"),
+    // APPS
+    top100: path.resolve(__dirname, "./src/apps/top100/top100.js"),
   },
   output: {
     filename: "[name].bundle.js",
@@ -39,6 +45,32 @@ module.exports = {
       inject: "body",
       template: "./src/pages/tabs/tabs.html",
       chunks: ["main", "tabs"],
+    }),
+    // PLATFORM
+    new HtmlWebpackPlugin({
+      filename: "dataConnections.html",
+      inject: "body",
+      template: "./src/platform/dataConnections/dataConnections.html",
+      chunks: ["main", "dataConnections"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "profile.html",
+      inject: "body",
+      template: "./src/platform/profile/profile.html",
+      chunks: ["main", "profile"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "passwordReset.html",
+      inject: "body",
+      template: "./src/platform/passwordReset/passwordReset.html",
+      chunks: ["main", "passwordReset"],
+    }),
+    // APPS
+    new HtmlWebpackPlugin({
+      filename: "top100.html",
+      inject: "body",
+      template: "./src/apps/top100/top100.html",
+      chunks: ["main", "top100"],
     }),
   ],
   module: {

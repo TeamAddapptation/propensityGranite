@@ -1,0 +1,25 @@
+.g__overview-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  /* grid-auto-rows: 94px;
+  grid-gap: 1rem; */
+}
+.dt-buttons {
+  margin-top: 0;
+  display: flex;
+}
+.buttons-excel {
+  padding-right: 15px;
+  margin-right: 15px;
+}
+.dataTables_scrollBody::-webkit-scrollbar {
+  height: 9px;
+}
+@media (max-width: 768px) {
+  #g__export-btns {
+    display: none;
+  }
+  .c__showing-accounts {
+    font-size: 0.9rem;
+  }
+}

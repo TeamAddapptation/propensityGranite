@@ -255,8 +255,6 @@ export default function graniteTable(jsonBlock) {
       scrollY: scrollY,
       responsive: true,
       autoWidth: autoWidth,
-      dom: "Bfrtip",
-      buttons: ["excelHtml5", "csvHtml5"],
       columnDefs: columnDefs,
     });
   }

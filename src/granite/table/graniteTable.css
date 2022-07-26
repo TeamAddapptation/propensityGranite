@@ -191,7 +191,7 @@ table.dataTable thead th {
   content: "\f002";
   color: var(--neutral-500);
   position: absolute;
-  bottom: 10px;
+  bottom: 5px;
   left: 7px;
 }
 .dataTables_wrapper .dataTables_filter input {
@@ -201,9 +201,9 @@ table.dataTable thead th {
   font-weight: 500;
   font-size: 0.9rem;
   color: var(--neutral-600);
-  background: var(--neutral-0);
+  background: var(--primary-10);
   border: 0;
-  border-bottom: 1px solid var(--neutral-300);
+  border: 1px solid var(--neutral-50);
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   border-radius: 5px 5px 0 0;
   margin-top: 0;
@@ -305,23 +305,30 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   display: flex;
   flex-direction: column;
 }
-tabke
 /* ---------- Arrow -------*/
-/* table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
-  /* display: block;
+  top: 40%;
+  left: 4px;
+  height: 14px;
+  width: 14px;
+  display: block;
+  font-size: 1.5rem;
   position: absolute;
   color: var(--neutral-300);
   border: 0;
-  border-radius: 14px;
-  font-size: 1.5rem;
-  box-shadow: none;
+  border-radius: 0;
+  box-shadow: 0 0 0px #444;
   box-sizing: content-box;
   text-align: center;
   text-indent: 0 !important;
+  font-family: "Courier New", Courier, monospace;
   line-height: 14px;
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 300;
+  content: "\f107";
   background-color: transparent;
-} */
+}
 /* ----------
   Export Button
   ---------- */
@@ -333,12 +340,21 @@ div.dataTables_wrapper div.dataTables_filter {
   float: right;
 }
 .dataTables_filter input {
-  position: relative;
+  height: 30px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--neutral-600);
+  background: var(--primary-10);
   border: 0;
-  height: 40px;
-  border-bottom: 1px solid #eaeaea;
-  margin-bottom: 10px;
-  padding-left: 25px;
+  border: 1px solid var(--neutral-50);
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  border-radius: 5px 5px 0 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .buttons-html5 {
   font-family: Montserrat;
