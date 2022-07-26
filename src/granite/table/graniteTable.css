@@ -56,6 +56,46 @@ table tbody tr td a:hover {
   border-radius: 5px;
 }
 /* ----------
+  Row Score Color
+  ---------- */
+
+.g__strong-row {
+  border-left: 3px solid var(--success);
+}
+.g__moderate-row {
+  border-left: 3px solid var(--warning);
+}
+.g__weak-row {
+  border-left: 3px solid var(--danger);
+}
+.g__score-cell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  margin: 0 auto;
+}
+.g__weak {
+  color: var(--danger);
+}
+.g__weak-bkg {
+  background-color: var(--danger-100);
+}
+.g__moderate {
+  color: var(--warning);
+}
+.g__moderate-bkg {
+  background-color: var(--warning-100);
+}
+.g__strong {
+  color: var(--success);
+}
+.g__strong-bkg {
+  background-color: var(--success-100);
+}
+/* ----------
   Select
   ---------- */
 table select.g__table-select {
@@ -114,6 +154,9 @@ table select.g__table-select {
 
 ::-webkit-scrollbar-thumb {
   background-color: #5d5d5d;
+}
+table.dataTable {
+  border-collapse: collapse !important;
 }
 table.dataTable thead th {
   font-size: 0.8rem;
@@ -241,6 +284,44 @@ table.dataTable thead .sorting_asc:before,
 table.dataTable thead .sorting_desc:after {
   color: var(--primary);
 }
+/* ----------
+  Responsive
+  ---------- */
+table tr.child td.child {
+  background-color: var(--primary-10);
+}
+table.dataTable > tbody > tr.child ul.dtr-details > li {
+  display: flex;
+  border-bottom: 1px solid var(--neutral-50);
+  padding: 0.5em 0;
+}
+table.dataTable > tbody > tr.child span.dtr-title {
+  flex: 1;
+}
+table.dataTable > tbody > tr.child span.dtr-data {
+  flex: 2;
+}
+table.dataTable > tbody > tr.child ul.dtr-details {
+  display: flex;
+  flex-direction: column;
+}
+tabke
+/* ---------- Arrow -------*/
+/* table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+  /* display: block;
+  position: absolute;
+  color: var(--neutral-300);
+  border: 0;
+  border-radius: 14px;
+  font-size: 1.5rem;
+  box-shadow: none;
+  box-sizing: content-box;
+  text-align: center;
+  text-indent: 0 !important;
+  line-height: 14px;
+  background-color: transparent;
+} */
 /* ----------
   Export Button
   ---------- */

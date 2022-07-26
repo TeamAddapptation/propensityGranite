@@ -33,31 +33,8 @@ const jsonBlock = {
     hide_submit: false,
     allow_cancel: false,
     default_picklists: true,
-    activate_recaptcha: false,
-    auto_superscript: false,
-    autosave: false,
-    // Design
-    field_bkg_color: "#4b4b4b",
-    field_border_color: "#4b4b4b",
-    field_border_width: "",
-    // Step
-    form_type: "step",
-    show_steps: false,
-    step_prev_text: "Back",
-    step_next_text: "Continue",
-    indicator_spacing: "5",
-    indicator_color: "#C4C4C4",
-    indicator_color_active: "#5D50E6",
-    next_bkg_color_hover: "#7c72e6",
-    next_font_color_hover: "#ffffff",
-    margin_right_next: "0",
-    margin_left_next: "0",
-    // Section Attributes
-    section_font_size: "",
-    section_icon_size: "",
-    section_font_color: "",
-    section_background: "",
-    section_line_width: "",
+
+
   },
   records: [
     {

@@ -19,9 +19,7 @@ export default function graniteMultiSelect(formField) {
 
   search.addEventListener("input", (e) => {
     const filter = e.target.value.toUpperCase();
-    const topicItem = document.querySelectorAll(
-      `#g__${formField} .g__topic-item`
-    );
+    const topicItem = document.querySelectorAll(`#g__${formField} .g__topic-item`);
     topicItem.forEach((topic) => {
       const txtValue = topic.textContent || topic.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -55,22 +53,14 @@ export default function graniteMultiSelect(formField) {
 
   fitlerOne.addEventListener("change", (e) => {
     const theme = e.target.value;
-    const category = document.querySelector(
-      `#g__${formField} .g__filter-two`
-    ).value;
+    const category = document.querySelector(`#g__${formField} .g__filter-two`).value;
     if (theme === "Select Theme") {
       filteredList = bomboraTopics;
     } else {
-      filteredList = [
-        ...new Set(
-          bomboraTopics.map((topic) => (topic.Theme === theme ? topic : ""))
-        ),
-      ];
+      filteredList = [...new Set(bomboraTopics.map((topic) => (topic.Theme === theme ? topic : "")))];
       filteredList.shift();
     }
-    const topicContainer = document.querySelector(
-      `#g__${formField} .g__topics-container`
-    );
+    const topicContainer = document.querySelector(`#g__${formField} .g__topics-container`);
     topicContainer.innerHTML = "";
     topicContainer.appendChild(topicsList(filteredList));
 
@@ -80,9 +70,7 @@ export default function graniteMultiSelect(formField) {
   function updateFilterTwo(filteredList) {
     const f2 = document.querySelector(`#g__${formField} .g__filter-two`);
     f2.innerHTML = "";
-    const uniqueList = [
-      ...new Set(filteredList.map((topic) => topic.Category)),
-    ];
+    const uniqueList = [...new Set(filteredList.map((topic) => topic.Category))];
     uniqueList.forEach((topic) => {
       const catOption = document.createElement("option");
       catOption.value = topic;
@@ -98,9 +86,7 @@ export default function graniteMultiSelect(formField) {
   fitlerTwoContainer.appendChild(f2ArrowIcon);
   const fitlerTwo = document.createElement("select");
   fitlerTwo.classList.add("g__filter-two");
-  const uniqueCatagories = [
-    ...new Set(bomboraTopics.map((topic) => topic.Category)),
-  ];
+  const uniqueCatagories = [...new Set(bomboraTopics.map((topic) => topic.Category))];
   const filterTwoPlaceholder = document.createElement("option");
   filterTwoPlaceholder.disables = true;
   filterTwoPlaceholder.selected = true;
@@ -117,38 +103,23 @@ export default function graniteMultiSelect(formField) {
 
   fitlerTwo.addEventListener("change", (e) => {
     const category = e.target.value;
-    const theme = document.querySelector(
-      `#g__${formField} .g__filter-one`
-    ).value;
+    const theme = document.querySelector(`#g__${formField} .g__filter-one`).value;
     if (category === "Select Category") {
       filteredList = bomboraTopics;
     } else {
-      filteredList = [
-        ...new Set(
-          bomboraTopics.map((topic) =>
-            topic.Category === category ? topic : ""
-          )
-        ),
-      ];
+      filteredList = [...new Set(bomboraTopics.map((topic) => (topic.Category === category ? topic : "")))];
       filteredList.shift();
     }
 
     if (theme != "Select Theme") {
-      filteredList = [
-        ...new Set(
-          filteredList.map((topic) => (topic.Theme === theme ? topic : ""))
-        ),
-      ];
+      filteredList = [...new Set(filteredList.map((topic) => (topic.Theme === theme ? topic : "")))];
     }
-    const topicContainer = document.querySelector(
-      `#g__${formField} .g__topics-container`
-    );
+    const topicContainer = document.querySelector(`#g__${formField} .g__topics-container`);
     topicContainer.innerHTML = "";
     topicContainer.appendChild(topicsList(filteredList));
   });
 
   function topicsList(topicObj) {
-    console.log("Running");
     const topicUl = document.createElement("ul");
     topicUl.classList.add("g__topics-list");
 
@@ -180,9 +151,7 @@ export default function graniteMultiSelect(formField) {
         } else {
           topicsArr.push(topicObj);
         }
-        const updatePills = document.querySelector(
-          `#g__${formField} .g__selected-container`
-        );
+        const updatePills = document.querySelector(`#g__${formField} .g__selected-container`);
         updatePills.innerHTML = "";
         updatePills.appendChild(pillsContainer(topicsArr));
         const IdArr = [];
@@ -202,7 +171,7 @@ export default function graniteMultiSelect(formField) {
   filtersContainer.appendChild(topicListContainer);
 
   const topicsHeading = document.createElement("h5");
-  if (formField === "competitive-topics") {
+  if (formField === "Competitive_Topics__c") {
     topicsHeading.innerText = "Your Competitive Topics";
   } else {
     topicsHeading.innerText = "Your Adjacent Topics";
@@ -219,9 +188,7 @@ export default function graniteMultiSelect(formField) {
   filtersContainer.appendChild(finalInput);
 
   function removeItem(selectedItem) {
-    const itemsArr = document.querySelectorAll(
-      `#g__${formField} .g__topic-item`
-    );
+    const itemsArr = document.querySelectorAll(`#g__${formField} .g__topic-item`);
     const deleteId = selectedItem.getAttribute("data-id");
     topicsArr = topicsArr.filter(function (topic) {
       return topic.id !== deleteId;
