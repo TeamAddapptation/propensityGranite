@@ -21,6 +21,8 @@ try {
       searching: true,
       paging: false,
       page_length: 2,
+      fixed: false,
+      responsive: true,
       scroll_x: true,
       auto_width: false,
       wrap_text: true,

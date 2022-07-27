@@ -238,6 +238,7 @@ export default function graniteTable(jsonBlock) {
   let scrollX = o.scroll_x;
   let autoWidth = o.auto_width;
   let columnDefs = o.column_defs || "";
+  let isResponsive = o.responsive || false;
   if (o.datatables) {
     const tableId = "#g__" + id;
     $(tableId).DataTable({
@@ -253,7 +254,7 @@ export default function graniteTable(jsonBlock) {
       },
       scrollX: scrollX,
       scrollY: scrollY,
-      responsive: true,
+      responsive: isResponsive,
       autoWidth: autoWidth,
       columnDefs: columnDefs,
     });

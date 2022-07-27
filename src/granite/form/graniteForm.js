@@ -10,6 +10,7 @@ export default function graniteForm(formsBlock) {
   const method = o.method || "POST";
   const enctype = o.enctype || "application/x-www-form-urlencoded";
   const aceFields = [];
+  console.log("granite ID", granite_id);
   /* -------------------- Check Alignment & Set Mode ----------------------*/
   let granite_div = document.getElementById(id);
   if (granite_div === null) {

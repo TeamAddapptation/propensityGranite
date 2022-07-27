@@ -11,6 +11,8 @@ module.exports = {
     dataConnections: path.resolve(__dirname, "./src/platform/dataConnections/dataConnections.js"),
     profile: path.resolve(__dirname, "./src/platform/profile/profile.js"),
     passwordReset: path.resolve(__dirname, "./src/platform/passwordReset/passwordReset.js"),
+    billing: path.resolve(__dirname, "./src/platform/billing/billing.js"),
+    users: path.resolve(__dirname, "./src/platform/users/users.js"),
     // APPS
     top100: path.resolve(__dirname, "./src/apps/top100/top100.js"),
   },
@@ -64,6 +66,18 @@ module.exports = {
       inject: "body",
       template: "./src/platform/passwordReset/passwordReset.html",
       chunks: ["main", "passwordReset"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "billing.html",
+      inject: "body",
+      template: "./src/platform/billing/billing.html",
+      chunks: ["main", "billing"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "users.html",
+      inject: "body",
+      template: "./src/platform/users/users.html",
+      chunks: ["main", "users"],
     }),
     // APPS
     new HtmlWebpackPlugin({
