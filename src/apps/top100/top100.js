@@ -38,7 +38,8 @@ try {
             classes: "min-mobile",
           },
           {
-            value: "Score",
+            value: "Propensity Score",
+            id: "c__score",
             classes: "min-mobile",
           },
           {
@@ -207,4 +208,11 @@ try {
   granitePicklist(filterSignal);
 } catch (error) {
   console.error(error);
+}
+
+const scoreHeader = document.getElementById("c__score");
+if (scoreHeader) {
+  if (window.innerWidth <= 768) {
+    scoreHeader.innerText = "Score";
+  }
 }

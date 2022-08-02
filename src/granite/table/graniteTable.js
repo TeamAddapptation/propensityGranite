@@ -1,4 +1,4 @@
-export default function graniteTable(jsonBlock) {
+function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -16,9 +16,6 @@ export default function graniteTable(jsonBlock) {
   /*---------------------------------------------
     CSS
     ---------------------------------------------*/
-  const fontSize = "0.8rem";
-  const ascArrow = "<i class='far fa-angle-up'></i>";
-
   var tableCss = document.createElement("style");
   tableCss.id = "g__css_" + id;
   tableCss.innerHTML = `
@@ -124,6 +121,9 @@ export default function graniteTable(jsonBlock) {
           columnCount++;
           const newThCell = document.createElement("th");
           newThCell.innerHTML = cell.value;
+          if (cell.id) {
+            newThCell.id = cell.id;
+          }
           if (cell.classes) {
             newThCell.classList.add(cell.classes);
           }
@@ -235,7 +235,7 @@ export default function graniteTable(jsonBlock) {
     ---------------------------------------------*/
   let defaultColumnSort = o.columnSort || [0, "asc"];
   let scrollY = o.scroll_y || "";
-  let scrollX = o.scroll_x;
+  let scrollX = o.scroll_x || false;
   let autoWidth = o.auto_width;
   let columnDefs = o.column_defs || "";
   let isResponsive = o.responsive || false;

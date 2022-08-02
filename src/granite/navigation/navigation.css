@@ -116,6 +116,7 @@ h4.g__page-name {
   top: 38px;
   right: 0;
   width: 200px;
+  padding-bottom: 10px;
   background: #ffffff;
   border: 0.5px solid #eaeaea;
   box-sizing: border-box;
@@ -131,16 +132,13 @@ h4.g__page-name {
 }
 .g__dropdown-container .g__dropdown-link {
   flex: 1;
-  font-size: 0.8rem;
   line-height: 17px;
-  padding: 5px 10px;
+  padding: 10px 15px;
   margin: 0;
-  color: #a1a1a1;
   transition: all 0.5s ease;
 }
 .g__dropdown-container .g__dropdown-link:hover {
-  background: #f3f7ff;
-  color: #5d50e6;
+  background: var(--primary-10);
 }
 /*----------
 Notifications
@@ -167,10 +165,12 @@ Desktop Menu Links
   gap: 1rem;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 .g__menu-items a.g__link,
 .g__mobile-menu-login-container a.g__link {
-  font-family: hero-new, sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 400;
   font-style: normal;
   display: block;
@@ -207,6 +207,7 @@ Desktop Menu Links
   margin: 0;
 }
 .g__nav-gear {
+  cursor: pointer;
   opacity: 0.65;
   color: #ffffff;
   margin: 0;
@@ -215,6 +216,18 @@ Desktop Menu Links
 }
 .g__nav-gear:hover {
   opacity: 1;
+}
+
+#copy-url i,
+#share-link i,
+#dropdown-toggle i {
+  color: var(--primary-100);
+}
+
+#copy-url i:hover,
+#share-link i:hover,
+#dropdown-toggle i:hover {
+  color: var(--neutral-0);
 }
 /*----------
 Mobile Menu Links
@@ -258,6 +271,10 @@ Mobile Menu Links
 .g__mobile_menu_link:hover {
   color: var(--primary-50);
   border-left: 7px solid var(--primary-50);
+}
+.g__mobile_link_selected {
+  color: var(--neutral-300);
+  border-left: 7px solid var(--neutral-300);
 }
 
 .g__mobile-menu-login-container {
@@ -336,11 +353,17 @@ Mobile Menu Links
   margin-top: -9px;
 }
 @media (max-width: 768px) {
-  .g__desktop-header {
-    flex-direction: column;
-  }
   .g__menu-items {
+    margin-right: 50px;
+  }
+  .g__menu-items a.g__link,
+  .g__menu-items .g__btn,
+  .g__dropdown {
     display: none;
+  }
+
+  .g__nav-gear {
+    opacity: 1;
   }
 
   .g__sidebar-icon-toggle {

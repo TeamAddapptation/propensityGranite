@@ -803,6 +803,9 @@ Mobile
   /* --------------------
   Flex
   -------------------- */
+  .g__m-flex {
+    display: flex;
+  }
   .g__m-flex-row {
     flex-direction: row;
   }
@@ -810,10 +813,16 @@ Mobile
     flex-direction: column;
   }
   .g__m-justify-start {
-    justify-content: start;
+    justify-content: flex-start;
+  }
+  .g__m-justify-end {
+    justify-content: flex-end;
   }
   .g__m-justify-center {
     justify-content: center;
+  }
+  .g__m-align-start {
+    align-items: flex-start;
   }
   .g__m-flex-1 {
     flex: 1;
@@ -824,6 +833,10 @@ Mobile
   .g__m-flex-3 {
     flex: 3;
   }
+
+  /* --------------------
+  Gap
+  -------------------- */
   .g__m-gap-1 {
     gap: 1rem;
   }
@@ -869,5 +882,8 @@ Mobile
   }
   .g__m-mt-15 {
     margin-top: 15px;
+  }
+  .g__m-m-0 {
+    margin: 0;
   }
 }

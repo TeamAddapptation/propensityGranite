@@ -186,20 +186,21 @@ table.dataTable thead th {
 }
 .dataTables_filter label:after {
   display: block;
+
   font-family: "Font Awesome 5 Pro";
   font-weight: 300;
   content: "\f002";
   color: var(--neutral-500);
   position: absolute;
-  bottom: 5px;
+  bottom: 13px;
   left: 7px;
 }
 .dataTables_wrapper .dataTables_filter input {
-  height: 30px;
+  height: 40px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 16px;
   color: var(--neutral-600);
   background: var(--primary-10);
   border: 0;
@@ -294,6 +295,7 @@ table.dataTable > tbody > tr.child ul.dtr-details > li {
   display: flex;
   border-bottom: 1px solid var(--neutral-50);
   padding: 0.5em 0;
+  gap: 1rem;
 }
 table.dataTable > tbody > tr.child span.dtr-title {
   flex: 1;
@@ -309,7 +311,7 @@ table.dataTable > tbody > tr.child ul.dtr-details {
 table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
 table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
   top: 40%;
-  left: 4px;
+  left: 7px;
   height: 14px;
   width: 14px;
   display: block;
@@ -340,11 +342,11 @@ div.dataTables_wrapper div.dataTables_filter {
   float: right;
 }
 .dataTables_filter input {
-  height: 30px;
+  height: 40px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 16px;
   color: var(--neutral-600);
   background: var(--primary-10);
   border: 0;
