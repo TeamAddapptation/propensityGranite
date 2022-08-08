@@ -884,6 +884,15 @@ export default function graniteForm(formsBlock) {
       button_container.appendChild(cancel);
     }
 
+    if (o.custom_btn) {
+      let customBtn = document.createElement("button");
+      o.custom_btn_classes ? customBtn.setAttribute("class", o.custom_btn_classes) : "";
+      customBtn.setAttribute("id", o.custom_btn_id);
+      customBtn.setAttribute("type", "button");
+      customBtn.innerHTML = o.custom_btn_text;
+      button_container.appendChild(customBtn);
+    }
+
     formContainer.appendChild(button_container);
   }
   /* -------------------- Picklist Multi ----------------------*/

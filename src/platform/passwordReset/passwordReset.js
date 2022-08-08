@@ -18,31 +18,26 @@ const passwordReset = {
     db_redirect: "",
     position_form: "center",
     form_id: "",
-    submit_btn: true,
-    cancel_btn: true,
+    submit_btn: false,
+    cancel_btn: false,
     default_picklists: true,
     submit_label: "Save",
+    submit_classes: "g__btn g__btn-primary",
     cancel_label: "Cancel",
+    cancel_classes: "g__btn g__btn-text",
+    custom_btn: true,
+    custom_btn_id: "save_password",
+    custom_btn_classes: "g__btn g__btn-primary",
+    custom_btn_text: "Save",
     max_width: "600px",
   },
   records: [
     {
-      id: "current-password",
-      name: "current-password",
       type: "password",
-      label: "current-password",
-      title: "Current Password",
-      required: true,
-      value: "",
-      placeholder: "",
-      classes: "",
-    },
-    {
-      id: "new-password",
-      name: "new-password",
-      type: "password",
-      label: "new-password",
+      label: "password",
       title: "New Password",
+      id: "a__new-password",
+      name: "password",
       required: true,
       options: "",
       value: "",
@@ -50,16 +45,16 @@ const passwordReset = {
       classes: "",
     },
     {
-      id: "confirm-new-password",
-      name: "confirm-new-password",
       type: "password",
-      label: "confirm-new-password",
-      title: "Confirm New Password",
+      label: "confirm_password",
+      title: "Confirm Password",
+      id: "confirm_password",
+      name: "confirm_password",
       required: true,
       options: "",
       value: "",
       placeholder: "",
-      classes: "",
+      classes: "g__password_container",
     },
   ],
 };
@@ -126,3 +121,118 @@ const tabs = {
   ],
 };
 graniteTabs(tabs, theme);
+
+/*------------------------
+Email Strength Validation
+-------------------------*/
+// Build the check items
+const passCont = document.querySelector(".g__password_container");
+const validationCont = document.createElement("div");
+validationCont.classList.add("a__email-req-list");
+const lowercase = document.createElement("div");
+
+lowercase.classList.add("a__validate-item");
+lowercase.id = "a__pass-lowercase";
+lowercase.innerHTML = "<i class='fas fa-circle a__circle-indicator a__lower-icon'></i> One lowercase letter";
+validationCont.appendChild(lowercase);
+
+const uppercase = document.createElement("div");
+uppercase.classList.add("a__validate-item");
+uppercase.id = "a__pass-uppercase";
+uppercase.innerHTML = "<i class='fas fa-circle a__circle-indicator a__upper-icon'></i> One uppercase letter";
+validationCont.appendChild(uppercase);
+
+const length = document.createElement("div");
+length.classList.add("a__validate-item");
+length.id = "a__pass-length";
+length.innerHTML = "<i class='fas fa-circle a__circle-indicator a__length-icon'></i> 8 character minimum";
+validationCont.appendChild(length);
+
+const symbols = document.createElement("div");
+symbols.classList.add("a__validate-item");
+symbols.id = "a__pass-symbols";
+symbols.innerHTML = "<i class='fas fa-circle a__circle-indicator a__symbol-icon'></i> One symbol";
+validationCont.appendChild(symbols);
+
+const confirmPass = document.createElement("div");
+confirmPass.classList.add("a__validate-item");
+confirmPass.id = "a__pass-match";
+confirmPass.innerHTML = "<i class='fas fa-circle a__circle-indicator a__match-icon'></i> Matching Passwords";
+validationCont.appendChild(confirmPass);
+
+passCont.after(validationCont);
+
+// Validate each item on keyup
+const userPassword = document.getElementById("a__new-password");
+const confirmPassword = document.getElementById("confirm_password");
+const saveBtn = document.getElementById("save_password");
+const lowerIcon = document.querySelector(".a__lower-icon");
+const upperIcon = document.querySelector(".a__upper-icon");
+const lengthIcon = document.querySelector(".a__length-icon");
+const symbolIcon = document.querySelector(".a__symbol-icon");
+const matchIcon = document.querySelector(".a__match-icon");
+let isvalid = [false, false, false, false, false];
+
+saveBtn.disabled = true;
+
+userPassword.addEventListener("keyup", () => {
+  let password = userPassword.value;
+  //Lowercase Check
+  const lowercaseLetters = /[a-z]/g;
+  if (password.match(lowercaseLetters)) {
+    lowerIcon.style.color = "#65C963";
+    isvalid[0] = true;
+  } else {
+    lowerIcon.style.color = "#BFBFBF";
+    isvalid[0] = false;
+  }
+  //Uppercase Check
+  const uppercaseLetters = /[A-Z]/g;
+  if (password.match(uppercaseLetters)) {
+    upperIcon.style.color = "#65C963";
+    isvalid[1] = true;
+  } else {
+    upperIcon.style.color = "#BFBFBF";
+    isvalid[1] = false;
+  }
+  //Length Check
+  if (password.length >= 8) {
+    lengthIcon.style.color = "#65C963";
+    isvalid[2] = true;
+  } else {
+    lengthIcon.style.color = "#BFBFBF";
+    isvalid[2] = false;
+  }
+  //Symbol Check
+  const symbol = /[~!@#$%^&*()_+=><?/:;{}]/g;
+  if (password.match(symbol)) {
+    symbolIcon.style.color = "#65C963";
+    isvalid[3] = true;
+  } else {
+    symbolIcon.style.color = "#BFBFBF";
+    isvalid[3] = false;
+  }
+  submitHandler();
+});
+
+confirmPassword.addEventListener("keyup", () => {
+  let fieldOne = userPassword.value;
+  let fieldTwo = confirmPassword.value;
+  if (fieldOne === fieldTwo) {
+    matchIcon.style.color = "#65C963";
+    isvalid[4] = true;
+  } else {
+    matchIcon.style.color = "#BFBFBF";
+    isvalid[4] = false;
+  }
+  submitHandler();
+});
+
+function submitHandler() {
+  let checker = isvalid.every((v) => v === true);
+  if (checker) {
+    saveBtn.disabled = false;
+  } else {
+    saveBtn.disabled = true;
+  }
+}

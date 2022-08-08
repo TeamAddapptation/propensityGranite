@@ -182,6 +182,9 @@ Typography - Utility
 .g__bold {
   font-weight: 600;
 }
+.g__text-center {
+  text-align: center;
+}
 small,
 .text_small {
   font-size: 0.8rem;
@@ -211,7 +214,7 @@ Layout - Grid
 main.g__main {
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 90vh;
   max-width: 1366px;
   border: 1px solid #eaeaea;
   box-sizing: border-box;
@@ -338,7 +341,6 @@ main.g__main {
     max-width: 100%;
   }
 }
-
 .g__flex {
   display: flex;
 }
@@ -380,6 +382,18 @@ Flex Gaps
 }
 .g__gap-4 {
   gap: 4rem;
+}
+/*--------------------
+Max Width
+-------------------- */
+.g__max-700 {
+  max-width: 700px;
+}
+.g__max-750 {
+  max-width: 750px;
+}
+.g__max-800 {
+  max-width: 800px;
 }
 /*--------------------
 Buttons
@@ -449,6 +463,11 @@ Primary
   background-color: var(--primary-600);
   border-color: var(--primary-600);
 }
+.g__btn.g__btn-primary:disabled {
+  color: #fff;
+  background-color: var(--primary-300);
+  border-color: var(--primary-300);
+}
 /*----------
 Secondary
 ---------- */
@@ -489,25 +508,23 @@ Line
 Text
 ---------- */
 .g__btn.g__btn-text {
-  color: var(--primary);
+  color: var(--tertiary);
   background-color: transparent;
   border-color: transparent;
-  text-transform: uppercase;
   border-radius: 0;
   border: 0;
   padding: 0;
 }
 .g__btn.g__btn-text:hover {
-  color: var(--primary-300);
+  color: var(--tertiary-300);
   background-color: transparent;
   border-color: transparent;
-  text-transform: uppercase;
   border-radius: 0;
   border: 0;
   padding: 0;
 }
 .g__btn.g__btn-text:active {
-  color: var(--primary);
+  color: var(--tertiary);
   background-color: transparent;
   border-color: transparent;
 }
@@ -679,6 +696,9 @@ Padding
 /* --------------------
 Margin
 -------------------- */
+.g__m-0-auto {
+  margin: 0 auto;
+}
 .g__m-0 {
   margin: 0;
 }
@@ -712,6 +732,12 @@ Margin
 }
 .g__mt-25 {
   margin-top: 25px;
+}
+.g__mt-50 {
+  margin-top: 50px;
+}
+.g__mt-100 {
+  margin-top: 100px;
 }
 /* ------ Right ----- */
 .g__mr-5 {

@@ -2,6 +2,9 @@ import graniteForm from "../../granite/form/graniteForm";
 import "../../granite/form/graniteForm.css";
 import graniteTabs from "../../granite/tabs/graniteTabs";
 
+import graniteFileUpload from "../../granite/plugins/form/fileUpload/graniteFileUpload";
+import "../../granite/plugins/form/fileUpload/graniteFileUpload.css";
+
 import "./profile.css";
 const accountProfile = {
   id: "form__my-profile",
@@ -21,11 +24,25 @@ const accountProfile = {
     cancel_btn: true,
     default_picklists: true,
     submit_label: "Save",
+    submit_classes: "g__btn g__btn-primary",
     cancel_label: "Cancel",
+    cancel_classes: "g__btn g__btn-text",
     width: "500px",
     max_width: "600px",
   },
   records: [
+    {
+      type: "custom",
+      label: "fname",
+      title: "",
+      id: "fname",
+      name: "fname",
+      required: true,
+      value: "",
+      placeholder: "",
+      classes: "",
+      custom_function: graniteFileUpload(true),
+    },
     {
       type: "text",
       label: "fname",
@@ -119,9 +136,9 @@ const tabs = {
       href: "/passwordReset.html",
     },
     {
-      name: "Billing",
+      name: "Email Preferences",
       desc: "",
-      href: "/billing.html",
+      href: "/email_preferences.html",
     },
   ],
 };

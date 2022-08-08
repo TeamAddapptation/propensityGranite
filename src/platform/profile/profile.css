@@ -1,4 +1,10 @@
-#form__my-profile {
-  margin: 0 auto;
-  padding-top: 100px;
+#g__submit_cancel {
+  gap: 2rem;
+  display: flex;
+}
+#g__submit_btn {
+  order: 2;
+}
+#g__cancel_btn {
+  order: 1;
 }

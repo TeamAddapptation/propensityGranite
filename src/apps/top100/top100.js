@@ -5,10 +5,6 @@ import granitePicklist from "../../granite/picklist/granitePicklist";
 import "../../granite/picklist/granitePicklist.css";
 
 import "./top100.css";
-import graniteNavigation from "../../granite/navigation/navigation";
-import "../../granite/navigation/navigation.css";
-
-graniteNavigation();
 
 try {
   const top100 = {

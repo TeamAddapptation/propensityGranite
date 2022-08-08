@@ -47,13 +47,9 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       !!o.g_step_number_color ? "" : (o.g_step_number_color = "#000000");
       !!o.g_title_color ? "" : (o.g_title_color = "#000000");
       !!o.g_description_color ? "" : (o.g_description_color = "#000000");
-      !!o.g_background_hover_color
-        ? ""
-        : (o.g_background_hover_color = "#5d5d5d");
+      !!o.g_background_hover_color ? "" : (o.g_background_hover_color = "#5d5d5d");
       !!o.g_highlight_color ? "" : (o.g_highlight_color = "#bababa");
-      !!o.g_background_active_color
-        ? ""
-        : (o.g_background_active_color = "#5d5d5d");
+      !!o.g_background_active_color ? "" : (o.g_background_active_color = "#5d5d5d");
       !!o.g_border_color ? "" : (o.g_border_color = "#bfbfbf");
       !!o.g_background_color ? "" : (o.g_background_color = "#bfbfbf");
       !!o.g_font_hover_color ? "" : (o.g_font_hover_color = "#a1a1a1");
@@ -63,13 +59,9 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       !!o.g_step_number_color ? "" : (o.g_step_number_color = "#ffffff");
       !!o.g_title_color ? "" : (o.g_title_color = "#ffffff");
       !!o.g_description_color ? "" : (o.g_description_color = "#ffffff");
-      !!o.g_background_hover_color
-        ? ""
-        : (o.g_background_hover_color = "#5d5d5d");
+      !!o.g_background_hover_color ? "" : (o.g_background_hover_color = "#5d5d5d");
       !!o.g_highlight_color ? "" : (o.g_highlight_color = "#bababa");
-      !!o.g_background_active_color
-        ? ""
-        : (o.g_background_active_color = "#5d5d5d");
+      !!o.g_background_active_color ? "" : (o.g_background_active_color = "#5d5d5d");
       !!o.g_border_color ? "" : (o.g_border_color = "#5d5d5d");
       !!o.g_background_color ? "" : (o.g_background_color = "#5d5d5d");
       !!o.g_font_hover_color ? "" : (o.g_font_hover_color = "#a1a1a1");
@@ -165,6 +157,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       margin-bottom: ${o.container_bottom_padding || "25px"};
       position:relative;
       display: flex;
+      width: 100%;
       justify-content: ${alignTabs};
     }
     ${cssId}.g__no_records{
@@ -202,10 +195,10 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       transition: none;
     }
     ${cssId} .g__tabs_wrapper{
-      padding: 15px 0;
       position: relative;
       overflow-x: auto;
       overflow-y: hidden;
+      flex: 1;
       -ms-overflow-style: -ms-autohiding-scrollbar;
       -webkit-overflow-scrolling: touch;
       white-space: nowrap;
@@ -221,8 +214,9 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     /*--- Line Tabs Container ---*/
     ${cssId} .g__tabs_container.g__tab_line{
       float: left;
+      width: 100%;
       justify-content: start;
-      border-bottom: 2px solid ${fontColor};
+      border-bottom: 2px solid var(--neutral-50);
       transition: transform .2s ease-in-out;
     }
     ${cssId} .pn-ProductNav_Contents-no-transition {
@@ -592,9 +586,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   let tabsContainer = document.createElement("div");
 
   tabsContainer.classList.add("g__tabs_container");
-  direction === "row"
-    ? tabsContainer.classList.add("g__step_horizontal")
-    : tabsContainer.classList.add("g__step_vertical");
+  direction === "row" ? tabsContainer.classList.add("g__step_horizontal") : tabsContainer.classList.add("g__step_vertical");
   if (style === "line") {
     tabsContainer.classList.add("g__tab_line");
   } else if (style === "block") {
@@ -613,18 +605,14 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
         let stepContainer = document.createElement("a");
         stepContainer.classList.add("g__step_container");
         stepContainer.setAttribute("data-micro-id", id);
-        !!r.addapptation_id
-          ? stepContainer.setAttribute("data-record-id", r.addapptation_id)
-          : "";
+        !!r.addapptation_id ? stepContainer.setAttribute("data-record-id", r.addapptation_id) : "";
         activeTab(r, count) ? stepContainer.classList.add("g__active") : "";
         r.disabled ? stepContainer.classList.add("g__disabled") : "";
         isComplete ? stepContainer.classList.add("g__complete") : "";
         stepContainer.href = tabHref(r.href, count);
         let stepLink = document.createElement("div");
         stepLink.classList.add("g__step");
-        stepLink.innerHTML = isComplete
-          ? "<i class='far fa-check'></i>"
-          : count + 1;
+        stepLink.innerHTML = isComplete ? "<i class='far fa-check'></i>" : count + 1;
         stepContainer.appendChild(stepLink);
         if (r.name || r.desc) {
           let stepContent = document.createElement("div");
@@ -649,9 +637,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
         let tabLineWrap = document.createElement("div");
         tabLineWrap.classList.add("g__tab_line_wrap");
         tabLineWrap.setAttribute("data-micro-id", id);
-        !!r.addapptation_id
-          ? tabLineWrap.setAttribute("data-record-id", r.addapptation_id)
-          : "";
+        !!r.addapptation_id ? tabLineWrap.setAttribute("data-record-id", r.addapptation_id) : "";
         o.g_align === "left" ? (tabLineWrap.style.paddingLeft = "10px") : "";
         o.g_align === "right" ? (tabLineWrap.style.paddingRight = "10px") : "";
         activeTab(r, count) ? tabLineWrap.classList.add("g__active") : "";
@@ -674,9 +660,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
         let tabWrap = document.createElement("a");
         tabWrap.classList.add("g__tab_block_wrap");
         tabWrap.setAttribute("data-micro-id", id);
-        !!r.addapptation_id
-          ? tabWrap.setAttribute("data-record-id", r.addapptation_id)
-          : "";
+        !!r.addapptation_id ? tabWrap.setAttribute("data-record-id", r.addapptation_id) : "";
         tabWrap.href = tabHref(r.href, count);
         o.g_align === "left" ? (tabWrap.style.paddingLeft = "10px") : "";
         o.g_align === "right" ? (tabWrap.style.paddingRight = "10px") : "";
@@ -699,9 +683,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
         let chevWrap = document.createElement("a");
         chevWrap.classList.add("g__tab_chevron_wrap");
         chevWrap.setAttribute("data-micro-id", id);
-        !!r.addapptation_id
-          ? chevWrap.setAttribute("data-record-id", r.addapptation_id)
-          : "";
+        !!r.addapptation_id ? chevWrap.setAttribute("data-record-id", r.addapptation_id) : "";
         chevWrap.href = tabHref(r.href, count);
         chevWrap.style.zIndex = (rCount - (count + 1)) * 10;
         r.disabled ? chevWrap.classList.add("g__disabled") : "";
@@ -752,24 +734,15 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     let ival = val + 1;
     let tval = ival;
     if (!!href && href.includes("tab=")) {
-      href =
-        !!href && href.length
-          ? href.includes("?")
-            ? href.replace(`tab=${tabParam}`, `tab=${tval}`)
-            : href + `?tab=${tval}`
-          : queryString.replace(`tab=${tabParam}`, `tab=${tval}`);
+      href = !!href && href.length ? (href.includes("?") ? href.replace(`tab=${tabParam}`, `tab=${tval}`) : href + `?tab=${tval}`) : queryString.replace(`tab=${tabParam}`, `tab=${tval}`);
     } else {
       if (!!href && href.length) {
-        href = href.includes("?")
-          ? href + `&tab=${tval}`
-          : href + `?tab=${tval}`;
+        href = href.includes("?") ? href + `&tab=${tval}` : href + `?tab=${tval}`;
       } else {
         if (queryString.includes("tab=")) {
           var x = queryString.replace(`tab=${tabParam}`, `tab=${tval}`);
         } else {
-          var x = queryString.includes("?")
-            ? queryString + `&tab=${tval}`
-            : queryString + `?tab=${tval}`;
+          var x = queryString.includes("?") ? queryString + `&tab=${tval}` : queryString + `?tab=${tval}`;
         }
         href = x;
       }
@@ -790,10 +763,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   function activeTab(r, val) {
     let ival = val + 1;
     let href = tabHref(r.href, val);
-    let isActive =
-      ival == tabParam ||
-      (val == 0 && tabParam == null) ||
-      (!!tabParam && tabParam.includes(ival));
+    let isActive = ival == tabParam || (val == 0 && tabParam == null) || (!!tabParam && tabParam.includes(ival));
     return isActive;
   }
   /*---------------------------------------------
@@ -816,19 +786,13 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   let gContents = granite_div.querySelector(".g__tabs_container");
   var pnAdvancerLeft = granite_div.querySelector(".pn-advancer_left");
   var pnAdvancerRight = granite_div.querySelector(".pn-advancer_right");
-  gTabsContainer.setAttribute(
-    "data-overflowing",
-    determineOverflow(gContents, gTabsContainer)
-  );
+  gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
   // Handle the scroll of the horizontal container
   var last_known_scroll_position = 0;
   var ticking = false;
 
   function doSomething(scroll_pos) {
-    gTabsContainer.setAttribute(
-      "data-overflowing",
-      determineOverflow(gContents, gTabsContainer)
-    );
+    gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
   }
 
   gTabsContainer.addEventListener("scroll", function () {
@@ -847,26 +811,18 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       if (SETTINGS.navBarTravelling === true) {
         return;
       }
-      if (
-        determineOverflow(gContents, gTabsContainer) === "left" ||
-        determineOverflow(gContents, gTabsContainer) === "both"
-      ) {
+      if (determineOverflow(gContents, gTabsContainer) === "left" || determineOverflow(gContents, gTabsContainer) === "both") {
         var availableScrollLeft = gTabsContainer.scrollLeft;
         if (availableScrollLeft < SETTINGS.navBarTravelDistance * 2) {
-          gContents.style.transform =
-            "translateX(" + availableScrollLeft + "px)";
+          gContents.style.transform = "translateX(" + availableScrollLeft + "px)";
         } else {
-          gContents.style.transform =
-            "translateX(" + SETTINGS.navBarTravelDistance + "px)";
+          gContents.style.transform = "translateX(" + SETTINGS.navBarTravelDistance + "px)";
         }
         gContents.classList.remove("g__contents-no-transition");
         SETTINGS.navBarTravelDirection = "left";
         SETTINGS.navBarTravelling = true;
       }
-      gTabsContainer.setAttribute(
-        "data-overflowing",
-        determineOverflow(gContents, gTabsContainer)
-      );
+      gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
       arrowReset();
     });
   }
@@ -876,41 +832,28 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       if (SETTINGS.navBarTravelling === true) {
         return;
       }
-      if (
-        determineOverflow(gContents, gTabsContainer) === "right" ||
-        determineOverflow(gContents, gTabsContainer) === "both"
-      ) {
+      if (determineOverflow(gContents, gTabsContainer) === "right" || determineOverflow(gContents, gTabsContainer) === "both") {
         var navBarRightEdge = gContents.getBoundingClientRect().right;
-        var navBarScrollerRightEdge =
-          gTabsContainer.getBoundingClientRect().right;
-        var availableScrollRight = Math.floor(
-          navBarRightEdge - navBarScrollerRightEdge
-        );
+        var navBarScrollerRightEdge = gTabsContainer.getBoundingClientRect().right;
+        var availableScrollRight = Math.floor(navBarRightEdge - navBarScrollerRightEdge);
         if (availableScrollRight < SETTINGS.navBarTravelDistance * 2) {
-          gContents.style.transform =
-            "translateX(-" + availableScrollRight + "px)";
+          gContents.style.transform = "translateX(-" + availableScrollRight + "px)";
         } else {
-          gContents.style.transform =
-            "translateX(-" + SETTINGS.navBarTravelDistance + "px)";
+          gContents.style.transform = "translateX(-" + SETTINGS.navBarTravelDistance + "px)";
         }
         gContents.classList.remove("g__contents-no-transition");
         SETTINGS.navBarTravelDirection = "right";
         SETTINGS.navBarTravelling = true;
       }
       // Now update the attribute in the DOM
-      gTabsContainer.setAttribute(
-        "data-overflowing",
-        determineOverflow(gContents, gTabsContainer)
-      );
+      gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
       arrowReset();
     });
   }
 
   function arrowReset() {
     var styleOfTransform = window.getComputedStyle(gContents, null);
-    var tr =
-      styleOfTransform.getPropertyValue("-webkit-transform") ||
-      styleOfTransform.getPropertyValue("transform");
+    var tr = styleOfTransform.getPropertyValue("-webkit-transform") || styleOfTransform.getPropertyValue("transform");
     var amount = Math.abs(parseInt(tr.split(",")[4]) || 0);
     gContents.style.transform = "none";
     gContents.classList.add("g__contents-no-transition");
@@ -929,10 +872,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     var contentMetrics = content.getBoundingClientRect();
     var contentMetricsRight = Math.floor(contentMetrics.right);
     var contentMetricsLeft = Math.floor(contentMetrics.left);
-    if (
-      containerMetricsLeft > contentMetricsLeft &&
-      containerMetricsRight < contentMetricsRight
-    ) {
+    if (containerMetricsLeft > contentMetricsLeft && containerMetricsRight < contentMetricsRight) {
       return "both";
     } else if (contentMetricsLeft < containerMetricsLeft) {
       return "left";

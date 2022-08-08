@@ -6,6 +6,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/v001-shell/DataTablesLicensed/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-stylesheets/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="https://addapptation.blob.core.windows.net/addapptation-stylesheets/fontawesome-pro-5.10.0-11-web/css/all.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css" />
   </head>
 
   <body>
@@ -13,8 +18,8 @@
     <main class="g__main">
       <section class="g__container g__p-25">
         <div class="g__row">
-          <div class="g__col">
-            <h3>#{Workspace Name}</h3>
+          <div class="g__col g__box-shadow g__border g__p-15 g__radius-5">
+            <h3 class="g__m-0">#{Workspace Name}</h3>
           </div>
       </section>
       <section class="g__container g__plr-25">
@@ -25,9 +30,9 @@
         </div>
       </section>
       <section class="g__container g__p-25">
-        <div class="g__row">
+        <div class="g__row g__align-center g__box-shadow g__border g__p-15 g__radius-5">
           <div class="g__col">
-            <h5>Users</h5>
+            <h5 class="g__m-0">Users</h5>
           </div>
           <div class="g__col g__justify-end">
             <a class="g__btn g__btn-primary" class="a__side_pane_link" href="/user_invite">Invite</a>
@@ -40,9 +45,10 @@
         </div>
       </section>
     </main>
-    <script
-      src="https://kit.fontawesome.com/58afd790b4.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.addapptation.com/v001-shell/DataTablesLicensed/datatables.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation-stylesheets/chosen.jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://kit.fontawesome.com/58afd790b4.js" crossorigin="anonymous"></script>
   </body>
 </html>

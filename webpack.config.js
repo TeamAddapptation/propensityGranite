@@ -79,6 +79,12 @@ module.exports = {
       template: "./src/platform/users/users.html",
       chunks: ["main", "users"],
     }),
+    new HtmlWebpackPlugin({
+      filename: "template.html",
+      inject: "body",
+      template: "./src/platform/template/template.html",
+      chunks: ["main"],
+    }),
     // APPS
     new HtmlWebpackPlugin({
       filename: "top100.html",

@@ -1,17 +1,24 @@
 import graniteTable from "../../granite/table/graniteTable";
 import "../../granite/table/graniteTable.css";
 
+import graniteTabs from "../../granite/tabs/graniteTabs";
+
 const users = {
   id: "table__users",
   feature: "table",
   options: {
     type: "table",
-    fixed: true,
-    datatables: false,
+    columnSort: [0, "desc"],
+    datatables: true,
     searching: false,
     paging: false,
-    page_length: 10,
-    export: true,
+    page_length: 2,
+    fixed: true,
+    responsive: false,
+    scroll_x: true,
+    auto_width: true,
+    wrap_text: false,
+    column_defs: [{ responsivePriority: 1, targets: 1 }],
   },
   records: [
     {
@@ -90,9 +97,9 @@ const tabs = {
     g_description_color: "",
     g_highlight_color: "#5D50E6",
     g_background_color: "#ffffff",
-    g_background_active_color: "#F7F6FE",
-    g_background_hover_color: "#F7F6FE",
-    g_align: "left",
+    g_background_active_color: "#5D50E6",
+    g_background_hover_color: "#5D50E6",
+    g_align: "center",
     g_align_icon: "flex-start",
     g_direction: false,
     g_padding: "10px 40px",
@@ -110,6 +117,8 @@ const tabs = {
     g_action: "hash_builder",
     container_top_padding: "0",
     container_bottom_padding: "0",
+    g_tab_left_padding: "30",
+    g_tab_right_padding: "30",
   },
   records: [
     {
