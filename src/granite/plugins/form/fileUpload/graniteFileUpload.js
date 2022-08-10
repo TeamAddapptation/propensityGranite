@@ -1,4 +1,4 @@
-function graniteFileUpload(hasImg) {
+export default function graniteFileUpload(hasImg) {
   const wrapper = document.createElement("div");
   wrapper.classList.add("g__file-wrapper");
 
@@ -19,8 +19,8 @@ function graniteFileUpload(hasImg) {
     });
   });
   if (hasImg) {
-    const thumbImg = document.createElement("img");
-    thumbImg.src = "#";
+    const thumbImg = document.createElement("div");
+    // thumbImg.src = "#";
     thumbImg.id = "g__profile-img";
     thumbImg.classList.add("drop-zone__thumb");
     fileUploadContainer.appendChild(thumbImg);

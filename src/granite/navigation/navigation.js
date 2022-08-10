@@ -1,4 +1,4 @@
-export default function graniteNavigation() {
+function graniteNavigation() {
   const g__id = "navigation__main-container";
   const navigationHTML = document.createElement("div");
   const dashboardUrl = `<%= Base64.encode64("https://#{'t-' if Rails.env.development?}propensity-dashboard.addapptation.com")%>`;
@@ -9,26 +9,38 @@ export default function graniteNavigation() {
       <a href="/"> <img class="g__desktop-logo" src="https://cdn.addapptation.com/addapptation-customer-assets/propensity/propensity-data/propensity_long_light.png"/>
       </a>
     </div>
+
     <div class="g__menu-items">
-
-      <a href="/sign_in?dest=${dashboardUrl}" class="g__link">Login</a>
-      <a href="/sign_up?dest=${dashboardUrl}" class="g__btn g__btn-primary">Sign Up</a>
-      <a href="#" id="copy-url" class="g__nav-gear"><i class="far fa-solid fa-link"></i></a>
-      <a href="/share_list?id=<%= params[:id] %>&key=<%= params[:key] %>" id="share-link" class="g__nav-gear a__side_pane_link"><i class="fas fa-share-alt"></i></a>
+      <a href="/assessments" class="g__link <%= 'g__link-selected' if action_name == 'assessments' %>">Account Profiles</a>
       <div class="g__dropdown">
-        <a id="dropdown-toggle" class="g__nav-gear g__dropdown-toggle"><i class="g__dropdown-toggle fas fa-cog"></i></a>
+        <a id="dropdown-toggle" class="g__dropdown-toggle g__link">Marketing Data <i class="far fa-angle-down" aria-hidden="true"></i></a>
         <div class="g__dropdown-container">
-
           <div class="g__dropdown-item">
-            <a href="/email_settings?id=<%= params[:id] %>&key=<%= params[:key] %>" class="g__dropdown-link">Email Settings</a>
+            <a href="<%= a__gateway('https://propensity-marketing-data.addapptation.com/') %>" class="g__dropdown-link">Ad Reporting</a>
           </div>
           <div class="g__dropdown-item">
-            <a href="/book_a_meeting?id=<%= params[:id] %>&key=<%= params[:key] %>" class="g__dropdown-link">Resources</a>
-
+            <a href="<%= a__gateway('https://propensity-audiences.addapptation.com/') %>" class="g__dropdown-link">Audience Building</a>
+          </div>
+        </div>
+      </div>
+      <a href="/analytics" class="g__link <%= 'g__link-selected' if action_name == 'analytics' %>">Analytics</a>
+      <div class="g__dropdown">
+        <a id="dropdown-toggle" class="g__profile-logo g__dropdown-toggle"><%= @profile_pic.html_safe if @file_type.blank? %></a>
+        <div class="g__dropdown-container">
+          <div class="g__dropdown-item">
+            <a href="/invite?tab=1" class="g__dropdown-link">Workspace Settings</a>
+          </div>
+          <div class="g__dropdown-item">
+            <a href="/user?tab=1" class="g__dropdown-link">Profile Settings</a>
+          </div>
+          <hr>
+          <div class="g__dropdown-item">
+            <a href="/sign_out" class="g__dropdown-link">Log Out</a>
           </div>
         </div>
       </div>
     </div>
+
     <input type="checkbox" class="g__open_sidebar_menu" id="g__open_sidebar_menu">
     <label for="g__open_sidebar_menu" class="g__sidebar-icon-toggle">
       <div class="spinner diagonal part-1"></div>
@@ -37,13 +49,11 @@ export default function graniteNavigation() {
     </label>
     <div id="g__mobile-menu-items">
       <div class="g__sidebar-menu-inner">
-        <a href="/data_sample?id=<%= params[:id] %>&key=<%= params[:key] %>" class="g__mobile_menu_link <%= 'g__mobile_link_selected' if action_name == 'data_sample'%>">My Top 100</a>
-        <a href="/book_a_meeting?id=<%= params[:id] %>&key=<%= params[:key] %>" class="g__mobile_menu_link <%= 'g__mobile_link_selected' if action_name == 'book_a_meeting'%>">Resources</a>
-        <a href="/email_settings?id=<%= params[:id] %>&key=<%= params[:key] %>" class="g__mobile_menu_link <%= 'g__mobile_link_selected' if action_name == 'email_settings'%>">Email Settings</a>
-      </div>
-      <div class="g__mobile-menu-login-container">
-        <a href="/sign_up?dest=${dashboardUrl}" class="g__btn g__btn-primary">Create An Account</a>
-        <a href="/sign_in?dest=${dashboardUrl}" class="g__link g__mt-15">Login</a>
+        <a href="/assessments" class="g__mobile_menu_link <%= 'g__mobile_link_selected' if action_name == 'assessments'%>">Account Profiles</a>
+        <a href="#" class="g__mobile_menu_link">Marketing Data</a>
+        <a href="#" class="g__mobile_menu_link">Analytics</a>
+        <a href="/invite?tab=1" class="g__mobile_menu_link <%= 'g__mobile_link_selected' if action_name == 'invite' || action_name == 'data_connections' || action_name == 'installed_packages'%>">Workspace Settings</a>
+        <a href="/user?tab=1" class="g__mobile_menu_link <%= 'g__mobile_link_selected' if action_name == 'user' || action_name == 'password_reset' || action_name == 'email_settings'%>">Profile Settings</a>
       </div>
     </div>
   </div>
