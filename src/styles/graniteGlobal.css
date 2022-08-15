@@ -189,6 +189,9 @@ small,
 .text_small {
   font-size: 0.8rem;
 }
+.g__text-small {
+  font-size: 0.8rem;
+}
 /* --------------------
 Font weights
 -------------------- */
@@ -219,6 +222,14 @@ main.g__main {
   border: 1px solid #eaeaea;
   box-sizing: border-box;
   box-shadow: 2px 2px 9px rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+}
+main.g__main-simple {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+  max-width: 1366px;
+  box-sizing: border-box;
   margin: 0 auto;
 }
 .g__container {
@@ -353,6 +364,9 @@ main.g__main {
 .g__justify-content-center {
   justify-content: center;
 }
+.g__justify-center {
+  justify-content: center;
+}
 .g__justify-end {
   justify-content: flex-end;
 }
@@ -367,6 +381,9 @@ main.g__main {
 }
 .g__align-bottom {
   align-items: flex-end;
+}
+.g__space-between {
+  justify-content: space-between;
 }
 /*--------------------
 Flex Gaps
@@ -386,6 +403,15 @@ Flex Gaps
 /*--------------------
 Max Width
 -------------------- */
+.g__100-percent {
+  width: 100%;
+}
+.g__max-550 {
+  max-width: 550px;
+}
+.g__max-600 {
+  max-width: 600px;
+}
 .g__max-700 {
   max-width: 700px;
 }
@@ -600,6 +626,23 @@ Neutral
   color: var(--neutral-400);
   background-color: var(--primary-100);
   border-color: var(--neutral-100);
+}
+/*----------
+Underline
+---------- */
+.g__btn.g__btn-underline {
+  font-size: 0.8rem;
+  color: var(--neutral-500);
+  text-decoration: underline;
+  background-color: transparent;
+  border: none;
+  padding: 0rem;
+}
+.g__btn.g__btn-underline:hover {
+  color: var(--neutral-700);
+}
+.g__btn.g__btn-underline:active {
+  color: var(--neutral-700);
 }
 /*----------
 Icon

@@ -7,6 +7,10 @@ module.exports = {
     form: path.resolve(__dirname, "./src/pages/form/form.js"),
     table: path.resolve(__dirname, "./src/pages/table/table.js"),
     tabs: path.resolve(__dirname, "./src/pages/tabs/tabs.js"),
+    // AUTH
+    signIn: path.resolve(__dirname, "./src/platform/auth/signIn/signIn.js"),
+    forgotPassword: path.resolve(__dirname, "./src/platform/auth/forgotPassword/forgotPassword.js"),
+    createAccount: path.resolve(__dirname, "./src/platform/auth/createAccount/createAccount.js"),
     // PLATFORM
     dataConnections: path.resolve(__dirname, "./src/platform/dataConnections/dataConnections.js"),
     profile: path.resolve(__dirname, "./src/platform/profile/profile.js"),
@@ -47,6 +51,25 @@ module.exports = {
       inject: "body",
       template: "./src/pages/tabs/tabs.html",
       chunks: ["main", "tabs"],
+    }),
+    // AUTH
+    new HtmlWebpackPlugin({
+      filename: "signIn.html",
+      inject: "body",
+      template: "./src/platform/auth/signIn/signIn.html",
+      chunks: ["main", "signIn"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "forgotPassword.html",
+      inject: "body",
+      template: "./src/platform/auth/forgotPassword/forgotPassword.html",
+      chunks: ["main", "forgotPassword"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "createAccount.html",
+      inject: "body",
+      template: "./src/platform/auth/createAccount/createAccount.html",
+      chunks: ["main", "createAccount"],
     }),
     // PLATFORM
     new HtmlWebpackPlugin({
