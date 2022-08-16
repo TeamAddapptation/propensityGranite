@@ -11,6 +11,7 @@ module.exports = {
     signIn: path.resolve(__dirname, "./src/platform/auth/signIn/signIn.js"),
     forgotPassword: path.resolve(__dirname, "./src/platform/auth/forgotPassword/forgotPassword.js"),
     createAccount: path.resolve(__dirname, "./src/platform/auth/createAccount/createAccount.js"),
+    resetPassword: path.resolve(__dirname, "./src/platform/auth/resetPassword/resetPassword.js"),
     // PLATFORM
     dataConnections: path.resolve(__dirname, "./src/platform/dataConnections/dataConnections.js"),
     profile: path.resolve(__dirname, "./src/platform/profile/profile.js"),
@@ -70,6 +71,12 @@ module.exports = {
       inject: "body",
       template: "./src/platform/auth/createAccount/createAccount.html",
       chunks: ["main", "createAccount"],
+    }),
+    new HtmlWebpackPlugin({
+      filename: "resetPassword.html",
+      inject: "body",
+      template: "./src/platform/auth/resetPassword/resetPassword.html",
+      chunks: ["main", "resetPassword"],
     }),
     // PLATFORM
     new HtmlWebpackPlugin({
