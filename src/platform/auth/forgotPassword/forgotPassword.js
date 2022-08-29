@@ -3,7 +3,7 @@ import "./forgotPassword.css";
 /*------------------------
 Login Form
 -------------------------*/
-const singInForm = {
+const forgotPasswordForm = {
   id: "form__forgot-password",
   options: {
     enctype: "application/x-www-form-urlencoded",
@@ -44,4 +44,4 @@ const singInForm = {
     },
   ],
 };
-graniteForm(singInForm);
+graniteForm(forgotPasswordForm);

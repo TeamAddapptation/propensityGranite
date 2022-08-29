@@ -61,10 +61,6 @@ module.exports = {
       chunks: ["main", "signIn"],
     }),
     new HtmlWebpackPlugin({
-      filename: "signInSingle.html",
-      template: "./src/platform/auth/signIn/signInSingle.html",
-    }),
-    new HtmlWebpackPlugin({
       filename: "forgotPassword.html",
       inject: "body",
       template: "./src/platform/auth/forgotPassword/forgotPassword.html",

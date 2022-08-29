@@ -1,5 +1,5 @@
-import bomboraTopics from "../../../../demoContent/json/Bombora-Topics.json";
-export default function graniteMultiSelect(formField) {
+//import bomboraTopics from "../../../../demoContent/json/Bombora-Topics-v3.json";
+function graniteMultiSelect(formField) {
   let filteredList = [];
   let topicsArr = [];
   const filtersContainer = document.createElement("div");
@@ -18,16 +18,35 @@ export default function graniteMultiSelect(formField) {
   filtersContainer.appendChild(searchContainer);
 
   search.addEventListener("input", (e) => {
+    const textValue = e.target.value;
     const filter = e.target.value.toUpperCase();
+    const topicList = document.querySelector(".g__topics-list");
     const topicItem = document.querySelectorAll(`#g__${formField} .g__topic-item`);
+    let hasMatch = false;
     topicItem.forEach((topic) => {
       const txtValue = topic.textContent || topic.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         topic.style.display = "";
+        hasMatch = true;
       } else {
         topic.style.display = "none";
       }
     });
+    if (formField === "Competitive_Topics__c" && !hasMatch) {
+      const hasCustom = document.querySelector(".g__topic-custom");
+      if (hasCustom) {
+        hasCustom.remove();
+      }
+      let customTopic = { Theme: "Custom", Category: "Custom", Topic_Name: textValue, Topic_ID: `${textValue}` };
+      const topicItemCustom = document.createElement("li");
+      topicItemCustom.classList.add("g__topic-item", "g__topic-custom");
+      topicItemCustom.setAttribute("data-value", "topic");
+      topicItemCustom.setAttribute("data-name", customTopic.Topic_Name);
+      topicItemCustom.setAttribute("data-id", customTopic.Topic_ID);
+      topicItemCustom.innerHTML = `<div class="g__check"><i class="far fa-solid fa-plus"></i></div> Add: ${customTopic.Topic_Name}`;
+      topicHandler(topicItemCustom, customTopic);
+      topicList.appendChild(topicItemCustom);
+    }
   });
   const fitlerOneContainer = document.createElement("div");
   fitlerOneContainer.classList.add("g__fitler-container");
@@ -130,39 +149,48 @@ export default function graniteMultiSelect(formField) {
       topicItem.setAttribute("data-name", topic.Topic_Name);
       topicItem.setAttribute("data-id", topic.Topic_ID);
       topicItem.innerHTML = `<div class="g__check"><i class="far fa-solid fa-plus"></i></div> ${topic.Topic_Name}`;
-      topicsArr.forEach((topicVal) => {
-        if (topicVal.id == topic.Topic_ID) {
-          topicItem.classList.add("selected");
-        }
-      });
-      topicItem.addEventListener("click", (e) => {
-        const name = topicItem.getAttribute("data-name");
-        const id = topicItem.getAttribute("data-id");
-        topicItem.classList.toggle("selected");
-        const topicObj = {
-          name,
-          id,
-        };
-        const isPresent = topicsArr.findIndex(function (topic) {
-          return topic.id === id;
-        });
-        if (isPresent >= 0) {
-          topicsArr.splice(isPresent, 1);
-        } else {
-          topicsArr.push(topicObj);
-        }
-        const updatePills = document.querySelector(`#g__${formField} .g__selected-container`);
-        updatePills.innerHTML = "";
-        updatePills.appendChild(pillsContainer(topicsArr));
-        const IdArr = [];
-        topicsArr.forEach((selectedTopic) => {
-          IdArr.push(selectedTopic.id);
-        });
-        finalInput.setAttribute("value", IdArr.join());
-      });
-      topicUl.appendChild(topicItem);
+      topicHandler(topicItem);
+
+      topicUl.appendChild(topicItem, topic);
     });
     return topicUl;
+  }
+
+  /*-----------
+  Topic Item Handler
+  ----------*/
+  function topicHandler(topicItem, topic) {
+    topicsArr.forEach((topicVal) => {
+      if (topicVal.id == topic.Topic_ID) {
+        topicItem.classList.add("selected");
+      }
+    });
+    topicItem.addEventListener("click", (e) => {
+      const name = topicItem.getAttribute("data-name");
+      const id = topicItem.getAttribute("data-id");
+      topicItem.classList.toggle("selected");
+      const topicObj = {
+        name,
+        id,
+      };
+      const isPresent = topicsArr.findIndex(function (topic) {
+        return topic.id === id;
+      });
+      if (isPresent >= 0) {
+        topicsArr.splice(isPresent, 1);
+      } else {
+        topicsArr.push(topicObj);
+      }
+      const updatePills = document.querySelector(`#g__${formField} .g__selected-container`);
+      updatePills.innerHTML = "";
+      updatePills.appendChild(pillsContainer(topicsArr));
+      const IdArr = [];
+      topicsArr.forEach((selectedTopic) => {
+        IdArr.push(selectedTopic.id);
+      });
+      finalInput.setAttribute("value", IdArr.join());
+    });
+    return topicItem;
   }
 
   const topicListContainer = document.createElement("div");

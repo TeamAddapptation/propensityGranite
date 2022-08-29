@@ -357,7 +357,7 @@ const accounts = {
           text_align: "left",
         },
         {
-          value: 100,
+          value: 54,
           score: true,
           text_align: "center",
         },
@@ -537,7 +537,7 @@ const accounts = {
           text_align: "left",
         },
         {
-          value: 100,
+          value: 23,
           score: true,
           text_align: "center",
         },
@@ -1185,7 +1185,7 @@ const accounts = {
           text_align: "left",
         },
         {
-          value: 100,
+          value: 76,
           score: true,
           text_align: "center",
         },
@@ -1293,7 +1293,7 @@ const accounts = {
           text_align: "left",
         },
         {
-          value: 100,
+          value: 34,
           score: true,
           text_align: "center",
         },

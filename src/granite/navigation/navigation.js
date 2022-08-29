@@ -1,4 +1,4 @@
-function graniteNavigation() {
+export default function graniteNavigation() {
   const g__id = "navigation__main-container";
   const navigationHTML = document.createElement("div");
   const dashboardUrl = `<%= Base64.encode64("https://#{'t-' if Rails.env.development?}propensity-dashboard.addapptation.com")%>`;

@@ -239,8 +239,8 @@ export default function graniteTable(jsonBlock) {
   let autoWidth = o.auto_width;
   let columnDefs = o.column_defs || "";
   let isResponsive = o.responsive || false;
+  const tableId = "#g__" + id;
   if (o.datatables) {
-    const tableId = "#g__" + id;
     $(tableId).DataTable({
       searching: o.searching,
       order: defaultColumnSort,
@@ -257,6 +257,11 @@ export default function graniteTable(jsonBlock) {
       responsive: isResponsive,
       autoWidth: autoWidth,
       columnDefs: columnDefs,
+    });
+    $(document).ready(function () {
+      const colNum = defaultColumnSort[0] + 1;
+      $(`th:nth-child(${colNum})`).click();
+      document.querySelector(tableId).columns.adjust();
     });
   }
   /*---------------------------------------------

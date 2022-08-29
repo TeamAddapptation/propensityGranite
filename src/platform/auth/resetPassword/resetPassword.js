@@ -3,7 +3,7 @@ import "./resetPassword.css";
 /*------------------------
 Login Form
 -------------------------*/
-const singInForm = {
+const resetPassword = {
   id: "form__reset-password",
   options: {
     enctype: "application/x-www-form-urlencoded",
@@ -55,4 +55,4 @@ const singInForm = {
     },
   ],
 };
-graniteForm(singInForm);
+graniteForm(resetPassword);

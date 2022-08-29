@@ -33,8 +33,6 @@ const jsonBlock = {
     hide_submit: false,
     allow_cancel: false,
     default_picklists: true,
-
-
   },
   records: [
     {
@@ -69,7 +67,7 @@ const jsonBlock = {
       name: "bombora-topics",
       title: "What competitive topics would you like to track?",
       type: "custom",
-      custom_function: graniteMultiSelect("competitive-topics"),
+      custom_function: graniteMultiSelect("Competitive_Topics__c"),
       required: false,
       value: "",
       classes: "",
