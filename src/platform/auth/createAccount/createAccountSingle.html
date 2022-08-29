@@ -1,0 +1,231 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.propensity.com/addapptation-qa/granite/v6/graniteGlobal.css" />
+<script src="https://cdn.propensity.com/addapptation/granite/v6/graniteForm.js"></script>
+<style>
+  .c__propensity-logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 45px;
+  }
+  .g__divider {
+    margin: 20px 0;
+    width: 100%;
+  }
+  .g__divider h3 {
+    font-style: normal;
+    font-size: 16px;
+    width: 100%;
+    text-align: center;
+    color: var(--neutral-500);
+    border-bottom: 1px solid var(--neutral-500);
+    line-height: 0.1em;
+    margin: 10px 0 20px;
+  }
+  .g__divider h3 span {
+    background: #ffffff;
+    padding: 0 10px;
+  }
+  .g__circle-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    border-radius: 30px;
+    border: 1px solid #b4b4b4;
+    transition: background 0.5s ease;
+  }
+  .g__circle-link:hover {
+    background: #f7f7f7;
+    text-decoration: none;
+    border: 1px solid #b4b4b4;
+  }
+  .g__circle-link:active {
+    background: #ebebeb;
+    border: 1px solid #b4b4b4;
+  }
+  .g__sso-link {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 45px;
+    margin: 0;
+  }
+  .g__sso-logo {
+    font-family: 'hero-new, sans-serif';
+    font-weight: 400;
+    width: auto;
+    height: 25px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    z-index: 15;
+  }
+  p.g__sso-text {
+    font-family: hero-new, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin-left: 15px;
+    margin-bottom: 0;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  p.g__google-text {
+    color: #101010;
+  }
+  #form__create-account .g__form_field.g__auth-field {
+    display: flex;
+    padding: 8px 0;
+  }
+  #form__create-account .g__form_field.g__auth-field input {
+    flex: 1;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 50px;
+    border: 1px solid var(--neutral-200);
+    padding: 15px 20px;
+    color: var(--neutral-500);
+  }
+  #form__create-account .g__form_field.g__auth-field input:focus {
+    border: 1px solid #5d50e6;
+  }
+  #form__create-account .g__password-container {
+    display: flex;
+    flex: 1;
+  }
+  #form__create-account #g__submit_cancel #g__submit_btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 48px;
+    width: 100%;
+    margin: 15px 0;
+    border-radius: 50px;
+    background: var(--primary);
+    transition: all 2s;
+  }
+  #form__create-account #g__submit_cancel #g__submit_btn:hover {
+    background: var(--primary-400);
+  }
+  #form__create-account #g__submit_cancel #g__submit_btn:active {
+    background: var(--primary-700);
+  }
+</style>
+<main class="g__main-simple">
+  <section class="g__container g__100-percent g__p-25 g__max-550 g__m-0-auto">
+    <div class="g__row">
+      <div class="g__col g__flex-column g__align-center g__mt-100">
+        <img class="c__propensity-logo" src="https://cdn.addapptation.com/addapptation/granite/v6/propensity_dark.png" />
+        <h1 class="g__text-center g__mb-10">Create an Account</h1>
+        <p class="g__weight-400">Sign in with</p>
+        <div class="g__circle-link">
+          <a class="g__sso-link" href="#" target="_self"
+            ><img class="g__sso-logo" src="https://cdn.addapptation.com/addapptation-customer-assets/addapptation-micros/microdocumentation/google_logo.png" />
+            <p class="g__google-text g__sso-text">Google</p>
+          </a>
+        </div>
+        <div class="g__divider">
+          <h3><span>or</span></h3>
+        </div>
+        <div id="form__create-account"></div>
+      </div>
+    </div>
+    <div class="g__row g__m-flex-column g__m-gap-1">
+      <p class="g__text-small">
+        Signing up with for an Addapptation account means you agree to the <a href="https://addapptation-installer.addapptation.com/privacy_policy" class="g__btn g__btn-underline">Privacy Policy</a> and
+        <a href="https://addapptation-installer.addapptation.com/terms_and_conditions" class="g__btn g__btn-underline">Terms of Service</a>.
+      </p>
+    </div>
+    <div class="g__row g__m-flex-column g__m-gap-1">
+      <div class="g__col">
+        <p class="g__text-small">Have an account? <a href="https://auth.propensity.com/sign_up?dest=aHR0cHM6Ly90LXByb3BlbnNpdHktZGFzaGJvYXJkLmFkZGFwcHRhdGlvbi5jb20vYXNzZXNzbWVudHM=&product_id=" class="g__btn g__btn-underline">Sign in</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+<script>
+  const createAccount = {
+    id: 'form__create-account',
+    options: {
+      enctype: 'application/x-www-form-urlencoded',
+      method: 'POST',
+      addapptation_action: '/sign_up',
+      step_form: false,
+      edit_form: false,
+      db_action: '',
+      db_object: '',
+      db_id: 'g_sf2dsdsf33',
+      db_redirect: '',
+      position_form: 'center',
+      form_id: '',
+      submit_btn: true,
+      cancel_btn: false,
+      default_picklists: true,
+      submit_label: 'Create Account',
+      submit_classes: 'g__btn g__btn-primary',
+      cancel_label: 'Cancel',
+      cancel_classes: 'g__btn g__btn-text',
+      custom_btn: false,
+      custom_btn_id: 'save_password',
+      custom_btn_classes: 'g__btn g__btn-primary',
+      custom_btn_text: 'Save',
+      max_width: '600px',
+    },
+    records: [
+      {
+        id: 'username',
+        name: 'username',
+        title: '',
+        type: 'text',
+        required: true,
+        options: '',
+        value: '',
+        placeholder: 'Email or Username',
+        classes: 'g__auth-field',
+      },
+      {
+        id: 'password',
+        name: 'password',
+        title: '',
+        type: 'password',
+        required: true,
+        options: '',
+        value: '',
+        show_password_option: true,
+        placeholder: 'Password',
+        classes: 'g__auth-field',
+      },
+      {
+        id: 'dest',
+        name: 'dest',
+        title: '',
+        type: 'hidden',
+        required: true,
+        options: '',
+        value: '<%= params[:dest] %>',
+        placeholder: '',
+        classes: 'g__auth-field',
+      },
+      {
+        id: 'product_id',
+        name: 'product_id',
+        title: '',
+        type: 'hidden',
+        required: false,
+        options: '',
+        value: '<%= params[:product_id] %>',
+        placeholder: '',
+        classes: 'g__auth-field',
+      },
+    ],
+  };
+  graniteForm(createAccount);
+</script>

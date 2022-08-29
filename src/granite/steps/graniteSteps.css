@@ -1,0 +1,75 @@
+.c__step-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.c__step-blocks a {
+  background-color: var(--primary-10);
+}
+.c__step-blocks a:hover {
+  background-color: #fff;
+}
+.c__step-blocks a.c__step-active:hover {
+  cursor: pointer;
+  background-color: var(--primary-10);
+}
+.c__app-step {
+  position: relative;
+}
+.c__step-tip {
+  display: none;
+  position: absolute;
+  font-size: 0.7rem;
+  top: 85%;
+  left: 20%;
+  width: 200px;
+  background-color: #fff;
+  transition: all 0.5s ease;
+}
+.c__step-blocks a:hover .c__step-tip {
+  display: block;
+}
+.c__step-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  background-color: var(--neutral-500);
+  color: #fff;
+  font-size: 0.8rem;
+  border-radius: 50px;
+  margin: 0;
+}
+.c__step-blocks a.c__step-active {
+  background-color: #fff;
+}
+.c__step-blocks a.c__step-active[data-step='1'] h5 {
+  color: var(--primary-700);
+}
+.c__step-blocks a.c__step-active[data-step='1'] .c__step-num {
+  background-color: var(--primary-700);
+}
+.c__step-blocks a.c__step-active[data-step='2'] h5 {
+  color: var(--primary);
+}
+.c__step-blocks a.c__step-active[data-step='2'] .c__step-num {
+  background-color: var(--primary);
+}
+.c__step-blocks a.c__step-active[data-step='3'] h5 {
+  color: var(--tertiary);
+}
+.c__step-blocks a.c__step-active[data-step='3'] .c__step-num {
+  background-color: var(--tertiary);
+}
+.c__step-blocks a.c__step-active[data-step='4'] h5 {
+  color: var(--secondary-700);
+}
+.c__step-blocks a.c__step-active[data-step='4'] .c__step-num {
+  background-color: var(--secondary-700);
+}
+.c__step-blocks a.c__step-active[data-step='5'] h5 {
+  color: var(--secondary);
+}
+.c__step-blocks a.c__step-active[data-step='5'] .c__step-num {
+  background-color: var(--secondary);
+}

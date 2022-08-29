@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700');
 /*--------------------------------
 Colors
 -------------------------------- */
@@ -98,7 +98,7 @@ html {
 
 body {
   background: white;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   line-height: 1.75;
   color: #000000;
@@ -106,7 +106,7 @@ body {
 
 p {
   font-size: clamp(14px, 5vw, 16px);
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
@@ -120,7 +120,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 0;
   margin-bottom: 0.5rem;
   line-height: 1.2;
@@ -210,7 +210,9 @@ Font weights
 /* --------------------
 Font colors
 -------------------- */
-
+.g__neutral-500 {
+  color: var(--neutral-500);
+}
 /* --------------------
 Layout - Grid
 -------------------- */
@@ -386,6 +388,21 @@ main.g__main-simple {
   justify-content: space-between;
 }
 /*--------------------
+Flex space
+-------------------- */
+.g__flex-1 {
+  flex: 1;
+}
+.g__flex-2 {
+  flex: 3;
+}
+.g__flex-3 {
+  flex: 3;
+}
+.g__flex-4 {
+  flex: 4;
+}
+/*--------------------
 Flex Gaps
 -------------------- */
 .g__gap-1 {
@@ -424,15 +441,15 @@ Max Width
 /*--------------------
 Buttons
 -------------------- */
-[type="button"]:not(:disabled),
-[type="reset"]:not(:disabled),
-[type="submit"]:not(:disabled),
+[type='button']:not(:disabled),
+[type='reset']:not(:disabled),
+[type='submit']:not(:disabled),
 button:not(:disabled) {
   cursor: pointer;
 }
 .g__btn {
   display: inline-block;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   line-height: 1.5;
@@ -461,7 +478,7 @@ Href
 ---------- */
 a {
   font-size: clamp(14px, 5vw, 16px);
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;

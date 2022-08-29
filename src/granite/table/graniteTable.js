@@ -1,28 +1,28 @@
-export default function graniteTable(jsonBlock) {
+function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
   const id = jsonBlock.id;
   const o = jsonBlock.options;
   const r = jsonBlock.records;
-  const cssId = "#" + id;
+  const cssId = '#' + id;
   let columnCount = 0;
   const graniteDiv = document.getElementById(id);
 
   /*---------------------------------------------
     Empty the Div
     ---------------------------------------------*/
-  graniteDiv.innerHTML = "";
+  graniteDiv.innerHTML = '';
   /*---------------------------------------------
     CSS
     ---------------------------------------------*/
-  var tableCss = document.createElement("style");
-  tableCss.id = "g__css_" + id;
+  var tableCss = document.createElement('style');
+  tableCss.id = 'g__css_' + id;
   tableCss.innerHTML = `
   ${cssId} table {
     width: 100% !important;
-    table-layout: ${o.fixed ? "fixed" : "auto"};
-    white-space: ${o.wrap_text ? "nowrap" : "initial"};
+    table-layout: ${o.fixed ? 'fixed' : 'auto'};
+    white-space: ${o.wrap_text ? 'nowrap' : 'initial'};
     border-collapse: collapse;
     word-wrap:break-word;
   }
@@ -90,7 +90,7 @@ export default function graniteTable(jsonBlock) {
   }
 
   `;
-  let granite_css = document.getElementById("g__css_" + id);
+  let granite_css = document.getElementById('g__css_' + id);
   if (granite_css) {
     granite_css.remove();
   }
@@ -101,12 +101,12 @@ export default function graniteTable(jsonBlock) {
     ---------------------------------------------*/
 
   // Main table container
-  let table = document.createElement("table");
-  table.id = "g__" + id;
+  let table = document.createElement('table');
+  table.id = 'g__' + id;
   graniteDiv.appendChild(table);
 
   // Table body
-  const tbody = document.createElement("tbody");
+  const tbody = document.createElement('tbody');
   table.appendChild(tbody);
 
   // Loop Through the table rows
@@ -114,12 +114,12 @@ export default function graniteTable(jsonBlock) {
     //Loop through the cells in each row
 
     switch (row.type) {
-      case "header":
+      case 'header':
         const tHead = table.createTHead();
         const tHeadRow = tHead.insertRow();
         row.children.forEach((cell, index) => {
           columnCount++;
-          const newThCell = document.createElement("th");
+          const newThCell = document.createElement('th');
           newThCell.innerHTML = cell.value;
           if (cell.id) {
             newThCell.id = cell.id;
@@ -129,14 +129,14 @@ export default function graniteTable(jsonBlock) {
           }
           if (cell.text_align) {
             switch (cell.text_align) {
-              case "center":
-                newThCell.classList.add("g__text-center");
+              case 'center':
+                newThCell.classList.add('g__text-center');
                 break;
-              case "right":
-                newThCell.classList.add("g__text-right");
+              case 'right':
+                newThCell.classList.add('g__text-right');
                 break;
               default:
-                newThCell.classList.add("g__text-left");
+                newThCell.classList.add('g__text-left');
             }
           }
 
@@ -145,26 +145,26 @@ export default function graniteTable(jsonBlock) {
         tHead.appendChild(tHeadRow);
         table.insertBefore(tHead, tbody);
         break;
-      case "row":
+      case 'row':
         let newRow = tbody.insertRow();
-        newRow.setAttribute("g__row", index);
-        newRow.classList.add("order");
+        newRow.setAttribute('g__row', index);
+        newRow.classList.add('order');
         if (row.href) {
-          newRow.classList.add("g__clickable-row");
-          newRow.setAttribute("data-href", row.href);
+          newRow.classList.add('g__clickable-row');
+          newRow.setAttribute('data-href', row.href);
         }
         row.children.forEach((cell, index) => {
-          let newCell = document.createElement("td");
-          cell.width ? (newCell.style.width = cell.width) : "auto";
+          let newCell = document.createElement('td');
+          cell.width ? (newCell.style.width = cell.width) : 'auto';
           newCell.innerHTML = cell.value;
 
           if (row.dropdown && index === 0) {
-            newCell.innerHTML = "";
-            const connectionContainer = document.createElement("div");
-            connectionContainer.classList.add("g__connection-container");
-            connectionContainer.setAttribute("data-row-num", index);
-            const openIcon = document.createElement("i");
-            openIcon.classList.add("g__toggle-row-details", "far", "fa-solid", "fa-angle-down");
+            newCell.innerHTML = '';
+            const connectionContainer = document.createElement('div');
+            connectionContainer.classList.add('g__connection-container');
+            connectionContainer.setAttribute('data-row-num', index);
+            const openIcon = document.createElement('i');
+            openIcon.classList.add('g__toggle-row-details', 'far', 'fa-solid', 'fa-angle-down');
             connectionContainer.appendChild(openIcon);
             connectionContainer.innerHTML += cell.value;
             newCell.appendChild(connectionContainer);
@@ -173,58 +173,58 @@ export default function graniteTable(jsonBlock) {
             newCell.style.borderLeft = `4px solid ${cell.color_label}`;
           }
           if (cell.href) {
-            newCell.innerHTML = "";
-            const link = document.createElement("a");
+            newCell.innerHTML = '';
+            const link = document.createElement('a');
             link.href = cell.href;
             link.innerHTML = cell.value;
             newCell.appendChild(link);
           }
           if (cell.strength) {
-            newCell.innerHTML = "";
+            newCell.innerHTML = '';
             strength(newCell, cell);
           }
           if (cell.percent_change) {
-            newCell.innerHTML = "";
+            newCell.innerHTML = '';
             percentChange(newCell, cell);
           }
           if (cell.score) {
-            newCell.innerHTML = "";
+            newCell.innerHTML = '';
             newCell.appendChild(score(newRow, cell));
           }
           if (cell.status) {
-            newCell.innerHTML = "";
+            newCell.innerHTML = '';
             status(newCell, cell);
           }
           if (cell.tooltip) {
-            newCell.classList.add("g__tooltip-cell");
-            const tooltipContainer = document.createElement("div");
-            tooltipContainer.classList.add("g__tooltip-container");
+            newCell.classList.add('g__tooltip-cell');
+            const tooltipContainer = document.createElement('div');
+            tooltipContainer.classList.add('g__tooltip-container');
             tooltipContainer.innerHTML = cell.tooltip;
             newCell.appendChild(tooltipContainer);
           }
           if (cell.text_align) {
             switch (cell.text_align) {
-              case "center":
-                newCell.classList.add("g__text-center");
+              case 'center':
+                newCell.classList.add('g__text-center');
                 break;
-              case "right":
-                newCell.classList.add("g__text-right");
+              case 'right':
+                newCell.classList.add('g__text-right');
                 break;
               default:
-                newCell.classList.add("g__text-left");
+                newCell.classList.add('g__text-left');
             }
           }
 
           newRow.appendChild(newCell);
         });
         break;
-      case "dropdown":
+      case 'dropdown':
         const fullRow = tbody.insertRow();
-        fullRow.classList.add("g__full-row");
+        fullRow.classList.add('g__full-row');
         fullRow.style.height = 0;
-        fullRow.style.overFlow = "hidden";
-        const fullTd = document.createElement("td");
-        fullTd.setAttribute("colspan", columnCount);
+        fullRow.style.overFlow = 'hidden';
+        const fullTd = document.createElement('td');
+        fullTd.setAttribute('colspan', columnCount);
         fullTd.innerHTML = row.children[0].value;
         fullRow.appendChild(fullTd);
         break;
@@ -233,20 +233,20 @@ export default function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Datatable.js
     ---------------------------------------------*/
-  let defaultColumnSort = o.columnSort || [0, "asc"];
-  let scrollY = o.scroll_y || "";
+  let defaultColumnSort = o.columnSort || [0, 'asc'];
+  let scrollY = o.scroll_y || '';
   let scrollX = o.scroll_x || false;
   let autoWidth = o.auto_width;
-  let columnDefs = o.column_defs || "";
+  let columnDefs = o.column_defs || '';
   let isResponsive = o.responsive || false;
-  const tableId = "#g__" + id;
+  const tableId = '#g__' + id;
   if (o.datatables) {
     $(tableId).DataTable({
       searching: o.searching,
       order: defaultColumnSort,
       paging: o.paging,
       language: {
-        search: "",
+        search: '',
         paginate: {
           previous: "<i class='far fa-chevron-left'></i>",
           next: "<i class='far fa-chevron-right'></i>",
@@ -257,6 +257,8 @@ export default function graniteTable(jsonBlock) {
       responsive: isResponsive,
       autoWidth: autoWidth,
       columnDefs: columnDefs,
+      dom: 'Bfrtip',
+      buttons: ['excelHtml5', 'csvHtml5'],
     });
     $(document).ready(function () {
       const colNum = defaultColumnSort[0] + 1;
@@ -267,20 +269,20 @@ export default function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Toggle Row
     ---------------------------------------------*/
-  const connectionsArr = document.querySelectorAll(".g__connection-container");
+  const connectionsArr = document.querySelectorAll('.g__connection-container');
   connectionsArr.forEach((rowParent) => {
-    rowParent.addEventListener("click", (e) => {
-      const parentRow = e.target.closest("tr");
-      parentRow.nextSibling.classList.toggle("g__open");
+    rowParent.addEventListener('click', (e) => {
+      const parentRow = e.target.closest('tr');
+      parentRow.nextSibling.classList.toggle('g__open');
     });
   });
   /*---------------------------------------------
     Clickable Row
     ---------------------------------------------*/
-  const clickableArr = document.querySelectorAll(".g__clickable-row");
+  const clickableArr = document.querySelectorAll('.g__clickable-row');
   if (clickableArr) {
     clickableArr.forEach((clickedRow) => {
-      clickedRow.addEventListener("click", (e) => {
+      clickedRow.addEventListener('click', (e) => {
         const url = clickedRow.dataset.href;
         window.location = url;
       });
@@ -305,13 +307,13 @@ export default function graniteTable(jsonBlock) {
     ---------------------------------------------*/
   function percentChange(newCell, cell) {
     if (cell.value > 0) {
-      newCell.classList.add("g__strong");
+      newCell.classList.add('g__strong');
       newCell.innerHTML = `<i class="far fa-long-arrow-up"></i> ${cell.value}%`;
     } else if (cell.value === 0) {
-      newCell.classList.add("g__moderate");
+      newCell.classList.add('g__moderate');
       newCell.innerHTML = `${cell.value}%`;
     } else {
-      newCell.classList.add("g__weak");
+      newCell.classList.add('g__weak');
       let number = cell.value.toString();
       newCell.innerHTML = `<i class="far fa-long-arrow-down"></i> ${number.slice(1)}%`;
     }
@@ -321,18 +323,18 @@ export default function graniteTable(jsonBlock) {
     Score
     ---------------------------------------------*/
   function score(newRow, cell) {
-    const scoreContainer = document.createElement("div");
+    const scoreContainer = document.createElement('div');
     if (cell.value >= 67) {
-      newRow.classList.add("g__strong-row");
-      scoreContainer.classList.add("g__score-cell", "g__strong", "g__strong-bkg");
+      newRow.classList.add('g__strong-row');
+      scoreContainer.classList.add('g__score-cell', 'g__strong', 'g__strong-bkg');
       scoreContainer.innerHTML = `${cell.value}`;
     } else if (cell.value >= 34 && cell.value < 66) {
-      newRow.classList.add("g__moderate-row");
-      scoreContainer.classList.add("g__score-cell", "g__moderate", "g__moderate-bkg");
+      newRow.classList.add('g__moderate-row');
+      scoreContainer.classList.add('g__score-cell', 'g__moderate', 'g__moderate-bkg');
       scoreContainer.innerHTML = `${cell.value}`;
     } else {
-      newRow.classList.add("g__weak-row");
-      scoreContainer.classList.add("g__score-cell", "g__weak", "g__weak-bkg");
+      newRow.classList.add('g__weak-row');
+      scoreContainer.classList.add('g__score-cell', 'g__weak', 'g__weak-bkg');
       scoreContainer.innerHTML = `${cell.value}`;
     }
     return scoreContainer;
@@ -342,11 +344,11 @@ export default function graniteTable(jsonBlock) {
     ---------------------------------------------*/
   function status(newCell, cell) {
     if (cell.value) {
-      newCell.classList.add("g__active");
-      newCell.innerHTML = "Active";
+      newCell.classList.add('g__active');
+      newCell.innerHTML = 'Active';
     } else {
-      newCell.classList.add("g__inactive");
-      newCell.innerHTML = "Inactive";
+      newCell.classList.add('g__inactive');
+      newCell.innerHTML = 'Inactive';
     }
     return newCell;
   }
