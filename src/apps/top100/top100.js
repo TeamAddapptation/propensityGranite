@@ -10,7 +10,7 @@ import '../../granite/steps/graniteSteps.css';
 import './top100.css';
 
 try {
-  graniteSteps(3);
+  graniteSteps(1);
 } catch (error) {
   console.error(error);
 }

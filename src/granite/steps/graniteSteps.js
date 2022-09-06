@@ -3,14 +3,14 @@ function graniteSteps(stepNum) {
   stepsID.innerHTML = `
   <section class="g__container">
     <div class="c__step-blocks g__gap-1">
-      <a href='#' data-step='1' class="c__app-step g__flex g__flex-column g__m-flex-row g__box-shadow g__m-no-box-shadow g__border g__m-no-border g__p-15 g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
+      <a href='<%=  a__gateway("propensity-dashboard.addapptation.com/assessments?") %>' data-step='1' class="c__app-step g__flex g__flex-column g__m-flex-row g__box-shadow g__m-no-box-shadow g__border g__m-no-border g__p-15 g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
         <div class="g__row">
           <div class="g__col g__flex-3"><h5 class='g__neutral-500 g__m-0'>Build Account List</h5></div>
           <div class="g__col g__justify-end"><span class="c__step-num">1</span></div>
         </div>
         <p class="c__step-tip g__text-small g__p-10 g__box-shadow g__border g__radius-5">Identify In-Market Accounts</p>
       </a>
-      <a href='#' data-step='2' class="c__app-step g__flex g__flex-column g__m-flex-row g__box-shadow g__m-no-box-shadow g__border g__m-no-border g__p-15 g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
+      <a href='<%= a__gateway("https://propensity-audiences.addapptation.com/") %>' data-step='2' class="c__app-step g__flex g__flex-column g__m-flex-row g__box-shadow g__m-no-box-shadow g__border g__m-no-border g__p-15 g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
         <div class="g__row">
           <div class="g__col g__flex-3"><h5 class='g__neutral-500 g__m-0'>Actively Marketing</h5></div>
           <div class="g__col g__justify-end"><span class="c__step-num">2</span></div>
@@ -24,7 +24,7 @@ function graniteSteps(stepNum) {
         </div>
         <p class="c__step-tip g__text-small g__p-10 g__box-shadow g__border g__radius-5">Outreach to MQAs</p>
       </a>
-      <a href='#' data-step='4' class="c__app-step g__flex g__flex-column g__m-flex-row g__box-shadow g__m-no-box-shadow g__border g__m-no-border g__p-15 g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
+      <a href='<%= a__gateway("https://propensity-marketing-data.addapptation.com/") %>' data-step='4' class="c__app-step g__flex g__flex-column g__m-flex-row g__box-shadow g__m-no-box-shadow g__border g__m-no-border g__p-15 g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
         <div class="g__row">
           <div class="g__col g__flex-3"><h5 class='g__neutral-500 g__m-0'>Measure Results</h5></div>
           <div class="g__col g__justify-end"><span class="c__step-num">4</span></div>
