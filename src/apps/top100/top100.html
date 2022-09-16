@@ -9,19 +9,28 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/v001-shell/DataTablesLicensed/datatables.min.css" />
   </head>
 
-  <body>
+  <body style="background: var(--neutral-10)">
     <main class="g__main g__p-25 g__m-p-15 g__gap-1">
       <!-- Section Steps-->
       <div id="steps__current-app"></div>
       <!-- Section 1 -->
       <section class="g__container g__m-order-2">
-        <div class="g__row g__box-shadow g__border g__align-center g__p-15 g__radius-5 g__m-gap-1">
+        <div style="background: var(--primary-10)" class="g__row g__box-shadow g__border g__align-center g__p-15 g__radius-10 g__m-gap-1">
           <div class="g__col g__flex-column g__m-flex-1">
-            <h3 class="g__weight-700 c__showing-accounts g__m-m-0" style="color: var(--tertiary)">Showing 100 of {###}</h3>
-            <p class="g__m-display-none">View all of your in-market account and run targeted ABM campaigns</p>
+            <h3 class="g__weight-700 c__showing-accounts g__m-0" style="color: var(--tertiary)">{###} Verified Accounts</h3>
           </div>
-          <div class="g__col g__justify-end g__m-justify-content g__m-flex-2">
-            <button type="button" class="g__btn g__btn-secondary">Unlock All Accounts</button>
+          <div class="g__col g__justify-end g__align-center g__m-justify-content g__m-flex-2">
+            <p class="g__weight-400 g__m-0 g__mr-15">Run Campaigns for These Accounts</p>
+            <button type="button" class="g__btn g__btn-line">Begin Marketing</button>
+            <!-- Link to step 2 -->
+          </div>
+        </div>
+      </section>
+      <!-- Tabs -->
+      <section class="g__container">
+        <div class="g__row">
+          <div class="g__col">
+            <div id="tabs__list-building"></div>
           </div>
         </div>
       </section>
@@ -52,9 +61,12 @@
           <div class="g__col">
             <h4 class="g__weight-600 g__m-0" style="color: var(--neutral-900)">Top 100 In-Market Accounts</h4>
           </div>
-          <div class="g__col g__justify-end g__m-justify-start g__align-center g__m-align-start g__gap-1 g__m-mt-15">
-            <div id="picklist__filter-signals"></div>
+          <div class="g__col g__flex-3 g__justify-end g__m-justify-start g__align-center g__m-align-start g__gap-1 g__m-mt-15">
             <div id="g__search-bar"></div>
+            <div id="picklist__filter-signals"></div>
+            <a href="#" class="g__btn g__btn-secondary g__btn-icon-right g__btn-sm">Share <i class="fa fa-share" aria-hidden="true"></i></a>
+            <a href="#" class="g__btn g__btn-secondary g__btn-img-right g__btn-sm">Sync <img src="https://cdn.addapptation.com/addapptation-qa/granite/v4/salesforce-logo.png" class="g__btn-img" /></a>
+            <div id="g__export-btns"></div>
           </div>
         </div>
       </section>

@@ -2,7 +2,7 @@
   overflow: auto;
 }
 table {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.8rem;
@@ -100,7 +100,7 @@ table tbody tr td a:hover {
   ---------- */
 table select.g__table-select {
   border: 0;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.8rem;
@@ -161,7 +161,7 @@ table.dataTable {
 table.dataTable thead th {
   font-size: 0.8rem;
   color: #5d5d5d;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 700;
   padding: 10px;
@@ -170,7 +170,7 @@ table.dataTable thead th {
   text-overflow: ellipsis;
 }
 .dataTables_length {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 400;
   color: var(--neutral-600);
@@ -187,12 +187,12 @@ table.dataTable thead th {
 .dataTables_filter label:after {
   display: block;
 
-  font-family: "Font Awesome 5 Pro";
+  font-family: 'Font Awesome 5 Pro';
   font-weight: 300;
-  content: "\f002";
+  content: '\f002';
   color: var(--neutral-500);
   position: absolute;
-  bottom: 13px;
+  bottom: 2px;
   left: 7px;
 }
 .dataTables_wrapper .dataTables_filter input {
@@ -214,7 +214,7 @@ table.dataTable thead th {
 }
 .dataTables_info {
   display: inline-block;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-size: 0.8rem;
   color: var(--body-font);
@@ -226,7 +226,7 @@ table.dataTable thead th {
 .pagination {
   display: flex;
   align-items: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-size: 0.8rem;
   list-style: none;
@@ -308,8 +308,8 @@ table.dataTable > tbody > tr.child ul.dtr-details {
   flex-direction: column;
 }
 /* ---------- Arrow -------*/
-table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > td:first-child:before,
-table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:before {
+table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > th:first-child:before {
   top: 40%;
   left: 7px;
   height: 14px;
@@ -324,11 +324,11 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role="row"] > th:first-child:b
   box-sizing: content-box;
   text-align: center;
   text-indent: 0 !important;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   line-height: 14px;
-  font-family: "Font Awesome 5 Pro";
+  font-family: 'Font Awesome 5 Pro';
   font-weight: 300;
-  content: "\f107";
+  content: '\f107';
   background-color: transparent;
 }
 /* ----------
@@ -342,7 +342,7 @@ div.dataTables_wrapper div.dataTables_filter {
   float: right;
 }
 .dataTables_filter input {
-  height: 40px;
+  height: 30px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -365,15 +365,52 @@ div.dataTables_wrapper div.dataTables_filter {
   font-size: 14px;
   border: 0;
   background: transparent;
-  color: var(--neutral-700);
+  color: var(--primary);
 }
 .buttons-html5:hover {
   background: transparent;
-  color: var(--neutral-400);
+  color: var(--primary-400);
 }
 .btn-secondary:hover {
   background: transparent;
 }
 .buttons-html5:not(:last-child) {
-  border-right: 1px solid #eaeaea;
+  border-right: 1px solid var(--primary);
+}
+/* ----------
+  Step Indicator
+  ---------- */
+.g__table-step-container {
+  display: flex;
+  gap: 5px;
+}
+.g__table-step {
+  width: 10px;
+  height: 10px;
+  border-radius: 40px;
+  background-color: var(--neutral-100);
+}
+/* ----------
+  Status Indicator
+  ---------- */
+.g__status-container {
+  text-align: center;
+}
+.g__status-indicator {
+  display: inline-flex;
+  border-radius: 40px;
+  background-color: var(--neutral-100);
+  text-align: center;
+}
+.g__status-indicator i {
+  font-size: 0.6rem;
+  padding: 5px;
+  color: var(--neutral-100);
+}
+.g__status-indicator.g__status-active {
+  background-color: var(--success);
+}
+.g__status-indicator.g__status-active i {
+  padding: 5px;
+  color: #fff;
 }

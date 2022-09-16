@@ -183,6 +183,10 @@ export default function graniteTable(jsonBlock) {
             newCell.innerHTML = '';
             strength(newCell, cell);
           }
+          if (cell.steps) {
+            newCell.innerHTML = '';
+            steps(newCell, cell);
+          }
           if (cell.percent_change) {
             newCell.innerHTML = '';
             percentChange(newCell, cell);
@@ -194,6 +198,10 @@ export default function graniteTable(jsonBlock) {
           if (cell.status) {
             newCell.innerHTML = '';
             status(newCell, cell);
+          }
+          if (cell.status_indicator) {
+            newCell.innerHTML = '';
+            statusIndicator(newCell, cell);
           }
           if (cell.tooltip) {
             newCell.classList.add('g__tooltip-cell');
@@ -260,11 +268,11 @@ export default function graniteTable(jsonBlock) {
       dom: 'Bfrtip',
       buttons: ['excelHtml5', 'csvHtml5'],
     });
-    $(document).ready(function () {
-      const colNum = defaultColumnSort[0] + 1;
-      $(`th:nth-child(${colNum})`).click();
-      document.querySelector(tableId).columns.adjust();
-    });
+    // $(document).ready(function () {
+    //   const colNum = defaultColumnSort[0] + 1;
+    //   $(`th:nth-child(${colNum})`).click();
+    //   document.querySelector(tableId).columns.adjust();
+    // });
   }
   /*---------------------------------------------
     Toggle Row
@@ -301,6 +309,20 @@ export default function graniteTable(jsonBlock) {
     }
     return newCell;
   }
+  /*---------------------------------------------
+    Steps
+    ---------------------------------------------*/
+  function steps(newCell, cell) {
+    const stepContainer = document.createElement('div');
+    stepContainer.classList.add('g__table-step-container');
+    for (let i = 0; i < cell.number_steps; i++) {
+      const stepIndicator = document.createElement('div');
+      stepIndicator.classList.add('g__table-step');
+      stepContainer.appendChild(stepIndicator);
+    }
+    newCell.appendChild(stepContainer);
+    return newCell;
+  }
 
   /*---------------------------------------------
     Percent change
@@ -317,6 +339,14 @@ export default function graniteTable(jsonBlock) {
       let number = cell.value.toString();
       newCell.innerHTML = `<i class="far fa-long-arrow-down"></i> ${number.slice(1)}%`;
     }
+    return newCell;
+  }
+  /*---------------------------------------------
+    Status Indicator
+    ---------------------------------------------*/
+  function statusIndicator(newCell, cell) {
+    newCell.classList.add('g__status-container');
+    newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
     return newCell;
   }
   /*---------------------------------------------

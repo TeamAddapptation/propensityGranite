@@ -1,4 +1,4 @@
-export default function graniteTabs(jsonBlock, jsonTheme) {
+function graniteTabs(jsonBlock, jsonTheme) {
   /*---------------------------------------------
   Global Variables
   ---------------------------------------------*/
@@ -7,34 +7,34 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   const r = jsonBlock.records;
   const t = jsonTheme;
   const rCount = r.length;
-  !!o.g_style ? "" : (o.g_style = "line");
+  !!o.g_style ? '' : (o.g_style = 'line');
   const style = o.g_style;
-  const mode = !!t.mode ? t.mode : "midnight";
-  const cssId = "#" + id;
+  const mode = !!t.mode ? t.mode : 'midnight';
+  const cssId = '#' + id;
   const granite_div = document.getElementById(id);
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const tabParam = urlParams.get("tab");
-  !!o.classes ? granite_div.setAttribute("class", o.classes) : "";
+  const tabParam = urlParams.get('tab');
+  !!o.classes ? granite_div.setAttribute('class', o.classes) : '';
   /*---------------------------------------------
   Verify Div ID and Div Alignment - Set Mode
   ---------------------------------------------*/
   if (granite_div === null) {
-    console.error("Object ID and Granite Div ID Do Not Match");
+    console.error('Object ID and Granite Div ID Do Not Match');
   } else {
-    granite_div.setAttribute("mode", mode);
+    granite_div.setAttribute('mode', mode);
   }
   /*---------------------------------------------
   Add Font Family To Header
   ---------------------------------------------*/
-  const font_include = document.getElementById("g__font_stylesheet");
+  const font_include = document.getElementById('g__font_stylesheet');
   if (!font_include) {
     var head = document.head;
-    var fontLink = document.createElement("link");
-    fontLink.type = "text/css";
-    fontLink.rel = "stylesheet";
-    fontLink.id = "g__font_stylesheet";
-    fontLink.href = "https://use.typekit.net/ihq4dbs.css";
+    var fontLink = document.createElement('link');
+    fontLink.type = 'text/css';
+    fontLink.rel = 'stylesheet';
+    fontLink.id = 'g__font_stylesheet';
+    fontLink.href = 'https://use.typekit.net/ihq4dbs.css';
     head.appendChild(fontLink);
   }
   /*---------------------------------------------
@@ -42,68 +42,68 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   ---------------------------------------------*/
 
   switch (t.mode) {
-    case "standard":
-      !!o.g_font_color ? "" : (o.g_font_color = "#000000");
-      !!o.g_step_number_color ? "" : (o.g_step_number_color = "#000000");
-      !!o.g_title_color ? "" : (o.g_title_color = "#000000");
-      !!o.g_description_color ? "" : (o.g_description_color = "#000000");
-      !!o.g_background_hover_color ? "" : (o.g_background_hover_color = "#5d5d5d");
-      !!o.g_highlight_color ? "" : (o.g_highlight_color = "#bababa");
-      !!o.g_background_active_color ? "" : (o.g_background_active_color = "#5d5d5d");
-      !!o.g_border_color ? "" : (o.g_border_color = "#bfbfbf");
-      !!o.g_background_color ? "" : (o.g_background_color = "#bfbfbf");
-      !!o.g_font_hover_color ? "" : (o.g_font_hover_color = "#a1a1a1");
+    case 'standard':
+      !!o.g_font_color ? '' : (o.g_font_color = '#000000');
+      !!o.g_step_number_color ? '' : (o.g_step_number_color = '#000000');
+      !!o.g_title_color ? '' : (o.g_title_color = '#000000');
+      !!o.g_description_color ? '' : (o.g_description_color = '#000000');
+      !!o.g_background_hover_color ? '' : (o.g_background_hover_color = '#5d5d5d');
+      !!o.g_highlight_color ? '' : (o.g_highlight_color = '#bababa');
+      !!o.g_background_active_color ? '' : (o.g_background_active_color = '#5d5d5d');
+      !!o.g_border_color ? '' : (o.g_border_color = '#bfbfbf');
+      !!o.g_background_color ? '' : (o.g_background_color = '#bfbfbf');
+      !!o.g_font_hover_color ? '' : (o.g_font_hover_color = '#a1a1a1');
       break;
     default:
-      !!o.g_font_color ? "" : (o.g_font_color = "#ffffff");
-      !!o.g_step_number_color ? "" : (o.g_step_number_color = "#ffffff");
-      !!o.g_title_color ? "" : (o.g_title_color = "#ffffff");
-      !!o.g_description_color ? "" : (o.g_description_color = "#ffffff");
-      !!o.g_background_hover_color ? "" : (o.g_background_hover_color = "#5d5d5d");
-      !!o.g_highlight_color ? "" : (o.g_highlight_color = "#bababa");
-      !!o.g_background_active_color ? "" : (o.g_background_active_color = "#5d5d5d");
-      !!o.g_border_color ? "" : (o.g_border_color = "#5d5d5d");
-      !!o.g_background_color ? "" : (o.g_background_color = "#5d5d5d");
-      !!o.g_font_hover_color ? "" : (o.g_font_hover_color = "#a1a1a1");
+      !!o.g_font_color ? '' : (o.g_font_color = '#ffffff');
+      !!o.g_step_number_color ? '' : (o.g_step_number_color = '#ffffff');
+      !!o.g_title_color ? '' : (o.g_title_color = '#ffffff');
+      !!o.g_description_color ? '' : (o.g_description_color = '#ffffff');
+      !!o.g_background_hover_color ? '' : (o.g_background_hover_color = '#5d5d5d');
+      !!o.g_highlight_color ? '' : (o.g_highlight_color = '#bababa');
+      !!o.g_background_active_color ? '' : (o.g_background_active_color = '#5d5d5d');
+      !!o.g_border_color ? '' : (o.g_border_color = '#5d5d5d');
+      !!o.g_background_color ? '' : (o.g_background_color = '#5d5d5d');
+      !!o.g_font_hover_color ? '' : (o.g_font_hover_color = '#a1a1a1');
       break;
   }
-  !!o.g_font_size ? "" : (o.g_font_size = "16");
-  !!o.g_icon_size ? "" : (o.g_icon_size = "20");
-  !!o.g_title_size ? "" : (o.g_title_size = "16");
-  !!o.g_description_size ? "" : (o.g_description_size = "14");
-  !!o.g_align_icon ? "" : (o.g_align_icon = false);
-  !!o.g_border_width ? "" : (o.g_border_width = "0");
-  !!o.g_border_radius ? "" : (o.g_border_radius = "0");
+  !!o.g_font_size ? '' : (o.g_font_size = '16');
+  !!o.g_icon_size ? '' : (o.g_icon_size = '20');
+  !!o.g_title_size ? '' : (o.g_title_size = '16');
+  !!o.g_description_size ? '' : (o.g_description_size = '14');
+  !!o.g_align_icon ? '' : (o.g_align_icon = false);
+  !!o.g_border_width ? '' : (o.g_border_width = '0');
+  !!o.g_border_radius ? '' : (o.g_border_radius = '0');
 
-  !!o.g_tab_left_padding ? "" : (o.g_tab_left_padding = "15");
-  !!o.g_tab_right_padding ? "" : (o.g_tab_right_padding = "15");
-  !!o.g_tab_left_margin ? "" : (o.g_tab_left_margin = "0");
-  !!o.g_tab_right_margin ? "" : (o.g_tab_right_margin = "0");
+  !!o.g_tab_left_padding ? '' : (o.g_tab_left_padding = '15');
+  !!o.g_tab_right_padding ? '' : (o.g_tab_right_padding = '15');
+  !!o.g_tab_left_margin ? '' : (o.g_tab_left_margin = '0');
+  !!o.g_tab_right_margin ? '' : (o.g_tab_right_margin = '0');
 
-  !!o.padding_top ? "" : (o.padding_top = "0");
-  !!o.padding_right ? "" : (o.padding_right = "0");
-  !!o.padding_bottom ? "" : (o.padding_bottom = "0");
-  !!o.padding_left ? "" : (o.padding_left = "0");
+  !!o.padding_top ? '' : (o.padding_top = '0');
+  !!o.padding_right ? '' : (o.padding_right = '0');
+  !!o.padding_bottom ? '' : (o.padding_bottom = '0');
+  !!o.padding_left ? '' : (o.padding_left = '0');
 
-  !!o.margin_top ? "" : (o.margin_top = "0");
-  !!o.margin_right ? "" : (o.margin_right = "0");
-  !!o.margin_bottom ? "" : (o.margin_bottom = "0");
-  !!o.margin_left ? "" : (o.margin_left = "0");
+  !!o.margin_top ? '' : (o.margin_top = '0');
+  !!o.margin_right ? '' : (o.margin_right = '0');
+  !!o.margin_bottom ? '' : (o.margin_bottom = '0');
+  !!o.margin_left ? '' : (o.margin_left = '0');
 
   // Mode Defaults
-  let bodyBkg = mode === "midnight" ? "#101010" : "#ffffff";
-  let tabBkgMode = mode === "midnight" ? "#353535" : "#eaeaea";
-  let hoverMode = mode === "midnight" ? "#5d5d5d" : "#bfbfbf";
-  let activeMode = mode === "midnight" ? "#5d5d5d" : "#bfbfbf";
-  let fontColorMode = mode === "midnight" ? "#bfbfbf" : "#a1a1a1";
-  let fontHoverMode = mode === "midnight" ? "#ffffff" : "#101010";
-  let fontActiveMode = mode === "midnight" ? "#ffffff" : "#101010";
+  let bodyBkg = mode === 'midnight' ? '#101010' : '#ffffff';
+  let tabBkgMode = mode === 'midnight' ? '#353535' : '#eaeaea';
+  let hoverMode = mode === 'midnight' ? '#5d5d5d' : '#bfbfbf';
+  let activeMode = mode === 'midnight' ? '#5d5d5d' : '#bfbfbf';
+  let fontColorMode = mode === 'midnight' ? '#bfbfbf' : '#a1a1a1';
+  let fontHoverMode = mode === 'midnight' ? '#ffffff' : '#101010';
+  let fontActiveMode = mode === 'midnight' ? '#ffffff' : '#101010';
   // Design
   let fontColor = o.g_font_color;
-  let fontSize = o.g_font_size + "px";
-  let titleSize = o.g_title_size + "px";
-  let descSize = o.g_description_size + "px";
-  let iconSize = o.g_icon_size + "px";
+  let fontSize = o.g_font_size + 'px';
+  let titleSize = o.g_title_size + 'px';
+  let descSize = o.g_description_size + 'px';
+  let iconSize = o.g_icon_size + 'px';
   let fontActiveColor = o.g_highlight_color;
 
   let titleColor = o.g_title_color;
@@ -113,48 +113,48 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   let tabBkg = o.g_background_color;
   let hoverColor = o.g_background_hover_color;
   let activeColor = o.g_background_active_color;
-  let borderWidth = o.g_border_width + "px";
+  let borderWidth = o.g_border_width + 'px';
   let borderColor = o.g_border_color;
-  let borderRadius = o.g_border_radius + "px";
+  let borderRadius = o.g_border_radius + 'px';
   // Stepper
-  let stepSize = o.g_stepSize || "40px";
-  let stepConnPos = connPos(stepSize) || "20px";
+  let stepSize = o.g_stepSize || '40px';
+  let stepConnPos = connPos(stepSize) || '20px';
   // Layout
-  let alignTabs = o.g_align_tabs || "center";
-  let width = o.g_style === "tabs" ? "inline-flex" : "flex";
-  let direction = o.g_direction ? "column" : "row";
-  let padding = o.g_padding || "10px 20px";
-  let margin = o.g_margin || "0px 5px";
+  let alignTabs = o.g_align_tabs || 'center';
+  let width = o.g_style === 'tabs' ? 'inline-flex' : 'flex';
+  let direction = o.g_direction ? 'column' : 'row';
+  let padding = o.g_padding || '10px 20px';
+  let margin = o.g_margin || '0px 5px';
   let alignIcon = o.g_align_icon;
 
-  let leftPadding = o.g_tab_left_padding + "px";
-  let rightPadding = o.g_tab_right_padding + "px";
-  let leftMargin = o.g_tab_left_margin + "px";
-  let rightMargin = o.g_tab_right_margin + "px";
+  let leftPadding = o.g_tab_left_padding + 'px';
+  let rightPadding = o.g_tab_right_padding + 'px';
+  let leftMargin = o.g_tab_left_margin + 'px';
+  let rightMargin = o.g_tab_right_margin + 'px';
   // Font
-  let font = "hero-new, sans-serif;";
+  let font = 'hero-new, sans-serif;';
   let fontWeight = 300;
 
-  let paddingTop = o.padding_top + "px";
-  let paddingRight = o.padding_right + "px";
-  let paddingBottom = o.padding_bottom + "px";
-  let paddingLeft = o.padding_left + "px";
-  let marginTop = o.margin_top + "px";
-  let marginRight = o.margin_right + "px";
-  let marginBottom = o.margin_bottom + "px";
-  let marginLeft = o.margin_left + "px";
+  let paddingTop = o.padding_top + 'px';
+  let paddingRight = o.padding_right + 'px';
+  let paddingBottom = o.padding_bottom + 'px';
+  let paddingLeft = o.padding_left + 'px';
+  let marginTop = o.margin_top + 'px';
+  let marginRight = o.margin_right + 'px';
+  let marginBottom = o.margin_bottom + 'px';
+  let marginLeft = o.margin_left + 'px';
   /*---------------------------------------------
   CSS
   ---------------------------------------------*/
-  let tabStyles = document.createElement("style");
-  tabStyles.id = "g__css_" + id;
+  let tabStyles = document.createElement('style');
+  tabStyles.id = 'g__css_' + id;
   tabStyles.innerHTML = `
     /* ------------------------------
     Granite Div
     -------------------------------*/
     ${cssId}{
-      margin-top: ${o.container_top_padding || "25px"};
-      margin-bottom: ${o.container_bottom_padding || "25px"};
+      margin-top: ${o.container_top_padding || '25px'};
+      margin-bottom: ${o.container_bottom_padding || '25px'};
       position:relative;
       display: flex;
       width: 100%;
@@ -233,8 +233,8 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     /*--- Tabs Line ---*/
     ${cssId} .g__tab_line .g__tab_line_wrap{
       display: flex;
-      flex-direction: ${alignIcon ? "column" : "row"};
-      justify-content: ${alignIcon ? "flex-end" : "center"};
+      flex-direction: ${alignIcon ? 'column' : 'row'};
+      justify-content: ${alignIcon ? 'flex-end' : 'center'};
       align-items: center;
       padding-left: ${leftPadding};
       padding-right: ${rightPadding};
@@ -276,8 +276,8 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     -------------------------------------------------------------*/
     ${cssId} .g__tab_block a.g__tab_block_wrap{
       display: flex;
-      flex-direction: ${alignIcon ? "column" : "row"};
-      justify-content: ${alignIcon ? "flex-end" : "center"};
+      flex-direction: ${alignIcon ? 'column' : 'row'};
+      justify-content: ${alignIcon ? 'flex-end' : 'center'};
       align-items: center;
       position: relative;
       padding-left: ${leftPadding};
@@ -542,7 +542,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
       opacity: 1;
     }
     `;
-  let granite_css = document.getElementById("g__css_" + id);
+  let granite_css = document.getElementById('g__css_' + id);
   if (granite_css) {
     granite_css.remove();
   }
@@ -551,25 +551,25 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     Check for records
     ---------------------------------------------*/
   if (!rCount) {
-    granite_div.classList.add("g__no_records");
-    granite_div.innerHTML = "<h2>Tabs</h2>";
+    granite_div.classList.add('g__no_records');
+    granite_div.innerHTML = '<h2>Tabs</h2>';
     return;
   }
   /*---------------------------------------------
     Tabs action row
     ---------------------------------------------*/
-  let tabsActionRow = document.createElement("div");
-  tabsActionRow.classList.add("g__tabs_action_row");
+  let tabsActionRow = document.createElement('div');
+  tabsActionRow.classList.add('g__tabs_action_row');
 
   if (o.g_action_header) {
-    let title = document.createElement("h2");
-    title.classList.add("g__title");
+    let title = document.createElement('h2');
+    title.classList.add('g__title');
     title.innerHTML = o.title;
     tabsActionRow.appendChild(title);
   }
   if (o.g_action_description) {
-    let description = document.createElement("p");
-    description.classList.add("g__description");
+    let description = document.createElement('p');
+    description.classList.add('g__description');
     description.innerHTML = o.description;
     tabsActionRow.appendChild(description);
   }
@@ -577,55 +577,55 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   /*---------------------------------------------
     Tabs Build
     ---------------------------------------------*/
-  granite_div.classList.add("g__" + style + "_style");
+  granite_div.classList.add('g__' + style + '_style');
 
-  let tabsWrapper = document.createElement("div");
-  tabsWrapper.classList.add("g__tabs_wrapper");
-  !!o.id ? tabsWrapper.setAttribute("id", o.id) : "";
+  let tabsWrapper = document.createElement('div');
+  tabsWrapper.classList.add('g__tabs_wrapper');
+  !!o.id ? tabsWrapper.setAttribute('id', o.id) : '';
 
-  let tabsContainer = document.createElement("div");
+  let tabsContainer = document.createElement('div');
 
-  tabsContainer.classList.add("g__tabs_container");
-  direction === "row" ? tabsContainer.classList.add("g__step_horizontal") : tabsContainer.classList.add("g__step_vertical");
-  if (style === "line") {
-    tabsContainer.classList.add("g__tab_line");
-  } else if (style === "block") {
-    tabsContainer.classList.add("g__tab_block");
-  } else if (style === "chevron") {
-    tabsContainer.classList.add("g__tab_chevron");
+  tabsContainer.classList.add('g__tabs_container');
+  direction === 'row' ? tabsContainer.classList.add('g__step_horizontal') : tabsContainer.classList.add('g__step_vertical');
+  if (style === 'line') {
+    tabsContainer.classList.add('g__tab_line');
+  } else if (style === 'block') {
+    tabsContainer.classList.add('g__tab_block');
+  } else if (style === 'chevron') {
+    tabsContainer.classList.add('g__tab_chevron');
   }
-  !!o.classes ? tabsContainer.classList.add(o.classes) : "";
+  !!o.classes ? tabsContainer.classList.add(o.classes) : '';
   tabsWrapper.appendChild(tabsContainer);
 
   //Loop through each record
   r.forEach((r, count) => {
     switch (style) {
-      case "step":
+      case 'step':
         let isComplete = complete(count);
-        let stepContainer = document.createElement("a");
-        stepContainer.classList.add("g__step_container");
-        stepContainer.setAttribute("data-micro-id", id);
-        !!r.addapptation_id ? stepContainer.setAttribute("data-record-id", r.addapptation_id) : "";
-        activeTab(r, count) ? stepContainer.classList.add("g__active") : "";
-        r.disabled ? stepContainer.classList.add("g__disabled") : "";
-        isComplete ? stepContainer.classList.add("g__complete") : "";
+        let stepContainer = document.createElement('a');
+        stepContainer.classList.add('g__step_container');
+        stepContainer.setAttribute('data-micro-id', id);
+        !!r.addapptation_id ? stepContainer.setAttribute('data-record-id', r.addapptation_id) : '';
+        activeTab(r, count) ? stepContainer.classList.add('g__active') : '';
+        r.disabled ? stepContainer.classList.add('g__disabled') : '';
+        isComplete ? stepContainer.classList.add('g__complete') : '';
         stepContainer.href = tabHref(r.href, count);
-        let stepLink = document.createElement("div");
-        stepLink.classList.add("g__step");
+        let stepLink = document.createElement('div');
+        stepLink.classList.add('g__step');
         stepLink.innerHTML = isComplete ? "<i class='far fa-check'></i>" : count + 1;
         stepContainer.appendChild(stepLink);
         if (r.name || r.desc) {
-          let stepContent = document.createElement("div");
-          stepContent.classList.add("g__step_content");
+          let stepContent = document.createElement('div');
+          stepContent.classList.add('g__step_content');
           if (r.name) {
-            let stepTitle = document.createElement("h3");
-            stepTitle.classList.add("g__step_title");
+            let stepTitle = document.createElement('h3');
+            stepTitle.classList.add('g__step_title');
             stepTitle.innerHTML = r.name;
             stepContent.appendChild(stepTitle);
           }
           if (r.desc) {
-            let stepDesc = document.createElement("p");
-            stepDesc.classList.add("g__step_desc");
+            let stepDesc = document.createElement('p');
+            stepDesc.classList.add('g__step_desc');
             stepDesc.innerHTML = r.desc;
             stepContent.appendChild(stepDesc);
           }
@@ -633,97 +633,97 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
         }
         tabsContainer.appendChild(stepContainer);
         break;
-      case "line":
-        let tabLineWrap = document.createElement("div");
-        tabLineWrap.classList.add("g__tab_line_wrap");
-        tabLineWrap.setAttribute("data-micro-id", id);
-        !!r.addapptation_id ? tabLineWrap.setAttribute("data-record-id", r.addapptation_id) : "";
-        o.g_align === "left" ? (tabLineWrap.style.paddingLeft = "10px") : "";
-        o.g_align === "right" ? (tabLineWrap.style.paddingRight = "10px") : "";
-        activeTab(r, count) ? tabLineWrap.classList.add("g__active") : "";
+      case 'line':
+        let tabLineWrap = document.createElement('div');
+        tabLineWrap.classList.add('g__tab_line_wrap');
+        tabLineWrap.setAttribute('data-micro-id', id);
+        !!r.addapptation_id ? tabLineWrap.setAttribute('data-record-id', r.addapptation_id) : '';
+        o.g_align === 'left' ? (tabLineWrap.style.paddingLeft = '10px') : '';
+        o.g_align === 'right' ? (tabLineWrap.style.paddingRight = '10px') : '';
+        activeTab(r, count) ? tabLineWrap.classList.add('g__active') : '';
 
         if (!!r.icon) {
-          let tabLineIcon = document.createElement("i");
-          tabLineIcon.setAttribute("class", r.icon);
+          let tabLineIcon = document.createElement('i');
+          tabLineIcon.setAttribute('class', r.icon);
           tabLineWrap.appendChild(tabLineIcon);
         }
 
-        let tabLineLink = document.createElement("a");
-        tabLineLink.classList.add("g__tab_line_link");
+        let tabLineLink = document.createElement('a');
+        tabLineLink.classList.add('g__tab_line_link');
         tabLineLink.href = tabHref(r.href, count);
         tabLineLink.innerHTML = r.name || count;
         tabLineWrap.appendChild(tabLineLink);
 
         tabsContainer.appendChild(tabLineWrap);
         break;
-      case "block":
-        let tabWrap = document.createElement("a");
-        tabWrap.classList.add("g__tab_block_wrap");
-        tabWrap.setAttribute("data-micro-id", id);
-        !!r.addapptation_id ? tabWrap.setAttribute("data-record-id", r.addapptation_id) : "";
+      case 'block':
+        let tabWrap = document.createElement('a');
+        tabWrap.classList.add('g__tab_block_wrap');
+        tabWrap.setAttribute('data-micro-id', id);
+        !!r.addapptation_id ? tabWrap.setAttribute('data-record-id', r.addapptation_id) : '';
         tabWrap.href = tabHref(r.href, count);
-        o.g_align === "left" ? (tabWrap.style.paddingLeft = "10px") : "";
-        o.g_align === "right" ? (tabWrap.style.paddingRight = "10px") : "";
-        r.disabled ? tabWrap.classList.add("g__disabled") : "";
-        activeTab(r, count) ? tabWrap.classList.add("g__active") : "";
+        o.g_align === 'left' ? (tabWrap.style.paddingLeft = '10px') : '';
+        o.g_align === 'right' ? (tabWrap.style.paddingRight = '10px') : '';
+        r.disabled ? tabWrap.classList.add('g__disabled') : '';
+        activeTab(r, count) ? tabWrap.classList.add('g__active') : '';
 
         if (!!r.icon) {
-          let tabIcon = document.createElement("i");
-          tabIcon.setAttribute("class", r.icon);
+          let tabIcon = document.createElement('i');
+          tabIcon.setAttribute('class', r.icon);
           tabWrap.appendChild(tabIcon);
         }
-        let tabLink = document.createElement("p");
-        tabLink.classList.add("g__tab_block_text");
+        let tabLink = document.createElement('p');
+        tabLink.classList.add('g__tab_block_text');
         tabLink.innerHTML = r.name || count;
         tabWrap.appendChild(tabLink);
 
         tabsContainer.appendChild(tabWrap);
         break;
-      case "chevron":
-        let chevWrap = document.createElement("a");
-        chevWrap.classList.add("g__tab_chevron_wrap");
-        chevWrap.setAttribute("data-micro-id", id);
-        !!r.addapptation_id ? chevWrap.setAttribute("data-record-id", r.addapptation_id) : "";
+      case 'chevron':
+        let chevWrap = document.createElement('a');
+        chevWrap.classList.add('g__tab_chevron_wrap');
+        chevWrap.setAttribute('data-micro-id', id);
+        !!r.addapptation_id ? chevWrap.setAttribute('data-record-id', r.addapptation_id) : '';
         chevWrap.href = tabHref(r.href, count);
         chevWrap.style.zIndex = (rCount - (count + 1)) * 10;
-        r.disabled ? chevWrap.classList.add("g__disabled") : "";
-        activeTab(r, count) ? chevWrap.classList.add("g__active") : "";
+        r.disabled ? chevWrap.classList.add('g__disabled') : '';
+        activeTab(r, count) ? chevWrap.classList.add('g__active') : '';
 
         if (!!r.icon) {
-          let chevIcon = document.createElement("i");
-          chevIcon.setAttribute("class", r.icon);
+          let chevIcon = document.createElement('i');
+          chevIcon.setAttribute('class', r.icon);
           chevWrap.appendChild(chevIcon);
         }
-        let chevLink = document.createElement("p");
-        chevLink.classList.add("g__tab_chevron_text");
+        let chevLink = document.createElement('p');
+        chevLink.classList.add('g__tab_chevron_text');
         chevLink.innerHTML = r.name || count;
         chevWrap.appendChild(chevLink);
 
         tabsContainer.appendChild(chevWrap);
         break;
       default:
-        console.error("no style");
+        console.error('no style');
     }
   });
 
   /*---------------------------------------------
     Append DIV to DOM
     ---------------------------------------------*/
-  granite_div.classList.remove("g__no_records");
+  granite_div.classList.remove('g__no_records');
   granite_div.appendChild(tabsWrapper);
 
   /*---------------------------------------------
     Advancer Arrows
     ---------------------------------------------*/
-  let leftAdvancer = document.createElement("button");
-  leftAdvancer.setAttribute("class", "pn-advancer pn-advancer_left");
-  leftAdvancer.type = "button";
+  let leftAdvancer = document.createElement('button');
+  leftAdvancer.setAttribute('class', 'pn-advancer pn-advancer_left');
+  leftAdvancer.type = 'button';
   leftAdvancer.innerHTML = "<i class='far fa-chevron-left'></i>";
   granite_div.appendChild(leftAdvancer);
 
-  let rightAdvancer = document.createElement("button");
-  rightAdvancer.setAttribute("class", "pn-advancer pn-advancer_right");
-  rightAdvancer.type = "button";
+  let rightAdvancer = document.createElement('button');
+  rightAdvancer.setAttribute('class', 'pn-advancer pn-advancer_right');
+  rightAdvancer.type = 'button';
   rightAdvancer.innerHTML = "<i class='far fa-chevron-right'></i>";
   granite_div.appendChild(rightAdvancer);
 
@@ -733,16 +733,16 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   function tabHref(href, val) {
     let ival = val + 1;
     let tval = ival;
-    if (!!href && href.includes("tab=")) {
-      href = !!href && href.length ? (href.includes("?") ? href.replace(`tab=${tabParam}`, `tab=${tval}`) : href + `?tab=${tval}`) : queryString.replace(`tab=${tabParam}`, `tab=${tval}`);
+    if (!!href && href.includes('tab=')) {
+      href = !!href && href.length ? (href.includes('?') ? href.replace(`tab=${tabParam}`, `tab=${tval}`) : href + `?tab=${tval}`) : queryString.replace(`tab=${tabParam}`, `tab=${tval}`);
     } else {
       if (!!href && href.length) {
-        href = href.includes("?") ? href + `&tab=${tval}` : href + `?tab=${tval}`;
+        href = href.includes('?') ? href + `&tab=${tval}` : href + `?tab=${tval}`;
       } else {
-        if (queryString.includes("tab=")) {
+        if (queryString.includes('tab=')) {
           var x = queryString.replace(`tab=${tabParam}`, `tab=${tval}`);
         } else {
-          var x = queryString.includes("?") ? queryString + `&tab=${tval}` : queryString + `?tab=${tval}`;
+          var x = queryString.includes('?') ? queryString + `&tab=${tval}` : queryString + `?tab=${tval}`;
         }
         href = x;
       }
@@ -754,7 +754,7 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     ---------------------------------------------*/
   function connPos(stepSize) {
     let size = stepSize.slice(0, -2);
-    let fromTop = size / 2 + "px";
+    let fromTop = size / 2 + 'px';
     return fromTop;
   }
   /*---------------------------------------------
@@ -779,23 +779,23 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     ---------------------------------------------*/
   var SETTINGS = {
     navBarTravelling: false,
-    navBarDirection: "",
+    navBarDirection: '',
     navBarTravelDistance: 100,
   };
-  let gTabsContainer = granite_div.querySelector(".g__tabs_wrapper");
-  let gContents = granite_div.querySelector(".g__tabs_container");
-  var pnAdvancerLeft = granite_div.querySelector(".pn-advancer_left");
-  var pnAdvancerRight = granite_div.querySelector(".pn-advancer_right");
-  gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
+  let gTabsContainer = granite_div.querySelector('.g__tabs_wrapper');
+  let gContents = granite_div.querySelector('.g__tabs_container');
+  var pnAdvancerLeft = granite_div.querySelector('.pn-advancer_left');
+  var pnAdvancerRight = granite_div.querySelector('.pn-advancer_right');
+  gTabsContainer.setAttribute('data-overflowing', determineOverflow(gContents, gTabsContainer));
   // Handle the scroll of the horizontal container
   var last_known_scroll_position = 0;
   var ticking = false;
 
   function doSomething(scroll_pos) {
-    gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
+    gTabsContainer.setAttribute('data-overflowing', determineOverflow(gContents, gTabsContainer));
   }
 
-  gTabsContainer.addEventListener("scroll", function () {
+  gTabsContainer.addEventListener('scroll', function () {
     last_known_scroll_position = window.scrollY;
     if (!ticking) {
       window.requestAnimationFrame(function () {
@@ -807,57 +807,57 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
   });
 
   if (!!pnAdvancerLeft) {
-    pnAdvancerLeft.addEventListener("click", function () {
+    pnAdvancerLeft.addEventListener('click', function () {
       if (SETTINGS.navBarTravelling === true) {
         return;
       }
-      if (determineOverflow(gContents, gTabsContainer) === "left" || determineOverflow(gContents, gTabsContainer) === "both") {
+      if (determineOverflow(gContents, gTabsContainer) === 'left' || determineOverflow(gContents, gTabsContainer) === 'both') {
         var availableScrollLeft = gTabsContainer.scrollLeft;
         if (availableScrollLeft < SETTINGS.navBarTravelDistance * 2) {
-          gContents.style.transform = "translateX(" + availableScrollLeft + "px)";
+          gContents.style.transform = 'translateX(' + availableScrollLeft + 'px)';
         } else {
-          gContents.style.transform = "translateX(" + SETTINGS.navBarTravelDistance + "px)";
+          gContents.style.transform = 'translateX(' + SETTINGS.navBarTravelDistance + 'px)';
         }
-        gContents.classList.remove("g__contents-no-transition");
-        SETTINGS.navBarTravelDirection = "left";
+        gContents.classList.remove('g__contents-no-transition');
+        SETTINGS.navBarTravelDirection = 'left';
         SETTINGS.navBarTravelling = true;
       }
-      gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
+      gTabsContainer.setAttribute('data-overflowing', determineOverflow(gContents, gTabsContainer));
       arrowReset();
     });
   }
 
   if (!!pnAdvancerRight) {
-    pnAdvancerRight.addEventListener("click", function () {
+    pnAdvancerRight.addEventListener('click', function () {
       if (SETTINGS.navBarTravelling === true) {
         return;
       }
-      if (determineOverflow(gContents, gTabsContainer) === "right" || determineOverflow(gContents, gTabsContainer) === "both") {
+      if (determineOverflow(gContents, gTabsContainer) === 'right' || determineOverflow(gContents, gTabsContainer) === 'both') {
         var navBarRightEdge = gContents.getBoundingClientRect().right;
         var navBarScrollerRightEdge = gTabsContainer.getBoundingClientRect().right;
         var availableScrollRight = Math.floor(navBarRightEdge - navBarScrollerRightEdge);
         if (availableScrollRight < SETTINGS.navBarTravelDistance * 2) {
-          gContents.style.transform = "translateX(-" + availableScrollRight + "px)";
+          gContents.style.transform = 'translateX(-' + availableScrollRight + 'px)';
         } else {
-          gContents.style.transform = "translateX(-" + SETTINGS.navBarTravelDistance + "px)";
+          gContents.style.transform = 'translateX(-' + SETTINGS.navBarTravelDistance + 'px)';
         }
-        gContents.classList.remove("g__contents-no-transition");
-        SETTINGS.navBarTravelDirection = "right";
+        gContents.classList.remove('g__contents-no-transition');
+        SETTINGS.navBarTravelDirection = 'right';
         SETTINGS.navBarTravelling = true;
       }
       // Now update the attribute in the DOM
-      gTabsContainer.setAttribute("data-overflowing", determineOverflow(gContents, gTabsContainer));
+      gTabsContainer.setAttribute('data-overflowing', determineOverflow(gContents, gTabsContainer));
       arrowReset();
     });
   }
 
   function arrowReset() {
     var styleOfTransform = window.getComputedStyle(gContents, null);
-    var tr = styleOfTransform.getPropertyValue("-webkit-transform") || styleOfTransform.getPropertyValue("transform");
-    var amount = Math.abs(parseInt(tr.split(",")[4]) || 0);
-    gContents.style.transform = "none";
-    gContents.classList.add("g__contents-no-transition");
-    if (SETTINGS.navBarTravelDirection === "left") {
+    var tr = styleOfTransform.getPropertyValue('-webkit-transform') || styleOfTransform.getPropertyValue('transform');
+    var amount = Math.abs(parseInt(tr.split(',')[4]) || 0);
+    gContents.style.transform = 'none';
+    gContents.classList.add('g__contents-no-transition');
+    if (SETTINGS.navBarTravelDirection === 'left') {
       gTabsContainer.scrollLeft = gTabsContainer.scrollLeft - amount;
     } else {
       gTabsContainer.scrollLeft = gTabsContainer.scrollLeft + amount;
@@ -873,13 +873,13 @@ export default function graniteTabs(jsonBlock, jsonTheme) {
     var contentMetricsRight = Math.floor(contentMetrics.right);
     var contentMetricsLeft = Math.floor(contentMetrics.left);
     if (containerMetricsLeft > contentMetricsLeft && containerMetricsRight < contentMetricsRight) {
-      return "both";
+      return 'both';
     } else if (contentMetricsLeft < containerMetricsLeft) {
-      return "left";
+      return 'left';
     } else if (contentMetricsRight > containerMetricsRight) {
-      return "right";
+      return 'right';
     } else {
-      return "none";
+      return 'none';
     }
   }
 
