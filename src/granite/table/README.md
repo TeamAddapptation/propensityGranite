@@ -1,6 +1,6 @@
 # Granite Table / Scorecard
 
-The current state of this micro is used for rendering the scorecard and table front-end.
+The current state of this micro is used for rendering the table front-end.
 
 ## Option Attributes
 
@@ -8,13 +8,25 @@ The current state of this micro is used for rendering the scorecard and table fr
 
 Activated the 3rd party plugin datatables.js
 
+### searching - `Boolean`
+
+Turn on the search bar
+
 ### paging - `Boolean`
 
 Turn on pagination
 
 ### page_length - `Integer`
 
+##### Default: `50`
+
 How may rows (records) to display on a single page
+
+### columnSort - `Boolean`
+
+##### Default: `[0, 'asc']`
+
+Define which column(s) the order is performed upon, and the ordering direction.
 
 ## Record Attributes
 
