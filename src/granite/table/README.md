@@ -62,25 +62,41 @@ Enable or disable automatic column width calculation.
 
 Set column definition initialisation properties. Mainly to be used with responsive datatables.
 
+### `fixed` - boolean
+
+##### Default: `auto`
+
+Set the 'table-layout' CSS property
+
+### `wrap_text` - boolean
+
+##### Default: `initial`
+
+Set the `white-space` CSS property to `nowrap` by changing this value to `true`
+
 ## Record Attributes
 
-### value - `String or Integer`
+### `value` - String or Integer
 
 The value to be displayed in the cell. This can also be used for calculating a different output based on predefined parameters.
 
-### href - `URL`
+### `href` - URL
 
 Body cells will wrap the `value` with the provided URL.
 
-### color_label - `HEX` or `RGB/RGBA`
+### `color_label` - HEX or RGB/RGBA
 
-Header cells with a defined color label will display a 2px bottom border with the provided color. Body cells with a defined color label will display a 2px left border with the provided color.
+```javascript
+if (cell.color_label) {
+  newCell.style.borderLeft = `4px solid ${cell.color_label}`;
+}
+```
 
-### text_align - `String` (left, center, right)
+### `text_align` - String (left, center, right)
 
 Value alignment inside the table cell. Default value is `left`.
 
-### strength - `Boolean`
+### `strength` - Boolean
 
 Function call that returns the `value` wrapped in a div with a dynamic class name based on the `value`.
 
@@ -97,7 +113,7 @@ function strength(newCell, cell) {
 }
 ```
 
-### percent_change - `Boolean`
+### `percent_change` - Boolean
 
 Function call that adds a dyanmic class to the table cell and returns a formatted `value`. Positive numbers include an up arrow and negative numbers include a down arrow.
 
@@ -118,6 +134,49 @@ function percentChange(newCell, cell) {
 }
 ```
 
-### tooltip - `String`
+### `steps` - Number
 
-The tooltip string in rendered as an HTML block. You have complete control over the content.
+Small circles to represent the number of steps. \*Not Complete
+
+```javascript
+function steps(newCell, cell) {
+  const stepContainer = document.createElement('div');
+  stepContainer.classList.add('g__table-step-container');
+  for (let i = 0; i < cell.number_steps; i++) {
+    const stepIndicator = document.createElement('div');
+    stepIndicator.classList.add('g__table-step');
+    stepContainer.appendChild(stepIndicator);
+  }
+  newCell.appendChild(stepContainer);
+  return newCell;
+}
+```
+
+### `status` - Number
+
+Class and text to indicate if the value is active or inactive.
+
+```javascript
+function status(newCell, cell) {
+  if (cell.value) {
+    newCell.classList.add('g__active');
+    newCell.innerHTML = 'Active';
+  } else {
+    newCell.classList.add('g__inactive');
+    newCell.innerHTML = 'Inactive';
+  }
+  return newCell;
+}
+```
+
+### `status` - string (complete)
+
+Circle graphic with checkmark to indicate the values status
+
+```javascript
+function statusIndicator(newCell, cell) {
+  newCell.classList.add('g__status-container');
+  newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
+  return newCell;
+}
+```
