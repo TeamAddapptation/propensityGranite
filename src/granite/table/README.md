@@ -1,6 +1,14 @@
-# Granite Table / Scorecard
+# Granite Table
 
 The current state of this micro is used for rendering the table front-end.
+
+## V6 CDNs
+
+###QA `<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-qa/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation-qa/granite/v6/graniteTable.js"></script>`
+
+###Production `<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation/granite/v6/graniteTable.js"></script>`
+
+---
 
 ## Option Attributes
 
@@ -74,15 +82,29 @@ Set the 'table-layout' CSS property
 
 Set the `white-space` CSS property to `nowrap` by changing this value to `true`
 
+---
+
 ## Record Attributes
 
 ### `value` - String or Integer
 
 The value to be displayed in the cell. This can also be used for calculating a different output based on predefined parameters.
 
+```javascript
+newCell.innerHTML = cell.value;
+```
+
 ### `href` - URL
 
 Body cells will wrap the `value` with the provided URL.
+
+### `classes` - string
+
+Assign custom classes to the `td` tag
+
+```javascript
+newCell.classList.add(cell.classes);
+```
 
 ### `color_label` - HEX or RGB/RGBA
 
