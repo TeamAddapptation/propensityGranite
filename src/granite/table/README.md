@@ -30,6 +30,79 @@ The current state of this micro is used for rendering the table front-end.
 
 ---
 
+## Function Call
+
+```javascript
+graniteTable(jsonBlock);
+```
+
+---
+
+## JSON Structure
+
+```javascript
+{
+  id: 'table__demo',
+  feature: 'table',
+  options: {
+    datatables: true,
+    fixed: false,
+    wrap_text: false,
+    searching: true,
+    paging: true,
+    page_length: 25,
+    columnSort: [2, 'desc'],
+    scroll_x: true,
+    scroll_y: '50vh',
+    auto_width: false,
+    responsive: false,
+    column_defs: [{ responsivePriority: 1, targets: 1 }],
+    column_widths: [{ width: '250px', targets: 0 }],
+  },
+  records: [
+    {
+      type: 'header',
+      background: '#FAFAFA',
+      children: [
+        {
+          value: 'New',
+          text_align: 'center',
+        },
+        {
+          value: 'Acct Name',
+        },
+        {
+          value: 'Propensity Score',
+        },
+        {
+          value: 'Website',
+        }
+      ],
+    },
+    {
+      type: 'row',
+      href: '',
+      children: [
+        {
+          value: '',
+          text_align: 'center',
+        },
+        {
+          value: 'Andreessen Horowitz',
+          text_align: 'left',
+        },
+        {
+          value: 95,
+          score: true,
+          text_align: 'center',
+        },
+      ],
+    },
+  ]
+```
+
+---
+
 ## Option Attributes
 
 #### `datatables` - Boolean

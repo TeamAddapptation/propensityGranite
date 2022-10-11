@@ -8,7 +8,6 @@ function graniteTable(jsonBlock) {
   const cssId = '#' + id;
   let columnCount = 0;
   const graniteDiv = document.getElementById(id);
-
   /*---------------------------------------------
     Empty the Div
     ---------------------------------------------*/
