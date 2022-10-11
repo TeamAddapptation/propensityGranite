@@ -32,13 +32,13 @@ The current state of this micro is used for rendering the table front-end.
 
 ## Option Attributes
 
-### `datatables` - Boolean
+#### `datatables` - Boolean
 
 Activated the 3rd party plugin datatables.js
 
-### `searching` - Boolean
+#### `searching` - Boolean
 
-##### Default: `false`
+#### # Default: `false`
 
 Turn on the search bar
 
