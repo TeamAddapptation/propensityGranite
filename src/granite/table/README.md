@@ -4,59 +4,59 @@ The current state of this micro is used for rendering the table front-end.
 
 ## Option Attributes
 
-### datatables - `Boolean`
+### `datatables` - Boolean
 
 Activated the 3rd party plugin datatables.js
 
-### searching - `Boolean`
+### `searching` - Boolean
 
 ##### Default: `false`
 
 Turn on the search bar
 
-### paging - `Boolean`
+### `paging` - Boolean
 
 ##### Default: `false`
 
 Turn on pagination
 
-### page_length - `Integer`
+### `page_length` - Integer
 
 ##### Default: `50`
 
 How may rows (records) to display on a single page
 
-### columnSort - `Boolean`
+### `columnSort` - Boolean
 
 ##### Default: `[0, 'asc']`
 
 Define which column(s) the order is performed upon, and the ordering direction.
 
-### scroll_x - `Boolean`
+### `scroll_x` - Boolean
 
 ##### Default: `false`
 
 Constrain the DataTable to the container width
 
-### scroll_y - `Unit Based Value (500px, 20vh, 20%, etc.)`
+### `scroll_y` - Unit Based Value (500px, 20vh, 20%, etc.)
 
 ##### Default: `""`
 
 Constrain the DataTable to the given height
 
-### auto_width - `Boolean`
+### `auto_width` - `Boolean`
 
 ##### Default: `true`
 
 Enable or disable automatic column width calculation.
 
-### responsive - `Boolean`
+### `responsive` - Boolean
 
 ##### Default: `false`
 
 <https://datatables.net/extensions/responsive/>
 
-### column_defs - `Array of Objects`
+### `column_defs` - Array of Objects
 
 ##### Default: ``
 
