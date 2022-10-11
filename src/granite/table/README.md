@@ -12,6 +12,10 @@ The current state of this micro is used for rendering the table front-end.
 
 `<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation/granite/v6/graniteTable.js"></script>`
 
+### Datatables
+
+`<link rel="stylesheet" href="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.css">` `<script src="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.js"></script>` `<script src="https://cdn.addapptation.com/addapptation/granite/dataTables.buttons.min.js"></script>` `<script src="https://cdn.addapptation.com/addapptation/granite/jszip.min.js"></script>` `<script src="https://cdn.addapptation.com/addapptation/granite/buttons.html5.min.js"></script>`
+
 ---
 
 ## Option Attributes
