@@ -155,6 +155,20 @@ function strength(newCell, cell) {
 }
 ```
 
+### `tooltip` - HTML
+
+Simple tooltip that for rendering HTML. Does not work well with Datatable overflow properties.
+
+```javascript
+if (cell.tooltip) {
+  newCell.classList.add('g__tooltip-cell');
+  const tooltipContainer = document.createElement('div');
+  tooltipContainer.classList.add('g__tooltip-container');
+  tooltipContainer.innerHTML = cell.tooltip;
+  newCell.appendChild(tooltipContainer);
+}
+```
+
 ### `percent_change` - Boolean
 
 Function call that adds a dyanmic class to the table cell and returns a formatted `value`. Positive numbers include an up arrow and negative numbers include a down arrow.
