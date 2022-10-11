@@ -243,18 +243,20 @@ function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Datatable.js
     ---------------------------------------------*/
+  let pageLength = o.pageLength || 50;
   let defaultColumnSort = o.columnSort || [0, 'asc'];
   let scrollY = o.scroll_y || '';
   let scrollX = o.scroll_x || false;
-  let autoWidth = o.auto_width;
+  let autoWidth = o.auto_width || true;
   let columnDefs = o.column_defs || '';
   let isResponsive = o.responsive || false;
   const tableId = '#g__' + id;
   if (o.datatables) {
     $(tableId).DataTable({
       searching: o.searching,
-      order: defaultColumnSort,
       paging: o.paging,
+      pageLength: pageLength,
+      order: defaultColumnSort,
       language: {
         search: '',
         paginate: {

@@ -10,9 +10,13 @@ Activated the 3rd party plugin datatables.js
 
 ### searching - `Boolean`
 
+##### Default: `false`
+
 Turn on the search bar
 
 ### paging - `Boolean`
+
+##### Default: `false`
 
 Turn on pagination
 
@@ -27,6 +31,36 @@ How may rows (records) to display on a single page
 ##### Default: `[0, 'asc']`
 
 Define which column(s) the order is performed upon, and the ordering direction.
+
+### scroll_x - `Boolean`
+
+##### Default: `false`
+
+Constrain the DataTable to the container width
+
+### scroll_y - `Unit Based Value (500px, 20vh, 20%, etc.)`
+
+##### Default: `""`
+
+Constrain the DataTable to the given height
+
+### auto_width - `Boolean`
+
+##### Default: `true`
+
+Enable or disable automatic column width calculation.
+
+### responsive - `Boolean`
+
+##### Default: `false`
+
+<https://datatables.net/extensions/responsive/>
+
+### column_defs - `Array of Objects`
+
+##### Default: ``
+
+Set column definition initialisation properties. Mainly to be used with responsive datatables.
 
 ## Record Attributes
 
