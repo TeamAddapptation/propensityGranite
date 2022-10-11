@@ -36,77 +36,79 @@ The current state of this micro is used for rendering the table front-end.
 
 Activated the 3rd party plugin datatables.js
 
+#### `fixed` - boolean
+
+##### Default: `auto`
+
+Set the 'table-layout' CSS property
+
+#### `wrap_text` - boolean
+
+##### Default: `initial`
+
+Set the `white-space` CSS property to `nowrap` by changing this value to `true`
+
+### Datatable.js Options
+
 #### `searching` - Boolean
 
 #### # Default: `false`
 
 Turn on the search bar
 
-### `paging` - Boolean
+#### `paging` - Boolean
 
 ##### Default: `false`
 
 Turn on pagination
 
-### `page_length` - Integer
+#### `page_length` - Integer
 
 ##### Default: `50`
 
 How may rows (records) to display on a single page
 
-### `columnSort` - Boolean
+#### `columnSort` - Boolean
 
 ##### Default: `[0, 'asc']`
 
 Define which column(s) the order is performed upon, and the ordering direction.
 
-### `scroll_x` - Boolean
+#### `scroll_x` - Boolean
 
 ##### Default: `false`
 
 Constrain the DataTable to the container width
 
-### `scroll_y` - Unit Based Value (500px, 20vh, 20%, etc.)
+#### `scroll_y` - Unit Based Value (500px, 20vh, 20%, etc.)
 
 ##### Default: `""`
 
 Constrain the DataTable to the given height
 
-### `auto_width` - `Boolean`
+#### `auto_width` - `Boolean`
 
 ##### Default: `true`
 
 Enable or disable automatic column width calculation.
 
-### `responsive` - Boolean
+#### `responsive` - Boolean
 
 ##### Default: `false`
 
 <https://datatables.net/extensions/responsive/>
 
-### `column_defs` - Array of Objects
+#### `column_defs` - Array of Objects
 
 ##### Default: ``
 
 Set column definition initialisation properties. Mainly to be used with responsive datatables.
 
-### `fixed` - boolean
-
-##### Default: `auto`
-
-Set the 'table-layout' CSS property
-
-### `wrap_text` - boolean
-
-##### Default: `initial`
-
-Set the `white-space` CSS property to `nowrap` by changing this value to `true`
-
 ---
 
 ## Record Attributes
 
-### `value` - String or Integer
+#### `value` - String or Integer
 
 The value to be displayed in the cell. This can also be used for calculating a different output based on predefined parameters.
 
@@ -114,11 +116,11 @@ The value to be displayed in the cell. This can also be used for calculating a d
 newCell.innerHTML = cell.value;
 ```
 
-### `href` - URL
+#### `href` - URL
 
 Body cells will wrap the `value` with the provided URL.
 
-### `classes` - string
+#### `classes` - string
 
 Assign custom classes to the `td` tag
 
@@ -126,7 +128,7 @@ Assign custom classes to the `td` tag
 newCell.classList.add(cell.classes);
 ```
 
-### `color_label` - HEX or RGB/RGBA
+#### `color_label` - HEX or RGB/RGBA
 
 ```javascript
 if (cell.color_label) {
@@ -134,11 +136,11 @@ if (cell.color_label) {
 }
 ```
 
-### `text_align` - String (left, center, right)
+#### `text_align` - String (left, center, right)
 
 Value alignment inside the table cell. Default value is `left`.
 
-### `strength` - Boolean
+#### `strength` - Boolean
 
 Function call that returns the `value` wrapped in a div with a dynamic class name based on the `value`.
 
@@ -155,7 +157,7 @@ function strength(newCell, cell) {
 }
 ```
 
-### `tooltip` - HTML
+#### `tooltip` - HTML
 
 Simple tooltip that for rendering HTML. Does not work well with Datatable overflow properties.
 
@@ -169,7 +171,7 @@ if (cell.tooltip) {
 }
 ```
 
-### `percent_change` - Boolean
+#### `percent_change` - Boolean
 
 Function call that adds a dyanmic class to the table cell and returns a formatted `value`. Positive numbers include an up arrow and negative numbers include a down arrow.
 
@@ -190,7 +192,7 @@ function percentChange(newCell, cell) {
 }
 ```
 
-### `steps` - Number
+#### `steps` - Number
 
 Small circles to represent the number of steps. \*Not Complete
 
@@ -208,7 +210,7 @@ function steps(newCell, cell) {
 }
 ```
 
-### `status` - Number
+#### `status` - Number
 
 Class and text to indicate if the value is active or inactive.
 
@@ -225,7 +227,7 @@ function status(newCell, cell) {
 }
 ```
 
-### `status` - string (complete)
+#### `status` - string (complete)
 
 Circle graphic with checkmark to indicate the values status
 
