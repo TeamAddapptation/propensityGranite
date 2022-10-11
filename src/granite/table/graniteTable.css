@@ -196,7 +196,7 @@ table.dataTable thead th {
   left: 7px;
 }
 .dataTables_wrapper .dataTables_filter input {
-  height: 40px;
+  height: 30px;
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -223,7 +223,7 @@ table.dataTable thead th {
 .dataTables_paginate {
   float: right;
 }
-.pagination {
+.dataTables_paginate {
   display: flex;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
@@ -231,6 +231,7 @@ table.dataTable thead th {
   font-size: 0.8rem;
   list-style: none;
   font-weight: 400;
+  margin-top: 5px;
 }
 .page-item:first-child .page-link,
 .page-item:last-child .page-link {
@@ -245,6 +246,14 @@ table.dataTable thead th {
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   margin: 5px;
 }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: #fff;
+  border-radius: 50%;
+  border: 0.5px solid var(--neutral-500);
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  background: var(--neutral-10);
+}
 .page-item.active .page-link {
   text-decoration: none;
   background-color: transparent;
@@ -252,17 +261,19 @@ table.dataTable thead th {
   font-weight: 600;
   color: var(--primary);
 }
-.page-link {
+.dataTables_wrapper .dataTables_paginate .paginate_button {
   text-decoration: none;
-  padding: 0.4rem;
+  padding: 0.1rem;
   border: 0;
   font-size: 0.9rem;
   color: var(--neutral-500);
   margin: 0;
 }
-.page-link:hover {
-  color: var(--neutral-800);
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: var(--neutral-800) !important;
+  border: 0;
   background-color: transparent;
+  background: transparent;
 }
 table.dataTable.no-footer {
   border: 1px solid var(--neutral-50);
@@ -358,7 +369,10 @@ div.dataTables_wrapper div.dataTables_filter {
   margin-left: 0;
   margin-right: 0;
 }
-.buttons-html5 {
+button.dt-button,
+div.dt-button,
+a.dt-button,
+input.dt-button {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 500;
@@ -367,9 +381,31 @@ div.dataTables_wrapper div.dataTables_filter {
   background: transparent;
   color: var(--primary);
 }
-.buttons-html5:hover {
+button.dt-button:hover,
+div.dt-button:hover,
+a.dt-button:hover,
+input.dt-button:hover {
   background: transparent;
   color: var(--primary-400);
+}
+button.dt-button:hover:not(.disabled),
+div.dt-button:hover:not(.disabled),
+a.dt-button:hover:not(.disabled),
+input.dt-button:hover:not(.disabled) {
+  background: transparent;
+  border: 0;
+  color: var(--primary-400);
+}
+button.dt-button:hover:not(.disabled):not(:last-child) {
+  border-right: 1px solid var(--primary);
+}
+button.dt-button:active:not(.disabled):hover:not(.disabled),
+div.dt-button:active:not(.disabled):hover:not(.disabled),
+a.dt-button:active:not(.disabled):hover:not(.disabled),
+input.dt-button:active:not(.disabled):hover:not(.disabled) {
+  background: transparent;
+  border: 0;
+  color: var(--primary-800);
 }
 .btn-secondary:hover {
   background: transparent;

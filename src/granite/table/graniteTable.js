@@ -1,4 +1,4 @@
-export default function graniteTable(jsonBlock) {
+function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -157,7 +157,9 @@ export default function graniteTable(jsonBlock) {
           let newCell = document.createElement('td');
           cell.width ? (newCell.style.width = cell.width) : 'auto';
           newCell.innerHTML = cell.value;
-
+          if (cell.classes) {
+            newCell.classList.add(cell.classes);
+          }
           if (row.dropdown && index === 0) {
             newCell.innerHTML = '';
             const connectionContainer = document.createElement('div');
@@ -268,11 +270,6 @@ export default function graniteTable(jsonBlock) {
       dom: 'Bfrtip',
       buttons: ['excelHtml5', 'csvHtml5'],
     });
-    // $(document).ready(function () {
-    //   const colNum = defaultColumnSort[0] + 1;
-    //   $(`th:nth-child(${colNum})`).click();
-    //   document.querySelector(tableId).columns.adjust();
-    // });
   }
   /*---------------------------------------------
     Toggle Row
