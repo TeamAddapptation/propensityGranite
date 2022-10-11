@@ -4,9 +4,13 @@ The current state of this micro is used for rendering the table front-end.
 
 ## V6 CDNs
 
-###QA `<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-qa/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation-qa/granite/v6/graniteTable.js"></script>`
+### QA
 
-###Production `<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation/granite/v6/graniteTable.js"></script>`
+`<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-qa/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation-qa/granite/v6/graniteTable.js"></script>`
+
+### Production
+
+`<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-/granite/v6/graniteTable.css"/>` `<script src="https://cdn.addapptation.com/addapptation/granite/v6/graniteTable.js"></script>`
 
 ---
 
