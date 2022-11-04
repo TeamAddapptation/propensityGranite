@@ -123,6 +123,10 @@ function graniteTable(jsonBlock) {
           if (cell.id) {
             newThCell.id = cell.id;
           }
+          if (cell.select) {
+            newThCell.innerHTML = '';
+            selectHeader(newThCell, cell);
+          }
           if (cell.classes) {
             newThCell.classList.add(cell.classes);
           }
@@ -148,6 +152,7 @@ function graniteTable(jsonBlock) {
         let newRow = tbody.insertRow();
         newRow.setAttribute('g__row', index);
         newRow.classList.add('order');
+        newRow.classList.add('g__table-row');
         if (row.href) {
           newRow.classList.add('g__clickable-row');
           newRow.setAttribute('data-href', row.href);
@@ -183,6 +188,10 @@ function graniteTable(jsonBlock) {
           if (cell.strength) {
             newCell.innerHTML = '';
             strength(newCell, cell);
+          }
+          if (cell.select) {
+            newCell.innerHTML = '';
+            select(newCell, cell);
           }
           if (cell.steps) {
             newCell.innerHTML = '';
@@ -307,6 +316,85 @@ function graniteTable(jsonBlock) {
     }
     return newCell;
   }
+  /*---------------------------------------------
+    Select Header
+    ---------------------------------------------*/
+  let selectedArr = [];
+  window.selectedRowsArr = selectedArr;
+  let recordsTotal = r.length - 1;
+  function selectHeader(newThCell, cell) {
+    const selectContainer = document.createElement('div');
+    selectContainer.id = 'g__select-header';
+    selectContainer.classList.add('g__select-column', 'g__select-record');
+    selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+    selectContainer.addEventListener('click', (e) => {
+      selectedArr = [];
+      selectContainer.classList.toggle('g__rows-all-selected');
+      const selectorArr = document.querySelectorAll('.g__select-row');
+      const rowArr = document.querySelectorAll('.g__table-row');
+      if (selectContainer.classList.contains('g__rows-selected')) {
+        selectContainer.classList.toggle('g__rows-all-selected');
+        rowArr.forEach((row) => {
+          row.classList.remove('g__row-selected');
+          row.querySelector('.g__select-row').classList.remove('g__select-active');
+        });
+        // selectorArr.forEach((sel, index) => {
+        //   sel.classList.remove('g__select-active');
+        //   selectedArr = [];
+        // });
+      } else {
+        selectorArr.forEach((sel) => {
+          sel.classList.remove('g__select-active');
+          selectedArr = [];
+          if (selectContainer.classList.contains('g__rows-all-selected')) {
+            sel.classList.add('g__select-active');
+            const url = sel.dataset.url;
+            selectedArr.push(url);
+          } else {
+            sel.classList.remove('g__select-active');
+            selectedArr = [];
+          }
+        });
+      }
+      selectContainer.classList.remove('g__rows-selected');
+      window.selectedRowsArr = selectedArr;
+    });
+    newThCell.appendChild(selectContainer);
+    return newThCell;
+  }
+  /*---------------------------------------------
+    Select
+    ---------------------------------------------*/
+
+  function select(newCell, cell) {
+    const selectContainer = document.createElement('div');
+    selectContainer.classList.add('g__select-row', 'g__select-record');
+    selectContainer.setAttribute('data-url', cell.value);
+    selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+    const headerCell = document.getElementById('g__select-header');
+    selectContainer.addEventListener('click', (e) => {
+      selectContainer.classList.toggle('g__select-active');
+      e.target.closest('tr').classList.toggle('g__row-selected');
+      const url = selectContainer.dataset.url;
+      //Build Array with Values and push to hidden field
+      if (selectedArr.includes(url)) {
+        const position = selectedArr.indexOf(url);
+        selectedArr.splice(position, 1);
+      } else {
+        selectedArr.push(url);
+      }
+      //Apply proper class to header
+      headerCell.classList.remove('g__rows-all-selected', 'g__rows-selected');
+      if (selectedArr.length == recordsTotal) {
+        headerCell.classList.add('g__rows-all-selected');
+      } else if (selectedArr.length >= 1) {
+        headerCell.classList.add('g__rows-selected');
+      }
+    });
+    newCell.appendChild(selectContainer);
+    return newCell;
+  }
+
   /*---------------------------------------------
     Steps
     ---------------------------------------------*/

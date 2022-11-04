@@ -19,6 +19,6 @@
   color: var(--neutral-500);
   cursor: pointer;
   background: var(--primary-10);
-  padding: 7px 5px;
+  padding: 5px;
   line-height: 1.1;
 }

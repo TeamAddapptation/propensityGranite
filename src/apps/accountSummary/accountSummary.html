@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/v001-shell/DataTablesLicensed/datatables.min.css" />
+    <link href="https://addapptation.blob.core.windows.net/addapptation-stylesheets/anychart-ui.css" type="text/css" rel="stylesheet">
+  </head>
+
+  <body style="background: var(--neutral-10)">
+    <main class="g__main g__m-p-15 g__gap-1">
+      <!-- header -->
+      <section class="g__container">
+        <div class="g__row c__account-header g__p-25">
+          <div class="g__col g__flex-column">
+            <h1 class='g__text-white'>#{Account Name}</h1>
+            <p class='g__small-text g__text-white g__text-underline'>#{record.url}</p>
+          </div>
+          <div class="g__col g__flex-column">
+            <p class='g__text-white'>Find intent data for another company</p>
+            <div class='c__search-container g__flex'>
+              <div class='c__input-wrapper'>
+                <i class="far fa-search"></i>
+                <input type='text' placeholder='Enter Company URLs' id='c__intent-data-search' class='c__search-input'>
+              </div>
+              <button type='button' class='g__btn g__btn-secondary'>Search</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="g__plr-15">
+        <div class='g__row g__border g__p-15 g__m-prl-0 g__radius-5 g__align-center' style='background:var(--primary-10)'>
+          <div class='g__col g__flex-column'>
+            <h5 class='g__weight-600 g__m-0' style='color: var(--primary);'>See Which Account Are In-Market For Your Solution</h3>
+              <p class='g__weight-400 g__m-0'>Sign up today and see who is actively ready to buy.</p>
+          </div>
+          <div class='g__col g__justify-end'>
+            <a href='#' class='g__btn g__btn-success'>Sign Up</a>
+          </div>
+        </div>
+      </section>
+      <section class="g__plr-15">
+        <div class='g__row g__border g__p-15 g__m-prl-0 g__radius-5 g__align-center'>
+          <div class='g__col'>
+            <h3 class='g__weight-600 g__m-0'>Trending Intent Data</h3>
+          </div>
+          <div class='g__col g__justify-end'>
+            <p class='g__weight-400 g__m-0'>Last 90 Days</p>
+          </div>
+        </div>
+      </section>
+      <section class="g__container">
+        <div class="g__row g__plr-15">
+          <div class="g__col ">
+            <div id="anychart__area-chart"></div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.addapptation.com/v001-shell/DataTablesLicensed/datatables.min.js"></script>
+    <script src="https://kit.fontawesome.com/58afd790b4.js" crossorigin="anonymous"></script>
+    <script src="https://addapptation.blob.core.windows.net/addapptation-stylesheets/anychart-bundle.js"></script>
+  </body>
+</html>

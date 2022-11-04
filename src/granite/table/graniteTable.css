@@ -39,16 +39,17 @@ table tbody tr.g__clickable-row:hover {
   background: var(--primary-10);
 }
 table tbody tr td a {
-  color: var(--neutral-900);
+  font-size: 0.8rem;
+  color: var(--neutral-500);
   text-decoration: none;
   transition: all 0.5s ease;
+}
+table tbody tr td a:hover {
+  color: var(--primary);
 }
 table tbody tr td {
   position: relative;
   font-weight: 500;
-}
-table tbody tr td a:hover {
-  color: var(--neutral-600);
 }
 .g__table-thumb {
   max-width: 80px;
@@ -104,6 +105,81 @@ table select.g__table-select {
   font-style: normal;
   font-weight: 400;
   font-size: 0.8rem;
+}
+/* ----------
+  Row Select
+  ---------- */
+.g__select-row,
+.g__select-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  background: var(--primary-10);
+  border-radius: 25px;
+  border: 1px solid var(--neutral-50);
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.g__select-row:hover,
+.g__select-column:hover {
+  background: var(--primary-100);
+  border-color: var(--primary);
+}
+.g__select-row.g__select-active {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.g__select-row i,
+.g__select-column i {
+  color: #ffffff;
+  opacity: 0;
+  transition: all 0.5 ease;
+}
+.g__select-row.g__select-active i {
+  opacity: 1;
+}
+table.dataTable tbody tr.g__row-selected {
+  background-color: var(--primary-10);
+}
+.g__select-column.g__rows-all-selected {
+  position: relative;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+#g__select-header i {
+  opacity: 0;
+}
+#g__select-header.g__rows-all-selected i {
+  opacity: 1;
+}
+.g__select-column.g__rows-selected:hover {
+  position: relative;
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.g__select-column.g__rows-selected:hover:before {
+  content: '';
+  width: 15px;
+  height: 2px;
+  position: absolute;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.g__select-column.g__rows-selected {
+  position: relative;
+  background: var(--primary-100);
+  border-color: var(--primary);
+}
+.g__select-column.g__rows-selected:before {
+  content: '';
+  width: 15px;
+  height: 2px;
+  position: absolute;
+  background-color: var(--primary);
+  border-radius: 5px;
 }
 /* ----------
   Row Dropdown

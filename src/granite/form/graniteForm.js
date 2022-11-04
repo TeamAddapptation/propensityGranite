@@ -1,4 +1,5 @@
-function graniteForm(formsBlock) {
+export default function graniteForm(formsBlock) {
+  console.log('Form: ', formsBlock);
   const id = formsBlock.id;
   const granite_id = formsBlock.id;
   const o = formsBlock.options;
@@ -522,6 +523,7 @@ function graniteForm(formsBlock) {
       case 'picklist':
         form_field.appendChild(addLabels(field_info_container, r));
         let picklist_options = !!r.options ? r.options : ['option 1', 'option 2'];
+        console.log('Record', r);
         let picklist_double_arr = Array.isArray(picklist_options) && Array.isArray(picklist_options[0]);
         input = document.createElement('div');
         if (String(r.multiple) === 'true') {
@@ -564,8 +566,16 @@ function graniteForm(formsBlock) {
           for (let i = 0; i < picklist_options.length; i++) {
             let option = document.createElement('option');
             option.setAttribute('value', picklist_options[i][0]);
-            if (r.value === picklist_options[i][0]) {
-              option.selected = true;
+            if (String(r.multiple) === 'true') {
+              r.value.forEach((val) => {
+                if (r.value === picklist_options[i][0]) {
+                  option.selected = true;
+                }
+              });
+            } else {
+              if (r.value === picklist_options[i][0]) {
+                option.selected = true;
+              }
             }
             option.innerHTML = picklist_options[i][1];
             select.appendChild(option);
@@ -574,8 +584,16 @@ function graniteForm(formsBlock) {
           for (let i = 0; i < picklist_options.length; i++) {
             let option = document.createElement('option');
             option.setAttribute('value', picklist_options[i]);
-            if (r.value === picklist_options[i]) {
-              option.selected = true;
+            if (String(r.multiple) === 'true') {
+              r.value.forEach((val) => {
+                if (val === picklist_options[i]) {
+                  option.selected = true;
+                }
+              });
+            } else {
+              if (r.value === picklist_options[i][0]) {
+                option.selected = true;
+              }
             }
             option.innerHTML = picklist_options[i];
             select.appendChild(option);
