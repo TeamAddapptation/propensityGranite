@@ -338,14 +338,9 @@ function graniteTable(jsonBlock) {
           row.classList.remove('g__row-selected');
           row.querySelector('.g__select-row').classList.remove('g__select-active');
         });
-        // selectorArr.forEach((sel, index) => {
-        //   sel.classList.remove('g__select-active');
-        //   selectedArr = [];
-        // });
       } else {
         selectorArr.forEach((sel) => {
           sel.classList.remove('g__select-active');
-          selectedArr = [];
           if (selectContainer.classList.contains('g__rows-all-selected')) {
             sel.classList.add('g__select-active');
             const url = sel.dataset.url;
