@@ -185,6 +185,9 @@ Typography - Utility
 .g__text-center {
   text-align: center;
 }
+.g__text-right {
+  text-align: right;
+}
 small,
 .text_small {
   font-size: 0.8rem;
