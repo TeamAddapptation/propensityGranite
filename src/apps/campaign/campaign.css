@@ -1,0 +1,32 @@
+.g__overview-blocks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.c__campaign-progress-bar {
+  height: 23px;
+}
+.c__progress-weeks {
+  position: relative;
+}
+.c__progress-divider {
+  height: 23px;
+  width: 3px;
+  background-color: #9c8cff;
+  position: absolute;
+  top: 0;
+}
+.c__divider-25 {
+  left: 25%;
+}
+.c__divider-50 {
+  left: 50%;
+}
+.c__divider-75 {
+  left: 75%;
+}
+#table__accounts .dt-buttons {
+  display: none;
+}
+#table__accounts #g__table__accounts_filter {
+  display: none;
+}

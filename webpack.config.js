@@ -21,6 +21,7 @@ module.exports = {
     // APPS
     top100: path.resolve(__dirname, './src/apps/top100/top100.js'),
     accountSummary: path.resolve(__dirname, './src/apps/accountSummary/accountSummary.js'),
+    campaign: path.resolve(__dirname, './src/apps/campaign/campaign.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -128,6 +129,12 @@ module.exports = {
       inject: 'body',
       template: './src/apps/accountSummary/accountSummary.html',
       chunks: ['main', 'accountSummary'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'campaign.html',
+      inject: 'body',
+      template: './src/apps/campaign/campaign.html',
+      chunks: ['main', 'campaign'],
     }),
   ],
   module: {
