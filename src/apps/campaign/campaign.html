@@ -14,7 +14,7 @@
       <!-- Name Section -->
       <section class="g__container">
         <div class="g__row g__border g__align-center g__p-15 g__radius-10 g__m-gap-1">
-          <div class="g__col g__m-flex-1 g__align-center g__gap-1">
+          <div class="g__col g__m-flex-1 g__align-center g__gap-1 g__m-flex-column g__m-align-start">
             <h3 class="g__weight-700 c__showing-accounts g__m-0">[Campaign Name]</h3>
             <p class='g__m-0'>[Playbook 3]</p>
           </div>
@@ -75,11 +75,11 @@
       </section>
       <!-- Campaign Overview -->
       <section class="g__container">
-        <div class="g__row g__border g__align-center g__p-15 g__radius-10 g__m-gap-1">
+        <div class="g__row g__border g__align-center g__p-15 g__radius-10 g__m-gap-1 g__m-flex-column">
           <div class="g__col g__m-flex-1 g__align-center g__gap-1">
             <h4 class="c__showing-accounts g__m-0">Campaign Overview</h4>
           </div>
-          <div class="g__col g__m-flex-1 g__align-center g__justify-end g__gap-1">
+          <div class="g__col g__m-flex-1 g__align-center g__justify-end g__gap-1 g__m-flex-column g__m-justify-start g__m-align-start">
             <div class='g__flex g__align-center g__gap-8px'>
               <p class='g__m-0'>Accounts</p>
               <p class='g__m-0 g__bold g__tertiary'>4,258</p>
@@ -93,10 +93,10 @@
         </div>
       </section>
       <!-- Section 2 -->
-      <section class="g__container g__m-order-1">
+      <section class="g__container">
         <div class="g__overview-blocks g__gap-1">
           <!-- Block 1 -->
-          <div class="g__flex g__flex-column g__border g__m-no-border g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
+          <div class="g__flex g__flex-column g__border g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
             <div class='g__flex g__align-center g__space-between g__flex-1  g__p-15'>
               <h4 class="g__m-0" style="color: var(--neutral-500)">&#x1F6A8; Top 3 Signals</h4>
                 <a href='#' class='g__btn g__btn-neutral g__btn-sm g__justify-end'>See Report</a>
@@ -115,7 +115,7 @@
              </div>
           </div>
           <!-- Block 2 -->
-          <div class="g__flex g__flex-column g__border g__m-no-border g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
+          <div class="g__flex g__flex-column g__border g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
             <div class='g__flex g__align-center g__space-between g__flex-1  g__p-15'>
               <h4 class="g__m-0" style="color: var(--neutral-500)">&#x1F464; Persona Details</h4>
                 <a href='#' class='g__btn g__btn-neutral g__btn-sm g__justify-end'>Build a Look-Alike</a>
@@ -134,7 +134,7 @@
              </div>
           </div>
           <!-- Block 3 -->
-          <div class="g__flex g__flex-column g__border g__m-no-border g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
+          <div class="g__flex g__flex-column g__border g__m-prl-0 g__radius-5 g__m-border-bottom g__m-gap-1">
             <div class='g__flex g__align-center g__space-between g__flex-1  g__p-15'>
               <h4 class="g__m-0" style="color: var(--neutral-500)">&#x1F3E2; Account Details</h4>
                 <a href='#' class='g__btn g__btn-neutral g__btn-sm g__justify-end'>See Report</a>
@@ -156,57 +156,63 @@
       </section>
       <!-- Marketing and Lifecycle -->
       <section class="g__container">
-        <div class="g__row g__no-wrap g__align-top g__gap-1 ">
-          <div class="g__col g__flex-column g__border g__radius-5 g__p-15 g__gap-1">
-            <!-- Progress 1-->
-            <div class='g__flex g__flex-column'>
-              <div class='g__flex g__flex-1 g__space-between'>
-                <p class='g__m-0'>Ready for Marketing</p>
-                <p class='g__m-0 g__bold g__primary'>0</p>
+        <div class="g__row g__no-wrap g__align-top g__gap-1 g__m-flex-column">
+          <div class="g__col g__flex-column g__gap-1">
+            <div class="g__col g__flex-column g__gap-1 g__border g__radius-5 g__p-15">
+              <!-- Progress 1-->
+              <div class='g__flex g__flex-column'>
+                <div class='g__flex g__flex-1 g__space-between'>
+                  <p class='g__m-0'>Ready for Marketing</p>
+                  <p class='g__m-0 g__bold g__primary'>0</p>
+                </div>
+                <div class='g__flex g__flex-1 g__mt-5'>
+                  <progress class='g__flex-1 g__progress-bar' id="c__ready-for-marketing" value="32" max="100"></progress>
+                </div>
               </div>
-              <div class='g__flex g__flex-1 g__mt-5'>
-                <progress class='g__flex-1 g__progress-bar' id="c__ready-for-marketing" value="32" max="100"></progress>
+              <!-- Progress 2 -->
+              <div class='g__flex g__flex-column'>
+                <div class='g__flex g__flex-1 g__space-between'>
+                  <p class='g__m-0'>Actively Marketing</p>
+                  <p class='g__m-0 g__bold g__primary'>3,124</p>
+                </div>
+                <div class='g__flex g__flex-1 g__mt-5'>
+                  <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="24" max="100"></progress>
+                </div>
+              </div>
+              <!-- Progress 3 -->
+              <div class='g__flex g__flex-column'>
+                <div class='g__flex g__flex-1 g__space-between'>
+                  <p class='g__m-0'>Ready for Sales</p>
+                  <p class='g__m-0 g__bold g__primary'>86</p>
+                </div>
+                <div class='g__flex g__flex-1 g__mt-5'>
+                  <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="86" max="100"></progress>
+                </div>
+              </div>
+              <!-- Progress 4 -->
+              <div class='g__flex g__flex-column'>
+                <div class='g__flex g__flex-1 g__space-between'>
+                  <p class='g__m-0'>Engaging with Sales</p>
+                  <p class='g__m-0 g__bold g__primary'>176</p>
+                </div>
+                <div class='g__flex g__flex-1 g__mt-5'>
+                  <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="176" max="100"></progress>
+                </div>
+              </div>
+              <!-- Progress 5 -->
+              <div class='g__flex g__flex-column'>
+                <div class='g__flex g__flex-1 g__space-between'>
+                  <p class='g__m-0 '>In Sales Pipeline</p>
+                  <p class='g__m-0 g__bold g__primary'>176</p>
+                </div>
+                <div class='g__flex g__flex-1 g__mt-5'>
+                  <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="32" max="100"></progress>
+                </div>
               </div>
             </div>
-            <!-- Progress 2 -->
-            <div class='g__flex g__flex-column'>
-              <div class='g__flex g__flex-1 g__space-between'>
-                <p class='g__m-0'>Actively Marketing</p>
-                <p class='g__m-0 g__bold g__primary'>3,124</p>
-              </div>
-              <div class='g__flex g__flex-1 g__mt-5'>
-                <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="24" max="100"></progress>
-              </div>
-            </div>
-            <!-- Progress 3 -->
-            <div class='g__flex g__flex-column'>
-              <div class='g__flex g__flex-1 g__space-between'>
-                <p class='g__m-0'>Ready for Sales</p>
-                <p class='g__m-0 g__bold g__primary'>86</p>
-              </div>
-              <div class='g__flex g__flex-1 g__mt-5'>
-                <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="86" max="100"></progress>
-              </div>
-            </div>
-            <!-- Progress 4 -->
-            <div class='g__flex g__flex-column'>
-              <div class='g__flex g__flex-1 g__space-between'>
-                <p class='g__m-0'>Engaging with Sales</p>
-                <p class='g__m-0 g__bold g__primary'>176</p>
-              </div>
-              <div class='g__flex g__flex-1 g__mt-5'>
-                <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="176" max="100"></progress>
-              </div>
-            </div>
-            <!-- Progress 5 -->
-            <div class='g__flex g__flex-column'>
-              <div class='g__flex g__flex-1 g__space-between'>
-                <p class='g__m-0'>In Sales Pipeline</p>
-                <p class='g__m-0 g__bold g__primary'>176</p>
-              </div>
-              <div class='g__flex g__flex-1 g__mt-5'>
-                <progress class='g__flex-1 g__progress-bar' id="c__activily-marketing" value="32" max="100"></progress>
-              </div>
+            <div class="g__col g__flex-column g__border g__radius-5 g__p-15">
+              <h4 class='g__mb-5 g__neutral-500'>Pipeline Generated</h4>
+              <h1 class='g__m-0 g__secondary'>$24K</h1>
             </div>
           </div>
           <div class="g__col g__flex-3 g__flex-column">

@@ -225,6 +225,9 @@ Font colors
 .g__primary {
   color: var(--primary);
 }
+.g__secondary {
+  color: var(--secondary);
+}
 .g__tertiary {
   color: var(--tertiary);
 }
@@ -403,6 +406,9 @@ main.g__main-simple {
 }
 .g__space-between {
   justify-content: space-between;
+}
+.g__no-wrap {
+  flex-wrap: nowrap;
 }
 /*--------------------
 Flex space
@@ -1010,9 +1016,6 @@ Mobile
   }
   .g__m-flex-3 {
     flex: 3;
-  }
-  .g__no-wrap {
-    flex-wrap: nowrap;
   }
 
   /* --------------------

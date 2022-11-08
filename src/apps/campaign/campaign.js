@@ -14,17 +14,15 @@ try {
     feature: 'table',
     options: {
       type: 'table',
-      columnSort: [0, 'desc'],
+      fixed: true,
+      columnSort: [2, 'desc'],
       datatables: true,
-      searching: true,
-      paging: false,
-      page_length: 2,
-      fixed: false,
-      responsive: true,
+      searching: false,
       scroll_x: true,
-      auto_width: false,
-      wrap_text: true,
-      column_defs: [{ responsivePriority: 1, targets: 1 }],
+      scroll_y: '50vh',
+      paging: false,
+      pageLength: 100,
+      column_widths: [{ width: '250px', targets: 0 }],
     },
     records: [
       {
@@ -179,7 +177,7 @@ try {
 } catch (error) {
   console.error(error);
 }
-d;
+
 try {
   const tabs = {
     id: 'tabs__apps',
