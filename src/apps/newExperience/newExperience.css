@@ -1,0 +1,11 @@
+div#g__submit_cancel {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1rem;
+}
+button#g__cancel_btn {
+  color: var(--primary);
+  border: 0;
+  background: 0;
+  font-weight: 500;
+}

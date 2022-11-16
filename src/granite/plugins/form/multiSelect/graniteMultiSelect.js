@@ -1,5 +1,5 @@
-// import bomboraTopics from '../../../../demoContent/json/intentTopics.json';
-function graniteMultiSelect(formField) {
+import bomboraTopics from '../../../../demoContent/json/intentTopics_v4.json';
+export default function graniteMultiSelect(formField) {
   let filteredList = [];
   let topicsArr = [];
   const filtersContainer = document.createElement('div');
