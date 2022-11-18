@@ -1,6 +1,7 @@
 import graniteForm from '../../granite/form/graniteForm';
 import graniteMultiSelect from '../../granite/plugins/form/multiSelect/graniteMultiSelect';
 import relevantTopics from '../../granite/plugins/form/topicSelectors/relevantTopics';
+import competitiveTopics from '../../granite/plugins/form/topicSelectors/competitiveTopics';
 
 import '../../granite/form/graniteForm.css';
 import '../../granite/plugins/form/multiSelect/graniteMultiSelect.css';
@@ -623,7 +624,17 @@ const jsonBlock = {
       name: 'bombora-topics',
       title: '',
       type: 'custom',
-      custom_function: relevantTopics(),
+      custom_function: relevantTopics([1504831, 1504712, 1502720, 1512070]),
+      required: false,
+      value: '',
+      classes: '',
+    },
+    {
+      id: 'competitive-topics',
+      name: 'competitive-topics',
+      title: '',
+      type: 'custom',
+      custom_function: competitiveTopics([1502720, 1504124, 1514639]),
       required: false,
       value: '',
       classes: '',

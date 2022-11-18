@@ -1,17 +1,15 @@
-// import { themes, categories, limitedTopics } from '../../../../demoContent/topicData';
-// import intentTopics from '../../../../demoContent/json/intentTopics_v4.json';
-function relevantTopics(selArr) {
+// import { limitedCompetitors, competitors } from '../../../../demoContent/topicData';
+function competitiveTopics(selArr) {
   /* --------------------
   Global Variables
   -------------------- */
   let selectedTopicsArr = [];
-  let filteredTopics = [];
   /* --------------------
   Previously Selected Values
   -------------------- */
   const prevArr = [];
   if (selArr.length) {
-    intentTopics.forEach((topic) => {
+    competitors.forEach((topic) => {
       selArr.forEach((prevVal) => {
         prevVal == topic.Topic_ID ? prevArr.push(topic) : '';
       });
@@ -19,31 +17,31 @@ function relevantTopics(selArr) {
     selectedTopicsArr = prevArr;
   }
   const filtersContainer = document.createElement('div');
-  filtersContainer.id = 'relevant-topics__c';
-  filtersContainer.classList.add('g__rt-container');
+  filtersContainer.id = 'competitive-topics__c';
+  filtersContainer.classList.add('g__ct-container');
   /* --------------------
   Title, Description & Topic List Link
   -------------------- */
   const header = document.createElement('div');
-  header.classList.add('g__rt-header');
+  header.classList.add('g__ct-header');
 
   const headerTop = document.createElement('div');
-  headerTop.classList.add('g__rt-top');
+  headerTop.classList.add('g__ct-top');
   header.appendChild(headerTop);
 
   const heading = document.createElement('h5');
-  heading.innerText = 'Additional Relevant Topics';
+  heading.innerText = 'Competitors You Want to Track';
   headerTop.appendChild(heading);
 
   const fullListLink = document.createElement('a');
   fullListLink.classList.add('g__btn', 'g__btn-text');
-  fullListLink.href = '/intent_topics_table';
+  fullListLink.href = '/companies_table';
   fullListLink.target = '_blank';
   fullListLink.innerText = 'View Full List';
   headerTop.appendChild(fullListLink);
 
   const desc = document.createElement('p');
-  desc.innerText = '(include other keywords, complimentary industries, and/or technology, these will appear as adjacent signals)';
+  desc.innerText = '(these will appear as competitive signals in your results)';
   header.appendChild(desc);
 
   filtersContainer.appendChild(header);
@@ -52,12 +50,12 @@ function relevantTopics(selArr) {
   Search
   -------------------- */
   const searchContainer = document.createElement('div');
-  searchContainer.classList.add('g__rt-search');
+  searchContainer.classList.add('g__ct-search');
   const searchIcon = document.createElement('i');
-  searchIcon.setAttribute('class', 'g__rt-search-icon far fa-search');
+  searchIcon.setAttribute('class', 'g__ct-search-icon far fa-search');
   searchContainer.appendChild(searchIcon);
   const search = document.createElement('input');
-  search.type = 'search';
+  search.type = 'text';
   search.classList.add('g__multi-search');
   searchContainer.appendChild(search);
   filtersContainer.appendChild(searchContainer);
@@ -69,7 +67,7 @@ function relevantTopics(selArr) {
     e.preventDefault();
     const searchTopicsArr = [];
     const searchValue = e.target.value.toUpperCase();
-    intentTopics.forEach((topic) => {
+    competitors.forEach((topic) => {
       if (topic.Topic_Name.toUpperCase().indexOf(searchValue) > -1) {
         const addTopic = { Topic_ID: topic.Topic_ID, Topic_Name: topic.Topic_Name };
         searchTopicsArr.push(addTopic);
@@ -78,146 +76,48 @@ function relevantTopics(selArr) {
     updateTopicListHandler(searchTopicsArr);
   });
   /* --------------------
-  Theme Filter
-  -------------------- */
-  const fitlerOneContainer = document.createElement('div');
-  fitlerOneContainer.classList.add('g__rt-fitler');
-  const f1ArrowIcon = document.createElement('i');
-  f1ArrowIcon.setAttribute('class', 'g__rt-down-arrow far fa-solid fa-angle-down');
-  fitlerOneContainer.appendChild(f1ArrowIcon);
-  const fitlerOne = document.createElement('select');
-  fitlerOne.classList.add('g__rt-theme');
-  const filterOnePlaceholder = document.createElement('option');
-  filterOnePlaceholder.disables = true;
-  filterOnePlaceholder.selected = true;
-  filterOnePlaceholder.innerText = 'Select Theme';
-  fitlerOne.appendChild(filterOnePlaceholder);
-  themes.forEach((theme) => {
-    const themeOption = document.createElement('option');
-    themeOption.value = theme;
-    themeOption.innerText = theme;
-    fitlerOne.appendChild(themeOption);
-  });
-  fitlerOneContainer.appendChild(fitlerOne);
-  filtersContainer.appendChild(fitlerOneContainer);
-
-  fitlerOne.addEventListener('change', (e) => {
-    const theme = e.target.value;
-    if (theme === 'Select Theme') {
-      filteredTopics = limitedTopics;
-      updateFilterTwo(intentTopics, true);
-    } else {
-      filteredTopics = [...new Set(intentTopics.map((topic) => (topic.Theme === theme ? topic : '')))];
-      filteredTopics.shift();
-      updateFilterTwo(filteredTopics);
-    }
-    updateTopicListHandler(filteredTopics, false);
-  });
-  /* --------------------
-  Update Filter Two Based on Filter 1 Selection
-  -------------------- */
-  function updateFilterTwo(filteredTopics, isUnique) {
-    const f2 = document.querySelector(`.g__rt-categories`);
-    f2.innerHTML = '';
-    if (isUnique) {
-      const updatePlaceholder = document.createElement('option');
-      updatePlaceholder.disables = true;
-      updatePlaceholder.selected = true;
-      updatePlaceholder.innerText = 'Select Category';
-      f2.appendChild(updatePlaceholder);
-    }
-    const uniqueList = [...new Set(filteredTopics.map((topic) => topic.Category))];
-    uniqueList.forEach((topic) => {
-      const catOption = document.createElement('option');
-      catOption.value = topic;
-      catOption.innerText = topic;
-      f2.appendChild(catOption);
-    });
-  }
-
-  /* --------------------
   Update topics function
   -------------------- */
   function updateTopicListHandler(topicsArr) {
-    const topicContainer = document.querySelector(`.g__rt-topics-container`);
-    const currentList = document.querySelector(`.g__rt-topics-list`);
+    const topicContainer = document.querySelector(`.g__ct-topics-container`);
+    const currentList = document.querySelector(`.g__ct-topics-list`);
     currentList.remove();
     topicContainer.appendChild(topicsList(topicsArr));
   }
-
-  /* --------------------
-  Categories Filter
-  -------------------- */
-  const fitlerTwoContainer = document.createElement('div');
-  fitlerTwoContainer.classList.add('g__rt-fitler');
-  const f2ArrowIcon = document.createElement('i');
-  f2ArrowIcon.setAttribute('class', 'g__rt-down-arrow far fa-solid fa-angle-down');
-  fitlerTwoContainer.appendChild(f2ArrowIcon);
-  const fitlerTwo = document.createElement('select');
-  fitlerTwo.classList.add('g__rt-categories');
-  const filterTwoPlaceholder = document.createElement('option');
-  filterTwoPlaceholder.disables = true;
-  filterTwoPlaceholder.selected = true;
-  filterTwoPlaceholder.innerText = 'Select Category';
-  fitlerTwo.appendChild(filterTwoPlaceholder);
-  categories.forEach((category) => {
-    const categoryOption = document.createElement('option');
-    categoryOption.value = category;
-    categoryOption.innerText = category;
-    fitlerTwo.appendChild(categoryOption);
-  });
-  fitlerTwoContainer.appendChild(fitlerTwo);
-  filtersContainer.appendChild(fitlerTwoContainer);
-
-  fitlerTwo.addEventListener('change', (e) => {
-    const category = e.target.value;
-    const theme = document.querySelector(`.g__rt-theme`).value;
-    if (category === 'Select Category') {
-      filteredTopics = limitedTopics;
-    } else {
-      filteredTopics = [...new Set(intentTopics.map((topic) => (topic.Category === category ? topic : '')))];
-      filteredTopics.shift();
-    }
-
-    if (theme != 'Select Theme') {
-      filteredTopics = [...new Set(filteredTopics.map((topic) => (topic.Theme === theme ? topic : '')))];
-    }
-    updateTopicListHandler(filteredTopics);
-  });
   /* --------------------
   Top List Container
   -------------------- */
   const topicListContainer = document.createElement('div');
-  topicListContainer.classList.add('g__rt-topics-container');
+  topicListContainer.classList.add('g__ct-topics-container');
 
   const infoContainer = document.createElement('div');
-  infoContainer.classList.add('g__rt-info-container');
+  infoContainer.classList.add('g__ct-info-container');
 
   const infoClose = document.createElement('div');
-  infoClose.classList.add('g__rt-close-info');
+  infoClose.classList.add('g__ct-close-info');
   const closeIcon = document.createElement('i');
   closeIcon.classList.add('far', 'fa-times');
   closeIcon.addEventListener('click', () => {
-    document.querySelector('.g__rt-info-container').classList.toggle('active');
+    document.querySelector('.g__ct-info-container').classList.toggle('active');
   });
   infoClose.appendChild(closeIcon);
   infoContainer.appendChild(infoClose);
 
   const topicInfo = document.createElement('div');
-  topicInfo.classList.add('g__rt-topic-info');
+  topicInfo.classList.add('g__ct-topic-info');
   infoContainer.appendChild(topicInfo);
 
   topicListContainer.appendChild(infoContainer);
-  topicListContainer.appendChild(topicsList(limitedTopics));
+  topicListContainer.appendChild(topicsList(limitedCompetitors));
   topicListContainer.addEventListener(
     'click',
     (e) => {
       if (e.target.classList.contains('g__info-icon')) {
-        infoHandler(e.target.closest('.g__rt-topic-item'));
-      } else if (e.target.classList.contains('g__rt-topic-item')) {
+        infoHandler(e.target.closest('.g__ct-topic-item'));
+      } else if (e.target.classList.contains('g__ct-topic-item')) {
         topicsHandler(e.target);
       } else {
-        topicsHandler(e.target.closest('.g__rt-topic-item'));
+        topicsHandler(e.target.closest('.g__ct-topic-item'));
       }
     },
     true
@@ -227,16 +127,15 @@ function relevantTopics(selArr) {
   Update Topics on Click
   -------------------- */
   function infoHandler(topic) {
-    document.querySelector('.g__rt-info-container').classList.toggle('active');
+    document.querySelector('.g__ct-info-container').classList.toggle('active');
     const id = topic.getAttribute('data-id');
-    let findTopic = intentTopics.find((topic) => {
+    let findTopic = competitors.find((topic) => {
       if (id == topic.Topic_ID) {
         return topic;
       }
     });
-    const infoBlock = document.querySelector('.g__rt-topic-info');
+    const infoBlock = document.querySelector('.g__ct-topic-info');
     infoBlock.innerHTML = `
-        <p class="g__m-0">Theme</p><p class="g__text-small">${findTopic.Theme}</p>
         <p class="g__m-0">Category</p><p class="g__text-small">${findTopic.Category}</p>
         <p class="g__m-0">Description</p><p class="g__text-small">${findTopic.Description}</p>`;
   }
@@ -266,7 +165,7 @@ function relevantTopics(selArr) {
     } else {
       selectedTopicsArr.push(topicObj);
     }
-    const updatePills = document.querySelector(`.g__rt-selected-container`);
+    const updatePills = document.querySelector(`.g__ct-selected-container`);
     updatePills.innerHTML = '';
     updatePills.appendChild(selectedPillsHandler(selectedTopicsArr));
     const selectedIdArr = [];
@@ -281,11 +180,11 @@ function relevantTopics(selArr) {
   -------------------- */
   function selectedPillsHandler(topics) {
     const pillList = document.createElement('ul');
-    pillList.classList.add('g__rt-selected-list');
+    pillList.classList.add('g__ct-selected-list');
 
     topics.forEach((topic) => {
       const selectedItem = document.createElement('li');
-      selectedItem.classList.add('g__rt-selected-item');
+      selectedItem.classList.add('g__ct-selected-item');
       selectedItem.setAttribute('data-id', topic.Topic_ID);
       selectedItem.innerHTML = `${topic.Topic_Name} <i class="far fa-times"></i>`;
       pillList.appendChild(selectedItem);
@@ -300,13 +199,11 @@ function relevantTopics(selArr) {
   Delete Topic Handler
   -------------------- */
   function removeItemHandler(selectedItem) {
-    const itemsArr = document.querySelectorAll(`.g__rt-topic-item`);
+    const itemsArr = document.querySelectorAll(`.g__ct-topic-item`);
     const deleteId = selectedItem.getAttribute('data-id');
-    console.log(selectedTopicsArr);
     selectedTopicsArr = selectedTopicsArr.filter(function (topic) {
-      return topic.Topic_ID !== parseInt(deleteId);
+      return topic.id !== deleteId;
     });
-    console.log(selectedTopicsArr);
     itemsArr.forEach((item) => {
       const id = item.getAttribute('data-id');
       if (id == deleteId) {
@@ -318,34 +215,20 @@ function relevantTopics(selArr) {
     });
     const inputArr = [];
     selectedTopicsArr.forEach((topic) => {
-      inputArr.push(topic.Topic_ID);
+      inputArr.push(topic.id);
     });
     finalInput.setAttribute('value', inputArr.join());
     selectedItem.remove();
   }
   /* --------------------
-  Selected Topics Header
-  -------------------- */
-  const topicsHeading = document.createElement('h5');
-  topicsHeading.classList.add('g__mt-15');
-  topicsHeading.innerText = 'Your Adjacent Topics';
-  filtersContainer.appendChild(topicsHeading);
-  /* --------------------
-  Selected Container
-  -------------------- */
-  const selectedContainer = document.createElement('div');
-  selectedContainer.classList.add('g__rt-selected-container');
-  selectedContainer.appendChild(selectedPillsHandler(prevArr));
-  filtersContainer.appendChild(selectedContainer);
-  /* --------------------
   Topic List Builder
   -------------------- */
   function topicsList(topicObj) {
     const topicUl = document.createElement('ul');
-    topicUl.classList.add('g__rt-topics-list');
+    topicUl.classList.add('g__ct-topics-list');
     topicObj.forEach((topic) => {
       const topicItem = document.createElement('li');
-      topicItem.classList.add('g__rt-topic-item');
+      topicItem.classList.add('g__ct-topic-item');
       topicItem.setAttribute('data-value', 'topic');
       topicItem.setAttribute('data-name', topic.Topic_Name);
       topicItem.setAttribute('data-id', topic.Topic_ID);
@@ -363,13 +246,27 @@ function relevantTopics(selArr) {
     return topicUl;
   }
   /* --------------------
+  Selected Topics Header
+  -------------------- */
+  const topicsHeading = document.createElement('h5');
+  topicsHeading.classList.add('g__mt-15');
+  topicsHeading.innerText = 'Your Competitive Topics';
+  filtersContainer.appendChild(topicsHeading);
+  /* --------------------
+  Selected Container
+  -------------------- */
+  const selectedContainer = document.createElement('div');
+  selectedContainer.classList.add('g__ct-selected-container');
+  selectedContainer.appendChild(selectedPillsHandler(prevArr));
+  filtersContainer.appendChild(selectedContainer);
+  /* --------------------
   Final input with selected IDs
   -------------------- */
   const finalInput = document.createElement('input');
   finalInput.setAttribute('form_id', 'propensity-assesssment');
   finalInput.type = 'text';
-  finalInput.id = 'Adjacent_Topics__c';
-  finalInput.name = 'Adjacent_Topics__c';
+  finalInput.id = 'Competitive_Topics__c';
+  finalInput.name = 'Competitive_Topics__c';
   if (selArr.length) {
     finalInput.setAttribute('value', selArr.join(','));
   }
