@@ -23,6 +23,8 @@ module.exports = {
     accountSummary: path.resolve(__dirname, './src/apps/accountSummary/accountSummary.js'),
     campaign: path.resolve(__dirname, './src/apps/campaign/campaign.js'),
     newExperience: path.resolve(__dirname, './src/apps/newExperience/newExperience.js'),
+    // PLAYGROUND
+    components: path.resolve(__dirname, './src/playground/components/components.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -142,6 +144,13 @@ module.exports = {
       inject: 'body',
       template: './src/apps/newExperience/newExperience.html',
       chunks: ['main', 'newExperience'],
+    }),
+    // PLAYGROUND
+    new HtmlWebpackPlugin({
+      filename: 'components.html',
+      inject: 'body',
+      template: './src/playground/components/components.html',
+      chunks: ['components'],
     }),
   ],
   module: {
