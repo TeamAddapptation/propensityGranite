@@ -1,23 +1,36 @@
 import graniteTable from '../../granite/table/graniteTable';
 import '../../granite/table/graniteTable.css';
-
+import './table.css';
 const accounts = {
   id: 'table__demo',
   feature: 'table',
   options: {
     type: 'table',
-    columnSort: [2, 'desc'],
+    columnSort: [0, 'desc'],
     datatables: true,
     searching: true,
-    paging: true,
-    pageLength: 25,
+    paging: false,
+    page_length: 2,
+    fixed: false,
+    responsive: true,
     scroll_x: true,
-    scroll_y: '',
+    scroll_y: '750px',
     auto_width: false,
     wrap_text: true,
-    responsive: false,
     column_defs: [{ responsivePriority: 1, targets: 1 }],
-    column_widths: [{ width: '250px', targets: 0 }],
+    // type: 'table',
+    // fixed: false,
+    // columnSort: [4, 'desc'],
+    // datatables: true,
+    // searching: true,
+    // paging: true,
+    // pageLength: 25,
+    // scroll_x: false,
+    // scroll_y: '',
+    // auto_width: true,
+    // wrap_text: false,
+    // responsive: true,
+    // column_defs: [{ width: '400px', responsivePriority: 1, targets: 1 }, { width: '100px' }, { width: '250px' }],
   },
   records: [
     {
@@ -27,13 +40,16 @@ const accounts = {
         {
           value: '',
           select: true,
-          text_align: 'center',
         },
         {
           value: 'Acct Name',
         },
         {
           value: 'Propensity Score',
+        },
+        {
+          value: 'New',
+          text_align: 'center',
         },
         {
           value: 'Website',
@@ -59,39 +75,41 @@ const accounts = {
       href: '',
       children: [
         {
-          value: 'a16z',
+          value: 'amschoolorg',
           select: true,
-          url: 'a16z.com',
-          text_align: 'center',
         },
         {
-          value: 'Andreessen Horowitz',
+          value: 'American School Of Tegucigalpa',
           text_align: 'left',
         },
         {
-          value: 95,
+          value: 40,
           score: true,
           text_align: 'center',
         },
         {
-          value: 'a16z.com',
-          text_align: 'left',
-        },
-        {
-          value: 'Finance > Venture Capital Private Equity & Fund Raising',
-          text_align: 'left',
-        },
-        {
-          value: 'Medium (200 - 499 Employees)',
-          text_align: 'left',
-        },
-        {
           value: '',
+          text_align: 'center',
+        },
+        {
+          value: "<a href='https://www.amschool.org' target='_blank'>amschool.org</a>",
+          text_align: 'left',
+        },
+        {
+          value: 'Education',
+          text_align: 'left',
+        },
+        {
+          value: 'Medium-Small (50 - 199 Employees)',
+          text_align: 'left',
+        },
+        {
+          value: "<div class='ellipsis_data add_ellipsis' >",
           text_align: 'left',
           html: 'left',
         },
         {
-          value: 'Risk Assessment<br>Cloud Infrastructure Entitlement Management (CIEM)<br>Risk Management Software<br>',
+          value: "<div class='ellipsis_data add_ellipsis' >Accounting<br>",
           text_align: 'left',
         },
       ],
@@ -101,13 +119,11 @@ const accounts = {
       href: '',
       children: [
         {
-          value: 'a1cu',
+          value: 'anahuacmx',
           select: true,
-          url: 'a1cu.org',
-          text_align: 'center',
         },
         {
-          value: 'AMERICAN 1 CREDIT UNION',
+          value: 'Universidad Anáhuac Puebla',
           text_align: 'left',
         },
         {
@@ -116,11 +132,59 @@ const accounts = {
           text_align: 'center',
         },
         {
-          value: 'a1cu.org',
+          value: '<div class=“c__new-account”>&#x2B50;</div>',
+          text_align: 'center',
+        },
+        {
+          value: "<a href='https://www.anahuac.mx' target='_blank'>anahuac.mx</a>",
           text_align: 'left',
         },
         {
-          value: 'Finance > Banking',
+          value: 'Education > Colleges & Universities',
+          text_align: 'left',
+        },
+        {
+          value: 'Medium (200 - 499 Employees)',
+          text_align: 'left',
+        },
+        {
+          value: "<div class='ellipsis_data add_ellipsis' >",
+          text_align: 'left',
+          html: 'left',
+        },
+        {
+          value: "<div class='ellipsis_data add_ellipsis' >401k Audit<br>",
+          text_align: 'left',
+        },
+      ],
+    },
+    {
+      type: 'row',
+      href: '',
+      children: [
+        {
+          value: 'humboldtedcr',
+          select: true,
+        },
+        {
+          value: 'Colegio Humboldt, San José, Costa Rica',
+          text_align: 'left',
+        },
+        {
+          value: 100,
+          score: true,
+          text_align: 'center',
+        },
+        {
+          value: '',
+          text_align: 'center',
+        },
+        {
+          value: "<a href='https://www.humboldt.ed.cr' target='_blank'>humboldt.ed.cr</a>",
+          text_align: 'left',
+        },
+        {
+          value: 'Education > K-12 Schools',
           text_align: 'left',
         },
         {
@@ -128,12 +192,56 @@ const accounts = {
           text_align: 'left',
         },
         {
-          value: '',
+          value: "<div class='ellipsis_data add_ellipsis' >Airbus<br>Aer Lingus<br>",
           text_align: 'left',
           html: 'left',
         },
         {
-          value: 'Vendor Privacy Risk<br>Azure AD Entitlement<br>',
+          value: "<div class='ellipsis_data add_ellipsis' >Certified Community BH Clinic (CCBHC)<br>Accounting<br>Industry Week<br>401k Audit<br>Wealth Management<br>",
+          text_align: 'left',
+        },
+      ],
+    },
+    {
+      type: 'row',
+      href: '',
+      children: [
+        {
+          value: 'saintmaryedcr',
+          select: true,
+        },
+        {
+          value: 'Saint Mary School',
+          text_align: 'left',
+        },
+        {
+          value: 25,
+          score: true,
+          text_align: 'center',
+        },
+        {
+          value: '<div class=“c__new-account”>&#x2B50;</div>',
+          text_align: 'center',
+        },
+        {
+          value: "<a href='https://www.saintmary.ed.cr' target='_blank'>saintmary.ed.cr</a>",
+          text_align: 'left',
+        },
+        {
+          value: 'Education > K-12 Schools',
+          text_align: 'left',
+        },
+        {
+          value: 'Medium-Small (50 - 199 Employees)',
+          text_align: 'left',
+        },
+        {
+          value: "<div class='ellipsis_data add_ellipsis' >Aer Lingus<br>Airbus<br>",
+          text_align: 'left',
+          html: 'left',
+        },
+        {
+          value: "<div class='ellipsis_data add_ellipsis' >Accounting<br>401k Audit<br>",
           text_align: 'left',
         },
       ],

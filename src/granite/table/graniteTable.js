@@ -1,4 +1,5 @@
-export default function graniteTable(jsonBlock) {
+function graniteTable(jsonBlock) {
+  console.log('Table: ', jsonBlock);
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -24,6 +25,12 @@ export default function graniteTable(jsonBlock) {
     white-space: ${o.wrap_text ? 'nowrap' : 'initial'};
     border-collapse: collapse;
     word-wrap:break-word;
+  }
+  /* ----------
+  Prevent browser from fitting table column into viewport
+  ---------- */
+  ${cssId} table th, td {
+    white-space: ${o.scroll_x ? 'nowrap' : 'auto'};
   }
   /* ----------
   Tooltip
@@ -257,6 +264,7 @@ export default function graniteTable(jsonBlock) {
   let scrollX = o.scroll_x || false;
   let autoWidth = o.auto_width || true;
   let columnDefs = o.column_defs || '';
+  let columnsWidth = o.columns_width || [];
   let isResponsive = o.responsive || false;
   const tableId = '#g__' + id;
   if (o.datatables) {
