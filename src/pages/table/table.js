@@ -40,33 +40,42 @@ const accounts = {
         {
           value: '',
           select: true,
+          classes: 'min-mobile',
         },
         {
           value: 'Acct Name',
+          classes: 'min-mobile',
         },
         {
           value: 'Propensity Score',
+          classes: 'min-mobile',
         },
         {
           value: 'New',
           text_align: 'center',
+          classes: 'min-mobile',
         },
         {
           value: 'Website',
+          classes: 'min-mobile',
         },
         {
           value: 'Industry',
+          classes: 'min-mobile',
         },
         {
           value: 'Company Size',
+          classes: 'min-mobile',
         },
         {
           value: 'Competitive Signals',
           title_tag: 'Competitive signals track whenever someone may be searching for this competitor. The more people searching for this signal, the higher your propensity score.',
+          classes: 'min-mobile',
         },
         {
           value: 'Adjacent Signals',
           title_tag: 'Adjacent signals track whenever someone may be searching for this topic. The more people searching for this signal, the higher your propensity score.  ',
+          classes: 'min-mobile',
         },
       ],
     },

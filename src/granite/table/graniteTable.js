@@ -1,4 +1,4 @@
-function graniteTable(jsonBlock) {
+export default function graniteTable(jsonBlock) {
   console.log('Table: ', jsonBlock);
   /*---------------------------------------------
     Global Variables
