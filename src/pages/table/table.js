@@ -97,7 +97,8 @@ const accounts = {
           text_align: 'center',
         },
         {
-          value: '',
+          value: true,
+          status_circle: true,
           text_align: 'center',
         },
         {

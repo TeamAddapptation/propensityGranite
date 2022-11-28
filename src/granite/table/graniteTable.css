@@ -527,3 +527,16 @@ input.dt-button:active:not(.disabled):hover:not(.disabled) {
   padding: 5px;
   color: #fff;
 }
+/* ----------
+  Status Indicator - Circle
+  ---------- */
+.g__status-circle {
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+  border-radius: 40px;
+  background-color: var(--neutral-100);
+}
+.g__status-circle.g__status-active {
+  background-color: var(--success);
+}

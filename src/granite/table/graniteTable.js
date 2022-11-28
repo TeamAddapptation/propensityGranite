@@ -1,5 +1,4 @@
-export default function graniteTable(jsonBlock) {
-  console.log('Table: ', jsonBlock);
+function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -25,12 +24,6 @@ export default function graniteTable(jsonBlock) {
     white-space: ${o.wrap_text ? 'nowrap' : 'initial'};
     border-collapse: collapse;
     word-wrap:break-word;
-  }
-  /* ----------
-  Prevent browser from fitting table column into viewport
-  ---------- */
-  ${cssId} table th, td {
-    white-space: ${o.scroll_x ? 'nowrap' : 'auto'};
   }
   /* ----------
   Tooltip
@@ -216,6 +209,10 @@ export default function graniteTable(jsonBlock) {
             newCell.innerHTML = '';
             status(newCell, cell);
           }
+          if (cell.status_circle) {
+            newCell.innerHTML = '';
+            circleStatusIndicator(newCell, cell);
+          }
           if (cell.status_indicator) {
             newCell.innerHTML = '';
             statusIndicator(newCell, cell);
@@ -368,7 +365,6 @@ export default function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Select
     ---------------------------------------------*/
-
   function select(newCell, cell) {
     const selectContainer = document.createElement('div');
     selectContainer.classList.add('g__select-row', 'g__select-record');
@@ -397,7 +393,6 @@ export default function graniteTable(jsonBlock) {
     newCell.appendChild(selectContainer);
     return newCell;
   }
-
   /*---------------------------------------------
     Steps
     ---------------------------------------------*/
@@ -412,7 +407,6 @@ export default function graniteTable(jsonBlock) {
     newCell.appendChild(stepContainer);
     return newCell;
   }
-
   /*---------------------------------------------
     Percent change
     ---------------------------------------------*/
@@ -438,6 +432,14 @@ export default function graniteTable(jsonBlock) {
     newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
     return newCell;
   }
+  /*---------------------------------------------
+    Circle - Status Indicator
+    ---------------------------------------------*/
+    function circleStatusIndicator(newCell, cell) {
+      newCell.classList.add('g__status-container');
+      newCell.innerHTML = `<div class="g__status-circle ${cell.value  ? 'g__status-active' : 'g__status-not-active'}"></div>`;
+      return newCell;
+    }
   /*---------------------------------------------
     Score
     ---------------------------------------------*/

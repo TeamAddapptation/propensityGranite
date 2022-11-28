@@ -1,11 +1,117 @@
 div#g__submit_cancel {
   display: flex;
-  flex-direction: row-reverse;
   gap: 1rem;
+}
+button#g__submit_btn {
+  order: 1;
 }
 button#g__cancel_btn {
   color: var(--primary);
   border: 0;
   background: 0;
   font-weight: 500;
+}
+.g__form-description{
+  font-size: 1.2rem;
+}
+fieldset:first-of-type{
+  border: 0;
+  padding: 0;
+}
+fieldset{
+  border: 1px solid var(--neutral-50);
+  border-radius: 5px;
+  padding: 25px;
+}
+.c__playbooks .g__field_info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* -------------------------------------
+Chosen Multiselect
+------------------------------------- */
+.g__picklist_multiple.g__picklist.g__custom_picklist {
+  display: flex;
+}
+.g__picklist_multiple.g__picklist.g__default_picklist {
+display: flex;
+}
+.g__picklist_multiple.g__picklist.g__default_picklist select {
+padding: 0.6rem;
+flex: 1;
+}
+.g__picklist_multiple .chosen-container {
+flex: 1;
+}
+.g__picklist_multiple .chosen-container .chosen-drop {
+border: 0;
+box-shadow: none;
+margin-top: 5px;
+}
+.g__picklist_multiple .chosen-container-multi .chosen-choices {
+border: 0;
+border-bottom: 1px solid #a1a1a1;
+background-image: none;
+background-color: #F2F2F7;
+padding: 0.3rem;
+box-shadow: none;
+border-bottom: 1px solid #D1D1D6;
+border-radius: 5px 5px 0 0;
+}
+.g__picklist_multiple .chosen-container .chosen-results {
+background: #ffffff;
+border: 0.5px solid #eaeaea;
+box-sizing: border-box;
+box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+border-radius: 3px;
+}
+.g__picklist_multiple .chosen-container .chosen-results li {
+font-family: Montserrat;
+font-style: normal;
+font-weight: 400;
+color: #5d5d5d;
+font-size: 0.9rem;
+}
+.g__picklist_multiple  .chosen-container .chosen-results li.highlighted {
+color: #5d50e6;
+background: #f3f7ff;
+}
+.g__picklist_multiple  .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 0.9rem;
+color: #757575 !important;
+border: 0 !important;
+padding: 0.5rem;
+}
+.g__picklist_multiple .chosen-container-multi .chosen-choices li.search-choice .search-choice-close {
+position: absolute;
+top: 6px;
+right: 5px;
+display: block;
+cursor: pointer;
+width: 12px;
+height: 12px;
+background: url(https://cdn.addapptation.com/addapptation/granite/chosen-sprite.png) -42px
+  1px no-repeat;
+font-size: 1px;
+}
+.g__picklist_multiple .chosen-container-multi .chosen-choices li.search-choice {
+white-space: nowrap;
+font-family: Montserrat;
+font-style: normal;
+font-weight: 500;
+font-size: 0.8rem;
+color: #3a3a3c;
+background: #fafaff;
+border-radius: 50px;
+border: 1px solid #E5E5Ea;
+padding: 5px 20px 5px 10px;
+box-shadow: none;
+transition: background 0.5s ease;
+}
+.g__picklist_multiple .chosen-container-multi .chosen-choices li.search-choice:hover {
+background: #ffffff;
 }

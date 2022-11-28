@@ -52,9 +52,9 @@ const campaign = {
       children: [
         {
           type: 'text',
-          title: 'Experience Name',
+          title: 'Campaign Name',
           name: 'Name',
-          label: 'Experience Name',
+          label: 'Campaign Name',
           id: 'Name',
           value: '',
           required: true,
@@ -96,11 +96,12 @@ const campaign = {
           required: true,
           options: audienceTypeOptions,
           placeholder: '',
-          classes: '',
+          classes: 'g__mt-15',
         },
         {
           type: 'description',
           value: 'Playbook',
+          classes: 'g__mt-25',
         },
         {
           type: 'picklist',
@@ -112,13 +113,24 @@ const campaign = {
           required: true,
           options: playbookOptions,
           placeholder: '',
-          classes: '',
+          classes: 'c__playbooks',
         },
       ],
     },
   ],
 };
 graniteForm(campaign);
+/* -------------------------------------
+  Playbooks Button
+  ------------------------------------- */
+const playbookField = document.querySelector('.c__playbooks .g__field_info');
+const playbookBtn = document.createElement('a');
+playbookBtn.href = "#";
+playbookBtn.target = '_blank';
+playbookBtn.classList.add('g__btn', 'g__btn-text');
+playbookBtn.innerText = 'Playbooks';
+playbookField.appendChild(playbookBtn);
+
 
 /* -------------------------------------
   Submit btn Classes
