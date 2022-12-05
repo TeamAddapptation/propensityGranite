@@ -1,4 +1,4 @@
-function graniteTable(jsonBlock) {
+export default function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -257,12 +257,14 @@ function graniteTable(jsonBlock) {
     ---------------------------------------------*/
   let pageLength = o.pageLength || 50;
   let defaultColumnSort = o.columnSort || [0, 'asc'];
+  let columnOrdering = o.remove_ordering ? false : true;
   let scrollY = o.scroll_y || '';
   let scrollX = o.scroll_x || false;
   let autoWidth = o.auto_width || true;
   let columnDefs = o.column_defs || '';
   let columnsWidth = o.columns_width || [];
   let isResponsive = o.responsive || false;
+  let emptyTableText = o.empty_table_text || "No data available in table";
   const tableId = '#g__' + id;
   if (o.datatables) {
     $(tableId).DataTable({
@@ -270,6 +272,7 @@ function graniteTable(jsonBlock) {
       paging: o.paging,
       pageLength: pageLength,
       order: defaultColumnSort,
+      ordering: columnOrdering,
       language: {
         search: '',
         paginate: {
@@ -284,6 +287,10 @@ function graniteTable(jsonBlock) {
       columnDefs: columnDefs,
       dom: 'Bfrtip',
       buttons: ['excelHtml5', 'csvHtml5'],
+      language: {
+        emptyTable: emptyTableText,
+        search: ""
+      }
     });
   }
   /*---------------------------------------------

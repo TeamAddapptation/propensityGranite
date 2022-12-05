@@ -1,5 +1,4 @@
-export default function graniteForm(formsBlock) {
-  console.log('Form: ', formsBlock);
+function graniteForm(formsBlock) {
   const id = formsBlock.id;
   const granite_id = formsBlock.id;
   const o = formsBlock.options;

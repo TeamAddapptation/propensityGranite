@@ -1,4 +1,4 @@
-function granitePicklist(jsonBlock) {
+export default function granitePicklist(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/

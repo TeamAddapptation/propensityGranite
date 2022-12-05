@@ -11,6 +11,7 @@ const accounts = {
     searching: true,
     paging: false,
     page_length: 2,
+    remove_ordering: false,
     fixed: false,
     responsive: true,
     scroll_x: true,
@@ -18,6 +19,7 @@ const accounts = {
     auto_width: false,
     wrap_text: true,
     column_defs: [{ responsivePriority: 1, targets: 1 }],
+    empty_table_text: `<div class="g__empty-icon">&#x1F465;</div><h3>No Audience Selected</h3><p>Go to Campaign Details to Select or Build an Audience</p>`
     // type: 'table',
     // fixed: false,
     // columnSort: [4, 'desc'],

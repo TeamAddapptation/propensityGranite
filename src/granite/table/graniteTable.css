@@ -57,6 +57,32 @@ table tbody tr td {
   border-radius: 5px;
 }
 /* ----------
+  Empty Table
+  ---------- */
+.dataTables_empty{
+  background-color: var(--primary-50);
+  height: 300px;
+}
+.dataTables_empty .g__empty-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  background-color: #ffffff;
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  border: 1px solid #EAEAEA;
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+.dataTables_empty h3{
+  color: var(--primary);
+}
+.dataTables_empty p{
+  color: var(--neutral-500);
+}
+/* ----------
   Row Score Color
   ---------- */
 
@@ -375,6 +401,7 @@ table.dataTable thead .sorting_desc:after {
 /* ----------
   Responsive
   ---------- */
+
 table tr.child td.child {
   background-color: var(--primary-10);
 }

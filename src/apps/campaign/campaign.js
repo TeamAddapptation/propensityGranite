@@ -1,4 +1,6 @@
 import './campaign.css';
+import graniteSubNavigation from '../../granite/navigation/subNavigation';
+import '../../granite/navigation/subNavigation.css';
 import graniteTable from '../../granite/table/graniteTable';
 import '../../granite/table/graniteTable.css';
 import graniteTabs from '../../granite/tabs/graniteTabs';
@@ -269,4 +271,10 @@ try {
   granitePicklist(filterSignal);
 } catch (error) {
   console.error(error);
+}
+
+try{
+  graniteSubNavigation()
+} catch(error){
+  console.log(error)
 }
