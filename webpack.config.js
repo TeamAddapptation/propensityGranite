@@ -7,6 +7,7 @@ module.exports = {
     form: path.resolve(__dirname, './src/pages/form/form.js'),
     table: path.resolve(__dirname, './src/pages/table/table.js'),
     tabs: path.resolve(__dirname, './src/pages/tabs/tabs.js'),
+    checklist: path.resolve(__dirname, './src/pages/checklist/checklist.js'),
     // AUTH
     signIn: path.resolve(__dirname, './src/platform/auth/signIn/signIn.js'),
     forgotPassword: path.resolve(__dirname, './src/platform/auth/forgotPassword/forgotPassword.js'),
@@ -57,6 +58,12 @@ module.exports = {
       inject: 'body',
       template: './src/pages/tabs/tabs.html',
       chunks: ['main', 'tabs'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'checklist.html',
+      inject: 'body',
+      template: './src/pages/checklist/checklist.html',
+      chunks: ['main', 'checklist'],
     }),
     // AUTH
     new HtmlWebpackPlugin({
