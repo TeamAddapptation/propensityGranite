@@ -11,7 +11,8 @@ const checkListDemo = {
       title: "Select Playbook",
       desc: "Lorem ipsum dolor sit amet consectetur. Nunc nunc ipsum sapien ac mattis egestas nibh cursus adipiscing. Id enim eget vitae mauris. Elementum enim vulputate sollicitudin feugiat tincidunt neque. Convallis ut nibh lacus ornare faucibus a. Morbi aliquet leo dignissim praesent. Sollicitudin sed pellentesque turpis sed ullamcorper euismod id ultrices.",
       btn_text: "Update Playbook",
-      href: "#"
+      href: "#",
+      thumbnail_img: "https://cdn.addapptation.com/addapptation-customer-assets/propensity/propensity-dashboard/5_steps_always_on_abm_thumbnail.png",
     },
     {
       status: "In Progress",

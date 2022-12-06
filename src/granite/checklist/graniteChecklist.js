@@ -1,4 +1,4 @@
-export default function graniteChecklist(jsonBlock) {
+function graniteChecklist(jsonBlock) {
   /*---------------------------------------------
   Global Variables
   ---------------------------------------------*/
@@ -69,15 +69,24 @@ export default function graniteChecklist(jsonBlock) {
     checkBtn.innerHTML = r.btn_text;
     checkContent.appendChild(checkBtn);
   }
-    
-    const checkThumbnail = document.createElement('div');
+  if(r.thumbnail_img){
+    const checkThumbnail = document.createElement('a');
+    checkThumbnail.href = r.thumbnail_url;
+    checkThumbnail.target = "_blank";
     checkThumbnail.classList.add('g__check-thumbnail');
     checkItem.appendChild(checkThumbnail);
+
+    const thumbnailImg = document.createElement('img');
+    thumbnailImg.classList.add('g__thumbnail-img');
+    thumbnailImg.src = r.thumbnail_img;
+    checkThumbnail.appendChild(thumbnailImg);
 
     const playBtn = document.createElement('div');
     playBtn.classList.add('g__check-play-btn');
     playBtn.innerHTML = `<i class="fas fa-play"></i>`;
     checkThumbnail.appendChild(playBtn);
+  }
+    
 
     checkWrapper.appendChild(checkItem);
   })
