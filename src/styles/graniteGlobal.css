@@ -473,6 +473,8 @@ Max Width
 /*--------------------
 Buttons
 -------------------- */
+button:focus {outline:0;}
+
 [type='button']:not(:disabled),
 [type='reset']:not(:disabled),
 [type='submit']:not(:disabled),
@@ -498,6 +500,7 @@ button:not(:disabled) {
   padding: 0.275rem 2.125rem;
   margin: 0;
   font-size: 0.9rem;
+  white-space: nowrap;
   border-radius: 5rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -607,16 +610,34 @@ Text
 Success
 ---------- */
 .g__btn.g__btn-success {
-  color: var(--success-800);
-  background-color: var(--success-100);
-  border-color: var(--success-100);
-}
-.g__btn.g__btn-success:hover {
   color: #ffffff;
   background-color: var(--success);
   border-color: var(--success);
 }
+.g__btn.g__btn-success:hover {
+  color: var(--success-800);
+  background-color: var(--success-100);
+  border-color: var(--success-100);
+}
 .g__btn.g__btn-success:active {
+  color: #ffffff;
+  background-color: var(--success-700);
+  border-color: var(--success-700);
+}
+/*----------
+Success - Light
+---------- */
+.g__btn.g__btn-success-light {
+  color: var(--success-800);
+  background-color: var(--success-100);
+  border-color: var(--success-100);
+}
+.g__btn.g__btn-success-light:hover {
+  color: #ffffff;
+  background-color: var(--success);
+  border-color: var(--success);
+}
+.g__btn.g__btn-success-light:active {
   color: #ffffff;
   background-color: var(--success-700);
   border-color: var(--success-700);
@@ -635,6 +656,24 @@ Danger
   border-color: var(--danger);
 }
 .g__btn.g__btn-danger:active {
+  color: #ffffff;
+  background-color: var(--danger-700);
+  border-color: var(--danger-700);
+}
+/*----------
+Danger - light
+---------- */
+.g__btn.g__btn-danger-light {
+  color: var(--danger-700);
+  background-color: var(--danger-50);
+  border-color: var(--danger-50);
+}
+.g__btn.g__btn-danger-light:hover {
+  color: #ffffff;
+  background-color: var(--danger);
+  border-color: var(--danger);
+}
+.g__btn.g__btn-danger-light:active {
   color: #ffffff;
   background-color: var(--danger-700);
   border-color: var(--danger-700);
@@ -735,9 +774,11 @@ Image
 }
 .g__btn.g__btn-img-left img {
   margin-right: 0.5rem;
+  max-width: 20px;
 }
 .g__btn.g__btn-img-right img {
   margin-left: 0.5rem;
+  max-width: 20px;
 }
 /*--------------------
 Btn Utility
@@ -788,6 +829,9 @@ Padding
 .g__pl-25 {
   padding-left: 25px;
 }
+.g__pl-50 {
+  padding-left: 50px;
+}
 /* ------ Left Right ----- */
 .g__plr-5 {
   padding-left: 5px;
@@ -808,6 +852,10 @@ Padding
 .g__plr-25 {
   padding-left: 25px;
   padding-right: 25px;
+}
+.g__plr-50 {
+  padding-left: 50px;
+  padding-right: 50px;
 }
 /* ------ Top Bottom ----- */
 .g__ptb-5 {
@@ -974,7 +1022,7 @@ progress::-webkit-progress-bar {
 }
 progress::-webkit-progress-value {
   background-color: var(--primary);
-  border-radius: 7px;
+  border-radius: 5px 0 0 5px;
 }
 /* --------------------
 Utilities

@@ -65,6 +65,7 @@ function graniteChecklist(jsonBlock) {
   if(r.href){
     const checkBtn = document.createElement('a');
     checkBtn.href = r.href;
+    checkBtn.target = "_blank";
     checkBtn.classList.add('g__btn', 'g__btn-neutral', 'g__btn-sm', 'g__mt-15');
     checkBtn.innerHTML = r.btn_text;
     checkContent.appendChild(checkBtn);

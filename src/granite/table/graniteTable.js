@@ -1,4 +1,4 @@
-export default function graniteTable(jsonBlock) {
+function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -260,7 +260,8 @@ export default function graniteTable(jsonBlock) {
   let columnOrdering = o.remove_ordering ? false : true;
   let scrollY = o.scroll_y || '';
   let scrollX = o.scroll_x || false;
-  let autoWidth = o.auto_width || true;
+  // let autoWidth = o.auto_width || true;
+  let autoWidth = o.auto_width;
   let columnDefs = o.column_defs || '';
   let columnsWidth = o.columns_width || [];
   let isResponsive = o.responsive || false;

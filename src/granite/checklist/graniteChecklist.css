@@ -96,5 +96,6 @@ Status
   background-color: var(--success);
 }
 .g__check-status.g__completed i{
+  margin-top: 1px;
   color: #ffffff;
 }

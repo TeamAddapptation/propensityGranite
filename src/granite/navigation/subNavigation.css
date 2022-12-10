@@ -50,7 +50,7 @@ Right Content
 .g__subNav-item .g__subNav-link.active{
     background-color: var(--primary);
 }
-@media (max-width: 992px) { 
+@media (max-width: 928px) { 
     .g__subNav-container {
         flex-direction: column;
     }
