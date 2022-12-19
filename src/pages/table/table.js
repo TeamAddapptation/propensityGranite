@@ -20,19 +20,6 @@ const accounts = {
     wrap_text: true,
     column_defs: [{ responsivePriority: 1, targets: 1 }],
     empty_table_text: `<div class="g__empty-icon">&#x1F465;</div><h3>No Audience Selected</h3><p>Go to Campaign Details to Select or Build an Audience</p>`
-    // type: 'table',
-    // fixed: false,
-    // columnSort: [4, 'desc'],
-    // datatables: true,
-    // searching: true,
-    // paging: true,
-    // pageLength: 25,
-    // scroll_x: false,
-    // scroll_y: '',
-    // auto_width: true,
-    // wrap_text: false,
-    // responsive: true,
-    // column_defs: [{ width: '400px', responsivePriority: 1, targets: 1 }, { width: '100px' }, { width: '250px' }],
   },
   records: [
     {

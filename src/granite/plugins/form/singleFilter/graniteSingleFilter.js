@@ -1,4 +1,4 @@
-export default function graniteSingleFilter(fieldId, name, data) {
+function graniteSingleFilter(fieldId, name, data) {
   let selectedArr = [];
 
   const filtersContainer = document.createElement('div');
@@ -152,7 +152,7 @@ export default function graniteSingleFilter(fieldId, name, data) {
   }
 
   function inputHandler(selectedArr) {
-    finalInput.setAttribute('value', selectedArr.join());
+    finalInput.setAttribute('value', selectedArr.join(";"));
   }
 
   // Validation Error

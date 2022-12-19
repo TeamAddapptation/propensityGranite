@@ -1,0 +1,19 @@
+th, td { white-space: nowrap; }
+td .dtr-details{
+  white-space: normal;
+}
+
+.add_ellipsis {
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+}
+
+.remove_ellipsis {
+  white-space: normal; 
+  overflow: visible; 
+  text-overflow: clip;
+}

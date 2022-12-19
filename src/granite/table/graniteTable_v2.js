@@ -1,70 +1,23 @@
-function graniteTable(jsonBlock) {
+export default function graniteTable_v2(jsonBlock) {
   /*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
-  
   const id = jsonBlock.id;
   const o = jsonBlock.options;
   const r = jsonBlock.records;
   const cssId = '#' + id;
   let columnCount = 0;
   const graniteDiv = document.getElementById(id);
-  console.log("Records: ",  r)
   /*---------------------------------------------
     Empty the Div
     ---------------------------------------------*/
   graniteDiv.innerHTML = '';
   /*---------------------------------------------
-    CSS
-    ---------------------------------------------*/
+  CSS
+  ---------------------------------------------*/
   var tableCss = document.createElement('style');
   tableCss.id = 'g__css_' + id;
   tableCss.innerHTML = `
-  ${cssId} table {
-    width: 100% !important;
-    table-layout: ${o.fixed ? 'fixed' : 'auto'};
-    white-space: ${o.wrap_text ? 'nowrap' : 'initial'};
-    border-collapse: collapse;
-    word-wrap:break-word;
-  }
-  /* ----------
-  Tooltip
-  ---------- */
-  ${cssId} .g__tooltip-cell .g__tooltip-container{
-    position: absolute;
-    display: none;
-    top: 95%;
-    left: 0;
-    width: 225px;
-    z-index: 5;
-    background: #ffffff;
-    border: 1px solid #EAEAEA;
-    box-sizing: border-box;
-    border-radius: 5px;
-    padding: 15px;
-  }
-  ${cssId} .g__tooltip-cell:hover .g__tooltip-container{
-    display: block;
-  }
-  ${cssId} .g__tooltip-container ul{
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  ${cssId} .g__tooltip-container ul li{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 1rem;
-    font-size: 0.8rem;
-  }
-  ${cssId} .g__tooltip-container ul li .g__tooltip-stat{
-    display: grid;
-    justify-items: start;
-  }
-  ${cssId} .g__tooltip-container ul li .g__tooltip-num{
-    display: grid;
-    justify-items: end;
-  }
   /* ----------
   Utility
   ---------- */
@@ -77,26 +30,18 @@ function graniteTable(jsonBlock) {
   ${cssId} .g__text-right{
     text-align: right;
   }
-  /* ----------
-  Status
-  ---------- */
-  ${cssId} .g__active{
-    color: var(--dark-green);
-  }
-
   @media (max-width: 767.98px) {
     ${cssId} table {
+      width: 100% !important;
       white-space: initial;
     }
   }
-
-  `;
+    `;
   let granite_css = document.getElementById('g__css_' + id);
   if (granite_css) {
     granite_css.remove();
   }
   document.head.appendChild(tableCss);
-
   /*---------------------------------------------
     Main Build
     ---------------------------------------------*/
@@ -152,7 +97,6 @@ function graniteTable(jsonBlock) {
         break;
       case 'row':
         let newRow = tbody.insertRow();
-        newRow.setAttribute('g__row', index);
         newRow.classList.add('order');
         newRow.classList.add('g__table-row');
         if (row.href) {
@@ -161,7 +105,6 @@ function graniteTable(jsonBlock) {
         }
         row.children.forEach((cell, index) => {
           let newCell = document.createElement('td');
-          cell.width ? (newCell.style.width = cell.width) : 'auto';
           newCell.innerHTML = cell.value;
           if (cell.classes) {
             newCell.classList.add(cell.classes);
@@ -238,6 +181,11 @@ function graniteTable(jsonBlock) {
                 newCell.classList.add('g__text-left');
             }
           }
+          // if(cell.restrict_height){
+          //   const heightContainer = document.createElement('div');
+          //   heightContainer.classList.add('g__overflow-data')
+          //   console.log(newCell.outerText);
+          // }
 
           newRow.appendChild(newCell);
         });
@@ -257,44 +205,34 @@ function graniteTable(jsonBlock) {
   /*---------------------------------------------
     Datatable.js
     ---------------------------------------------*/
-  let pageLength = o.pageLength || 50;
-  let defaultColumnSort = o.columnSort || [0, 'asc'];
-  let columnOrdering = o.remove_ordering ? false : true;
-  let scrollY = o.scroll_y || '';
-  let scrollX = o.scroll_x || false;
-  // let autoWidth = o.auto_width || true;
-  let autoWidth = o.auto_width;
-  let columnDefs = o.column_defs || '';
-  let columnsWidth = o.columns_width || [];
-  let isResponsive = o.responsive || false;
-  let emptyTableText = o.empty_table_text || "No data available in table";
   const tableId = '#g__' + id;
+  let emptyTableText = o.empty_table_text || "No data available in table";
   if (o.datatables) {
-    $(tableId).DataTable({
-      searching: o.searching,
+    const table = $(tableId).DataTable({
+      //paging
       paging: o.paging,
-      pageLength: pageLength,
-      order: defaultColumnSort,
-      ordering: columnOrdering,
-      language: {
-        search: '',
-        paginate: {
-          previous: "<i class='far fa-chevron-left'></i>",
-          next: "<i class='far fa-chevron-right'></i>",
-        },
-      },
-      scrollX: scrollX,
-      scrollY: scrollY,
-      responsive: isResponsive,
-      autoWidth: autoWidth,
-      columnDefs: columnDefs,
+      pageLength: o.page_length,
+      //column sort
+      order: o.column_sort,
+      // Remove search bar
+      searching: o.searching, 
+      // Export buttons array
       dom: 'Bfrtip',
-      buttons: ['excelHtml5', 'csvHtml5'],
+      buttons: o.export_btns, 
+      // Vertical and horizontal scroll
+      scrollX: o.scroll_x,
+      scrollY: o.scroll_y,
+      scrollCollapse: o.scroll_collapse,
+      //responsive
+      responsive: o.responsive,
+      columnDefs: o.column_widths,
+      autoWidth: o.auto_width,
       language: {
         emptyTable: emptyTableText,
         search: ""
       }
     });
+    table.columns.adjust().draw();
   }
   /*---------------------------------------------
     Toggle Row

@@ -6,6 +6,7 @@ module.exports = {
     main: path.resolve(__dirname, './src/app.js'),
     form: path.resolve(__dirname, './src/pages/form/form.js'),
     table: path.resolve(__dirname, './src/pages/table/table.js'),
+    tableFrame: path.resolve(__dirname, './src/pages/tableFrame/tableFrame.js'),
     tabs: path.resolve(__dirname, './src/pages/tabs/tabs.js'),
     checklist: path.resolve(__dirname, './src/pages/checklist/checklist.js'),
     // AUTH
@@ -52,6 +53,12 @@ module.exports = {
       inject: 'body',
       template: './src/pages/table/table.html',
       chunks: ['main', 'table'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'tableFrame.html',
+      inject: 'body',
+      template: './src/pages/tableFrame/tableFrame.html',
+      chunks: ['main', 'tableFrame'],
     }),
     new HtmlWebpackPlugin({
       filename: 'tabs.html',
