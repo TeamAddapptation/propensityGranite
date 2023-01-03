@@ -1,4 +1,4 @@
-function graniteForm(formsBlock) {
+export default function graniteForm(formsBlock) {
   const id = formsBlock.id;
   const granite_id = formsBlock.id;
   const o = formsBlock.options;
@@ -1131,7 +1131,8 @@ function graniteForm(formsBlock) {
     }
   }
   /* -------------------- checkbox ----------------------*/
-  let all_checkboxes = granite_div.querySelectorAll('.g__field_checkbox, .g__field_boolean');
+  let all_checkboxes = granite_div.querySelectorAll('.g__field_checkbox, .g__field_boolean, .g__field-checkbox');
+  console.log(all_checkboxes);
   if (all_checkboxes.length) {
     all_checkboxes.forEach((field) => {
       field.addEventListener('change', (e) => {

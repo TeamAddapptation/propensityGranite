@@ -1,6 +1,6 @@
-// import { themes, categories, limitedTopics } from '../../../../demoContent/topicData';
-// import intentTopics from '../../../../demoContent/json/intentTopics_v4.json';
-function relevantTopics(selArr) {
+import { themes, categories, limitedTopics } from '../../../../demoContent/topicData';
+import intentTopics from '../../../../demoContent/json/intentTopics_v4.json';
+export default function relevantTopics(selArr) {
   /* --------------------
   Global Variables
   -------------------- */
@@ -302,7 +302,7 @@ function relevantTopics(selArr) {
   function removeItemHandler(selectedItem) {
     const itemsArr = document.querySelectorAll(`.g__rt-topic-item`);
     const deleteId = selectedItem.getAttribute('data-id');
-    console.log(selectedTopicsArr);
+    console.log("Delete ID: ", deleteId);
     selectedTopicsArr = selectedTopicsArr.filter(function (topic) {
       return topic.Topic_ID !== parseInt(deleteId);
     });

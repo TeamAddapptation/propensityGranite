@@ -1,5 +1,5 @@
-// import { limitedCompetitors, competitors } from '../../../../demoContent/topicData';
-function competitiveTopics(selArr) {
+import { limitedCompetitors, competitors } from '../../../../demoContent/topicData';
+export default function competitiveTopics(selArr) {
   /* --------------------
   Global Variables
   -------------------- */

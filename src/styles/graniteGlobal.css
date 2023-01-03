@@ -236,6 +236,26 @@ Font colors
 }
 
 /* --------------------
+Lists
+-------------------- */
+.g__ul{
+  margin-left: 1.7rem;
+}
+.g__ul li{
+  color: var(--neutral-500);
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  line-height: 1.3rem;
+}
+/* --------------------
+Images
+-------------------- */
+.g__img{
+  width: 100%;
+  height: auto;
+}
+/* --------------------
 Layout - Grid
 -------------------- */
 main.g__main {
@@ -454,6 +474,21 @@ Max Width
 -------------------- */
 .g__100-percent {
   width: 100%;
+}
+.g__max-300 {
+  max-width: 300px;
+}
+.g__max-350 {
+  max-width: 350px;
+}
+.g__max-400 {
+  max-width: 400px;
+}
+.g__max-450 {
+  max-width: 450px;
+}
+.g__max-500 {
+  max-width: 500px;
 }
 .g__max-550 {
   max-width: 550px;
