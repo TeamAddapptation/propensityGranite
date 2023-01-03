@@ -201,9 +201,11 @@ export default function competitiveTopics(selArr) {
   function removeItemHandler(selectedItem) {
     const itemsArr = document.querySelectorAll(`.g__ct-topic-item`);
     const deleteId = selectedItem.getAttribute('data-id');
+    console.log("Selected Arr Before: ", selectedTopicsArr)
     selectedTopicsArr = selectedTopicsArr.filter(function (topic) {
-      return topic.id !== deleteId;
+      return parseInt(topic.Topic_ID) !== parseInt(deleteId);
     });
+    console.log("Selected Arr: ", selectedTopicsArr)
     itemsArr.forEach((item) => {
       const id = item.getAttribute('data-id');
       if (id == deleteId) {
@@ -215,7 +217,8 @@ export default function competitiveTopics(selArr) {
     });
     const inputArr = [];
     selectedTopicsArr.forEach((topic) => {
-      inputArr.push(topic.id);
+      console.log(topic)
+      inputArr.push(topic.Topic_ID);
     });
     finalInput.setAttribute('value', inputArr.join());
     selectedItem.remove();

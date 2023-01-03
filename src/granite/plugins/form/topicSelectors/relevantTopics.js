@@ -302,9 +302,11 @@ export default function relevantTopics(selArr) {
   function removeItemHandler(selectedItem) {
     const itemsArr = document.querySelectorAll(`.g__rt-topic-item`);
     const deleteId = selectedItem.getAttribute('data-id');
-    console.log("Delete ID: ", deleteId);
+    console.log(deleteId);
     selectedTopicsArr = selectedTopicsArr.filter(function (topic) {
-      return topic.Topic_ID !== parseInt(deleteId);
+      console.log("Topic ID: ", topic.Topic_ID);
+      console.log("Delete ID: ", parseInt(deleteId));
+      return parseInt(topic.Topic_ID) !== parseInt(deleteId);
     });
     console.log(selectedTopicsArr);
     itemsArr.forEach((item) => {
