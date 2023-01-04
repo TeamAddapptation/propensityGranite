@@ -925,6 +925,14 @@ Padding
   padding-top: 25px;
   padding-bottom: 25px;
 }
+.g__ptb-30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.g__ptb-35 {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
 
 /* --------------------
 Margin
