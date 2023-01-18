@@ -1,6 +1,6 @@
-import { themes, categories, limitedTopics } from '../../../../demoContent/topicData';
-import intentTopics from '../../../../demoContent/json/intentTopics_v4.json';
-export default function relevantTopics(selArr) {
+//import { themes, categories, limitedTopics } from '../../../../demoContent/topicData';
+//import intentTopics from '../../../../demoContent/json/intentTopics_v4.json';
+function relevantTopics(selArr) {
   /* --------------------
   Global Variables
   -------------------- */
@@ -65,18 +65,51 @@ export default function relevantTopics(selArr) {
   /* --------------------
   Search Listener
   -------------------- */
-  search.addEventListener('input', (e) => {
+  function delay(callback, ms) {
+    var timer = 0;
+    return function() {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+  }
+  search.addEventListener('input',delay((e) => {
     e.preventDefault();
-    const searchTopicsArr = [];
-    const searchValue = e.target.value.toUpperCase();
-    intentTopics.forEach((topic) => {
-      if (topic.Topic_Name.toUpperCase().indexOf(searchValue) > -1) {
-        const addTopic = { Topic_ID: topic.Topic_ID, Topic_Name: topic.Topic_Name };
-        searchTopicsArr.push(addTopic);
-      }
-    });
-    updateTopicListHandler(searchTopicsArr);
-  });
+    // const searchTopicsArr = [];
+    // const searchValue = e.target.value.toUpperCase();
+    // intentTopics.forEach((topic) => {
+    //   if (topic.Topic_Name.toUpperCase().indexOf(searchValue) > -1) {
+    //     const addTopic = { Topic_ID: topic.Topic_ID, Topic_Name: topic.Topic_Name };
+    //     searchTopicsArr.push(addTopic);
+    //   }
+    // });
+    // updateTopicListHandler(searchTopicsArr);
+    searchHandler(e.target.value, "adjacent_signals");
+
+    function searchHandler(search_value, signal_type) {
+      console.log('Time elapsed!', search_value);
+      show_loader();
+      $('.'+signal_type+'_search_results').remove();
+      $.ajax({
+        type: "POST", 
+        data: {search_value: search_value, signal_type: signal_type},
+        url: "/get_intent_signals",
+        success: function(results){
+          console.log("Results: ", results)
+          updateTopicListHandler(results);
+          hide_loader();
+        },
+        error: function(error){
+          toastr.error("No matching signals found");
+          console.log(error)
+          hide_loader();
+        }
+      })
+    }
+
+  }, 900));
   /* --------------------
   Theme Filter
   -------------------- */

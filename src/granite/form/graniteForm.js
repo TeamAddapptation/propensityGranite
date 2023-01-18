@@ -1,5 +1,5 @@
-export default function graniteForm(formsBlock) {
-  const id = formsBlock.id;
+function graniteForm(formsBlock) {
+    const id = formsBlock.id;
   const granite_id = formsBlock.id;
   const o = formsBlock.options;
   const r = formsBlock.records;
@@ -10,7 +10,6 @@ export default function graniteForm(formsBlock) {
   const method = o.method || 'POST';
   const enctype = o.enctype || 'application/x-www-form-urlencoded';
   const aceFields = [];
-  console.log('granite ID', granite_id);
   /* -------------------- Check Alignment & Set Mode ----------------------*/
   let granite_div = document.getElementById(id);
   if (granite_div === null) {
@@ -25,6 +24,7 @@ export default function graniteForm(formsBlock) {
       max-width:${o.max_width || '100%'};
     }`;
   let granite_css = document.getElementById('g__css_' + id);
+
   if (granite_css) {
     granite_css.remove();
   }
@@ -282,7 +282,6 @@ export default function graniteForm(formsBlock) {
         form_field.appendChild(check_container);
         form_field.appendChild(error_field);
         break;
-        break;
       case 'color':
         form_field.appendChild(addLabels(field_info_container, r));
         let color_container = document.createElement('div');
@@ -497,6 +496,7 @@ export default function graniteForm(formsBlock) {
         //Append the parent elements
         num_container.appendChild(input);
         num_container.appendChild(num_counter);
+
         form_field.appendChild(num_container);
         form_field.appendChild(error_field);
         break;
@@ -522,7 +522,6 @@ export default function graniteForm(formsBlock) {
       case 'picklist':
         form_field.appendChild(addLabels(field_info_container, r));
         let picklist_options = !!r.options ? r.options : ['option 1', 'option 2'];
-        console.log('Record', r);
         let picklist_double_arr = Array.isArray(picklist_options) && Array.isArray(picklist_options[0]);
         input = document.createElement('div');
         if (String(r.multiple) === 'true') {
@@ -887,6 +886,7 @@ export default function graniteForm(formsBlock) {
       submit.setAttribute('id', 'g__submit_btn');
       submit.setAttribute('type', 'submit');
       o.submit_classes ? submit.setAttribute('class', o.submit_classes) : '';
+      console.log(o.submit_classes);
       o.show_loader ? submit.classList.add('show_loader') : '';
       submit.innerHTML = o.submit_label || 'Submit';
       button_container.appendChild(submit);
@@ -1132,7 +1132,6 @@ export default function graniteForm(formsBlock) {
   }
   /* -------------------- checkbox ----------------------*/
   let all_checkboxes = granite_div.querySelectorAll('.g__field_checkbox, .g__field_boolean, .g__field-checkbox');
-  console.log(all_checkboxes);
   if (all_checkboxes.length) {
     all_checkboxes.forEach((field) => {
       field.addEventListener('change', (e) => {

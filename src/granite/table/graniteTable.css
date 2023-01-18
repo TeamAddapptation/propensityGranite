@@ -56,11 +56,14 @@ table tbody tr td {
   height: auto;
   border-radius: 5px;
 }
+.dataTables_wrapper.no-footer .dataTables_scrollBody{
+  border-bottom: 0;
+}
 /* ----------
   Scrollbar
   ---------- */
   .dataTables_scroll .dataTables_scrollBody::-webkit-scrollbar{
-    height: 6px;
+    height: 8px;
   }
   .dataTables_scroll .dataTables_scrollBody::-webkit-scrollbar-thumb{
     background-color: var(--neutral-100);
@@ -590,6 +593,13 @@ input.dt-button:active:not(.disabled):hover:not(.disabled) {
 .g__status-indicator.g__status-active i {
   padding: 5px;
   color: #fff;
+}
+.g__status-indicator.g__status-in-progress {
+  background-color: var(--warning);
+}
+.g__status-indicator.g__status-in-progress i {
+  padding: 5px;
+  color: var(--warning);
 }
 /* ----------
   Status Indicator - Circle

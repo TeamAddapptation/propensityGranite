@@ -588,7 +588,8 @@ Primary
   background-color: var(--primary-600);
   border-color: var(--primary-600);
 }
-.g__btn.g__btn-primary:disabled {
+.g__btn.g__btn-primary:disabled,
+.g__btn.g__btn-primary[disabled] {
   color: #fff;
   background-color: var(--primary-300);
   border-color: var(--primary-300);
@@ -610,6 +611,12 @@ Secondary
   color: var(--neutral-0);
   background-color: var(--primary);
   border-color: var(--primary);
+}
+.g__btn.g__btn-secondary:disabled,
+.g__btn.g__btn-secondary[disabled] {
+  color: var(--primary-100);
+  background-color: var(--primary-50);
+  border-color: var(--primary-50);
 }
 /*----------
 Line
@@ -903,6 +910,28 @@ Padding
 .g__plr-50 {
   padding-left: 50px;
   padding-right: 50px;
+}
+/* ------ Top ----- */
+.g__pt-5 {
+  padding-top: 5px;
+}
+.g__pt-10 {
+  padding-top: 10px;
+}
+.g__pt-15 {
+  padding-top: 15px;
+}
+.g__pt-20 {
+  padding-top: 20px;;
+}
+.g__pt-25 {
+  padding-top: 25px;
+}
+.g__pt-30 {
+  padding-top: 30px;
+}
+.g__pt-35 {
+  padding-top: 35px;
 }
 /* ------ Top Bottom ----- */
 .g__ptb-5 {

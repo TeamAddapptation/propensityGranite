@@ -211,6 +211,7 @@ Competitive Topics
 .g__ct-header {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 }
 .g__ct-top {
   display: flex;

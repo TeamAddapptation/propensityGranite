@@ -214,6 +214,7 @@ function graniteTable_v2(jsonBlock) {
       pageLength: o.page_length,
       //column sort
       order: o.column_sort,
+      ordering: o.column_ordering,
       // Remove search bar
       searching: o.searching, 
       // Export buttons array
@@ -377,7 +378,8 @@ function graniteTable_v2(jsonBlock) {
     ---------------------------------------------*/
   function statusIndicator(newCell, cell) {
     newCell.classList.add('g__status-container');
-    newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
+    // newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
+    newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : cell.value === 'in progress' ? 'g__status-in-progress' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
     return newCell;
   }
   /*---------------------------------------------

@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-
 module.exports = {
   entry: {
     main: path.resolve(__dirname, './src/app.js'),
@@ -25,6 +24,7 @@ module.exports = {
     accountSummary: path.resolve(__dirname, './src/apps/accountSummary/accountSummary.js'),
     campaign: path.resolve(__dirname, './src/apps/campaign/campaign.js'),
     newExperience: path.resolve(__dirname, './src/apps/newExperience/newExperience.js'),
+    adBuilder: path.resolve(__dirname, './src/apps/adBuilder/adBuilder.js'),
     // PLAYGROUND
     components: path.resolve(__dirname, './src/playground/components/components.js'),
   },
@@ -158,6 +158,12 @@ module.exports = {
       inject: 'body',
       template: './src/apps/newExperience/newExperience.html',
       chunks: ['main', 'newExperience'],
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'adBuilder.html',
+      inject: 'body',
+      template: './src/apps/adBuilder/adBuilder.html',
+      chunks: ['main', 'adBuilder'],
     }),
     // PLAYGROUND
     new HtmlWebpackPlugin({

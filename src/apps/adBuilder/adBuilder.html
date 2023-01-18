@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.css" />
+    <!--- Chosen.js -->
+<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-stylesheets/chosen.css"/>
+  </head>
+
+  <body style="background: var(--neutral-10)">
+    <main class="g__main g__p-25 g__m-p-15 g__gap-1">
+      <!-- Campaign Overview -->
+      <section class="g__container">
+        <div class="g__row">
+          <div class="g__col">
+            <h4 class="c__showing-accounts g__weight-700 g__m-0">Ad Builder</h4>
+          </div>
+          <div class="g__col g__flex-3 g__m-flex-column g__justify-end g__align-center g__gap-1 g__m-justify-end">
+            <a href="#" class='g__btn g__btn-text'>Cancel</a>
+            <button type="submit" class="g__btn g__btn-primary g__btn-sm" form="propensity-assessment">Save</button>
+          </div>
+      </section>
+      <section>
+        <div class="g__row">
+          <div class="g__col">
+            <canvas id="canvas" width="400" height="300">
+              This text is displayed if your browser does not support HTML5 Canvas.
+            </canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='https://cdn.addapptation.com/addapptation-stylesheets/chosen.jquery.min.js'></script>
+    <script src="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation/granite/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation/granite/jszip.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation/granite/buttons.html5.min.js"></script>
+    <script src="https://kit.fontawesome.com/58afd790b4.js" crossorigin="anonymous"></script>
+  </body>
+</html>

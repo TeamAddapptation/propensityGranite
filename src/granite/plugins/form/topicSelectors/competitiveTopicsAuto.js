@@ -1,5 +1,5 @@
-//import { limitedCompetitors, competitors } from '../../../../demoContent/topicData';
-function competitiveTopics(selArr) {
+// import { limitedCompetitors, competitors } from '../../../../demoContent/topicData';
+function competitiveTopicsAuto(selArr) {
   /* --------------------
   Global Variables
   -------------------- */
@@ -30,27 +30,12 @@ function competitiveTopics(selArr) {
   header.appendChild(headerTop);
 
   const heading = document.createElement('h5');
-  heading.innerText = 'Competitors You Want to Track';
+  heading.innerText = 'Recommended Competitors';
   headerTop.appendChild(heading);
   
   const desc = document.createElement('p');
-  desc.innerText = '(these will appear as competitive signals in your results)';
-  header.appendChild(desc);
-
-  const recommendedList = document.createElement('a');
-  recommendedList.classList.add('g__btn', 'g__btn-secondary', 'g__btn-sm', 'a__side_pane_link', 'g__find-competitors', 'g__mb-10');
-  recommendedList.href = '/recommended_competitors';
-  recommendedList.innerText = 'Find Recommended Competitors +';
-  header.appendChild(recommendedList);
-
-  const fullListLink = document.createElement('a');
-  fullListLink.classList.add('g__btn', 'g__btn-text');
-  fullListLink.href = '/companies_table';
-  fullListLink.target = '_blank';
-  fullListLink.innerText = 'View Full List';
-  header.appendChild(fullListLink);
-
-  
+  desc.innerText = 'These competitors are recommended based on your selection of relevant topics.';
+  header.appendChild(desc);  
 
   filtersContainer.appendChild(header);
 
@@ -71,55 +56,18 @@ function competitiveTopics(selArr) {
   /* --------------------
   Search Listener
   -------------------- */
-  function delay(callback, ms) {
-    var timer = 0;
-    return function() {
-      var context = this, args = arguments;
-      clearTimeout(timer);
-      timer = setTimeout(function () {
-        callback.apply(context, args);
-      }, ms || 0);
-    };
-  }
-  
-  search.addEventListener('input', delay((e) => {
+  search.addEventListener('input', (e) => {
     e.preventDefault();
-    // const searchTopicsArr = [];
-    // const searchValue = e.target.value.toUpperCase();
-    // competitors.forEach((topic) => {
-    //   if (topic.Topic_Name.toUpperCase().indexOf(searchValue) > -1) {
-    //     const addTopic = { Topic_ID: topic.Topic_ID, Topic_Name: topic.Topic_Name };
-    //     searchTopicsArr.push(addTopic);
-    //   }
-    // });
-    // updateTopicListHandler(searchTopicsArr);
-
-
-    searchHandler(e.target.value, "competitor_signals");
-
-    function searchHandler(search_value, signal_type) {
-      console.log('Time elapsed!', search_value);
-      show_loader();
-      $('.'+signal_type+'_search_results').remove();
-      $.ajax({
-        type: "POST", 
-        data: {search_value: search_value, signal_type: signal_type},
-        url: "/get_intent_signals",
-        success: function(results){
-          console.log("Results: ", results)
-          updateTopicListHandler(results);
-          hide_loader();
-        },
-        error: function(error){
-          toastr.error("No matching signals found");
-          console.log(error)
-          hide_loader();
-        }
-      })
-    }
-
-  }, 900));
-
+    const searchTopicsArr = [];
+    const searchValue = e.target.value.toUpperCase();
+    selectedTopicsArr.forEach((topic) => {
+      if (topic.Topic_Name.toUpperCase().indexOf(searchValue) > -1) {
+        const addTopic = { Topic_ID: topic.Topic_ID, Topic_Name: topic.Topic_Name };
+        searchTopicsArr.push(addTopic);
+      }
+    });
+    updateTopicListHandler(searchTopicsArr);
+  });
   /* --------------------
   Update topics function
   -------------------- */
@@ -153,7 +101,7 @@ function competitiveTopics(selArr) {
   infoContainer.appendChild(topicInfo);
 
   topicListContainer.appendChild(infoContainer);
-  topicListContainer.appendChild(topicsList(limitedCompetitors));
+  topicListContainer.appendChild(topicsList(selectedTopicsArr));
   topicListContainer.addEventListener(
     'click',
     (e) => {
@@ -320,6 +268,8 @@ function competitiveTopics(selArr) {
   }
   finalInput.style.display = 'none';
   filtersContainer.appendChild(finalInput);
+
+  console.log(filtersContainer)
   /* --------------------
   Final Return
   -------------------- */

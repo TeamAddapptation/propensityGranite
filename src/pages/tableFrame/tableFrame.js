@@ -4630,16 +4630,11 @@ const demo3 = {
     scroll_y: '750px',
     scroll_collapse: true,
     column_widths:[
-      { width: "300px", responsivePriority: -3, targets: 0 },
+      { width: "800px", responsivePriority: -3, targets: 0 },
       { responsivePriority: 10001, targets: 1 },
       { responsivePriority: 10001, targets: 2 },
       { width: "200px", responsivePriority: 10001, targets: 3 },
       { width: "200px", responsivePriority: 10001, targets: 4 },
-      { responsivePriority: 10001, targets: 5 },
-      { responsivePriority: 10001, targets: 6 },
-      { responsivePriority: 10001, targets: 7 },
-      { responsivePriority: 10001, targets: 8 },
-      { responsivePriority: 10001, targets: 9 },
     ],
     column_sort: [1, 'asc'],
     responsive: true,
@@ -4668,21 +4663,6 @@ const demo3 = {
             {
                 "value": "Playbook"
             },
-            {
-                "value": "Account List Connected"
-            },
-            {
-                "value": "Buyer Persona Connected"
-            },
-            {
-                "value": "Last Updated"
-            },
-            {
-                "value": "Current Day"
-            },
-            {
-                "value": ""
-            }
         ]
     },
     {
@@ -4710,26 +4690,6 @@ const demo3 = {
                 "value": "Product Launch for New Customers",
                 "text_align": "left"
             },
-            {
-                "value": "Wicked Good List",
-                "text_align": "left"
-            },
-            {
-                "value": "-",
-                "text_align": "left"
-            },
-            {
-                "value": "12/12/2022",
-                "text_align": "left"
-            },
-            {
-                "value": 12,
-                "text_align": "left"
-            },
-            {
-                "value": "<div class='g__ellipsis_options_container'>\n                <div class='g__ellipsis_options_toggle'>\n                  <i class='fas fa-ellipsis-h'></i>\n                </div>\n                <div id='a2KJw000000YjE1MAK' class='g__ellipsis_options'>\n                  <a href='/campaign_details?campaign_id=a2KJw000000YjE1MAK&active_page=campaign_details' >View Details</a>\n                  <a href='/experiences?campaign_id=a2KJw000000YjE1MAK&delete=true' class='a__side_pane_link delete_record'>Delete</a>\n                </div>\n              </div>",
-                "text_align": "center"
-            }
         ]
     },
     {
@@ -4757,75 +4717,8 @@ const demo3 = {
                 "value": "Industry Specific ABM",
                 "text_align": "left"
             },
-            {
-                "value": "Wicked Good List",
-                "text_align": "left"
-            },
-            {
-                "value": "-",
-                "text_align": "left"
-            },
-            {
-                "value": "12/07/2022",
-                "text_align": "left"
-            },
-            {
-                "value": 9,
-                "text_align": "left"
-            },
-            {
-                "value": "<div class='g__ellipsis_options_container'>\n                <div class='g__ellipsis_options_toggle'>\n                  <i class='fas fa-ellipsis-h'></i>\n                </div>\n                <div id='a2KJw000000Yl4XMAS' class='g__ellipsis_options'>\n                  <a href='/campaign_details?campaign_id=a2KJw000000Yl4XMAS&active_page=campaign_details' >View Details</a>\n                  <a href='/experiences?campaign_id=a2KJw000000Yl4XMAS&delete=true' class='a__side_pane_link delete_record'>Delete</a>\n                </div>\n              </div>",
-                "text_align": "center"
-            }
         ]
     },
-    {
-        "type": "row",
-        "href": "",
-        "children": [
-            {
-                "value": "<a href='/campaign_details?campaign_id=a2KJw000000Yle1MAC'>Winter Campaign</a>",
-                "text_align": "left"
-            },
-            {
-                "value": false,
-                "status_circle": true,
-                "text_align": "center"
-            },
-            {
-                "value": "Customers",
-                "text_align": "left"
-            },
-            {
-                "value": "Accelerate Pipeline",
-                "text_align": "left"
-            },
-            {
-                "value": "Competitor Conquest",
-                "text_align": "left"
-            },
-            {
-                "value": "Wicked Good List",
-                "text_align": "left"
-            },
-            {
-                "value": "-",
-                "text_align": "left"
-            },
-            {
-                "value": "12/09/2022",
-                "text_align": "left"
-            },
-            {
-                "value": 0,
-                "text_align": "left"
-            },
-            {
-                "value": "<div class='g__ellipsis_options_container'>\n                <div class='g__ellipsis_options_toggle'>\n                  <i class='fas fa-ellipsis-h'></i>\n                </div>\n                <div id='a2KJw000000Yle1MAC' class='g__ellipsis_options'>\n                  <a href='/campaign_details?campaign_id=a2KJw000000Yle1MAC&active_page=campaign_details' >View Details</a>\n                  <a href='/experiences?campaign_id=a2KJw000000Yle1MAC&delete=true' class='a__side_pane_link delete_record'>Delete</a>\n                </div>\n              </div>",
-                "text_align": "center"
-            }
-        ]
-    }
   ]
 };
 
