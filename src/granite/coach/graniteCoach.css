@@ -1,0 +1,53 @@
+.g__coach-header{
+  border-top: 1px solid var(--neutral-50);
+  cursor: pointer;
+  padding: 15px;
+  margin: 0;
+}
+
+.g__coach-step .g__child-step{
+  display: none;
+  padding: 15px 25px;
+}
+.g__coach-step.active .g__child-step{
+  display: block;
+}
+.g__youtube-container {
+  display: flex;
+  justify-content: center;
+  padding: 25px 0 50px 0;
+}
+.g__inner-step{
+  position: relative;
+  display: flex;
+  gap: 25px;
+}
+.g__inner-step:not(:last-child)::before{
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  display: block;
+  width: 5px;
+  height: 100%;
+  background-color: var(--primary-200);
+}
+.g__coach-circle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 100%;
+}
+.g__inner-header-container{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.g__step-title{
+  margin: 0;
+}

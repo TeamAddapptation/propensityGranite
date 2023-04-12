@@ -114,6 +114,11 @@ ul.g__rt-topics-list li .g__item-name {
   gap: 1rem;
   font-size: 0.9rem;
 }
+.g__name {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 ul.g__rt-topics-list li .g__info-icon {
   color: var(--neutral-500);
   display: flex;
@@ -156,6 +161,21 @@ ul.g__rt-topics-list li.selected .g__check {
 }
 ul.g__rt-topics-list li.selected .g__check i {
   color: #ffffff;
+}
+/* ---- Topic Descriptions ---- */
+.g__info {
+  flex: 2;
+  font-size: 0.9rem;
+  overflow: hidden;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: all 0.5s ease;
+}
+.g__info.active {
+  -webkit-line-clamp: initial;
 }
 /* ---- Selected Topics ---- */
 .g__rt-selected-container {
@@ -256,6 +276,32 @@ Competitive Topics
 .g__ct-topic-info {
   padding: 25px;
 }
+.g__ct-topics-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+.g__ct-topics-header .g__check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: var(--primary-50);
+  width: 35px;
+  height: 35px;
+  border-radius: 50px;
+}
+.g__ct-topics-header .g__check i {
+  color: var(--primary);
+}
+.g__ct-topics-header .g__check.selected {
+  background: var(--primary-400);
+}
+.g__ct-topics-header .g__check.selected i {
+  color: #ffffff;
+}
 .g__ct-info-container i {
   cursor: pointer;
   position: absolute;
@@ -268,7 +314,7 @@ Competitive Topics
 ul.g__ct-topics-list {
   border: 1px solid var(--neutral-50);
   border-radius: 5px;
-  height: 275px;
+  height: 425px;
   overflow-y: auto;
   list-style-type: none;
   padding: 0;
@@ -284,6 +330,8 @@ ul.g__ct-topics-list li {
 }
 ul.g__ct-topics-list li .g__item-name {
   display: flex;
+  flex: 1;
+  max-width: 250px;
   align-items: center;
   gap: 1rem;
   font-size: 0.9rem;
@@ -318,7 +366,7 @@ ul.g__ct-topics-list li .g__check {
   justify-content: center;
   align-items: center;
   background: var(--primary-50);
-  width: 35px;
+  min-width: 35px;
   height: 35px;
   border-radius: 50px;
 }

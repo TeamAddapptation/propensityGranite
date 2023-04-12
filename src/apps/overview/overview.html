@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="stylesheet" href="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.css" />
+    <!--- Chosen.js -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-stylesheets/chosen.css"/>
+    <link rel="stylesheet" type="text/css" href="https://addapptation.blob.core.windows.net/addapptation-stylesheets/anychart-ui.css"/>
+  </head>
+
+  <body style="background: var(--neutral-10)">
+    <main class="g__main g__p-15 g__gap-1">
+      <!-- Section 1 - Header -->
+      <section class="g__container">
+        <div class="g__row g__p-15 g__border g__radius-5">
+          <div class="g__col g__gap-1 g__align-center g__space-between">
+            <h3 class=" g__weight-600 g__m-0">Overview</h3>
+            <a href="#" class="g__btn g__btn-neutral g__btn-sm">Product Tour</a>
+          </div>
+        </div>
+      </section>
+      <!-- Section 2 - Target Audience Details -->
+      <section class="g__container g__border g__radius-5">
+        <div class="g__row g__p-15 g__border-bottom">
+          <div class="g__col g__gap-1 g__align-center g__space-between">
+            <h6 class=" g__weight-600 g__m-0">Target Audience Details</h6>
+            <a href="#" class="g__btn g__btn-neutral g__btn-sm">New Account List +</a>
+          </div>
+        </div>
+        <div class="g__row g__ptb-15">
+          <div class="g__col g__flex-column g__plr-15">
+            <p>In-Market Accounts</p>
+            <h3 class="g__weight-600 g__tertiary">27,102</h3>
+            <p>Total</p>
+          </div>
+          <div class="g__col g__flex-column g__plr-15 g__border-left">
+            <p>New Accounts</p>
+            <h3 class="g__weight-600 g__tertiary">135</h3>
+            <p>This Week</p>
+          </div>
+          <div class="g__col g__flex-column g__plr-15 g__border-left">
+            <p>Contact</p>
+            <h3 class="g__weight-600 g__tertiary">75,459</h3>
+            <p>Total</p>
+          </div>
+        </div>
+      </section>
+      <!-- Section 3 - Marketing Data & Sales Data -->
+      <section class="g__container">
+        <div class="g__row g__gap-1">
+          <!-- Marketing Data -->
+          <div class="g__col g__border g__radius-5 g__flex-column">
+              <div class="g__flex g__align-center g__space-between g__p-15 g__border-bottom">
+                <h6 class=" g__weight-600 g__m-0">Marketing Data</h6>
+                <a href="#" class="g__btn g__btn-neutral g__btn-sm">New Campaign +</a>
+              </div>
+              <div class="g__col">
+                <div class="g__row g__ptb-15 g__100-percent">
+                  <div class="g__col g__flex-column g__plr-15">
+                    <p>Impressions<br>Served</p>
+                    <h3 class="g__weight-600 g__secondary">1029</h3>
+                  </div>
+                  <div class="g__col g__flex-column g__plr-15 g__border-left">
+                    <p>Total<br>Clicks</p>
+                    <h3 class="g__weight-600 g__secondary">38</h3>
+                  </div>
+                  <div class="g__col g__flex-column g__plr-15 g__border-left">
+                    <p>Total<br>Spend</p>
+                    <h3 class="g__weight-600 g__secondary">$204.49</h3>
+                  </div>
+                  <div class="g__col g__flex-column g__plr-15 g__border-left">
+                    <p>Email<br>Opens</p>
+                    <h3 class="g__weight-600 g__secondary">75</h3>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <!-- Sales Data -->
+          <div class="g__col g__border g__radius-5 g__flex-column">
+            <div class="g__flex g__align-center g__space-between g__p-15 g__border-bottom">
+              <h6 class=" g__weight-600 g__m-0">Sales Data</h6>
+              <a href="#" class="g__btn g__btn-neutral g__btn-sm">New Campaign +</a>
+            </div>
+            <div class="g__col">
+              <div class="g__row g__ptb-15 g__100-percent">
+                <div class="g__col g__flex-column g__plr-15 g__flex-1">
+                  <p>Emails<br>Sent</p>
+                  <h3 class="g__weight-600 g__secondary">283</h3>
+                </div>
+                <div class="g__col g__flex-column g__plr-15 g__border-left g__flex-1">
+                  <p>Emails<br>Replied</p>
+                  <h3 class="g__weight-600 g__secondary">99</h3>
+                </div>
+                <div class="g__col g__flex-column g__plr-15 g__border-left g__flex-1">
+                  <p>Booked<br>Meetings</p>
+                  <h3 class="g__weight-600 g__secondary">46</h3>
+                </div>
+                <div class="g__col g__flex-column g__plr-15 g__border-left g__flex-1">
+                  <p>LinkedIn<br>Connections</p>
+                  <h3 class="g__weight-600 g__secondary">58</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 4 - Website Visits -->
+      <section class="g__container">
+        <div class="g__row g__border g__radius-5">
+          <div class="g__col g__gap-1 g__align-center g__space-between">
+            <div class="g__col g__p-15 g__align-center g__space-between g__border-bottom">
+              <div class="g__flex g__align-center g__gap-1">
+                <h6 class=" g__weight-600 g__m-0">Website Visits</h6>
+                <p class="g__m-0 g__text-small">Last 90 Days</p>
+              </div>
+              <a href="#" class="g__btn g__btn-neutral g__btn-sm">Go to Website Tracker</a>
+          </div>
+        </div>
+        <div class="g_row g__flex-column">
+          <!-- Marketing Data -->
+          <div class="g__col">
+            <div class="g__col">
+              <div class="g__row g__ptb-15 g__100-percent">
+                <div class="g__col g__flex-column g__plr-15 g__max-250">
+                  <p>Total Website Visitors</p>
+                  <h3 class="g__weight-600 g__tertiary">738</h3>
+                </div>
+                <div class="g__col g__flex-column g__plr-15 g__border-left g__max-250">
+                  <p>New Website Visitors</p>
+                  <h3 class="g__weight-600 g__tertiary">29</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="g__col">
+            <div id="chart_website-visits"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 5 - Website Visitors -->
+      <section class="g__container">
+        <div class="g__row g__border g__radius-5">
+          <div class="g__col g__gap-1 g__align-center g__space-between">
+            <div class="g__col g__p-15 g__align-center g__space-between g__border-bottom">
+              <div class="g__flex g__align-center g__gap-1">
+                <h6 class=" g__weight-600 g__m-0">Website Visitors</h6>
+              </div>
+              <div class="g__flex">
+                <p class="g__m-0 g__text-small">Table Utilities Here</p>
+              </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='https://cdn.addapptation.com/addapptation-stylesheets/chosen.jquery.min.js'></script>
+    <script src="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation/granite/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation/granite/jszip.min.js"></script>
+    <script src="https://cdn.addapptation.com/addapptation/granite/buttons.html5.min.js"></script>
+    <script src="https://kit.fontawesome.com/58afd790b4.js" crossorigin="anonymous"></script>
+    <script src="https://addapptation.blob.core.windows.net/addapptation-stylesheets/anychart-bundle.js"></script>
+  </body>
+</html>

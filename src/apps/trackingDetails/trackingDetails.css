@@ -1,0 +1,8 @@
+html,
+body,
+#chart_trending-data {
+	width: 100%;
+	height: 250px;
+	margin: 0;
+	padding: 0;
+}

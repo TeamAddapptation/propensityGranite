@@ -1,0 +1,90 @@
+<style>
+	html,
+	body,
+	#chart_website-visits {
+		width: 100%;
+		height: 250px;
+		margin: 0;
+		padding: 0;
+	}
+	.g__circle-icon {
+		font-size: 0.7rem;
+		width: 30px;
+		height: 30px;
+	}
+</style>
+<main class="g__main g__p-15 g__gap-1">
+	<!-- Section 1 - Header -->
+	<section class="g__container">
+		<div class="g__row g__p-15 g__border g__radius-5">
+			<div class="g__col g__gap-1 g__align-center g__space-between">
+				<h3 class="g__weight-600 g__m-0">Overview</h3>
+				<a href="#" class="g__btn g__btn-neutral g__btn-sm">Product Tour</a>
+			</div>
+		</div>
+	</section>
+	<!-- Section 2 - Target Audience Details -->
+	<% if @audience_data %>
+	<section class="g__container g__border g__radius-5">
+		<div class="g__row g__p-15 g__border-bottom">
+			<div class="g__col g__gap-1 g__align-center g__space-between">
+				<h6 class="g__weight-600 g__m-0">Target Audience Details</h6>
+				<a href="#" class="g__btn g__btn-neutral g__btn-sm">New Account List +</a>
+			</div>
+		</div>
+		<div class="g__row g__ptb-15">
+			<div class="g__col g__flex-column g__plr-15">
+				<p>In-Market Accounts</p>
+				<h3 class="g__weight-600 g__tertiary">27,102</h3>
+				<p>Total</p>
+			</div>
+			<div class="g__col g__flex-column g__plr-15 g__border-left">
+				<p>New Accounts</p>
+				<h3 class="g__weight-600 g__tertiary">135</h3>
+				<p>This Week</p>
+			</div>
+			<div class="g__col g__flex-column g__plr-15 g__border-left">
+				<p>Contact</p>
+				<h3 class="g__weight-600 g__tertiary">75,459</h3>
+				<p>Total</p>
+			</div>
+		</div>
+	</section>
+	<% else %>
+	<section class="g__container g__border g__radius-5">
+		<div class="g__row g__p-15 g__border-bottom">
+			<div class="g__col g__gap-1 g__align-center g__space-between">
+				<h6 class="g__weight-600 g__m-0">Target Audience Details</h6>
+				<a href="#" class="g__btn g__btn-neutral g__btn-sm">New Account List +</a>
+			</div>
+		</div>
+		<div class="g__row g__ptb-25 g__gap-4" style="background-color: var(--primary-50)">
+			<div class="g__col g__flex-column g__align-start g__p-15">
+				<div class="g__flex g__align-center g__mb-10">
+					<div class="g__circle-icon">&#x1F465;</div>
+					<h6 class="g__m-0 g__pl-5">Target In-Market Accounts and Contacts</h6>
+				</div>
+				<p>Use our Intent Data to identify your in-market buyers to get started</p>
+				<a href="#" class="g__btn g__btn-primary g__btn-sm">Build Audience +</a>
+			</div>
+			<div class="g__col">
+				<div class="g__col g__flex-column g__plr-15">
+					<p class="g__text-small">In-Market Accounts</p>
+					<h3 class="g__weight-600 g__secondary">0</h3>
+					<p class="g__text-small">Total</p>
+				</div>
+				<div class="g__col g__flex-column g__plr-15 g__border-left">
+					<p class="g__text-small">New Accounts</p>
+					<h3 class="g__weight-600 g__secondary">0</h3>
+					<p class="g__text-small">This Week</p>
+				</div>
+				<div class="g__col g__flex-column g__plr-15 g__border-left">
+					<p class="g__text-small">Contact</p>
+					<h3 class="g__weight-600 g__secondary">0</h3>
+					<p class="g__text-small">Total</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<% end %>
+</main>

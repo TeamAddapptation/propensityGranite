@@ -1,0 +1,236 @@
+<style>
+	@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
+	#gdpr_bar {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		display: flex;
+		gap: 5rem;
+		align-items: center;
+		background: #fafaff;
+		padding: 20px;
+		z-index: 999;
+	}
+	.gdpr_close {
+		position: absolute;
+		right: 7px;
+		top: 7px;
+		font-family: "Montserrat";
+		font-style: normal;
+		font-weight: 400;
+		color: #9a95ff;
+		font-size: 1.25rem;
+		cursor: pointer;
+	}
+	.gdpr_left {
+		display: flex;
+		flex-direction: column;
+		flex: 3;
+	}
+	.gdpr_left h6 {
+		font-family: "Montserrat";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 21px;
+		display: flex;
+		align-items: center;
+		letter-spacing: 0.5px;
+		color: #081aa1;
+		margin: 0 0 5px 0;
+		padding: 0;
+	}
+	.gdpr_left p {
+		font-family: "Montserrat";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 18px;
+		letter-spacing: 0.9px;
+		color: #081aa1;
+		padding: 0;
+		margin: 0;
+	}
+
+	.gdpr_left p a {
+		font-family: "Montserrat";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 18px;
+		letter-spacing: 0.9px;
+		color: #081aa1;
+		padding: 0;
+		margin: 0;
+		text-decoration: underline;
+	}
+
+	.gdpr_right {
+		display: flex;
+		gap: 1rem;
+		margin: 0 50px;
+	}
+	button:focus {
+		outline: 0;
+	}
+
+	[type="button"]:not(:disabled),
+	[type="reset"]:not(:disabled),
+	[type="submit"]:not(:disabled),
+	button:not(:disabled) {
+		cursor: pointer;
+	}
+	.g__btn {
+		display: inline-block;
+		font-family: "Montserrat", sans-serif;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 1.5;
+		color: #ffffff;
+		text-align: center;
+		text-decoration: none;
+		vertical-align: middle;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		user-select: none;
+		background-color: transparent;
+		border: 2px solid transparent;
+		padding: 0.275rem 2.125rem;
+		margin: 0;
+		font-size: 0.9rem;
+		white-space: nowrap;
+		border-radius: 5rem;
+		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	}
+	/*----------
+  Primary
+  ---------- */
+	#gdpr_bar .g__btn.g__btn-primary {
+		color: #fff;
+		background-color: #5d50e6;
+		border-color: #5d50e6;
+	}
+	#gdpr_bar .g__btn.g__btn-primary:hover {
+		color: #fff;
+		background-color: #7b72f5;
+		border-color: #7b72f5;
+	}
+	#gdpr_bar .g__btn.g__btn-primary:active {
+		color: #fff;
+		background-color: #2426c5;
+		border-color: #2426c5;
+	}
+	#gdpr_bar .g__btn.g__btn-primary:disabled,
+	#gdpr_bar .g__btn.g__btn-primary[disabled] {
+		color: #fff;
+		background-color: #9a95ff;
+		border-color: #9a95ff;
+	}
+	/*----------
+  Line
+  ---------- */
+	.g__btn.g__btn-line {
+		color: #5d50e6;
+		background-color: #ffffff;
+		border-color: #5d50e6;
+	}
+	.g__btn.g__btn-line:hover {
+		color: #5d50e6;
+		background-color: #eeeeff;
+		border-color: #5d50e6;
+	}
+	.g__btn.g__btn-line:active {
+		color: #ffffff;
+		background-color: #5d50e6;
+		border-color: #5d50e6;
+	}
+	@media only screen and (max-width: 768px) {
+		#gdpr_bar {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+		.gdpr_left {
+			flex: 1;
+		}
+		.gdpr_right {
+			flex: 1;
+		}
+	}
+</style>
+
+<div id="gdpr_bar">
+	<span class="gdpr_close">x</span>
+	<div class="gdpr_left">
+		<h6>We value your privacy</h6>
+		<p>
+			We use cookies and related technologies to enhance your browsing experience, as described in our
+			<a target="_blank" href="https://addapptation-installer.addapptation.com/privacy_policy">privacy policy</a>. By clicking “Accept All”,
+			you consent to our use of cookies.
+		</p>
+	</div>
+	<div class="gdpr_right">
+		<button type="button" onClick="cookieHandler(false)" class="g__btn g__btn-line">Reject All</button>
+		<button type="button" onClick="cookieHandler(true)" class="g__btn g__btn-primary">Accept All</button>
+	</div>
+</div>
+
+<script>
+	const cookie_name = "a__gdpr";
+	const cookie_accepted = "accepted";
+	const cookie_rejected = "rejected";
+
+	let cookie = getCookie(cookie_name);
+	console.log("cookie: " + cookie);
+	if (!!cookie && cookie == cookie_accepted) {
+		document.getElementById("gdpr_bar").style.display = "none";
+	}
+
+	function setCookie(name, value, days) {
+		var expires = "";
+		if (days) {
+			var date = new Date();
+			date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+			expires = "; expires=" + date.toUTCString();
+		}
+		document.cookie = name + "=" + (value || "") + expires + "; path=/";
+	}
+
+	function getCookie(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(";");
+		for (var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == " ") c = c.substring(1, c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+		}
+		return null;
+	}
+
+	function eraseCookie(name) {
+		document.cookie = name + "=; Max-Age=-99999999;";
+	}
+
+	document.querySelector(".gdpr_close").addEventListener("click", () => {
+		setCookie(cookie_name, cookie_accepted, "365");
+		let el = document.getElementById("gdpr_bar");
+		el.style.display = "none";
+		el.style.height = "0";
+		el.style.bottom = "-1rem"; /* fixes some bottom offset positioning */
+	});
+
+	function cookieHandler(accepted) {
+		if (accepted) {
+			setCookie(cookie_name, cookie_accepted, "365");
+		} else {
+			setCookie(cookie_name, cookie_rejected, "365");
+		}
+
+		let el = document.getElementById("gdpr_bar");
+		el.style.display = "none";
+		el.style.height = "0";
+		el.style.bottom = "-1rem"; /* fixes some bottom offset positioning */
+	}
+</script>

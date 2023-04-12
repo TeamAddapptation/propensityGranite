@@ -1,3 +1,5 @@
+export const selected = ['1512671', '1502182', '1502721'];
+
 export const themes = [
   'Finance',
   'Marketing',

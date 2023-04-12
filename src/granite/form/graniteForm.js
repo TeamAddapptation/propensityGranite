@@ -1,4 +1,4 @@
-function graniteForm(formsBlock) {
+export default function graniteForm(formsBlock) {
     const id = formsBlock.id;
   const granite_id = formsBlock.id;
   const o = formsBlock.options;
@@ -1171,6 +1171,7 @@ function graniteForm(formsBlock) {
       colorPickers[i].addEventListener('change', function () {
         let color = this.value;
         this.nextSibling.value = color;
+        console.log(this.nextSibling)
       });
     }
   }

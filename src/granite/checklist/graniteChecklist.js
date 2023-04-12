@@ -31,6 +31,7 @@ function graniteChecklist(jsonBlock) {
   Checklist Items
   ---------------------------------------------*/
   r.forEach((r, index) => {
+    console.log(r);
     const checkItem = document.createElement('div');
     checkItem.classList.add('g__check-item');
 
@@ -61,11 +62,10 @@ function graniteChecklist(jsonBlock) {
       desc.innerHTML = r.desc;
       checkContent.appendChild(desc);
     }
-
   if(r.href){
     const checkBtn = document.createElement('a');
     checkBtn.href = r.href;
-    checkBtn.target = "_blank";
+    checkBtn.target = r.new_tab ? "_blank" : "_self";
     checkBtn.classList.add('g__btn', 'g__btn-neutral', 'g__btn-sm', 'g__mt-15');
     checkBtn.innerHTML = r.btn_text;
     checkContent.appendChild(checkBtn);

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="x-ua-compatible" content="ie=edge" />
+
+		<title><%= htmlWebpackPlugin.options.title %></title>
+		<link rel="stylesheet" href="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.css" />
+		<!--- Chosen.js -->
+		<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-stylesheets/chosen.css" />
+		<link rel="stylesheet" type="text/css" href="https://addapptation.blob.core.windows.net/addapptation-stylesheets/anychart-ui.css" />
+	</head>
+
+	<body style="background: var(--neutral-10)">
+		<main class="g__main g__p-15 g__gap-1">
+			<!-- Section 1 - Header -->
+			<section class="g__container">
+				<div class="g__row g__p-15 g__border g__radius-5">
+					<div class="g__col g__gap-8px g__align-center">
+						<h3 class="g__weight-600 g__m-0">#{Company Name}</h3>
+						<a href="#" class="g__btn g__btn-text">#{Company Name with link?}</a>
+					</div>
+				</div>
+			</section>
+			<!-- Section 2 - Target Audience Details -->
+			<section class="g__container g__border g__radius-5">
+				<div class="g__row g__p-15">
+					<div class="g__col g__flex-column">
+						<p>Conversion</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{conversion}</h6>
+					</div>
+					<div class="g__col g__flex-column">
+						<p>Duration</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{duration}</h6>
+					</div>
+					<div class="g__col g__flex-column">
+						<p>Browser</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{browser}</h6>
+					</div>
+					<div class="g__col g__flex-column">
+						<p>Device</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{device}</h6>
+					</div>
+				</div>
+			</section>
+			<section class="g__container g__border g__radius-5">
+				<div class="g__row g__p-15">
+					<div class="g__col g__flex-column">
+						<p>Location</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{location}</h6>
+					</div>
+					<div class="g__col g__flex-column">
+						<p>Industry</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{industry}</h6>
+					</div>
+					<div class="g__col g__flex-column">
+						<p>Employees</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{employees}</h6>
+					</div>
+					<div class="g__col g__flex-column">
+						<p>Annual Revenue</p>
+						<h6 class="g__m-0 g__weight-600 g__secondary">#{annual_revenue}</h6>
+					</div>
+				</div>
+			</section>
+			<section class="g__container g__gap-0">
+				<div class="g__row g__border g__radius-5">
+					<div class="g__col g__p-15 g__align-center g__space-between">
+						<div class="g__flex g__align-center g__gap-1">
+							<h6 class="g__weight-600 g__m-0">Trending Intent Data</h6>
+						</div>
+						<div class="g__flex">
+							<div id="picklist_week"></div>
+							<div id="picklist_themes"></div>
+						</div>
+					</div>
+				</div>
+				<div class="g_row g__border g__radius-5">
+					<div class="g__col">
+						<div id="chart_trending-data"></div>
+					</div>
+				</div>
+			</section>
+			<section class="g__container g__gap-0">
+				<div class="g__row g__border g__radius-5">
+					<div class="g__col g__p-15 g__align-center g__space-between">
+						<div class="g__flex g__align-center g__gap-1">
+							<h6 class="g__weight-600 g__m-0">Intent Data</h6>
+						</div>
+						<div class="g__flex">
+							<div id="g__search-bar" class="g__m-mt-15"></div>
+							<div id="g__export-btns"></div>
+						</div>
+					</div>
+				</div>
+				<div class="g_row g__border g__radius-5">
+					<div class="g__col">
+						<div id="table_intent-data"></div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdn.addapptation.com/addapptation-stylesheets/chosen.jquery.min.js"></script>
+		<script src="https://cdn.addapptation.com/v001-shell/DataTables/datatables-1.12.1.min.js"></script>
+		<script src="https://cdn.addapptation.com/addapptation/granite/dataTables.buttons.min.js"></script>
+		<script src="https://cdn.addapptation.com/addapptation/granite/jszip.min.js"></script>
+		<script src="https://cdn.addapptation.com/addapptation/granite/buttons.html5.min.js"></script>
+		<script src="https://kit.fontawesome.com/58afd790b4.js" crossorigin="anonymous"></script>
+		<script src="https://addapptation.blob.core.windows.net/addapptation-stylesheets/anychart-bundle.js"></script>
+	</body>
+</html>

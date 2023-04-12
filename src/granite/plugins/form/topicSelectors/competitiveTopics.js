@@ -84,19 +84,7 @@ function competitiveTopics(selArr) {
   
   search.addEventListener('input', delay((e) => {
     e.preventDefault();
-    // const searchTopicsArr = [];
-    // const searchValue = e.target.value.toUpperCase();
-    // competitors.forEach((topic) => {
-    //   if (topic.Topic_Name.toUpperCase().indexOf(searchValue) > -1) {
-    //     const addTopic = { Topic_ID: topic.Topic_ID, Topic_Name: topic.Topic_Name };
-    //     searchTopicsArr.push(addTopic);
-    //   }
-    // });
-    // updateTopicListHandler(searchTopicsArr);
-
-
     searchHandler(e.target.value, "competitor_signals");
-
     function searchHandler(search_value, signal_type) {
       console.log('Time elapsed!', search_value);
       show_loader();

@@ -32,6 +32,7 @@ Right Content
 .g__subNav-right{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: .5rem;
 }
 .g__subNav-item .g__subNav-link{

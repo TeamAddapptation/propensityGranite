@@ -1,61 +1,133 @@
-import './adBuilder.css';
-
-var canvas;
-var ctx;
-var x = 75;
-var y = 50;
-var WIDTH = 400;
-var HEIGHT = 300;
-var dragok = false;
-
-function rect(x,y,w,h) {
- ctx.beginPath();
- ctx.rect(x,y,w,h);
- ctx.closePath();
- ctx.fill();
+const adBlock = {
+  size: "300x250",
+  name: "",
+  container: [
+    {
+      name: "background",
+      src: "",
+      width: "",
+      height: "",
+      inset: "",
+      border_with: "",
+      border_color: "",
+      border_style: ""
+    },
+    {
+      name: "logo",
+      src: "",
+      width: "",
+      height: "",
+      inset: "",
+      border_with: "",
+      border_color: "",
+      border_style: ""
+    },
+    {
+      name: "primaryText",
+      text: "This is the primary text block",
+      font_size: "18px",
+      line_height: "",
+      color: "",
+    },
+    {
+      name: "secondaryText",
+      text: "This is the primary text block",
+      font_size: "18px",
+      line_height: "",
+      color: "",
+    },
+    {
+      name: "cta",
+      text: "This is the primary text block",
+      font_size: "18px",
+      font_family: "Times New Roman",
+      line_height: "",
+      color: "",
+    }
+  ]
 }
 
-function clear() {
- ctx.clearRect(0, 0, WIDTH, HEIGHT);
-}
 
-function init() {
- canvas = document.getElementById("canvas");
- ctx = canvas.getContext("2d");
- return setInterval(draw, 10);
-}
+// const adBlock = {
+//   size: "300x250",
+//   name: "",
+//   background:{
+//       width: "300px",
+//       height: "250px",
+//       inset: "0 0 0 0",
+//       border_with: "1px",
+//       border_color: "red",
+//       border_style: "solid",
+//       components: [
+//         {
+//           name: "logo",
+//           src: "",
+//           width: "",
+//           height: "",
+//           inset: "",
+//           border_with: "",
+//           border_color: "",
+//           border_style: ""
+//         },
+//         {
+//           name: "primaryText",
+//           text: "This is the primary text block",
+//           font_size: "18px",
+//           line_height: "",
+//           color: "",
+//         },
+//         {
+//           name: "secondaryText",
+//           text: "This is the primary text block",
+//           font_size: "18px",
+//           line_height: "",
+//           color: "",
+//         },
+//         {
+//           name: "cta",
+//           text: "This is the primary text block",
+//           font_size: "18px",
+//           font_family: "Times New Roman",
+//           line_height: "",
+//           color: "",
+//         }
+//       ]
+//     },
+//   }
 
-function draw() {
- clear();
- ctx.fillStyle = "#FAF7F8";
- rect(0,0,WIDTH,HEIGHT);
- ctx.fillStyle = "#444444";
- rect(x - 15, y - 15, 30, 30);
-}
 
-function myMove(e){
- if (dragok){
-  x = e.pageX - canvas.offsetLeft;
-  y = e.pageY - canvas.offsetTop;
- }
-}
 
-function myDown(e){
- if (e.pageX < x + 15 + canvas.offsetLeft && e.pageX > x - 15 +
- canvas.offsetLeft && e.pageY < y + 15 + canvas.offsetTop &&
- e.pageY > y -15 + canvas.offsetTop){
-  x = e.pageX - canvas.offsetLeft;
-  y = e.pageY - canvas.offsetTop;
-  dragok = true;
-  canvas.onmousemove = myMove;
- }
-}
+// adBlock.components.forEach(comp => {
+//   console.log("Component: ",  comp.name)
+//   for (const [key, value] of Object.entries(comp)) {
+//     let cssProperty = ""
+//     if(key.includes("_")){
+//       cssProperty = key.replace("_", "-");
+//     } else {
+//       cssProperty = key;
+//     }
+//     console.log(`${cssProperty}: ${value}`);
+//   }
+// })
 
-function myUp(){
- dragok = false;
- canvas.onmousemove = null;
-}
 
-init();
-canvas.onmousedown = myDown;
-canvas.onmouseup = myUp;
+const backgroundDiv = document.createElement('div');
+backgroundDiv.classList.add('ge_background');
+let cssString = ""
+for (const [key, value] of Object.entries(adBlock.background)) {
+  if(key !== ("components" || "src")){
+    let cssProperty = ""
+    if(key.includes("_")){
+      cssProperty = key.replace("_", "-");
+    } else {
+      cssProperty = key;
+    }
+    backgroundDiv.style.cssText += `${cssProperty}:${value};`
+    cssString += `${cssProperty}: ${value};`
+    console.log(`${cssProperty}:${value}`);
+  }
+}
+console.log(cssString)
+console.log(backgroundDiv)
+
+document.getElementById('ad-example').appendChild(backgroundDiv)
