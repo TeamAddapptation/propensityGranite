@@ -1,0 +1,71 @@
+<style>
+	.c__loading-container {
+		display: flex;
+		background-color: #fff;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 300px;
+		border: 1px solid var(--neutral-50);
+		border-radius: 5px;
+	}
+	.loader {
+		width: 48px;
+		height: 48px;
+		border-radius: 50%;
+		position: relative;
+		animation: rotate 1s linear infinite;
+	}
+	.loader::before,
+	.loader::after {
+		content: "";
+		box-sizing: border-box;
+		position: absolute;
+		inset: 0px;
+		border-radius: 50%;
+		border: 5px solid var(--neutral-50);
+		animation: prixClipFix 2s linear infinite;
+	}
+	.loader::after {
+		transform: rotate3d(90, 90, 0, 180deg);
+		border-color: var(--primary);
+	}
+
+	@keyframes rotate {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+	@keyframes prixClipFix {
+		0% {
+			clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+		}
+		50% {
+			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+		}
+		75%,
+		100% {
+			clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+		}
+	}
+</style>
+
+<div style="display: none" class="c__table c__loading-container" style="background: #fff">
+	<span class="loader"></span>
+	<p class="g__m-0 g__pt-10" style="color: var(--neutral-100)">Finding Accounts...</p>
+</div>
+
+<script>
+	function showLoader(show) {
+		const loader = document.querySelector(".c__loading-container");
+		if (show) {
+			loader.style.display = "flex";
+		} else {
+			loader.style.display = "none";
+		}
+	}
+</script>
