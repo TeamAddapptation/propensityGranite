@@ -1,236 +1,192 @@
-<style>
-	@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700");
-	#gdpr_bar {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		display: flex;
-		gap: 5rem;
-		align-items: center;
-		background: #fafaff;
-		padding: 20px;
-		z-index: 999;
-	}
-	.gdpr_close {
-		position: absolute;
-		right: 7px;
-		top: 7px;
-		font-family: "Montserrat";
-		font-style: normal;
-		font-weight: 400;
-		color: #9a95ff;
-		font-size: 1.25rem;
-		cursor: pointer;
-	}
-	.gdpr_left {
-		display: flex;
-		flex-direction: column;
-		flex: 3;
-	}
-	.gdpr_left h6 {
-		font-family: "Montserrat";
-		font-style: normal;
-		font-weight: 600;
-		font-size: 16px;
-		line-height: 21px;
-		display: flex;
-		align-items: center;
-		letter-spacing: 0.5px;
-		color: #081aa1;
-		margin: 0 0 5px 0;
-		padding: 0;
-	}
-	.gdpr_left p {
-		font-family: "Montserrat";
-		font-style: normal;
-		font-weight: 400;
-		font-size: 12px;
-		line-height: 18px;
-		letter-spacing: 0.9px;
-		color: #081aa1;
-		padding: 0;
-		margin: 0;
-	}
-
-	.gdpr_left p a {
-		font-family: "Montserrat";
-		font-style: normal;
-		font-weight: 400;
-		font-size: 12px;
-		line-height: 18px;
-		letter-spacing: 0.9px;
-		color: #081aa1;
-		padding: 0;
-		margin: 0;
-		text-decoration: underline;
-	}
-
-	.gdpr_right {
-		display: flex;
-		gap: 1rem;
-		margin: 0 50px;
-	}
-	button:focus {
-		outline: 0;
-	}
-
-	[type="button"]:not(:disabled),
-	[type="reset"]:not(:disabled),
-	[type="submit"]:not(:disabled),
-	button:not(:disabled) {
-		cursor: pointer;
-	}
-	.g__btn {
-		display: inline-block;
-		font-family: "Montserrat", sans-serif;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 1.5;
-		color: #ffffff;
-		text-align: center;
-		text-decoration: none;
-		vertical-align: middle;
-		cursor: pointer;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		user-select: none;
-		background-color: transparent;
-		border: 2px solid transparent;
-		padding: 0.275rem 2.125rem;
-		margin: 0;
-		font-size: 0.9rem;
-		white-space: nowrap;
-		border-radius: 5rem;
-		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	}
-	/*----------
-  Primary
-  ---------- */
-	#gdpr_bar .g__btn.g__btn-primary {
-		color: #fff;
-		background-color: #5d50e6;
-		border-color: #5d50e6;
-	}
-	#gdpr_bar .g__btn.g__btn-primary:hover {
-		color: #fff;
-		background-color: #7b72f5;
-		border-color: #7b72f5;
-	}
-	#gdpr_bar .g__btn.g__btn-primary:active {
-		color: #fff;
-		background-color: #2426c5;
-		border-color: #2426c5;
-	}
-	#gdpr_bar .g__btn.g__btn-primary:disabled,
-	#gdpr_bar .g__btn.g__btn-primary[disabled] {
-		color: #fff;
-		background-color: #9a95ff;
-		border-color: #9a95ff;
-	}
-	/*----------
-  Line
-  ---------- */
-	.g__btn.g__btn-line {
-		color: #5d50e6;
-		background-color: #ffffff;
-		border-color: #5d50e6;
-	}
-	.g__btn.g__btn-line:hover {
-		color: #5d50e6;
-		background-color: #eeeeff;
-		border-color: #5d50e6;
-	}
-	.g__btn.g__btn-line:active {
-		color: #ffffff;
-		background-color: #5d50e6;
-		border-color: #5d50e6;
-	}
-	@media only screen and (max-width: 768px) {
-		#gdpr_bar {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-		}
-		.gdpr_left {
-			flex: 1;
-		}
-		.gdpr_right {
-			flex: 1;
-		}
-	}
-</style>
-
-<div id="gdpr_bar">
-	<span class="gdpr_close">x</span>
-	<div class="gdpr_left">
-		<h6>We value your privacy</h6>
-		<p>
-			We use cookies and related technologies to enhance your browsing experience, as described in our
-			<a target="_blank" href="https://addapptation-installer.addapptation.com/privacy_policy">privacy policy</a>. By clicking “Accept All”,
-			you consent to our use of cookies.
-		</p>
+<form action="/get_enriched_contacts" id="g__buying-circle-persona" method="POST" enctype="application/x-www-form-urlencoded">
+	<div class="g__hidden_field">
+		<input
+			id="a__61720f9feaf6f777617c"
+			data-attr="id"
+			class="g__field-hidden"
+			type="hidden"
+			form_id="g__buying-circle-persona"
+			name="id"
+			value="a2bJw000000E4lJIAS"
+		/>
 	</div>
-	<div class="gdpr_right">
-		<button type="button" onClick="cookieHandler(false)" class="g__btn g__btn-line">Reject All</button>
-		<button type="button" onClick="cookieHandler(true)" class="g__btn g__btn-primary">Accept All</button>
+	<div class="g__hidden_field">
+		<input
+			id="new_search"
+			data-attr="new_search"
+			class="g__field-hidden"
+			type="hidden"
+			form_id="g__buying-circle-persona"
+			name="new_search"
+			value="true"
+		/>
 	</div>
-</div>
-
-<script>
-	const cookie_name = "a__gdpr";
-	const cookie_accepted = "accepted";
-	const cookie_rejected = "rejected";
-
-	let cookie = getCookie(cookie_name);
-	console.log("cookie: " + cookie);
-	if (!!cookie && cookie == cookie_accepted) {
-		document.getElementById("gdpr_bar").style.display = "none";
-	}
-
-	function setCookie(name, value, days) {
-		var expires = "";
-		if (days) {
-			var date = new Date();
-			date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-			expires = "; expires=" + date.toUTCString();
-		}
-		document.cookie = name + "=" + (value || "") + expires + "; path=/";
-	}
-
-	function getCookie(name) {
-		var nameEQ = name + "=";
-		var ca = document.cookie.split(";");
-		for (var i = 0; i < ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == " ") c = c.substring(1, c.length);
-			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-		}
-		return null;
-	}
-
-	function eraseCookie(name) {
-		document.cookie = name + "=; Max-Age=-99999999;";
-	}
-
-	document.querySelector(".gdpr_close").addEventListener("click", () => {
-		setCookie(cookie_name, cookie_accepted, "365");
-		let el = document.getElementById("gdpr_bar");
-		el.style.display = "none";
-		el.style.height = "0";
-		el.style.bottom = "-1rem"; /* fixes some bottom offset positioning */
-	});
-
-	function cookieHandler(accepted) {
-		if (accepted) {
-			setCookie(cookie_name, cookie_accepted, "365");
-		} else {
-			setCookie(cookie_name, cookie_rejected, "365");
-		}
-
-		let el = document.getElementById("gdpr_bar");
-		el.style.display = "none";
-		el.style.height = "0";
-		el.style.bottom = "-1rem"; /* fixes some bottom offset positioning */
-	}
-</script>
+	<div class="g__hidden_field">
+		<input
+			id="list_id"
+			data-attr="list_id"
+			class="g__field-hidden"
+			type="hidden"
+			form_id="g__buying-circle-persona"
+			name="list_id"
+			value=""
+		/>
+	</div>
+	<div class="g__hidden_field">
+		<input
+			id="persona_list"
+			data-attr="persona_list"
+			class="g__field-hidden"
+			type="hidden"
+			form_id="g__buying-circle-persona"
+			name="persona_list"
+			value=""
+		/>
+	</div>
+	<div class="g__hidden_field">
+		<input
+			id="icp_list"
+			data-attr="icp_list"
+			class="g__field-hidden"
+			type="hidden"
+			form_id="g__buying-circle-persona"
+			name="icp_list"
+			value=""
+		/>
+	</div>
+	<div class="g__form_field" data-micro-id="form__persona-form">
+		<div class="g__field_info">
+			<label class="required" for="list_name">List Name</label>
+		</div>
+		<input
+			id="list_name"
+			class="g__field-text g__required"
+			type="text"
+			form_id="g__buying-circle-persona"
+			name="list_name"
+			value=""
+			title="List Name"
+			required=""
+			data-attr="list_name"
+		/>
+		<div class="g__error_msg"></div>
+	</div>
+	<div class="g__form_field" data-micro-id="form__persona-form">
+		<div class="g__field_info">
+			<label class="required" for="required_value">Required Value</label>
+		</div>
+		<div class="g__picklist g__default_picklist">
+			<select
+				data-attr="required_value"
+				class="g__field-picklist g__required g__select_default"
+				type="picklist"
+				form_id="g__buying-circle-persona"
+				name="required_value"
+				title="Required Value"
+				placeholder="Select an Option"
+				required=""
+				id="required_value"
+			>
+				<option disabled="" hidden="">Select an Option</option>
+				<option value="email">Work Email</option>
+				<option value="phone">Phone Number</option>
+				<option value="phonemail">Work Email &amp; Phone Number</option>
+				<option value="none">Neither</option>
+			</select>
+		</div>
+		<div class="g__error_msg"></div>
+	</div>
+	<div class="g__form_field" data-micro-id="form__persona-form">
+		<div class="g__field_info">
+			<label for="job_title_levels[]">Job Title Levels</label>
+		</div>
+		<div multiple="true" class="g__picklist_multiple g__picklist g__default_picklist">
+			<select
+				data-attr="job_title_levels[]"
+				class="g__field-picklist g__select_multiple"
+				type="picklist"
+				form_id="g__buying-circle-persona"
+				name="job_title_levels[]"
+				title="Job Title Levels"
+				id="job_title_levels"
+				multiple="multiple"
+				style="display: none"
+			>
+				<option value="cxo">CXO</option>
+				<option value="director">Director</option>
+				<option value="entry">Entry</option>
+				<option value="manager">Manager</option>
+				<option value="owner">Owner</option>
+				<option value="partner">Partner</option>
+				<option value="senior">Senior</option>
+				<option value="training">Training</option>
+				<option value="unpaid">Unpaid</option>
+				<option value="vp">VP</option>
+			</select>
+		</div>
+	</div>
+	<div class="g__form_field" data-micro-id="form__persona-form">
+		<div class="g__field_info">
+			<label for="skills">Skills (Comma Separated)</label>
+		</div>
+		<div class="g__field_input">
+			<input
+				id="skills"
+				class="g__field-text"
+				type="text"
+				form_id="g__buying-circle-persona"
+				name="skills"
+				value=""
+				title="Skills (Comma Separated)"
+				data-attr="skills"
+			/>
+			<div class="g__error_msg"></div>
+		</div>
+	</div>
+	<div class="g__form_field" data-micro-id="form__persona-form">
+		<div class="g__field_info">
+			<label for="interests">Interests (Comma Separated)</label>
+		</div>
+		<div class="g__field_input">
+			<input
+				id="industries"
+				class="g__field-text"
+				type="text"
+				form_id="g__buying-circle-persona"
+				name="interests"
+				value=""
+				title="Interests (Comma Separated)"
+				data-attr="interests"
+			/>
+			<div class="g__error_msg"></div>
+		</div>
+	</div>
+	<div class="g__form_field" data-micro-id="form__persona-form">
+		<div class="g__field_info">
+			<label for="Propensity_Score_Minimum__c">Minimum Propensity Score</label>
+		</div>
+		<div class="g__field_input">
+			<div class="g__number_container g__show_counter">
+				<input
+					id="Propensity_Score_Minimum__c"
+					data-attr="Propensity_Score_Minimum__c"
+					class="g__field-number"
+					type="number"
+					form_id="g__buying-circle-persona"
+					name="Propensity_Score_Minimum__c"
+					value="0"
+					title="Minimum Propensity Score"
+				/>
+				<div class="g__number_plus_minus">
+					<div class="g__number_increase" data-attr="Propensity_Score_Minimum__c"></div>
+					<div class="g__number_decrease" data-attr="Propensity_Score_Minimum__c"></div>
+				</div>
+			</div>
+			<div class="g__error_msg"></div>
+		</div>
+	</div>
+	<div id="g__submit_cancel" class="g__button_container">
+		<button id="g__submit_btn" type="submit" class="g__btn g__btn-primary">Submit</button>
+		<button id="g__cancel_btn" type="button">Cancel</button>
+	</div>
+</form>

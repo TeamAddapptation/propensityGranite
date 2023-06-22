@@ -1,0 +1,404 @@
+<script>
+	/* ------------------------------------------------------------
+Query Object
+-------------------------------------------------------------- */
+	const query = {
+		sort: "propensity",
+		sort_order: "asc",
+		sort_start_col: "14",
+		search: "",
+		page: 1,
+		campaign_id: "<%= params[:campaign_id]%>",
+		cohort_id: "<%= params[:cohort_id]%>",
+	};
+
+	let totalRecordCount;
+	/* ------------------------------------------------------------
+AJAX Call
+-------------------------------------------------------------- */
+	async function tableQuery() {
+		loader.style.display = "flex";
+		let result;
+		try {
+			const response = await fetch("/cohort_filter", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(query),
+			});
+			if (!response.ok) {
+				throw new Error("Request failed with status: " + response.status);
+			}
+			result = await response.json();
+			totalRecordCount = result.total;
+			const totalHeader = document.querySelector(".c__total_records");
+			totalHeader.innerHTML = totalRecordCount;
+			await buildTableRecords(result);
+		} catch (error) {
+			console.error(error);
+			result = { error: true, data: [] };
+		}
+		return result;
+	}
+
+	tableQuery();
+	/* ------------------------------------------------------------
+Table Build - Micro
+-------------------------------------------------------------- */
+	function buildTable(recordsArr, options = {}) {
+		try {
+			const contacts = {
+				id: "table__contacts",
+				feature: "table",
+				options: {
+					datatables: true,
+					paging: false,
+					page_length: 50,
+					searching: false,
+					export_btns: [],
+					scroll_x: true,
+					scroll_y: "750px",
+					scroll_collapse: true,
+					column_widths: [
+						{ width: "150px", targets: 0 }, // Name
+					],
+					column_sort: [4, "desc"],
+					responsive: true,
+					auto_width: true,
+					column_ordering: false,
+					empty_table_text: '<div class="g__empty-icon">👥</div><h3>No Contacts</h3><p></p>',
+				},
+				records: recordsArr,
+			};
+			loader.style.display = "none";
+			displayPaginationLinks(totalRecordCount);
+			graniteTable_v2(contacts);
+			addSortEvent("table__contacts");
+			addEllipsisListeners();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+	/* ------------------------------------------------------------
+Table Functions
+-------------------------------------------------------------- */
+	// Functions for table cells here
+
+	/* ------------------------------------------------------------
+Build Table Rows
+-------------------------------------------------------------- */
+	function buildTableRecords(records) {
+		let { results } = records;
+		let tableRecords = [
+			{
+				type: "header",
+				background: "#FAFAFA",
+				children: [
+					{
+						value: "First Name",
+						text_align: "left",
+						classes: "all",
+					},
+					// Continue headers...
+				],
+			},
+		];
+		results.forEach((r) => {
+			const newRow = {
+				type: "row",
+				href: "",
+				children: [
+					{
+						value: r.first_name,
+						text_align: "left",
+					},
+					// Continue cells...
+				],
+			};
+			tableRecords.push(newRow);
+		});
+		buildTable(tableRecords);
+	}
+	/* ------------------------------------------------------------
+Reload table with new parameters
+-------------------------------------------------------------- */
+	async function updateTable(
+		tableContainerId,
+		queryFields = { sort_start_col: null, sort_order: null, queryType: null, queryValue: null }
+	) {
+		if (!!queryFields.sort_order) {
+			query.sort_order = queryFields.sort_order;
+		}
+		if (!!queryFields.queryType) {
+			const type = queryFields.queryType;
+			//set global query variable with the appropriate values
+
+			query[type] = queryFields.queryValue;
+
+			//reset some values to default if certain queries are made
+			if (type === "search" || type === "signal") {
+				query.page = 1;
+			}
+		}
+
+		if (queryFields.owner) {
+			query.owner = queryFields.owner;
+		}
+		if (queryFields.warmth) {
+			query.warmth = queryFields.warmth;
+		}
+		if (queryFields.sort_start_col !== undefined && queryFields.sort_start_col !== null) {
+			const sort_start_col = !!queryFields.sort_start_col.toString() ? queryFields.sort_start_col : query.sort_start_col;
+			query.sort_start_col = sort_start_col;
+		}
+
+		document.getElementById(tableContainerId).innerHTML = "";
+		showLoader(true);
+		const results = await tableQuery();
+		if (results.error) {
+			toastr.error("An error occurred");
+		} else {
+			const total = results.total;
+			buildTableRecords(results);
+			showLoader(false);
+		}
+	}
+
+	function addSortEvent(tableContainerId) {
+		let sort_order = query.sort_order;
+		let sort_start_col = query.sort_start_col;
+		console.log("addSortEvent: ", tableContainerId, sort_start_col, sort_order);
+		const columns = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 19];
+		const columnSortNames = {
+			0: "first_name",
+			1: "last_name",
+			2: "job_company_name",
+			3: "job_company_industry",
+			4: "job_title",
+			5: "senority",
+			6: "job_title_role",
+			7: "job_title_sub_role",
+			8: "work_email",
+			9: "formatted_phone_numbers",
+			10: "mobile_phone",
+			11: "gender",
+			12: "birth_year",
+			13: "formatted_address",
+			14: "propensity",
+			19: "formatted_job_start_date",
+		};
+		//Get headers of table and add click event
+
+		document.querySelectorAll(`#${tableContainerId} table > thead th`).forEach(function (header, index) {
+			if (!columns.includes(index)) return;
+			header.style.cursor = "pointer";
+			if (index.toString() === sort_start_col.toString()) {
+				//List is sorted by propensity initially. Set these values to ensure clicking header will sort in desc on first click.
+				header.dataset.asc = `${sort_order === "asc"}`;
+				header.classList.toggle(sort_order, true);
+				queryValue = columnSortNames[index.toString()];
+			}
+			header.classList.add("sortable");
+
+			header.addEventListener("click", function () {
+				let asc = header.dataset.asc === "true";
+				document.querySelectorAll(`#${tableContainerId} table > thead th`).forEach(function (h) {
+					h.dataset.asc = "null";
+					h.classList.remove("asc", "desc");
+				});
+
+				if (asc === null) {
+					asc = false;
+				}
+
+				asc = !asc;
+				header.dataset.asc = asc;
+				header.classList.toggle("asc", asc);
+				header.classList.toggle("desc", !asc);
+				queryValue = columnSortNames[index.toString()];
+				console.log("Query Value: ", queryValue);
+				sort_order = asc ? "asc" : "desc";
+				sort_start_col = index;
+				// header.classList.add('sorting')
+
+				updateTable(tableContainerId, { sort_start_col, sort_order, queryType: "sort", queryValue });
+			});
+		});
+	}
+
+	function enqueueRequest(request) {
+		requestQueue.push(request);
+		processNextRequest(); // Process the next request in the queue
+	}
+
+	function processNextRequest() {
+		if (!isProcessing) {
+			const request = requestQueue.shift();
+			if (request) {
+				isProcessing = true; // Set the flag to indicate processing
+				handleLeadClaim(request.event, request.claim, request.tableCell);
+			}
+		}
+	}
+
+	function claimClickEvent(event, claim) {
+		const contact_id = event.target.dataset.contact_id;
+		const tableCell = document.querySelector(`td [data-contact_id="${contact_id}"]`).closest("td");
+		try {
+			tableCell.innerHTML = `<div class="fa-2x c__processing" data-contact_id="${contact_id}"><i class="fas fa-spinner fa-spin"></i></div>`;
+		} catch (error) {
+			console.log(error);
+			console.log(event.target);
+			console.log(tableCell);
+		}
+		enqueueRequest({ event, claim, tableCell });
+	}
+	/* ------------------------------------------------------------
+Search
+-------------------------------------------------------------- */
+	const searchBtn = document.querySelector("#c__search-table");
+	searchBtn.addEventListener("click", function (e) {
+		const value = document.getElementById("search").value;
+		updateTable("table__contacts", { queryType: "search", queryValue: value });
+	});
+
+	document.getElementById("search").addEventListener("keypress", function (e) {
+		if (e.key != "Enter") return;
+		const value = e.target.value;
+		updateTable("table__contacts", { queryType: "search", queryValue: value });
+	});
+	/* ------------------------------------------------------------
+Pagination
+-------------------------------------------------------------- */
+	// function to display pagination links
+	function displayPaginationLinks(recordCount) {
+		// set number of records per page
+		var recordsPerPage = 100;
+		// get table element
+		// var table = document.getElementById("myTable");
+
+		// get total number of records
+		var totalRecords = recordCount;
+
+		// calculate total number of pages
+		let totalPages = Math.ceil(totalRecords / recordsPerPage);
+
+		// set current page to 1
+		let currentPage = 1;
+
+		//Update showing total of
+		const totalNumber = document.querySelector(".c__total-records");
+		if (totalNumber) {
+			totalNumber.innerText = totalRecords;
+		}
+		console.log(totalRecords);
+		const startIndex = (currentPage - 1) * recordsPerPage + 1;
+		const endIndex = totalRecords < 100 ? totalRecords : startIndex + recordsPerPage - 1;
+		const start = document.querySelector(".c__start");
+		start.innerText = "";
+		start.innerText = startIndex;
+		const end = document.querySelector(".c__end");
+		end.innerText = "";
+		end.innerText = endIndex;
+		// get pagination element
+		const pagination = document.getElementById("c__pagination-list");
+		//hide if only top 100
+		// clear pagination links
+		pagination.innerHTML = "";
+		// display "previous" link
+		if (currentPage > 1) {
+			const previousLink = document.createElement("button");
+			previousLink.type = "button";
+			previousLink.classList.add("g__btn", "g__btn-text", "c__prev");
+			previousLink.href = "#";
+			previousLink.innerHTML = "Previous";
+			previousLink.addEventListener("click", function () {
+				currentPage--;
+				displayPaginationLinks();
+				updateTable("table__contacts", { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
+			});
+			pagination.appendChild(previousLink);
+		}
+
+		if (currentPage > 3) {
+			const firstLink = document.createElement("button");
+			firstLink.type = "button";
+			firstLink.classList.add("c__page-btn", "c__start");
+			firstLink.innerHTML = "1";
+			firstLink.addEventListener("click", function () {
+				currentPage = 1;
+				displayPaginationLinks();
+				updateTable("table__contacts", { queryType: "page", queryValue: 1, campaign_id: "<%= params[:campaign_id]%>" });
+			});
+			pagination.appendChild(firstLink);
+
+			const ellipsesStart = document.createElement("span");
+			ellipsesStart.classList.add("c__ellipses");
+			ellipsesStart.innerText = "...";
+			pagination.appendChild(ellipsesStart);
+		}
+		// display page links
+		for (var i = 1; i <= totalPages; i++) {
+			var pageLink = document.createElement("button");
+			pageLink.type = "button";
+			pageLink.classList.add("c__page-btn");
+			pageLink.innerHTML = i;
+			if (i === currentPage) {
+				pageLink.classList.add("active");
+			}
+			pageLink.addEventListener(
+				"click",
+				(function (i) {
+					return function () {
+						currentPage = i;
+						displayPaginationLinks();
+						updateTable("table__contacts", { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
+					};
+				})(i)
+			);
+			pagination.appendChild(pageLink);
+		}
+		if (currentPage < totalPages - 2) {
+			const ellipsesCont = document.createElement("span");
+			ellipsesCont.classList.add("c__ellipses");
+			ellipsesCont.innerText = "...";
+			pagination.appendChild(ellipsesCont);
+
+			const lastLink = document.createElement("button");
+			lastLink.type = "button";
+			lastLink.classList.add("c__page-btn", "c__end");
+			lastLink.innerHTML = totalPages;
+			lastLink.addEventListener("click", function () {
+				currentPage = totalPages;
+				displayPaginationLinks();
+				updateTable("table__contacts", { queryType: "page", queryValue: totalPages, campaign_id: "<%= params[:campaign_id]%>" });
+			});
+			pagination.appendChild(lastLink);
+		}
+		// display "next" link
+		if (currentPage < totalPages) {
+			var nextLink = document.createElement("button");
+			nextLink.type = "button";
+			nextLink.classList.add("g__btn", "g__btn-text", "c__next");
+			nextLink.href = "#";
+			nextLink.innerHTML = "Next";
+			nextLink.addEventListener("click", function () {
+				currentPage++;
+				displayPaginationLinks();
+				updateTable("table__contacts", { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
+			});
+			pagination.appendChild(nextLink);
+		}
+		// display links for two pages before and after the current page
+		var pageLinks = pagination.querySelectorAll(".c__page-btn:not(.c__end):not(.c__start)");
+		for (var i = 0; i < pageLinks.length; i++) {
+			var page = parseInt(pageLinks[i].innerHTML);
+			if (page >= currentPage - 2 && page <= currentPage + 2) {
+				pageLinks[i].style.display = "";
+			} else {
+				pageLinks[i].style.display = "none";
+			}
+		}
+	}
+</script>

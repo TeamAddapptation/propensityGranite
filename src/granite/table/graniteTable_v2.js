@@ -188,6 +188,19 @@ function graniteTable_v2(jsonBlock) {
 								newCell.classList.add("g__text-left");
 						}
 					}
+					if (cell.lead_status) {
+						switch (cell.lead_status) {
+							case "late":
+								newCell.classList.add("g__late");
+								break;
+							case "today":
+								newCell.classList.add("g__today");
+								break;
+							default:
+								newCell.classList.add("g__default");
+						}
+					}
+
 					// if(cell.restrict_height){
 					//   const heightContainer = document.createElement('div');
 					//   heightContainer.classList.add('g__overflow-data')
@@ -240,7 +253,7 @@ function graniteTable_v2(jsonBlock) {
 				search: "",
 			},
 		});
-		table.columns.adjust().draw();
+		// table.columns.adjust().draw();
 	}
 	/*---------------------------------------------
     Toggle Row

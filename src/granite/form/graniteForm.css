@@ -183,8 +183,8 @@ Multiselect
 	font-size: 0.9rem;
 }
 .chosen-container .chosen-results li.highlighted {
-	color: #5d50e6;
-	background: #f3f7ff;
+	color: var(--primary);
+	background: var(--primary-50);
 }
 .chosen-container-multi .chosen-choices li.search-field input[type="text"] {
 	flex: 1;

@@ -1,5 +1,4 @@
 function granitePicklist(jsonBlock) {
-	console.log("Picklist");
 	/*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -42,8 +41,6 @@ function granitePicklist(jsonBlock) {
 		o.select_options.forEach((opt) => {
 			const option = document.createElement("option");
 			let formatValue = opt[0];
-			console.log("Format: ", formatValue);
-			console.log("Selected: ", r.selected_value);
 			if (formatValue == r.selected_value) {
 				option.selected = true;
 			}

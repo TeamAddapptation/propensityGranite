@@ -701,6 +701,7 @@ Text
 	color: var(--tertiary);
 	background-color: transparent;
 	border-color: transparent;
+	text-decoration: underline;
 	border-radius: 0;
 	border: 0;
 	padding: 0;
@@ -724,6 +725,7 @@ Text - Gray
 .g__btn.g__btn-text-gray {
 	color: var(--neutral-500);
 	background-color: transparent;
+	text-decoration: underline;
 	border-color: transparent;
 	border-radius: 0;
 	border: 0;
