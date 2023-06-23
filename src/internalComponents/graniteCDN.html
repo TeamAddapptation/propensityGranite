@@ -1,0 +1,27 @@
+<!-- 
+  Note: build_cdn_links method must be included within the app
+-->
+
+<!-- HTML -->
+<%= raw @cdn_links %>
+
+<!-- Controller -->
+build_cdn_links(feature_array: ["granite_table_v2", "sweetalert"], qa: @a__qa.to_s == "true" )
+
+<!-- Optoins 
+granite_form
+granite_abm_form
+granite_table
+granite_table_v2
+granite_steps
+granite_picklist
+granite_tabs
+granite_sub_navigation
+granite_checklist
+datatable
+chosen
+anychart
+fontawesome
+sweetalert
+calendly
+-->
