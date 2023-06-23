@@ -1,0 +1,32 @@
+<!-- Granite CDNs
+Note: All CDN's are handle in the platform using the CDN Method:
+https://github.com/TeamAddapptation/propensityGranite/blob/main/src/internalComponents/graniteCDN.html
+-->
+
+<link rel="stylesheet" type="text/css" href="https://cdn.addapptation.com/addapptation-qa/granite/v6/granitePicklist.css" />
+<script src="https://cdn.addapptation.com/addapptation-qa/granite/v6/granitePicklist.js"></script>
+
+<!-- Unique Div to append table content -->
+<div id="picklist__demo-setup"></div>
+
+<script>
+	const jsonBlock = {
+		id: "picklist__download-contact",
+		options: {
+			select_id: "c__custom-id",
+			placeholder: "Select Download",
+			classes: "g__picklist",
+			select_options: [
+				["option-1", "Option 1"],
+				["option-2", "Option 2"],
+				["option-3", "Option 3"],
+			],
+		},
+		records: [],
+	};
+	granitePicklist(jsonBlock);
+
+	document.querySelector(".picklist__download-contact").addEventListener("change", () => {
+		console.log("Picklist Change");
+	});
+</script>
