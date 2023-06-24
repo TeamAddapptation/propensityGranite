@@ -1,1 +1,276 @@
+#table__contacts .dt-buttons {
+	display: none;
+}
+#table__contacts .dataTables_info {
+	display: none;
+}
+a.c__back-btn {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+a.c__back-btn:hover i,
+a.c__back-btn:hover p {
+	color: var(--neutral-300);
+}
+.ellipsis_data {
+	cursor: pointer;
+}
 
+tr.c__expanded td {
+	vertical-align: text-top !important;
+}
+
+.add_ellipsis {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.remove_ellipsis {
+	overflow: hidden;
+	text-overflow: clip;
+}
+.c__circle-thumbnail {
+	position: relative;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: var(--secondary-400);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+	font-weight: 700;
+	padding: 0;
+	margin: 0 auto;
+	cursor: pointer;
+}
+.c__thumbnail-container {
+	position: relative;
+}
+.c__tooltip {
+	position: relative;
+}
+.c__thumbnail-tooltip {
+	display: none;
+	position: absolute;
+	text-align: left;
+	width: 225px;
+	background: #ffffff;
+	border: 1px solid #e5e5ea;
+	border-radius: 10px;
+	z-index: 99;
+}
+.c__thumbnail-tooltip.active {
+	display: block;
+}
+.c__user-list button {
+	display: flex;
+	width: 100%;
+	font-weight: 500;
+	font-size: 0.9rem;
+	align-items: center;
+	border: 0;
+	color: var(--neutral-600);
+	background: #fff;
+	padding: 10px 15px;
+	transition: all 0.5s ease;
+	border-top: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+.c__user-list button:first-of-type {
+	border-radius: 10px 10px 0 0;
+}
+.c__user-list button:last-of-type {
+	border-radius: 0 0 10px 10px;
+}
+.c__user-list button:hover {
+	color: var(--primary);
+	background: var(--primary-10);
+	border-top: 1px solid var(--neutral-50);
+	border-bottom: 1px solid var(--neutral-50);
+}
+.c__name-icon {
+	position: relative;
+	width: 25px;
+	height: 25px;
+	font-size: 0.6rem;
+	border-radius: 50%;
+	background: var(--secondary-400);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #ffffff;
+	font-weight: 700;
+	padding: 0;
+	cursor: pointer;
+	margin-right: 8px;
+}
+#g__table__contacts_filter label {
+	margin-bottom: 0;
+}
+.c__loading-container {
+	display: flex;
+	background-color: #fff;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	border: 1px solid var(--neutral-50);
+	border-radius: 5px;
+}
+.loader {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	position: relative;
+	animation: rotate 1s linear infinite;
+}
+.loader::before,
+.loader::after {
+	content: "";
+	box-sizing: border-box;
+	position: absolute;
+	inset: 0px;
+	border-radius: 50%;
+	border: 5px solid var(--neutral-50);
+	animation: prixClipFix 2s linear infinite;
+}
+.loader::after {
+	transform: rotate3d(90, 90, 0, 180deg);
+	border-color: var(--primary);
+}
+
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes prixClipFix {
+	0% {
+		clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+	}
+	50% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+	}
+	75%,
+	100% {
+		clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+	}
+}
+#table__assessment #g__table__assessment_info {
+	display: none;
+}
+#c__pagination-list {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	list-style-type: none;
+}
+#c__pagination-list .c__page-btn {
+	cursor: pointer;
+	font-size: 0.8rem;
+	color: var(--neutral-500);
+	border: 0;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+}
+#c__pagination-list .c__page-btn:hover {
+	color: var(--neutral-600);
+}
+#c__pagination-list .c__page-btn.active {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	border: 1px solid var(--neutral-500);
+	border-radius: 50%;
+	padding: 0;
+	margin: 0;
+	justify-content: center;
+	align-items: center;
+}
+#c__pagination-list .c__page-btn.active:hover {
+	border: 1px solid var(--neutral-600);
+}
+.g__btn.g__btn-text.c__next,
+.g__btn.g__btn-text.c__prev {
+	color: var(--neutral-500);
+	cursor: pointer;
+}
+.g__btn.g__btn-text.c__next:hover,
+.g__btn.g__btn-text.c__prev:hover {
+	color: var(--neutral-600);
+}
+.g__btn.g__btn-text.c__prev {
+	padding-top: 2px;
+}
+.g__btn.g__btn-text.c__next.c__disabled,
+.g__btn.g__btn-text.c__prev.c__disabled {
+	color: var(--neutral-100);
+	cursor: no-drop;
+}
+#c__search-bar {
+	position: relative;
+}
+
+.dt-buttons {
+	display: none;
+}
+.dataTables_scrollBody::-webkit-scrollbar {
+	height: 9px;
+}
+
+table th.sortable {
+	cursor: pointer;
+	position: relative;
+	padding-right: 25px;
+}
+
+/* up arrow */
+table th.sortable::before {
+	font-family: "Font Awesome 5 Pro";
+	font-weight: 900;
+	content: "\f0de";
+	position: absolute;
+	padding-bottom: 1px;
+	right: 1em;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--neutral-500); /* grey color for unsorted column */
+	opacity: 0.2;
+}
+
+/* down arrow */
+table th.sortable::after {
+	font-family: "Font Awesome 5 Pro";
+	font-weight: 900;
+	content: "\f0dd";
+	position: absolute;
+	padding-top: 1px;
+	right: 1em;
+	bottom: 50%;
+	transform: translateY(50%);
+	color: var(--neutral-500); /* grey color for unsorted column */
+	opacity: 0.2;
+}
+
+/* active arrow */
+table th.sortable.desc::after,
+table th.sortable.asc::before {
+	color: var(--primary);
+	opacity: 0.6;
+}
+
+/* active header */
+table th.sortable.asc,
+table th.sortable.desc {
+	font-weight: bold;
+}
