@@ -1,5 +1,4 @@
 export default function graniteTable_v2(jsonBlock) {
-	console.log("Table: ", jsonBlock);
 	/*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -75,6 +74,15 @@ export default function graniteTable_v2(jsonBlock) {
 						newThCell.innerHTML = "";
 						selectHeader(newThCell, cell);
 					}
+					if (cell.selectRow) {
+						newThCell.innerHTML = "";
+						newThCell.style.borderRight = "1px solid var(--neutral-50)";
+						let customContainer = document.createElement("div");
+						customContainer.setAttribute("class", "g__custom_container");
+						const customFunction = cell.custom_function;
+						customContainer.appendChild(customFunction);
+						newThCell.appendChild(customContainer);
+					}
 					if (cell.classes) {
 						newThCell.classList.add(cell.classes);
 					}
@@ -138,6 +146,15 @@ export default function graniteTable_v2(jsonBlock) {
 					if (cell.select) {
 						newCell.innerHTML = "";
 						select(newCell, cell);
+					}
+					if (cell.selectRow) {
+						newCell.innerHTML = "";
+						newCell.style.borderRight = "1px solid var(--neutral-50)";
+						let customContainer = document.createElement("div");
+						customContainer.setAttribute("class", "g__custom_container");
+						const customFunction = cell.custom_function;
+						customContainer.appendChild(customFunction);
+						newCell.appendChild(customContainer);
 					}
 					if (cell.steps) {
 						newCell.innerHTML = "";

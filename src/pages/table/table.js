@@ -3,6 +3,8 @@ import "../../granite/table/graniteTable.css";
 import "./table.css";
 
 const loader = document.querySelector(".c__loading-container");
+let selectedRowsArr = [];
+let totalRecordsCount;
 const query = {
 	sort: "propensity",
 	sort_order: "asc",
@@ -29,7 +31,6 @@ function tableQuery() {
 		})
 			.then((response) => response.json())
 			.then((result) => {
-				console.log(result);
 				buildTableRecords(result);
 				// Use the 'result' data here or perform further operations
 			})
@@ -141,8 +142,6 @@ function socialHandler(linkedin, facebook, twitter) {
 	return html;
 }
 function scoreHandler(r) {
-	console.log(r.competitive_signals);
-	console.log(r.adjacent_signals);
 	if (r.competitive_signals === "" && r.adjacent_signals === "") {
 		return '<div class="g__score-cell g__na-bkg g__na">N/A</div>';
 	} else {
@@ -155,6 +154,7 @@ Build Table Rows
 -------------------------------------------------------------- */
 function buildTableRecords(records) {
 	let { results } = records;
+	totalRecordsCount = records.length;
 	let tableRecords = [
 		{
 			type: "header",
@@ -162,7 +162,8 @@ function buildTableRecords(records) {
 			children: [
 				{
 					value: "",
-					select: true,
+					selectRow: true,
+					custom_function: selectHeaderHandler("email"),
 					classes: "all",
 				},
 				{
@@ -280,7 +281,9 @@ function buildTableRecords(records) {
 			href: "",
 			children: [
 				{
-					select: true,
+					value: "",
+					selectRow: true,
+					custom_function: selectRowHandler(r, "email", "work_email"),
 				},
 				{
 					value: r.first_name,
@@ -403,7 +406,6 @@ function displayPaginationLinks(recordCount) {
 	if (totalNumber) {
 		totalNumber.innerText = totalRecords;
 	}
-	console.log(totalRecords);
 	const startIndex = (currentPage - 1) * recordsPerPage + 1;
 	const endIndex = totalRecords < 100 ? totalRecords : startIndex + recordsPerPage - 1;
 	const start = document.querySelector(".c__start");
@@ -511,4 +513,117 @@ function displayPaginationLinks(recordCount) {
 			pageLinks[i].style.display = "none";
 		}
 	}
+}
+
+/* ------------------------------------------------------------
+Update Table records
+-------------------------------------------------------------- */
+async function updateTable(tableContainerId, queryFields = { sort_start_col: null, sort_order: null, queryType: null, queryValue: null }) {
+	if (!!queryFields.sort_order) {
+		query.sort_order = queryFields.sort_order;
+	}
+	if (!!queryFields.queryType) {
+		const type = queryFields.queryType;
+		//set global query variable with the appropriate values
+
+		query[type] = queryFields.queryValue;
+
+		//reset some values to default if certain queries are made
+		if (type === "search" || type === "signal") {
+			query.page = 1;
+		}
+	}
+
+	if (queryFields.owner) {
+		query.owner = queryFields.owner;
+	}
+	if (queryFields.warmth) {
+		query.warmth = queryFields.warmth;
+	}
+	if (queryFields.sort_start_col !== undefined && queryFields.sort_start_col !== null) {
+		const sort_start_col = !!queryFields.sort_start_col.toString() ? queryFields.sort_start_col : query.sort_start_col;
+		query.sort_start_col = sort_start_col;
+	}
+
+	document.getElementById(tableContainerId).innerHTML = "";
+	showLoader(true);
+	const results = await tableQuery();
+	if (results.error) {
+		toastr.error("An error occurred");
+	} else {
+		const total = results.total;
+		buildTableRecords(results);
+		showLoader(false);
+		if (selectedRowsArr.length) {
+			selectedRowsArr = [];
+		}
+	}
+}
+
+/* ------------------------------------------------------------
+Row Selection
+-------------------------------------------------------------- */
+function selectHeaderHandler(attrKey) {
+	const selectContainer = document.createElement("div");
+	selectContainer.id = "g__select-header";
+	selectContainer.classList.add("g__select-column", "g__select-record");
+	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+	selectContainer.addEventListener("click", (e) => {
+		selectContainer.classList.toggle("g__rows-all-selected");
+		const selectorArr = document.querySelectorAll(".g__select-row");
+		const rowArr = document.querySelectorAll(".g__table-row");
+		if (selectContainer.classList.contains("g__rows-selected")) {
+			selectContainer.classList.toggle("g__rows-all-selected");
+			rowArr.forEach((row) => {
+				row.classList.remove("g__row-selected");
+				row.querySelector(".g__select-row").classList.remove("g__select-active");
+			});
+			selectedRowsArr = [];
+		} else {
+			selectorArr.forEach((sel) => {
+				sel.classList.remove("g__select-active");
+				if (selectContainer.classList.contains("g__rows-all-selected")) {
+					sel.classList.add("g__select-active");
+					const selectValue = sel.dataset[attrKey];
+					selectedRowsArr.push(selectValue);
+				} else {
+					sel.classList.remove("g__select-active");
+					selectedRowsArr = [];
+				}
+			});
+		}
+		selectContainer.classList.remove("g__rows-selected");
+		console.log(selectedRowsArr);
+	});
+	return selectContainer;
+}
+
+function selectRowHandler(r, attrKey, attrValue) {
+	const selectContainer = document.createElement("div");
+	selectContainer.classList.add("g__select-row", "g__select-record");
+	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+	selectContainer.setAttribute(`data-${attrKey}`, r[attrValue]);
+	selectContainer.addEventListener("click", (e) => {
+		const headerCell = document.getElementById("g__select-header");
+		selectContainer.classList.toggle("g__select-active");
+		e.target.closest("tr").classList.toggle("g__row-selected");
+		const selectValue = selectContainer.dataset[attrKey];
+		//Build Array with Values and push to hidden field
+		if (selectedRowsArr.includes(selectValue)) {
+			const position = selectedRowsArr.indexOf(selectValue);
+			selectedRowsArr.splice(position, 1);
+		} else {
+			selectedRowsArr.push(selectValue);
+		}
+		//Apply proper class to header
+		headerCell.classList.remove("g__rows-all-selected", "g__rows-selected");
+		if (selectedRowsArr.length == totalRecordsCount) {
+			headerCell.classList.add("g__rows-all-selected");
+		} else if (selectedRowsArr.length >= 1) {
+			headerCell.classList.add("g__rows-selected");
+		}
+		console.log(selectedRowsArr);
+	});
+
+	return selectContainer;
 }
