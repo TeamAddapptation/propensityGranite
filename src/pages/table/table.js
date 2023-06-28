@@ -45,6 +45,92 @@ function tableQuery() {
 	return result;
 }
 tableQuery();
+
+/* ------------------------------------------------------------
+Row Selection
+-------------------------------------------------------------- */
+function selectHeaderHandler(attrKey) {
+	const selectContainer = document.createElement("div");
+	selectContainer.id = "g__select-header";
+	selectContainer.classList.add("g__select-column", "g__select-record");
+	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+	selectContainer.addEventListener("click", (e) => {
+		selectContainer.classList.toggle("g__rows-all-selected");
+		const selectorArr = document.querySelectorAll(".g__select-row");
+		const rowArr = document.querySelectorAll(".g__table-row");
+		if (selectContainer.classList.contains("g__rows-selected")) {
+			selectContainer.classList.toggle("g__rows-all-selected");
+			rowArr.forEach((row) => {
+				row.classList.remove("g__row-selected");
+				row.querySelector(".g__select-row").classList.remove("g__select-active");
+			});
+			selectedRowsArr = [];
+		} else {
+			selectorArr.forEach((sel) => {
+				sel.classList.remove("g__select-active");
+				if (selectContainer.classList.contains("g__rows-all-selected")) {
+					sel.classList.add("g__select-active");
+					const selectValue = sel.dataset[attrKey];
+					selectedRowsArr.push(selectValue);
+				} else {
+					sel.classList.remove("g__select-active");
+					selectedRowsArr = [];
+				}
+			});
+		}
+		selectContainer.classList.remove("g__rows-selected");
+		console.log(selectedRowsArr);
+	});
+	return selectContainer;
+}
+//[r, "email", "work_email"]
+function selectRowHandler(params) {
+	const selectContainer = document.createElement("div");
+	selectContainer.classList.add("g__select-row", "g__select-record");
+	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+	selectContainer.setAttribute(`data-${params[1]}`, r[params[2]]);
+	selectContainer.addEventListener("click", (e) => {
+		const headerCell = document.getElementById("g__select-header");
+		selectContainer.classList.toggle("g__select-active");
+		e.target.closest("tr").classList.toggle("g__row-selected");
+		const selectValue = selectContainer.dataset[params[1]];
+		//Build Array with Values and push to hidden field
+		if (selectedRowsArr.includes(selectValue)) {
+			const position = selectedRowsArr.indexOf(selectValue);
+			selectedRowsArr.splice(position, 1);
+		} else {
+			selectedRowsArr.push(selectValue);
+		}
+		//Apply proper class to header
+		headerCell.classList.remove("g__rows-all-selected", "g__rows-selected");
+		if (selectedRowsArr.length == totalRecordsCount) {
+			headerCell.classList.add("g__rows-all-selected");
+		} else if (selectedRowsArr.length >= 1) {
+			headerCell.classList.add("g__rows-selected");
+		}
+		console.log(selectedRowsArr);
+	});
+
+	return selectContainer;
+}
+/* ------------------------------------------------------------
+Show action buttons based on selection
+-------------------------------------------------------------- */
+function rowSelectorHandler() {
+	const selectedLength = selectedRowsArr.length;
+	const deleteContainer = document.getElementById("c__delete-container");
+	const countContainer = document.getElementById("c__selected-count");
+	const btnContainer = document.getElementById("c__btn-container");
+	if (selectedLength >= 1) {
+		deleteContainer.style.display = "flex";
+		btnContainer.style.display = "none";
+		countContainer.innerText = "";
+		countContainer.innerText = selectedLength;
+	} else {
+		deleteContainer.style.display = "none";
+		btnContainer.style.display = "flex";
+	}
+}
 /* ------------------------------------------------------------
 Table Build - Micro
 -------------------------------------------------------------- */
@@ -163,7 +249,7 @@ function buildTableRecords(records) {
 				{
 					value: "",
 					selectRow: true,
-					custom_function: selectHeaderHandler("email"),
+					attr_key: "email",
 					classes: "all",
 				},
 				{
@@ -283,7 +369,7 @@ function buildTableRecords(records) {
 				{
 					value: "",
 					selectRow: true,
-					custom_function: selectRowHandler(r, "email", "work_email"),
+					params_arr: [r, "email", "work_email"],
 				},
 				{
 					value: r.first_name,
@@ -558,72 +644,4 @@ async function updateTable(tableContainerId, queryFields = { sort_start_col: nul
 			selectedRowsArr = [];
 		}
 	}
-}
-
-/* ------------------------------------------------------------
-Row Selection
--------------------------------------------------------------- */
-function selectHeaderHandler(attrKey) {
-	const selectContainer = document.createElement("div");
-	selectContainer.id = "g__select-header";
-	selectContainer.classList.add("g__select-column", "g__select-record");
-	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
-	selectContainer.addEventListener("click", (e) => {
-		selectContainer.classList.toggle("g__rows-all-selected");
-		const selectorArr = document.querySelectorAll(".g__select-row");
-		const rowArr = document.querySelectorAll(".g__table-row");
-		if (selectContainer.classList.contains("g__rows-selected")) {
-			selectContainer.classList.toggle("g__rows-all-selected");
-			rowArr.forEach((row) => {
-				row.classList.remove("g__row-selected");
-				row.querySelector(".g__select-row").classList.remove("g__select-active");
-			});
-			selectedRowsArr = [];
-		} else {
-			selectorArr.forEach((sel) => {
-				sel.classList.remove("g__select-active");
-				if (selectContainer.classList.contains("g__rows-all-selected")) {
-					sel.classList.add("g__select-active");
-					const selectValue = sel.dataset[attrKey];
-					selectedRowsArr.push(selectValue);
-				} else {
-					sel.classList.remove("g__select-active");
-					selectedRowsArr = [];
-				}
-			});
-		}
-		selectContainer.classList.remove("g__rows-selected");
-		console.log(selectedRowsArr);
-	});
-	return selectContainer;
-}
-
-function selectRowHandler(r, attrKey, attrValue) {
-	const selectContainer = document.createElement("div");
-	selectContainer.classList.add("g__select-row", "g__select-record");
-	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
-	selectContainer.setAttribute(`data-${attrKey}`, r[attrValue]);
-	selectContainer.addEventListener("click", (e) => {
-		const headerCell = document.getElementById("g__select-header");
-		selectContainer.classList.toggle("g__select-active");
-		e.target.closest("tr").classList.toggle("g__row-selected");
-		const selectValue = selectContainer.dataset[attrKey];
-		//Build Array with Values and push to hidden field
-		if (selectedRowsArr.includes(selectValue)) {
-			const position = selectedRowsArr.indexOf(selectValue);
-			selectedRowsArr.splice(position, 1);
-		} else {
-			selectedRowsArr.push(selectValue);
-		}
-		//Apply proper class to header
-		headerCell.classList.remove("g__rows-all-selected", "g__rows-selected");
-		if (selectedRowsArr.length == totalRecordsCount) {
-			headerCell.classList.add("g__rows-all-selected");
-		} else if (selectedRowsArr.length >= 1) {
-			headerCell.classList.add("g__rows-selected");
-		}
-		console.log(selectedRowsArr);
-	});
-
-	return selectContainer;
 }

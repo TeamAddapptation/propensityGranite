@@ -9,16 +9,12 @@ Record Object
 	const headerKeys = {
 		value: "",
 		selectRow: true,
-		custom_function: selectHeaderHandler("email"), // data attribute value that will be appended to the global array named 'selectedRowsArr'
-		classes: "all",
+		attr_key: "id",
 	};
 	const recordKeys = {
-		value: "",
 		selectRow: true,
-		custom_function: selectRowHandler(r, "email", "work_email"),
-		// - r: The record object containing all the data.
-		// - "email": The identifier for the data attribute (e.g., data-email).
-		// - "work_email": The value to be assigned to the data attribute (e.g., data-email="r.work_email").
+		attr_key: "id", // Value that will append to data-id="000"
+		attr_value: r.source_id, // Data attribute value
 	};
 	/* ------------------------------------------------------------
 Row Selection
@@ -53,21 +49,21 @@ Row Selection
 				});
 			}
 			selectContainer.classList.remove("g__rows-selected");
-			console.log(selectedRowsArr);
+			rowSelectorHandler(selectedRowsArr.length);
 		});
 		return selectContainer;
 	}
 
-	function selectRowHandler(r, attrKey, attrValue) {
+	function selectRowHandler(attr_key, attr_value) {
 		const selectContainer = document.createElement("div");
 		selectContainer.classList.add("g__select-row", "g__select-record");
 		selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
-		selectContainer.setAttribute(`data-${attrKey}`, r[attrValue]);
+		selectContainer.setAttribute(`data-${attr_key}`, attr_value);
 		selectContainer.addEventListener("click", (e) => {
 			const headerCell = document.getElementById("g__select-header");
 			selectContainer.classList.toggle("g__select-active");
 			e.target.closest("tr").classList.toggle("g__row-selected");
-			const selectValue = selectContainer.dataset[attrKey];
+			const selectValue = selectContainer.dataset[attr_key];
 			//Build Array with Values and push to hidden field
 			if (selectedRowsArr.includes(selectValue)) {
 				const position = selectedRowsArr.indexOf(selectValue);
@@ -82,10 +78,25 @@ Row Selection
 			} else if (selectedRowsArr.length >= 1) {
 				headerCell.classList.add("g__rows-selected");
 			}
-			console.log(selectedRowsArr);
+			rowSelectorHandler(selectedRowsArr.length);
 		});
 
 		return selectContainer;
+	}
+
+	function rowSelectorHandler(selectedCount) {
+		const deleteContainer = document.getElementById("c__delete-container");
+		const countContainer = document.getElementById("c__selected-count");
+		const btnContainer = document.getElementById("c__btn-container");
+		if (selectedCount >= 1) {
+			deleteContainer.style.display = "flex";
+			btnContainer.style.display = "none";
+			countContainer.innerText = "";
+			countContainer.innerText = selectedCount;
+		} else {
+			deleteContainer.style.display = "none";
+			btnContainer.style.display = "flex";
+		}
 	}
 	/* ------------------------------------------------------------
 NOTE - Add this line to the updateTable() function 

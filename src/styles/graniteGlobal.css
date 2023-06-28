@@ -745,6 +745,31 @@ Text - Gray
 	border-color: transparent;
 }
 /*----------
+Text - Primary
+---------- */
+.g__btn.g__btn-text-primary {
+	color: var(--primary);
+	background-color: transparent;
+	text-decoration: none;
+	border-color: transparent;
+	border-radius: 0;
+	border: 0;
+	padding: 0;
+}
+.g__btn.g__btn-text-primary:hover {
+	color: var(--primary-300);
+	background-color: transparent;
+	border-color: transparent;
+	border-radius: 0;
+	border: 0;
+	padding: 0;
+}
+.g__btn.g__btn-text-primary:active {
+	color: var(--primary-300);
+	background-color: transparent;
+	border-color: transparent;
+}
+/*----------
 Success
 ---------- */
 .g__btn.g__btn-success {

@@ -1,4 +1,4 @@
-export default function graniteTable_v2(jsonBlock) {
+function graniteTable_v2(jsonBlock) {
 	/*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -79,8 +79,7 @@ export default function graniteTable_v2(jsonBlock) {
 						newThCell.style.borderRight = "1px solid var(--neutral-50)";
 						let customContainer = document.createElement("div");
 						customContainer.setAttribute("class", "g__custom_container");
-						const customFunction = cell.custom_function;
-						customContainer.appendChild(customFunction);
+						customContainer.appendChild(selectHeaderHandler(cell.attr_key));
 						newThCell.appendChild(customContainer);
 					}
 					if (cell.classes) {
@@ -152,8 +151,7 @@ export default function graniteTable_v2(jsonBlock) {
 						newCell.style.borderRight = "1px solid var(--neutral-50)";
 						let customContainer = document.createElement("div");
 						customContainer.setAttribute("class", "g__custom_container");
-						const customFunction = cell.custom_function;
-						customContainer.appendChild(customFunction);
+						customContainer.appendChild(selectRowHandler(cell.attr_key, cell.attr_value));
 						newCell.appendChild(customContainer);
 					}
 					if (cell.steps) {

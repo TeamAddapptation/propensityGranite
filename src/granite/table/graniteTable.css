@@ -205,6 +205,7 @@ table select.g__table-select {
 }
 .g__select-row.g__select-active i {
 	opacity: 1;
+	margin-top: 2px;
 }
 table.dataTable tbody tr.g__row-selected {
 	background-color: var(--primary-10);
