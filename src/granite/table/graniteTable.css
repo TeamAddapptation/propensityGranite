@@ -265,7 +265,12 @@ table.dataTable tbody tr.g__row-selected {
 }
 .g__toggle-row-details {
 	cursor: pointer;
+	color: var(--neutral-400);
+	font-size: 1rem;
 	transition: all 0.5s ease;
+}
+.g__toggle-row-details:hover {
+	color: var(--primary);
 }
 .g__toggle-row-details.active {
 	transform: rotate(-90deg);

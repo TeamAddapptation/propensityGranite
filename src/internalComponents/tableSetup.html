@@ -40,13 +40,33 @@ https://github.com/TeamAddapptation/propensityGranite/blob/main/src/internalComp
 		},
 		records: [
 			{
-				value: "Content Here",
-				classes: "c__custom-class",
-				text_align: "left", // left, center, right
-				select: false, // Add column to make row selectable
-				data_sort: "", // alternative source for column sorting. Will not sure the 'value' content
-				score: false, // Display propensity score in colored cirle
-				tooltip: "<div>HTML content</div>", // *****In development****
+				type: "header", // First object defines the header
+				children: [
+					{
+						value: "Content Here",
+						classes: "c__custom-class",
+						text_align: "left", // left, center, right
+						select: false, // Add column to make row selectable
+						data_sort: "", // alternative source for column sorting. Will not sure the 'value' content
+						score: false, // Display propensity score in colored cirle
+						tooltip: "<div>HTML content</div>", // *****In development****
+					},
+					// Continue header records
+				],
+			},
+			{
+				type: "row",
+				children: [
+					{
+						value: "Content Here",
+						classes: "c__custom-class",
+						text_align: "left", // left, center, right
+						select: false, // Add column to make row selectable
+						data_sort: "", // alternative source for column sorting. Will not sure the 'value' content
+						score: false, // Display propensity score in colored cirle
+						tooltip: "<div>HTML content</div>", // *****In development****
+					},
+				],
 			},
 			// Continue records...
 		],

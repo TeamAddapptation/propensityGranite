@@ -151,7 +151,7 @@ function graniteTable_v2(jsonBlock) {
 						newCell.style.borderRight = "1px solid var(--neutral-50)";
 						let customContainer = document.createElement("div");
 						customContainer.setAttribute("class", "g__custom_container");
-						customContainer.appendChild(selectRowHandler(cell.attr_key, cell.attr_value));
+						customContainer.appendChild(selectRowHandler(cell.attr_key, cell.attr_value, cell.attr_key_2, cell.attr_value_2));
 						newCell.appendChild(customContainer);
 					}
 					if (cell.steps) {
