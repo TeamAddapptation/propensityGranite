@@ -1,7 +1,42 @@
+<style>
+	.c__tooltip {
+		position: relative;
+	}
+	.c__tooltip i {
+		cursor: help;
+		font-size: 1rem;
+		color: var(--neutral-500);
+	}
+	span.c__tooltip-text {
+		position: absolute;
+		bottom: 27px;
+		left: 0;
+		width: 190px;
+		opacity: 0;
+		visibility: hidden;
+		background-color: #fff;
+		border-radius: 5px;
+		border: 1px solid var(--neutral-100);
+		font-size: 0.8rem;
+		padding: 5px 10px;
+		margin: 0;
+		color: var(--neutral-500);
+		transition: all 0.5s ease;
+	}
+	span.c__tooltip-text.active {
+		opacity: 1;
+		visibility: visible;
+	}
+</style>
+
+<div class="c__tooltip">
+	<i class="far fa-info-circle c__tooltip-icon"></i>
+	<span class="c__tooltip-text"
+		>Keyword exclusions will remove accounts from your list if those keywords are found in their name or description.</span
+	>
+</div>
+
 <script>
-	/* --------------
-Tooltip
-----------------*/
 	const tooltipsArr = document.querySelectorAll(".c__tooltip");
 	if (tooltipsArr) {
 		tooltipsArr.forEach((tooltip) => {
