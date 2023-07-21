@@ -1,0 +1,18 @@
+<script>
+	/* --------------
+Tooltip
+----------------*/
+	const tooltipsArr = document.querySelectorAll(".c__tooltip");
+	if (tooltipsArr) {
+		tooltipsArr.forEach((tooltip) => {
+			const icon = tooltip.querySelector(".c__tooltip-icon");
+			const text = tooltip.querySelector(".c__tooltip-text");
+			icon.addEventListener("mouseover", () => {
+				text.classList.add("active");
+			});
+			icon.addEventListener("mouseout", () => {
+				text.classList.remove("active");
+			});
+		});
+	}
+</script>
