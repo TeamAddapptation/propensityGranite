@@ -83,17 +83,17 @@ function selectHeaderHandler(attrKey) {
 	});
 	return selectContainer;
 }
-//[r, "email", "work_email"]
-function selectRowHandler(params) {
+//["email", "r.work_email"]
+function selectRowHandler(paramsArr) {
 	const selectContainer = document.createElement("div");
 	selectContainer.classList.add("g__select-row", "g__select-record");
 	selectContainer.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
-	selectContainer.setAttribute(`data-${params[1]}`, r[params[2]]);
+	selectContainer.setAttribute(`data-${paramsArr[0]}`, paramsArr[1]);
 	selectContainer.addEventListener("click", (e) => {
 		const headerCell = document.getElementById("g__select-header");
 		selectContainer.classList.toggle("g__select-active");
 		e.target.closest("tr").classList.toggle("g__row-selected");
-		const selectValue = selectContainer.dataset[params[1]];
+		const selectValue = selectContainer.dataset[paramsArr[0]];
 		//Build Array with Values and push to hidden field
 		if (selectedRowsArr.includes(selectValue)) {
 			const position = selectedRowsArr.indexOf(selectValue);

@@ -1,192 +1,62 @@
-<form action="/get_enriched_contacts" id="g__buying-circle-persona" method="POST" enctype="application/x-www-form-urlencoded">
-	<div class="g__hidden_field">
-		<input
-			id="a__61720f9feaf6f777617c"
-			data-attr="id"
-			class="g__field-hidden"
-			type="hidden"
-			form_id="g__buying-circle-persona"
-			name="id"
-			value="a2bJw000000E4lJIAS"
-		/>
-	</div>
-	<div class="g__hidden_field">
-		<input
-			id="new_search"
-			data-attr="new_search"
-			class="g__field-hidden"
-			type="hidden"
-			form_id="g__buying-circle-persona"
-			name="new_search"
-			value="true"
-		/>
-	</div>
-	<div class="g__hidden_field">
-		<input
-			id="list_id"
-			data-attr="list_id"
-			class="g__field-hidden"
-			type="hidden"
-			form_id="g__buying-circle-persona"
-			name="list_id"
-			value=""
-		/>
-	</div>
-	<div class="g__hidden_field">
-		<input
-			id="persona_list"
-			data-attr="persona_list"
-			class="g__field-hidden"
-			type="hidden"
-			form_id="g__buying-circle-persona"
-			name="persona_list"
-			value=""
-		/>
-	</div>
-	<div class="g__hidden_field">
-		<input
-			id="icp_list"
-			data-attr="icp_list"
-			class="g__field-hidden"
-			type="hidden"
-			form_id="g__buying-circle-persona"
-			name="icp_list"
-			value=""
-		/>
-	</div>
-	<div class="g__form_field" data-micro-id="form__persona-form">
+<form action="/contact_updates?search_results=true&amp;id=&amp;list_id=&amp;list_name=" id="g__search-person" method="POST" enctype="application/x-www-form-urlencoded">
+	<div class="g__hidden_field"><input id="a__61720f9feaf6f777617c" data-attr="test" class="g__field-hidden" type="hidden" form_id="g__search-person" name="test" value="true" /></div>
+	<div class="g__form_field" data-micro-id="form__search-person-form">
 		<div class="g__field_info">
-			<label class="required" for="list_name">List Name</label>
+			<label for="profile"
+				><h3>Add By Linkedin Profile</h3>
+				<p>(for best results, use this method)</p>
+				*LinkedIn Profile URL</label
+			>
 		</div>
-		<input
-			id="list_name"
-			class="g__field-text g__required"
-			type="text"
-			form_id="g__buying-circle-persona"
-			name="list_name"
-			value=""
-			title="List Name"
-			required=""
-			data-attr="list_name"
-		/>
+		<input id="profile" class="g__field-text" type="text" form_id="g__search-person" name="profile" value="" title="<h3>Add By Linkedin Profile</h3><p>(for best results, use this method)</p>*LinkedIn Profile URL" data-attr="profile" />
 		<div class="g__error_msg"></div>
 	</div>
-	<div class="g__form_field" data-micro-id="form__persona-form">
+	<p data-micro-id="form__search-person-form" class="g__form-description">
+		<br />
+		<div class="c__form-divider">
+			<span class="c__form-divider-text"> or </span>
+		</div>
+	</p>
+	<div class="g__form_field" data-micro-id="form__search-person-form">
 		<div class="g__field_info">
-			<label class="required" for="required_value">Required Value</label>
-		</div>
-		<div class="g__picklist g__default_picklist">
-			<select
-				data-attr="required_value"
-				class="g__field-picklist g__required g__select_default"
-				type="picklist"
-				form_id="g__buying-circle-persona"
-				name="required_value"
-				title="Required Value"
-				placeholder="Select an Option"
-				required=""
-				id="required_value"
+			<label for="email"
+				><h3>Add By Email</h3>
+				*Email</label
 			>
-				<option disabled="" hidden="">Select an Option</option>
-				<option value="email">Work Email</option>
-				<option value="phone">Phone Number</option>
-				<option value="phonemail">Work Email &amp; Phone Number</option>
-				<option value="none">Neither</option>
-			</select>
 		</div>
+		<input id="email" class="g__field-text" type="text" form_id="g__search-person" name="email" value="" title="<h3>Add By Email</h3>*Email" data-attr="email" />
 		<div class="g__error_msg"></div>
 	</div>
-	<div class="g__form_field" data-micro-id="form__persona-form">
-		<div class="g__field_info">
-			<label for="job_title_levels[]">Job Title Levels</label>
+	<p data-micro-id="form__search-person-form" class="g__form-description">
+		<br />
+		<div class="c__form-divider">
+			<span class="c__form-divider-text"> or </span>
 		</div>
-		<div multiple="true" class="g__picklist_multiple g__picklist g__default_picklist">
-			<select
-				data-attr="job_title_levels[]"
-				class="g__field-picklist g__select_multiple"
-				type="picklist"
-				form_id="g__buying-circle-persona"
-				name="job_title_levels[]"
-				title="Job Title Levels"
-				id="job_title_levels"
-				multiple="multiple"
-				style="display: none"
+	</p>
+	<div class="g__form_field" data-micro-id="form__search-person-form">
+		<div class="g__field_info">
+			<label for="first_name"
+				><h3>Add By Name and Company</h3>
+				*First Name</label
 			>
-				<option value="cxo">CXO</option>
-				<option value="director">Director</option>
-				<option value="entry">Entry</option>
-				<option value="manager">Manager</option>
-				<option value="owner">Owner</option>
-				<option value="partner">Partner</option>
-				<option value="senior">Senior</option>
-				<option value="training">Training</option>
-				<option value="unpaid">Unpaid</option>
-				<option value="vp">VP</option>
-			</select>
 		</div>
+		<input id="first_name" class="g__field-text" type="text" form_id="g__search-person" name="first_name" value="" title="<h3>Add By Name and Company</h3>*First Name" data-attr="first_name" />
+		<div class="g__error_msg"></div>
 	</div>
-	<div class="g__form_field" data-micro-id="form__persona-form">
-		<div class="g__field_info">
-			<label for="skills">Skills (Comma Separated)</label>
-		</div>
-		<div class="g__field_input">
-			<input
-				id="skills"
-				class="g__field-text"
-				type="text"
-				form_id="g__buying-circle-persona"
-				name="skills"
-				value=""
-				title="Skills (Comma Separated)"
-				data-attr="skills"
-			/>
-			<div class="g__error_msg"></div>
-		</div>
+	<div class="g__form_field" data-micro-id="form__search-person-form">
+		<div class="g__field_info"><label for="last_name">*Last Name</label></div>
+		<input id="last_name" class="g__field-text" type="text" form_id="g__search-person" name="last_name" value="" title="*Last Name" data-attr="last_name" />
+		<div class="g__error_msg"></div>
 	</div>
-	<div class="g__form_field" data-micro-id="form__persona-form">
-		<div class="g__field_info">
-			<label for="interests">Interests (Comma Separated)</label>
-		</div>
-		<div class="g__field_input">
-			<input
-				id="industries"
-				class="g__field-text"
-				type="text"
-				form_id="g__buying-circle-persona"
-				name="interests"
-				value=""
-				title="Interests (Comma Separated)"
-				data-attr="interests"
-			/>
-			<div class="g__error_msg"></div>
-		</div>
+	<div class="g__form_field" data-micro-id="form__search-person-form">
+		<div class="g__field_info"><label for="company_name">*Company Name</label></div>
+		<input id="company_name" class="g__field-text" type="text" form_id="g__search-person" name="company_name" value="" title="*Company Name" data-attr="company_name" />
+		<div class="g__error_msg"></div>
 	</div>
-	<div class="g__form_field" data-micro-id="form__persona-form">
-		<div class="g__field_info">
-			<label for="Propensity_Score_Minimum__c">Minimum Propensity Score</label>
-		</div>
-		<div class="g__field_input">
-			<div class="g__number_container g__show_counter">
-				<input
-					id="Propensity_Score_Minimum__c"
-					data-attr="Propensity_Score_Minimum__c"
-					class="g__field-number"
-					type="number"
-					form_id="g__buying-circle-persona"
-					name="Propensity_Score_Minimum__c"
-					value="0"
-					title="Minimum Propensity Score"
-				/>
-				<div class="g__number_plus_minus">
-					<div class="g__number_increase" data-attr="Propensity_Score_Minimum__c"></div>
-					<div class="g__number_decrease" data-attr="Propensity_Score_Minimum__c"></div>
-				</div>
-			</div>
-			<div class="g__error_msg"></div>
-		</div>
+	<div class="g__form_field" data-micro-id="form__search-person-form">
+		<div class="g__field_info"><label for="company_website">Company Website</label></div>
+		<input id="company_website" class="g__field-text" type="text" form_id="g__search-person" name="company_website" value="" title="Company Website" data-attr="company_website" />
+		<div class="g__error_msg"></div>
 	</div>
-	<div id="g__submit_cancel" class="g__button_container">
-		<button id="g__submit_btn" type="submit" class="g__btn g__btn-primary">Submit</button>
-		<button id="g__cancel_btn" type="button">Cancel</button>
-	</div>
+	<div id="g__submit_cancel" class="g__button_container"><button id="g__submit_btn" type="submit">Submit</button></div>
 </form>

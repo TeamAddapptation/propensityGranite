@@ -1,0 +1,36 @@
+<script>
+	function nameModal(e) {
+		// e.stopPropagation();
+		Swal.fire({
+			showLoaderOnConfirm: false,
+			showCancelButton: false,
+			showConfirmButton: false,
+			backdrop: false,
+			showClass: {
+				backdrop: "swal2-noanimation", // disable backdrop animation
+				popup: "", // disable popup animation
+				icon: "", // disable icon animation
+			},
+			hideClass: {
+				popup: "", // disable popup fade-out animation
+			},
+			html: `
+        <section class="g__container g__submit-name">
+          <div class="g__row">
+            <div class="g__col g__align-center g__flex-column">
+              <div class="g__circle-icon" style="font-size: 2.6rem; width: 76px; height: 76px; margin-bottom: 25px;">Icon</div>
+              <h3 class="g__text-center">[Headline]</h3>
+              <p class="g__text-center">[Body]</p>
+            </div>
+          </div>
+          <div class="g__row">
+            <div class="g__col g__justify-center g__align-center g__gap-8px">
+              <button type="button" onclick="Swal.close()" class="g__btn g__btn-line">Cancel</button>
+              <button type="button" onclick="batchUnclaim()" class="g__btn g__btn-primary">Action</button>
+            </div>
+          </div>
+        </section>
+      `,
+		});
+	}
+</script>
