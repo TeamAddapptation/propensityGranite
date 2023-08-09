@@ -1,5 +1,9 @@
 <script>
 	/* ------------------------------------------------------------
+Granite Table ID
+-------------------------------------------------------------- */
+	const tableId = "table__linkedin-ad-details";
+	/* ------------------------------------------------------------
 Query Object
 -------------------------------------------------------------- */
 	const query = {
@@ -49,7 +53,7 @@ Table Build - Micro
 	function buildTable(recordsArr, options = {}) {
 		try {
 			const contacts = {
-				id: "table__contacts",
+				id: tableId,
 				feature: "table",
 				options: {
 					datatables: true,
@@ -74,7 +78,7 @@ Table Build - Micro
 			loader.style.display = "none";
 			displayPaginationLinks(totalRecordCount);
 			graniteTable_v2(contacts);
-			addSortEvent("table__contacts");
+			addSortEvent(tableId);
 			addEllipsisListeners();
 		} catch (error) {
 			console.error(error);
@@ -123,10 +127,7 @@ Build Table Rows
 	/* ------------------------------------------------------------
 Reload table with new parameters
 -------------------------------------------------------------- */
-	async function updateTable(
-		tableContainerId,
-		queryFields = { sort_start_col: null, sort_order: null, queryType: null, queryValue: null }
-	) {
+	async function updateTable(tableContainerId, queryFields = { sort_start_col: null, sort_order: null, queryType: null, queryValue: null }) {
 		if (!!queryFields.sort_order) {
 			query.sort_order = queryFields.sort_order;
 		}
@@ -260,13 +261,13 @@ Search
 	const searchBtn = document.querySelector("#c__search-table");
 	searchBtn.addEventListener("click", function (e) {
 		const value = document.getElementById("search").value;
-		updateTable("table__contacts", { queryType: "search", queryValue: value });
+		updateTable(tableId, { queryType: "search", queryValue: value });
 	});
 
 	document.getElementById("search").addEventListener("keypress", function (e) {
 		if (e.key != "Enter") return;
 		const value = e.target.value;
-		updateTable("table__contacts", { queryType: "search", queryValue: value });
+		updateTable(tableId, { queryType: "search", queryValue: value });
 	});
 	/* ------------------------------------------------------------
 Pagination
@@ -316,7 +317,7 @@ Pagination
 			previousLink.addEventListener("click", function () {
 				currentPage--;
 				displayPaginationLinks();
-				updateTable("table__contacts", { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
+				updateTable(tableId, { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
 			});
 			pagination.appendChild(previousLink);
 		}
@@ -329,7 +330,7 @@ Pagination
 			firstLink.addEventListener("click", function () {
 				currentPage = 1;
 				displayPaginationLinks();
-				updateTable("table__contacts", { queryType: "page", queryValue: 1, campaign_id: "<%= params[:campaign_id]%>" });
+				updateTable(tableId, { queryType: "page", queryValue: 1, campaign_id: "<%= params[:campaign_id]%>" });
 			});
 			pagination.appendChild(firstLink);
 
@@ -353,7 +354,7 @@ Pagination
 					return function () {
 						currentPage = i;
 						displayPaginationLinks();
-						updateTable("table__contacts", { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
+						updateTable(tableId, { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
 					};
 				})(i)
 			);
@@ -372,7 +373,7 @@ Pagination
 			lastLink.addEventListener("click", function () {
 				currentPage = totalPages;
 				displayPaginationLinks();
-				updateTable("table__contacts", { queryType: "page", queryValue: totalPages, campaign_id: "<%= params[:campaign_id]%>" });
+				updateTable(tableId, { queryType: "page", queryValue: totalPages, campaign_id: "<%= params[:campaign_id]%>" });
 			});
 			pagination.appendChild(lastLink);
 		}
@@ -386,7 +387,7 @@ Pagination
 			nextLink.addEventListener("click", function () {
 				currentPage++;
 				displayPaginationLinks();
-				updateTable("table__contacts", { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
+				updateTable(tableId, { queryType: "page", queryValue: currentPage, campaign_id: "<%= params[:campaign_id]%>" });
 			});
 			pagination.appendChild(nextLink);
 		}

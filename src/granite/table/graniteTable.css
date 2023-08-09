@@ -251,7 +251,7 @@ table.dataTable tbody tr.g__row-selected {
   Row Dropdown
   ---------- */
 .g__full-row {
-	visibility: collapse;
+	display: none;
 	line-height: 0;
 	padding: 0;
 	border: none;
@@ -259,7 +259,7 @@ table.dataTable tbody tr.g__row-selected {
 	transition: all 0.5s ease;
 }
 .g__full-row.g__open {
-	visibility: visible;
+	display: table-row;
 	line-height: inherit;
 	opacity: 1;
 }

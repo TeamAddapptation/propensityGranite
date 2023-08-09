@@ -228,8 +228,8 @@ function graniteTable_v2(jsonBlock) {
 			case "dropdown":
 				const fullRow = tbody.insertRow();
 				fullRow.classList.add("g__full-row");
-				fullRow.style.height = 0;
-				fullRow.style.overflow = "hidden";
+				// fullRow.style.height = 0;
+				// fullRow.style.overflow = "hidden";
 				const fullTd = document.createElement("td");
 				fullTd.setAttribute("colspan", columnCount);
 				fullTd.innerHTML = row.children[0].value;
@@ -414,9 +414,7 @@ function graniteTable_v2(jsonBlock) {
 	function statusIndicator(newCell, cell) {
 		newCell.classList.add("g__status-container");
 		// newCell.innerHTML = `<div class="g__status-indicator ${cell.value === 'complete' ? 'g__status-active' : 'g__status-not-active'}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
-		newCell.innerHTML = `<div class="g__status-indicator ${
-			cell.value === "complete" ? "g__status-active" : cell.value === "in progress" ? "g__status-in-progress" : "g__status-not-active"
-		}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
+		newCell.innerHTML = `<div class="g__status-indicator ${cell.value === "complete" ? "g__status-active" : cell.value === "in progress" ? "g__status-in-progress" : "g__status-not-active"}"><i class="fa fa-check" aria-hidden="true"></i></div>`;
 		return newCell;
 	}
 	/*---------------------------------------------
