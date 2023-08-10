@@ -1,3 +1,126 @@
+<style>
+	#TABLE-ID #TABLE-ID_info {
+		display: none;
+	}
+	#c__pagination-list {
+		display: flex;
+		gap: 8px;
+		align-items: center;
+		list-style-type: none;
+	}
+	#c__pagination-list .c__page-btn {
+		cursor: pointer;
+		font-size: 0.8rem;
+		color: var(--neutral-500);
+		border: 0;
+		background: transparent;
+		padding: 0;
+		margin: 0;
+	}
+	#c__pagination-list .c__page-btn:hover {
+		color: var(--neutral-600);
+	}
+	#c__pagination-list .c__page-btn.active {
+		display: flex;
+		width: 20px;
+		height: 20px;
+		border: 1px solid var(--neutral-500);
+		border-radius: 50%;
+		padding: 0;
+		margin: 0;
+		justify-content: center;
+		align-items: center;
+	}
+	#c__pagination-list .c__page-btn.active:hover {
+		border: 1px solid var(--neutral-600);
+	}
+	.g__btn.g__btn-text.c__next,
+	.g__btn.g__btn-text.c__prev {
+		color: var(--neutral-500);
+		cursor: pointer;
+	}
+	.g__btn.g__btn-text.c__next:hover,
+	.g__btn.g__btn-text.c__prev:hover {
+		color: var(--neutral-600);
+	}
+	.g__btn.g__btn-text.c__prev {
+		padding-top: 2px;
+	}
+	.g__btn.g__btn-text.c__next.c__disabled,
+	.g__btn.g__btn-text.c__prev.c__disabled {
+		color: var(--neutral-100);
+		cursor: no-drop;
+	}
+	#c__search-bar {
+		position: relative;
+	}
+	.dt-buttons {
+		display: none;
+	}
+	.dataTables_scrollBody::-webkit-scrollbar {
+		height: 9px;
+	}
+
+	table th.sortable {
+		cursor: pointer;
+		position: relative;
+		padding-right: 25px;
+	}
+
+	/* up arrow */
+	table th.sortable::before {
+		font-family: "Font Awesome 5 Pro";
+		font-weight: 900;
+		content: "\f0de";
+		position: absolute;
+		padding-bottom: 1px;
+		right: 1em;
+		top: 50%;
+		transform: translateY(-50%);
+		color: var(--neutral-500); /* grey color for unsorted column */
+		opacity: 0.2;
+	}
+
+	/* down arrow */
+	table th.sortable::after {
+		font-family: "Font Awesome 5 Pro";
+		font-weight: 900;
+		content: "\f0dd";
+		position: absolute;
+		padding-top: 1px;
+		right: 1em;
+		bottom: 50%;
+		transform: translateY(50%);
+		color: var(--neutral-500); /* grey color for unsorted column */
+		opacity: 0.2;
+	}
+
+	/* active arrow */
+	table th.sortable.desc::after,
+	table th.sortable.asc::before {
+		color: var(--primary);
+		opacity: 0.6;
+	}
+
+	/* active header */
+	table th.sortable.asc,
+	table th.sortable.desc {
+		font-weight: bold;
+	}
+</style>
+<section>
+	<div class="g__row g__align-center">
+		<div class="g__col c__showing-number g__align-center">
+			<p>Showing <span class="c__start"></span> to <span class="c__end"></span> of <span class="c__total-records"></span> entries</p>
+		</div>
+		<div class="g__col g__justify-end g__align-center">
+			<div id="c__pagination-list">
+				<!-- pagination items will be dynamically added here -->
+			</div>
+		</div>
+	</div>
+</section>
+
 <script>
 	/* ------------------------------------------------------------
 Granite Table ID
