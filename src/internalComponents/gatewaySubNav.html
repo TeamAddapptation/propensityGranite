@@ -1,0 +1,10 @@
+<% if params[:campaign_id].present? %>
+<div id="subNavigation__main-container"></div>
+<% end %>
+<script>
+	graniteSubNavigation();
+</script>
+
+// Controller build_cdn_links(feature_array: ["granite_sub_navigation"], qa: @a__qa.to_s == "true" ) if params[:campaign_id].present? where = "WHERE Id = '#{params[:campaign_id]}' AND (User__c = '#{@current_user.Id}' OR (Workspace__c = '#{@current_user.Organization__c}' AND Private__c = false))" # where = "WHERE Id = '#{params[:campaign_id]}' AND Workspace__c = '#{@current_user.Organization__c}'
+AND (User__c = '#{@current_user.Id}' OR Private__c = false)" campaign = a__query("Select Id, Name, Status__c, Budget__c, Start_Date__c, End_Date__c, Goal__c, Marketing_Channels__c, Sales_Channels__c, Audience__c, Audience__r.Name, Audience__r.Assessment_Name__c, Audience_Type__c, Current_Day__c, Playbook__r.Name, Accounts_To_Target__c, Accounts_Engaged__c, Sales_Qualified_Opps__c, New_Opps_Won__c,
+New_Revenue__c, Time_To_Value__c, Playbook__c, LastModifiedDate, (SELECT Status__c, Propensity_Checklist_Item__r.Name FROM Propensity_Checklist_Status__r ORDER BY Propensity_Checklist_Item__r.Order__c ASC) FROM Propensity_ABM_Campaign__c #{where}").first if campaign.present? set_campaign_status(status_records: campaign.Propensity_Checklist_Status__r, campaign: campaign) end end

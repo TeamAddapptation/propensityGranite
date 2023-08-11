@@ -786,6 +786,10 @@ Success
 	background-color: var(--success-700);
 	border-color: var(--success-700);
 }
+.g__btn.g__btn-success:disabled,
+.g__btn.g__btn-success[disabled] {
+	opacity: 0.6;
+}
 /*----------
 Success - Light
 ---------- */
