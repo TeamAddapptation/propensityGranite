@@ -395,28 +395,17 @@ Search
 	/* ------------------------------------------------------------
 Pagination
 -------------------------------------------------------------- */
-	// function to display pagination links
+	let currentPage = 1;
 	function displayPaginationLinks(recordCount) {
-		// set number of records per page
 		var recordsPerPage = 100;
-		// get table element
-		// var table = document.getElementById("myTable");
-
-		// get total number of records
 		var totalRecords = recordCount;
 
-		// calculate total number of pages
 		let totalPages = Math.ceil(totalRecords / recordsPerPage);
 
-		// set current page to 1
-		let currentPage = 1;
-
-		//Update showing total of
 		const totalNumber = document.querySelector(".c__total-records");
 		if (totalNumber) {
 			totalNumber.innerText = totalRecords;
 		}
-		console.log(totalRecords);
 		const startIndex = (currentPage - 1) * recordsPerPage + 1;
 		const endIndex = totalRecords < 100 ? totalRecords : startIndex + recordsPerPage - 1;
 		const start = document.querySelector(".c__start");

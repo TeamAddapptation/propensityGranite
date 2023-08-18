@@ -1,0 +1,123 @@
+<style>
+	/* Styling comes from the graniteForm.css */
+</style>
+
+<div class="g__form_field">
+	<div class="g__field_info c__keywords-label g__gap-8px g__align-center g__mb-10">
+		<label for="Keywords__c" style="margin-bottom: 0">Tags Field Demo</label>
+	</div>
+	<div class="g__tag-container" data-limit="true">
+		<input class="g__tag-input" type="text" />
+		<input class="g__field-tags g__tag-hidden-values" type="hidden" form_id="" name="" value="" title="Tags" required="" id="" />
+	</div>
+</div>
+
+<script>
+	const tagContainer = document.querySelectorAll(".g__tag-container");
+
+	if (tagContainer) {
+		Array.from(tagContainer).forEach((container, index) => {
+			const hasLimit = container.dataset.limit;
+			let tags = [];
+			const tagInput = container.querySelector("input.g__tag-input");
+			const hiddenField = container.querySelector(".g__tag-hidden-values");
+
+			tagInput.addEventListener("keyup", (e) => {
+				if (e.key === "Enter") {
+					e.preventDefault();
+					const textInput = e.target.value;
+					const textArr = textInput.split(",");
+					if (hasLimit == "true") limitHandler(textArr.length, container);
+					textArr.forEach((tag) => {
+						tags.push(tag);
+					});
+					addTags();
+					hiddenValue();
+					tagInput.value = "";
+				}
+			});
+
+			tagInput.addEventListener("focusout", () => {
+				if (tagInput.value != "") {
+					const fieldInput = tagInput.value;
+					const fieldArr = fieldInput.split(",");
+					fieldArr.forEach((tag) => {
+						tags.push(tag);
+					});
+					addTags();
+					hiddenValue();
+					tagInput.value = "";
+				}
+			});
+
+			if (hiddenField.value) {
+				const prevValues = hiddenField.value.split(";");
+				tags = prevValues.filter((elm) => elm);
+				addTags();
+				hiddenValue();
+				tagInput.value = "";
+			}
+
+			function limitHandler(newValues, container) {
+				const hiddenValues = hiddenField.value.split(";");
+				const hiddenLength = hiddenValues[0] != "" ? hiddenValues.length : 0;
+				const totalValues = hiddenLength + newValues;
+				const warning = document.querySelector(".g__wild-warning");
+				if (totalValues > 3) {
+					if (warning) warning.remove();
+					const limitWarning = document.createElement("p");
+					limitWarning.classList.add("g__wild-warning", "g__text-small", "g__mt-5");
+					limitWarning.style.color = "var(--warning)";
+					limitWarning.innerText = "For faster and improved results, we recommend utilizing three or fewer values";
+					const parentContainer = container.parentElement;
+					console.log(parentContainer);
+					parentContainer.appendChild(limitWarning);
+				} else {
+					if (warning) warning.remove();
+				}
+			}
+
+			function hiddenValue() {
+				hiddenField.value = "";
+				hiddenField.value = tags.join(";");
+			}
+			function createTag(label) {
+				const div = document.createElement("div");
+				div.setAttribute("class", "g__tag");
+				const span = document.createElement("span");
+				span.innerHTML = label;
+				const closeIcon = document.createElement("i");
+				closeIcon.innerText = "x";
+				closeIcon.setAttribute("class", "g__delete-tag");
+				closeIcon.setAttribute("data-item", label);
+				div.appendChild(span);
+				div.appendChild(closeIcon);
+				return div;
+			}
+			function addTags() {
+				clearTags();
+				tags
+					.slice()
+					.reverse()
+					.forEach((tag) => {
+						container.prepend(createTag(tag));
+					});
+				hiddenValue();
+			}
+			function clearTags() {
+				container.querySelectorAll(".g__tag").forEach((tag) => {
+					tag.parentElement.removeChild(tag);
+				});
+			}
+			container.addEventListener("click", (e) => {
+				if (e.target.tagName === "I") {
+					console.log("tags before: ", tags);
+					const tagLabel = e.target.getAttribute("data-item");
+					const index = tags.indexOf(tagLabel);
+					tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+					addTags();
+				}
+			});
+		});
+	}
+</script>
