@@ -26,6 +26,7 @@
 		html: "left",
 	};
 
+	const tableId = document.getElementById("TABLE_ID_HERE");
 	function toggleExpand(cell) {
 		tableId.classList.toggle("c__expanded-row");
 		const row = cell.parentElement.closest("tr").querySelectorAll(".ellipsis_data");

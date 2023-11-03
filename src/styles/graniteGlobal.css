@@ -428,6 +428,9 @@ main.g__main-simple {
 .g__justify-content-center {
 	justify-content: center;
 }
+.g__justify-start {
+	justify-content: flex-start;
+}
 .g__justify-center {
 	justify-content: center;
 }
@@ -730,8 +733,8 @@ Text - Gray
 	border: 0;
 	padding: 0;
 }
-.g__btn.g__btn-text:hover {
-	color: var(--primary);
+.g__btn.g__btn-text-gray:hover {
+	color: var(--tertiary);
 	background-color: transparent;
 	border-color: transparent;
 	border-radius: 0;
@@ -739,7 +742,7 @@ Text - Gray
 	padding: 0;
 }
 .g__btn.g__btn-text:active {
-	color: var(--primary);
+	color: var(--tertiary-300);
 	background-color: transparent;
 	border-color: transparent;
 }

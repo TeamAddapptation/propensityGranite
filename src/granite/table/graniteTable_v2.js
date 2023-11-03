@@ -1,5 +1,4 @@
 function graniteTable_v2(jsonBlock) {
-	console.log("Table: ", jsonBlock);
 	/*---------------------------------------------
     Global Variables
     ---------------------------------------------*/
@@ -85,6 +84,9 @@ function graniteTable_v2(jsonBlock) {
 					}
 					if (cell.classes) {
 						newThCell.classList.add(cell.classes);
+					}
+					if (cell.width) {
+						newThCell.style.width = cell.width;
 					}
 					if (cell.text_align) {
 						switch (cell.text_align) {
@@ -245,6 +247,7 @@ function graniteTable_v2(jsonBlock) {
 	let emptyTableText = o.empty_table_text || "No data available in table";
 	if (o.datatables) {
 		const table = $(tableId).DataTable({
+			destroy: true,
 			//paging
 			paging: o.paging,
 			pageLength: o.page_length,
@@ -431,21 +434,26 @@ function graniteTable_v2(jsonBlock) {
     ---------------------------------------------*/
 	function score(newRow, cell) {
 		const scoreContainer = document.createElement("div");
-		if (cell.value >= 67) {
+		scoreContainer.classList.add("g__score-cell");
+		scoreContainer.innerHTML = `${cell.value}`;
+
+		if (cell.value === undefined) {
+			newRow.classList.add("g__na-row");
+			scoreContainer.classList.add("g__g__na-bkg", "g__na");
+			scoreContainer.innerHTML = "N/A";
+		} else if (cell.value >= 67) {
 			newRow.classList.add("g__strong-row");
-			scoreContainer.classList.add("g__score-cell", "g__strong", "g__strong-bkg");
-			scoreContainer.innerHTML = `${cell.value}`;
+			scoreContainer.classList.add("g__strong", "g__strong-bkg");
 		} else if (cell.value >= 34 && cell.value < 66) {
 			newRow.classList.add("g__moderate-row");
-			scoreContainer.classList.add("g__score-cell", "g__moderate", "g__moderate-bkg");
-			scoreContainer.innerHTML = `${cell.value}`;
+			scoreContainer.classList.add("g__moderate", "g__moderate-bkg");
 		} else {
 			newRow.classList.add("g__weak-row");
-			scoreContainer.classList.add("g__score-cell", "g__weak", "g__weak-bkg");
-			scoreContainer.innerHTML = `${cell.value}`;
+			scoreContainer.classList.add("g__weak", "g__weak-bkg");
 		}
 		return scoreContainer;
 	}
+
 	/*---------------------------------------------
     Status
     ---------------------------------------------*/

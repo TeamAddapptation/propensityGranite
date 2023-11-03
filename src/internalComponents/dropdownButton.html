@@ -1,0 +1,63 @@
+<style>
+.c__dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.c__dropdown-content {
+  display: none;
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background-color: var(--primary-10);
+  min-width: 200px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.c__dropdown-content div {
+  font-size: .9rem;
+  color: var(--primary);
+  padding: 7px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.c__dropdown-content div:hover {
+  background-color: var(--primary-20);
+}
+
+.c__show {
+  display: block;
+}
+</style>
+
+<div class="c__dropdown">
+  <button type="button" class="g__btn g__btn-neutral g__btn-sm" onclick="toggleDropdown()">Dynamic Copy +</button>
+  <div id="c__dropdown-content" class="c__dropdown-content">
+    <div data-copy="[First Name]" onclick="copyText(this)">First Name [First Name]</div>
+    <!-- Add more items here -->
+  </div>
+</div>
+
+<script>
+
+function toggleDropdown() {
+  document.getElementById("c__dropdown-content").classList.toggle("c__show");
+}
+
+function copyText(element) {
+  toggleDropdown();
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.g__btn')) {
+    var dropdowns = document.getElementsByClassName("c__dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      if (dropdowns[i].classList.contains('c__show')) {
+        dropdowns[i].classList.remove('c__show');
+      }
+    }
+  }
+}
+</script>
